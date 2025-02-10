@@ -13,8 +13,8 @@ export interface ComponentPreviewProps {
   children: React.ReactNode
 }
 
-const getExampleComponent = ({ name, file = 'index' }: { name: string; file?: string }) =>
-  React.lazy(() => import(`@/components/previews/${name}/${file}.tsx`))
+// const getExampleComponent = ({ name, file = 'index' }: { name: string; file?: string }) =>
+//   React.lazy(() => import(`@/components/previews/${name}/${file}.tsx`))
 
 export const ComponentPreview = ({
   name,
@@ -24,7 +24,7 @@ export const ComponentPreview = ({
   hasSlotRecipe,
   children,
 }: ComponentPreviewProps) => {
-  const Example = getExampleComponent({ name, file })
+  // const Example = getExampleComponent({ name, file })
 
   const [code, recipe1, recipe2] = React.Children.toArray(children)
 
@@ -42,9 +42,7 @@ export const ComponentPreview = ({
     <Tabs items={items}>
       <Tab>
         <Preview className={css({ mt: '6', mb: '4' })}>
-          <React.Suspense fallback={<LoadingText />}>
-            <Example />
-          </React.Suspense>
+          <React.Suspense fallback={<LoadingText />}>{/* <Example /> */}</React.Suspense>
         </Preview>
       </Tab>
       <Tab>{code}</Tab>

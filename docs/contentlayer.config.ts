@@ -113,7 +113,7 @@ export default makeSource({
       [
         remarkNpm2Yarn,
         {
-          packageName: '@/components/docs/tabs',
+          packageName: '~/components/docs/tabs',
           tabNamesProp: 'items',
           storageKey: 'selectedPackageManager',
         },
@@ -170,5 +170,16 @@ export default makeSource({
         })
       },
     ],
+    esbuildOptions: (options) => {
+      options.external = [
+        ...(options.external || []),
+        'styled-system/jsx',
+        '@styled-system/recipes',
+        'styled-system/css',
+        '@styled-system/jsx',
+        '@styled-system/css',
+      ]
+      return options
+    },
   },
 })

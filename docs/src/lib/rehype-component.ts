@@ -69,8 +69,6 @@ export function rehypeComponent() {
         const component = getNodeAttributeByName(node, 'name')?.value as string
         const file = (getNodeAttributeByName(node, 'file')?.value as string) ?? 'index'
 
-        const withRecipe = getNodeAttributeByName(node, 'withRecipe')?.value !== undefined
-
         if (!component) return null
 
         try {
@@ -78,9 +76,6 @@ export function rehypeComponent() {
             path.join(process.cwd(), `./src/components/previews/${component}/${file}.tsx`),
             'utf8',
           )
-
-          const recipeSource = withRecipe ? getRecipeSource(component) : ''
-          const slotRecipeSource = withRecipe ? getSlotRecipeSource(component) : ''
 
           node.children?.push(
             u('element', {
@@ -102,68 +97,6 @@ export function rehypeComponent() {
               ],
             }),
           )
-
-          if (recipeSource) {
-            node.attributes = [
-              ...(node.attributes ?? []),
-              {
-                name: 'hasRecipe',
-                value: null,
-                type: 'mdxJsxAttribute',
-              },
-            ]
-
-            node.children?.push(
-              u('element', {
-                tagName: 'pre',
-                children: [
-                  u('element', {
-                    tagName: 'code',
-                    properties: {
-                      className: ['language-tsx'],
-                    },
-                    children: [
-                      {
-                        type: 'text',
-                        value: recipeSource,
-                      },
-                    ],
-                  }),
-                ],
-              }),
-            )
-          }
-
-          if (slotRecipeSource) {
-            node.attributes = [
-              ...(node.attributes ?? []),
-              {
-                name: 'hasSlotRecipe',
-                value: null,
-                type: 'mdxJsxAttribute',
-              },
-            ]
-
-            node.children?.push(
-              u('element', {
-                tagName: 'pre',
-                children: [
-                  u('element', {
-                    tagName: 'code',
-                    properties: {
-                      className: ['language-tsx'],
-                    },
-                    children: [
-                      {
-                        type: 'text',
-                        value: slotRecipeSource,
-                      },
-                    ],
-                  }),
-                ],
-              }),
-            )
-          }
         } catch (error) {
           console.error(error)
         }
@@ -173,13 +106,12 @@ export function rehypeComponent() {
         const directory =
           (getNodeAttributeByName(node, 'directory')?.value as string) ?? 'components/ui'
         const component = getNodeAttributeByName(node, 'name')?.value as string
-        const file = (getNodeAttributeByName(node, 'file')?.value as string) ?? 'index'
 
         if (!component) return null
 
         try {
           const source = fs.readFileSync(
-            path.join(process.cwd(), `./src/${directory}/${component}/${file}.tsx`),
+            path.join(process.cwd(), `./src/${directory}/${component}/${component}.tsx`),
             'utf8',
           )
 
@@ -190,7 +122,7 @@ export function rehypeComponent() {
                 u('element', {
                   tagName: 'code',
                   data: {
-                    meta: `title="${directory}/${component}/${file}.tsx"`,
+                    meta: `title="${directory}/${component}/${component}.tsx"`,
                   },
                   properties: {
                     className: ['language-tsx'],
@@ -220,7 +152,7 @@ export function rehypeComponent() {
 
         try {
           const source = fs.readFileSync(
-            path.join(process.cwd(), `./src/components/previews/typography/${type}.tsx`),
+            path.join(process.cwd(), './src/components/previews/typography/index.tsx'),
             'utf8',
           )
 

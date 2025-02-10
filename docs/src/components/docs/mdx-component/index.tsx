@@ -1,8 +1,7 @@
 'use client'
 
-import * as React from 'react'
+import { css } from '@styled-system/css'
 import { useMDXComponent } from 'next-contentlayer/hooks'
-import { css } from '@shadow-panda/styled-system/css'
 import { components } from './components'
 
 interface MdxProps {
@@ -32,7 +31,7 @@ export function MdxComponent({ code }: MdxProps) {
         },
       })}
     >
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      {/* biome-ignore lint/suspicious/noExplicitAny: <explanation> */}
       <Component components={components as any} />
     </div>
   )

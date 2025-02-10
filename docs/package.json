@@ -7,7 +7,9 @@
     "lint": "biome lint ./src",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "dev": "next dev",
+    "build": "next build"
   },
   "dependencies": {
     "@pallas-ui/panda-preset": "workspace:*",
