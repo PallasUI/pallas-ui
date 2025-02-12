@@ -1,7 +1,7 @@
 import { css } from '@styled-system/css'
 import { Box } from '@styled-system/jsx'
 import Link from 'next/link'
-import MenuBar from '~/components/ui/menu-bar/menu-bar'
+import { Content, Item, Menu, Root, Trigger } from '~/components/ui/menu-bar'
 
 export default function Header() {
   return (
@@ -32,22 +32,22 @@ export default function Header() {
           Design System
         </Link>
 
-        <MenuBar.Root>
-          <MenuBar.Menu>
-            <MenuBar.Trigger>Documentation</MenuBar.Trigger>
-            <MenuBar.Content>
-              <MenuBar.Item>
+        <Root>
+          <Menu>
+            <Trigger>Documentation</Trigger>
+            <Content>
+              <Item>
                 <Link href="/docs/getting-started">Getting Started</Link>
-              </MenuBar.Item>
-              <MenuBar.Item>
+              </Item>
+              <Item>
                 <Link href="/docs/components">Components</Link>
-              </MenuBar.Item>
-              <MenuBar.Item>
+              </Item>
+              <Item>
                 <Link href="/docs/guides">Guides</Link>
-              </MenuBar.Item>
-            </MenuBar.Content>
-          </MenuBar.Menu>
-        </MenuBar.Root>
+              </Item>
+            </Content>
+          </Menu>
+        </Root>
       </div>
     </Box>
   )

@@ -1,11 +1,11 @@
 import { docs } from '~/collections/docs'
 
 export default async function DocPage({ params }: { params: { slug: string[] } }) {
-  const slug = params.slug.join('/')
-  const doc = await docs.getFile(slug, 'mdx')
-  const Content = await doc.getExportValue('default')
+  // const slug = params.slug.join('/')
+  // const doc = await docs.getFile(slug, 'mdx')
+  // const Content = await doc.getExportValue('default')
 
-  return <Content />
+  return null
 }
 
 export async function generateStaticParams() {
