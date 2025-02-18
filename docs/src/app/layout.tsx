@@ -2,7 +2,6 @@ import './global.css'
 import { css } from '@styled-system/css'
 import type { Metadata } from 'next/dist/types'
 import type React from 'react'
-import { docs } from '~/collections/docs'
 import Header from '~/components/layout/header'
 import Sidebar from '~/components/layout/sidebar'
 
@@ -11,20 +10,8 @@ export const metadata: Metadata = {
   description: 'Documentation for our design system components',
 }
 
-export async function generateStaticParams() {
-  try {
-    console.log('Generating static params')
-    const entries = await docs.getEntries()
-    console.log(entries, '-==========================')
-    return entries.map((entry) => ({ slug: entry.getSlug() }))
-  } catch (error) {
-    console.error(error)
-  }
-}
-
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode
   params: Promise<{ slug: string }>
@@ -46,7 +33,7 @@ export default function RootLayout({
               flex: '1',
             })}
           >
-            <Sidebar params={params} />
+            <Sidebar />
             <main
               className={css({
                 flex: '1',

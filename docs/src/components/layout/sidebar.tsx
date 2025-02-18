@@ -3,7 +3,7 @@ import { Box } from '@styled-system/jsx'
 import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { isDirectory, isFile } from 'renoun/file-system'
-import { docs } from '~/collections/docs'
+import { DocsCollection } from '~/collections/docs'
 import {
   Item,
   ItemContent,
@@ -27,7 +27,7 @@ type NavItem = {
 const SORT_ORDER = ['Introduction', 'Getting Started', 'Components', 'Utilities']
 
 export default async function Sidebar() {
-  const entries = await docs.getEntries()
+  const entries = await DocsCollection.getEntries()
   const items: NavItem[] = []
   for (const entry of entries) {
     const isDir = isDirectory(entry)
