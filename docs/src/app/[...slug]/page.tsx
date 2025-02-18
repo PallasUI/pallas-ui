@@ -1,4 +1,4 @@
-import { docs } from '~/collections/docs'
+import { DocsCollection } from '~/collections/docs'
 
 export default async function DocPage({ params }: { params: { slug: string[] } }) {
   // const slug = params.slug.join('/')
@@ -9,7 +9,7 @@ export default async function DocPage({ params }: { params: { slug: string[] } }
 }
 
 export async function generateStaticParams() {
-  const entries = await docs.getEntries()
+  const entries = await DocsCollection.getEntries()
   return entries.map((entry) => ({
     slug: entry.getPath().split('/'),
   }))
