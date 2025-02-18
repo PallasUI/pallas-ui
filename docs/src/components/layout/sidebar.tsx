@@ -1,8 +1,8 @@
 import { css } from '@styled-system/css'
 import { Box } from '@styled-system/jsx'
+import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { isDirectory, isFile } from 'renoun/file-system'
 import { docs } from '~/collections/docs'
 import {
   Item,
@@ -20,51 +20,86 @@ const AccordianItemContent = ItemContent
 
 type NavItem = {
   title: string
-  href: string
+  slug?: string
   items?: NavItem[]
 }
 
-export default async function Sidebar({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
+const SORT_ORDER = ['Introduction', 'Getting Started', 'Components', 'Utilities']
+
+export default async function Sidebar() {
   const entries = await docs.getEntries()
   const items: NavItem[] = []
   for (const entry of entries) {
-    const path = entry.getPath()
-    const segments = path.split('/')
-    let currentPath = ''
-    for (const segment of segments) {
-      currentPath += `/${segment}`
-      console.log(segment, '-==========================')
-      const newItem: NavItem = {
-        title: segment,
-        href: currentPath,
-        items: [],
+    const isDir = isDirectory(entry)
+    const innerEntries = isDir ? await entry.getEntries() : []
+
+    const innerItems = innerEntries.map((innerEntry) => {
+      const isF = isFile(innerEntry)
+      const slug = isF ? innerEntry.getName().split('.')[0] : `${innerEntry.getSlug()}/`
+
+      return {
+        title: innerEntry.getTitle(),
+        slug: `${entry.getSlug()}/${slug}`,
       }
-      items.push(newItem)
-    }
+    })
+
+    items.push({
+      title: entry.getTitle(),
+      items: innerItems,
+    })
   }
 
-  console.log(items, '-==========================')
+  const sortedItems = items.sort((a, b) => {
+    const aIndex = SORT_ORDER.indexOf(a.title)
+    const bIndex = SORT_ORDER.indexOf(b.title)
+    return aIndex - bIndex
+  })
 
   return (
     <Box
       className={css({
         width: '280px',
         borderRight: '1px solid',
-        borderColor: 'gray.200',
+        borderColor: '{colors.border}',
         padding: '4',
       })}
     >
-      <AccordionRoot type="single">
-        {items.map((section) => (
-          <AccordianItem key={section.href} value={section.href}>
+      <AccordionRoot
+        type="multiple"
+        css={{
+          border: 'none',
+        }}
+      >
+        {sortedItems.map((section) => (
+          <AccordianItem key={section.title} value={section.title}>
             <AccordianItemHeader>
-              <AccordianItemTrigger>{section.title}</AccordianItemTrigger>
+              {section.title}
+              <AccordianItemTrigger>
+                <ChevronDown />
+              </AccordianItemTrigger>
             </AccordianItemHeader>
-            <AccordianItemContent>Hello</AccordianItemContent>
+            <AccordianItemContent>
+              {section.items?.map((item) => (
+                <Link
+                  href={`/docs/${item.slug}`}
+                  className={css({
+                    display: 'block',
+                    padding: '2',
+                    color: 'gray.700',
+                    borderRadius: 'sm',
+                    textDecoration: 'none',
+                    transition: 'all 0.2s',
+                    _hover: {
+                      backgroundColor: '{colors.bgSolid.hover}',
+                      color: '{colors.primary.hover}',
+                    },
+                  })}
+                  key={item.title}
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </AccordianItemContent>
           </AccordianItem>
         ))}
       </AccordionRoot>

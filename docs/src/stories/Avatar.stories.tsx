@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { User, User2, Users } from 'lucide-react'
-import Avatar from '~/ui/avatar'
+import Avatar from '~/components/ui/avatar'
 
 const meta: Meta<typeof Avatar.Root> = {
   title: 'Components/Avatar',

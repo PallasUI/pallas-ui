@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { button } from '@styled-system/recipes'
 import { ArrowRight } from 'lucide-react'
-import Heading from '~/ui/typography/heading'
-import { Button } from '../ui/button'
+import { Button } from '~/components/ui/button'
+import { Heading } from '~/components/ui/typography'
 
 const meta: Meta<typeof Button> = {
   component: Button,

@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Grid, HStack } from '@styled-system/jsx'
-import { Label } from '~/ui/label'
-import { Switch } from '~/ui/switch'
+import { Label } from '~/components/ui/label'
+import { Switch } from '~/components/ui/switch'
 
 const meta: Meta<typeof Switch> = {
   component: Switch,

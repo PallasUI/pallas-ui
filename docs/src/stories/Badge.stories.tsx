@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
-import { Badge } from '../ui/badge'
+import { Badge } from '~/components/ui/badge'
 
 const meta: Meta<typeof Badge> = {
   component: Badge,

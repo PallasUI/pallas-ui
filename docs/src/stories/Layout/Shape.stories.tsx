@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Circle } from '@styled-system/jsx'
-import { CircleRender } from '~/ui/render-helpers/shapes'
-import { SquareRender } from '~/ui/render-helpers/shapes'
+import { CircleRender } from '~/components/ui/render-helpers/shapes'
+import { SquareRender } from '~/components/ui/render-helpers/shapes'
 
 const meta: Meta<typeof Circle> = {
   component: Circle,

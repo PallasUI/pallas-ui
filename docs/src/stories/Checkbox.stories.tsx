@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Grid, HStack } from '@styled-system/jsx'
-import { Checkbox } from '~/ui/checkbox'
-import { Label } from '~/ui/label'
+import { Checkbox } from '~/components/ui/checkbox'
+import { Label } from '~/components/ui/label'
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,

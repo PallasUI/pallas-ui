@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { Search } from 'lucide-react'
-import { Label } from '~/ui/label'
-import { Input } from '../ui/input'
+import { Input } from '~/components/ui/input'
+import { Label } from '~/components/ui/label'
 
 const meta: Meta<typeof Input> = {
   component: Input,

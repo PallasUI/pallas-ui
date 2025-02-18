@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { useState } from 'react'
 import type { DateRange } from 'react-day-picker'
-import { DayPicker } from '~/ui/daypicker'
+import { DayPicker } from '~/components/ui/daypicker'
 
 const meta: Meta<typeof DayPicker> = {
   component: DayPicker,

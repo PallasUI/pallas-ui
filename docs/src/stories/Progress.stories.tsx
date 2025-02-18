@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { HStack, Stack } from '@styled-system/jsx'
-import Progress from '~/ui/progress'
-import type { RootProps } from '~/ui/progress'
-import { SVG } from '~/ui/progress/svg'
+import Progress from '~/components/ui/progress'
+import type { RootProps } from '~/components/ui/progress'
+import { SVG } from '~/components/ui/progress/svg'
 
 const meta: Meta<RootProps> = {
   title: 'Components/Progress',

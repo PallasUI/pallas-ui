@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { AspectRatio } from '@styled-system/jsx'
 import { aspectRatio } from '@styled-system/patterns'
-import { DecorativeBox } from '../../ui/render-helpers/decorative-box'
+import { DecorativeBox } from '~/components/ui/render-helpers/decorative-box'
 
 const meta: Meta<typeof AspectRatio> = {
   component: AspectRatio,
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: { ratio: 16 / 9 },
-  render: (args: { ratio: number }) => (
+  render: (args) => (
     <DecorativeBox style={{ width: '100px' }} className={aspectRatio({ ratio: args.ratio })} />
   ),
 }

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { token } from '@styled-system/tokens'
 import { CircleCheck, Info, X, XCircle } from 'lucide-react'
-import { Button, type ButtonProps } from '~/ui/button'
-import Toast, { Provider, Viewport, type ToastPropTypes } from '~/ui/toast'
+import { Button, type ButtonProps } from '~/components/ui/button'
+import Toast, { Provider, Viewport, type ToastPropTypes } from '~/components/ui/toast'
 
 const meta: Meta<ToastPropTypes> = {
   title: 'Components/Toast',

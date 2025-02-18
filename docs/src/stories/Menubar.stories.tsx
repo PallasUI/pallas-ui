@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react'
-import Menubar from '~/ui/menu-bar/menu-bar'
+import Menubar from '~/components/ui/menu-bar/menu-bar'
 
 const meta: Meta<typeof Menubar.Root> = {
   component: Menubar.Root,

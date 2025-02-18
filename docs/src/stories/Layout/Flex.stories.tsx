@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Flex } from '@styled-system/jsx'
-import { DecorativeBox } from '../../ui/render-helpers/decorative-box'
+import { DecorativeBox } from '~/components/ui/render-helpers/decorative-box'
 
 const meta: Meta<typeof Flex> = {
   component: Flex,

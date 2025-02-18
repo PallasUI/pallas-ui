@@ -3,13 +3,13 @@
 import * as Accordion from '@radix-ui/react-accordion'
 import { accordian } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
-import type * as React from 'react'
 import { createStyleContext } from '~/utils/style-context'
-import type { Assign, WithFixedClassName } from '~/utils/types'
+import type { Assign } from '~/utils/types'
 
 const { withProvider, withContext } = createStyleContext(accordian)
 
-export type RootProps = WithFixedClassName<ComponentProps<typeof Accordion.Root>>
+export type RootProps = Accordion.AccordionSingleProps | Accordion.AccordionMultipleProps
+
 export const Root = withProvider<
   React.ElementRef<typeof Accordion.Root>,
   Assign<RootProps, JsxStyleProps>

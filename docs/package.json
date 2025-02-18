@@ -31,6 +31,7 @@
     "@radix-ui/react-tabs": "^1.1.2",
     "@radix-ui/react-toast": "1.2.4",
     "@radix-ui/react-tooltip": "1.1.5",
+    "@vitejs/plugin-react": "^4.3.4",
     "date-fns": "^4.1.0",
     "lucide-react": "0.462.0",
     "next": "^15.0.0",
@@ -41,21 +42,20 @@
     "renoun": "^8.3.2"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "3.2.4",
-    "@storybook/addon-a11y": "^8.5.3",
-    "@storybook/addon-controls": "^8.5.3",
-    "@storybook/addon-docs": "^8.5.3",
-    "@storybook/addon-essentials": "^8.5.3",
-    "@storybook/addon-interactions": "^8.5.3",
-    "@storybook/addon-onboarding": "^8.5.3",
-    "@storybook/addon-themes": "^8.5.3",
-    "@storybook/blocks": "^8.5.3",
-    "@storybook/react": "^8.5.3",
-    "@storybook/react-vite": "^8.5.3",
-    "@storybook/test": "^8.5.3",
+    "@storybook/addon-a11y": "^8.5.6",
+    "@storybook/addon-controls": "^8.5.6",
+    "@storybook/addon-essentials": "^8.5.6",
+    "@storybook/addon-themes": "^8.5.6",
+    "@storybook/blocks": "^8.5.6",
+    "@storybook/nextjs": "^8.5.6",
+    "@storybook/react": "^8.5.6",
+    "@storybook/react-vite": "^8.5.6",
+    "@storybook/test": "^8.5.6",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.0",
     "storybook": "^8.5.3",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "vite": "^6.1.0",
+    "vite-tsconfig-paths": "^5.1.4"
   }
 }

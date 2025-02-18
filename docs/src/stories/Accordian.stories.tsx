@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
-import { Stack } from '@styled-system/jsx'
+import type { Meta } from '@storybook/react'
 import { ChevronDown } from 'lucide-react'
-import Accordian from '~/ui/accordian/accordian'
+import Accordian from '~/components/ui/accordian/accordian'
 
 const meta: Meta<typeof Accordian.Root> = {
   component: Accordian.Root,

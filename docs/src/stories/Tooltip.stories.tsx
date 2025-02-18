@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
-import { Button } from '~/ui/button'
-import Tooltip from '~/ui/tooltip/tooltip'
-import { Heading } from '~/ui/typography'
+import { Button } from '~/components/ui/button'
+import Tooltip from '~/components/ui/tooltip/tooltip'
+import { Heading } from '~/components/ui/typography'
 
 const meta: Meta<typeof Tooltip.Root> = {
   component: Tooltip.Root,

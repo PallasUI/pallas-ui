@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { Terminal } from 'lucide-react'
-import { Alert, AlertDescription, AlertTitle } from '../ui/alert'
+import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert'
 
 const meta: Meta<typeof Alert> = {
   component: Alert,

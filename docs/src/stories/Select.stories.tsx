@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
-import { Label } from '~/ui/label'
-import Select from '../ui/select'
+import { Label } from '~/components/ui/label'
+import Select from '~/components/ui/select'
 
 const meta: Meta<typeof Select.Root> = {
   component: Select.Root,

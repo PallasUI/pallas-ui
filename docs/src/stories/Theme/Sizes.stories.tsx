@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Box, Stack } from '@styled-system/jsx'
 import { type Token, token } from '@styled-system/tokens'
-import { Paragraph } from '~/ui/typography'
-import { Heading } from '~/ui/typography'
+import { Heading, Paragraph } from '~/components/ui/typography'
 
 const meta = {
   title: 'Theme/Sizes & Spacing',

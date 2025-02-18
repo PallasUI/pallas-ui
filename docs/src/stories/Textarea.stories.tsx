@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { Grid, Stack } from '@styled-system/jsx'
-import { Label } from '~/ui/label'
-import { Textarea } from '~/ui/textarea'
+import { Label } from '~/components/ui/label'
+import { Textarea } from '~/components/ui/textarea'
 
 const meta: Meta<typeof Textarea> = {
   component: Textarea,

@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
-import Modal from '~/ui/modal/modal'
+import Modal from '~/components/ui/modal/modal'
 
 const meta: Meta<typeof Modal.Root> = {
   component: Modal.Root,

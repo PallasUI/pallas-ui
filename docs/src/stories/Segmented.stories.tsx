@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { HStack, Stack } from '@styled-system/jsx'
 import { Equal, Grid, List, StretchHorizontal } from 'lucide-react'
-import Segmented from '~/ui/segmented'
+import Segmented from '~/components/ui/segmented'
 
 const meta: Meta<typeof Segmented.Root> = {
   component: Segmented.Root,

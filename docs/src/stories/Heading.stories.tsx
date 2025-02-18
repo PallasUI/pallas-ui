@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
-import { Heading, Paragraph } from '../ui/typography'
+import { Heading } from '~/components/ui/typography'
 
 const meta: Meta<typeof Heading> = {
   component: Heading,

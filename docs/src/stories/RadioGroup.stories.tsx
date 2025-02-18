@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import { HStack } from '@styled-system/jsx'
-import { Label } from '~/ui/label'
-import RadioGroup from '../ui/radio-group'
+import { Label } from '~/components/ui/label'
+import RadioGroup from '~/components/ui/radio-group'
 
 const meta: Meta<typeof RadioGroup.Root> = {
   component: RadioGroup.Root,

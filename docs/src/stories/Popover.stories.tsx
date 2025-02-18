@@ -1,9 +1,9 @@
 import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { X } from 'lucide-react'
-import { Button } from '~/ui/button'
-import Popover from '~/ui/popover'
-import { Heading } from '~/ui/typography'
+import { Button } from '~/components/ui/button'
+import Popover from '~/components/ui/popover'
+import { Heading } from '~/components/ui/typography'
 
 const meta: Meta<typeof Popover.Root> = {
   component: Popover.Root,
