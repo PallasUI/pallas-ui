@@ -1,8 +1,16 @@
 /** @type {import('next').NextConfig} */
 
 import createMDXPlugin from "@next/mdx";
+import { rehypePlugins, remarkPlugins } from "renoun/mdx";
 
-const withMDX = createMDXPlugin();
+const withMDX = createMDXPlugin({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins,
+    rehypePlugins,
+    jsxImportSource: "restyle",
+  },
+});
 
 const nextConfig = {
   // Enable React strict mode for better development practices

@@ -13,6 +13,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.1.7",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pandacss/dev": "0.50.0",
@@ -39,7 +41,9 @@
     "react-aria-components": "^1.5.0",
     "react-day-picker": "^9.5.0",
     "react-dom": "^19.0.0",
-    "renoun": "^8.3.2"
+    "remark-mdx-frontmatter": "^5.0.0",
+    "renoun": "^8.3.2",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.5.6",

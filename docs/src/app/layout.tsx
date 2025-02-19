@@ -2,8 +2,9 @@ import './global.css'
 import { css } from '@styled-system/css'
 import type { Metadata } from 'next/dist/types'
 import type React from 'react'
-import Header from '~/components/layout/header'
-import Sidebar from '~/components/layout/sidebar'
+import { PackageInstallScript } from 'renoun/components'
+import Header from '~/components/docs/layout/header'
+import Sidebar from '~/components/docs/layout/sidebar'
 
 export const metadata: Metadata = {
   title: 'Design System Documentation',
@@ -19,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <PackageInstallScript />
         <div
           className={css({
             display: 'flex',
