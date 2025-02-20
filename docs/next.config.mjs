@@ -8,27 +8,17 @@ const withMDX = createMDXPlugin({
   options: {
     remarkPlugins,
     rehypePlugins,
-    jsxImportSource: "restyle",
   },
 });
 
 const nextConfig = {
-  // Enable React strict mode for better development practices
   reactStrictMode: true,
-
-  // Configure path aliases to match tsconfig
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      "~": "./src",
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  webpack(config) {
+    config.resolve.extensionAlias = {
+      ".js": [".ts", ".tsx", ".js"],
     };
     return config;
-  },
-
-  // Experimental features
-  transpilePackages: ["renoun"],
-  experimental: {
-    mdxRs: true,
   },
 };
 

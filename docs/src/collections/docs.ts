@@ -6,12 +6,13 @@ export const DocsCollection = new Directory({
   loaders: {
     mdx: withSchema(
       {
-        frontmatter: {
+        frontmatter: z.object({
           title: z.string(),
           description: z.string(),
-        },
+        }),
       },
       (path) => import(`~/content/${path}.mdx`),
     ),
+    tsx: (path) => import(`~/content/${path}.tsx`),
   },
 })

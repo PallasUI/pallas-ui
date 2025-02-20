@@ -1,11 +1,23 @@
-# Accordion
-
-A vertically stacked set of interactive headings that each reveal a section of content.
+---
+title: Accordion
+description: A vertically stacked set of interactive headings that each reveal a section of content.
+---
 
 ## Installation
 
-```bash
-npm install pallas-ui
-```
+<PackageInstall packages={['pallas-ui']} />
 
 ## Usage
+
+```typescript
+import { Accordion } from 'pallas-ui'
+
+<Accordion.Root>
+  <Accordion.Item value="item-1">
+    <Accordion.ItemTrigger>Is it accessible?</Accordion.ItemTrigger>
+    <Accordion.ItemContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </Accordion.ItemContent>
+  </Accordion.Item>
+</Accordion.Root>
+```
