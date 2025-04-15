@@ -135,11 +135,13 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code className={css({ 
-                  color: '#D4D4D4', // Light gray color similar to dark-plus theme
-                  display: 'block',
-                  whiteSpace: 'pre',
-                })}>
+                <code
+                  className={css({
+                    color: '#D4D4D4', // Light gray color similar to dark-plus theme
+                    display: 'block',
+                    whiteSpace: 'pre',
+                  })}
+                >
                   {npm}
                 </code>
               </pre>
@@ -166,7 +168,15 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code className={css({ color: 'text.primary' })}>{yarn}</code>
+                <code
+                  className={css({
+                    color: '#D4D4D4', // Light gray color similar to dark-plus theme
+                    display: 'block',
+                    whiteSpace: 'pre',
+                  })}
+                >
+                  {yarn}
+                </code>
               </pre>
             </Content>
 
@@ -190,7 +200,15 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code className={css({ color: 'text.primary' })}>{pnpm}</code>
+                <code
+                  className={css({
+                    color: '#D4D4D4', // Light gray color similar to dark-plus theme
+                    display: 'block',
+                    whiteSpace: 'pre',
+                  })}
+                >
+                  {pnpm}
+                </code>
               </pre>
             </Content>
           </div>
