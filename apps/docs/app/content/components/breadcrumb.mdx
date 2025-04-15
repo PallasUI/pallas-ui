@@ -1,0 +1,77 @@
+---
+title: Breadcrumb
+description: A navigation component that helps users understand their current location within a website's hierarchy.
+references:
+  radix:
+    link: https://www.radix-ui.com/primitives/docs/components/navigation-menu
+    api: https://www.radix-ui.com/primitives/docs/components/navigation-menu#api-reference
+---
+
+<ContentContainer>
+
+<Section>
+# Breadcrumb
+A navigation component that helps users understand their current location within a website's hierarchy and navigate back to previous levels.
+
+<ComponentPreview name="breadcrumb" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@pallas-ui/breadcrumb" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="breadcrumb" file="index" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Breadcrumb from '@/components/ui/breadcrumb'
+```
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+      <Breadcrumb.Separator>/</Breadcrumb.Separator>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/components">Components</Breadcrumb.Link>
+      <Breadcrumb.Separator>/</Breadcrumb.Separator>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link>Breadcrumb</Breadcrumb.Link>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb.Root>
+```
+</Section>
+
+<Section>
+
+## Examples
+
+### With Icons
+<ComponentPreview name="breadcrumb" file="with-icons" />
+
+### With Ellipsis
+<ComponentPreview name="breadcrumb" file="with-ellipsis" />
+
+### With Separator
+<ComponentPreview name="breadcrumb" file="custom-separator" />
+
+</Section>
+
+</ContentContainer>

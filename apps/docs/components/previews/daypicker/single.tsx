@@ -4,13 +4,12 @@ import { Button } from '@/components/ui/button'
 import { DayPicker } from '@/components/ui/daypicker'
 import Popover from '@/components/ui/popover'
 import { css } from '@styled-system/css'
-import { styled } from '@styled-system/jsx'
 import { icon } from '@styled-system/recipes'
 import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import * as React from 'react'
 
-export default function Example() {
+export default function SingleDayPickerPreview() {
   const [date, setDate] = React.useState<Date>()
 
   return (
@@ -30,8 +29,14 @@ export default function Example() {
           {date ? format(date, 'PPP') : <span>Pick a date</span>}
         </Button>
       </Popover.Trigger>
-      <Popover.Content css={{ width: 'auto', padding: 0 }}>
-        <DayPicker mode="single" selected={date} onSelect={setDate} initialFocus />
+      <Popover.Content className={css({ width: 'auto', p: '0' })}>
+        <DayPicker
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          initialFocus
+          showOutsideDays
+        />
       </Popover.Content>
     </Popover.Root>
   )

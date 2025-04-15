@@ -1,0 +1,70 @@
+---
+title: DayPicker
+description: A calendar component for picking dates and date ranges.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/date-picker
+---
+<ContentContainer>
+<Section>
+# DayPicker
+A calendar component for picking dates and date ranges, built on top of react-day-picker.
+
+<ComponentPreview name="daypicker" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="react-day-picker date-fns" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="daypicker" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { DayPicker } from '@/components/ui/daypicker'
+import { format } from 'date-fns'
+import * as React from 'react'
+
+export default function Example() {
+  const [date, setDate] = React.useState<Date>()
+
+  return (
+    <div>
+      <DayPicker
+        mode="single"
+        selected={date}
+        onSelect={setDate}
+        showOutsideDays
+      />
+      {date && <p>You selected: {format(date, 'PPP')}</p>}
+    </div>
+  )
+}
+```
+<Section>
+## Examples
+
+### Date Picker
+<ComponentPreview name="daypicker" file="single" />
+### Date Range Picker
+<ComponentPreview name="daypicker" file="range" />
+### With Presets
+<ComponentPreview name="daypicker" file="with-presets" />
+
+</Section>
+
+</Section>
+</ContentContainer>
