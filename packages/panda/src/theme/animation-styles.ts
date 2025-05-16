@@ -95,4 +95,13 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationName: 'modal-content-hide',
     },
   },
+  skeleton: {
+    value: {
+      animationName: 'skeleton-pulse',
+      animationDuration: '2s',
+      animationTimingFunction: 'ease-in-out',
+      animationIterationCount: 'infinite',
+      animationDirection: 'alternate',
+    },
+  },
 })

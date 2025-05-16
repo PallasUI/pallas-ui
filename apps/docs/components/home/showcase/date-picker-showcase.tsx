@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { css } from '@styled-system/css'
-import { VStack } from '@styled-system/jsx'
+import { HStack, VStack } from '@styled-system/jsx'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
 export const DatePickerShowcase = () => {
@@ -28,15 +28,9 @@ export const DatePickerShowcase = () => {
           </Input>
         </div>
 
-        <div
-          className={css({
-            display: 'flex',
-            justifyContent: 'flex-end',
-            mt: '2',
-          })}
-        >
+        <HStack mt="2" justify="flex-end">
           <Button variant="primary">Book Reservation</Button>
-        </div>
+        </HStack>
       </VStack>
     </ShowcaseCard>
   )

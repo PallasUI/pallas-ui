@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { css } from '@styled-system/css'
-import { Box } from '@styled-system/jsx'
+import { Box, HStack } from '@styled-system/jsx'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
 
@@ -41,17 +41,10 @@ export const FormShowcase = () => {
           <Textarea placeholder="Your message here..." />
         </Box>
 
-        <Box
-          className={css({
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: '3',
-            mt: '2',
-          })}
-        >
+        <HStack justify="flex-end" gap="3" mt="2">
           <Button variant="outlined">Cancel</Button>
           <Button variant="primary">Submit</Button>
-        </Box>
+        </HStack>
       </form>
     </ShowcaseCard>
   )

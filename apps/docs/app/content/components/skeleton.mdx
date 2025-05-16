@@ -1,0 +1,54 @@
+---
+title: Skeleton
+description: A placeholder component for loading states, mimicking the shape of content.
+---
+<ContentContainer>
+
+<Section gap="1">
+# Skeleton
+<Paragraph size={'extraLarge'} color={'tertiary'}>A placeholder component for loading states, mimicking the shape of content.</Paragraph>
+<ComponentPreview name="skeleton" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Copy and paste the following code into your project
+
+<ComponentSource name="skeleton" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Skeleton } from '@/components/ui/skeleton'
+```
+
+```tsx
+<Skeleton css={{ width: '100px', height: '20px' }} />
+```
+</Section>
+
+<Section>
+## Examples
+### Default
+
+<ComponentPreview name="skeleton" />
+
+### Text Block
+
+<ComponentPreview name="skeleton" file="text-block" />
+
+### Circle
+
+<ComponentPreview name="skeleton" file="circle" />
+</Section>
+
+</ContentContainer>

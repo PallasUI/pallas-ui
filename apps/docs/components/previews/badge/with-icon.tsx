@@ -2,11 +2,12 @@
 
 import { Badge } from '@/components/ui/badge'
 import { css } from '@styled-system/css'
+import { Flex } from '@styled-system/jsx'
 import { Check } from 'lucide-react'
 
 export default function BadgeWithIconPreview() {
   return (
-    <div className={css({ display: 'flex', gap: '4', flexWrap: 'wrap' })}>
+    <Flex gap="4">
       <Badge variant="default">
         <Check className={css({ h: '3', w: '3', mr: '1' })} />
         Default
@@ -19,6 +20,6 @@ export default function BadgeWithIconPreview() {
         <Check className={css({ h: '3', w: '3', mr: '1' })} />
         Error
       </Badge>
-    </div>
+    </Flex>
   )
 }

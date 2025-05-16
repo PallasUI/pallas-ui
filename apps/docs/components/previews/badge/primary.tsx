@@ -1,12 +1,12 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { css } from '../../../styled-system/css'
+import { Flex } from '@styled-system/jsx'
 
 export default function BadgePrimaryPreview() {
   return (
-    <div className={css({ display: 'flex', gap: '4', flexWrap: 'wrap' })}>
+    <Flex gap="4">
       <Badge variant="primary">Primary Badge</Badge>
-    </div>
+    </Flex>
   )
 }
