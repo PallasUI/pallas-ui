@@ -7,6 +7,7 @@ import { badge } from './badge'
 import { breadcrumb } from './breadcrumb'
 import { button } from './button'
 import { card } from './card'
+import { carousel } from './carousel'
 import { checkbox } from './checkbox'
 import { daypicker } from './daypicker'
 import { drawer } from './drawer'
@@ -53,6 +54,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   avatar,
   breadcrumb,
   card,
+  carousel,
   checkbox,
   drawer,
   daypicker,

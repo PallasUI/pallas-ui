@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@pallas-ui/breadcrumb": "workspace:*",
+    "@pallas-ui/carousel": "workspace:*",
     "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
