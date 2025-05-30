@@ -10,6 +10,7 @@ import { card } from './card'
 import { checkbox } from './checkbox'
 import { daypicker } from './daypicker'
 import { drawer } from './drawer'
+import { form } from './form'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
@@ -70,4 +71,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   toast,
   tooltip,
   sidebar,
+  form,
 }

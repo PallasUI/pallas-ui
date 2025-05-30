@@ -14,8 +14,9 @@
   },
   "dependencies": {
     "@pallas-ui/breadcrumb": "workspace:*",
-    "@pallas-ui/sidebar": "workspace:*",
+    "@pallas-ui/form": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
+    "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
@@ -42,14 +43,15 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.4",
+    "@hookform/resolvers": "^5.0.1",
     "@oslojs/encoding": "^1.1.0",
     "@pandacss/config": "^0.53.3",
     "@pandacss/dev": "0.50.0",
     "@pandacss/node": "^0.53.3",
-    "@pandacss/shared": "^0.53.3",
-    "@pandacss/studio": "^0.53.3",
     "@pandacss/preset-base": "^0.53.3",
     "@pandacss/preset-panda": "^0.53.3",
+    "@pandacss/shared": "^0.53.3",
+    "@pandacss/studio": "^0.53.3",
     "@pandacss/token-dictionary": "^0.53.3",
     "@pandacss/types": "^0.49.0",
     "@storybook/addon-a11y": "^8.5.3",
@@ -70,9 +72,11 @@
     "cssesc": "^3.0.0",
     "html-escaper": "^3.0.3",
     "kleur": "^4.1.5",
+    "react-hook-form": "^7.56.3",
     "storybook": "^8.5.3",
     "typescript": "5.7.2",
     "vite": "6.2.6",
-    "vite-tsconfig-paths": "5.1.4"
+    "vite-tsconfig-paths": "5.1.4",
+    "zod": "^3.24.4"
   }
 }

@@ -1,0 +1,67 @@
+---
+title: Form
+description: A document section containing interactive controls for submitting information.
+---
+<ContentContainer>
+
+<Section gap="1">
+# Form
+<Paragraph size={'extraLarge'} color={'tertiary'}>A document section containing interactive controls for submitting information.</Paragraph>
+<ComponentPreview name="form" withRecipe/>
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-label @radix-ui/react-slot react-hook-form @hookform/resolvers zod" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="form" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Form } from '@/components/ui/form'
+```
+```tsx
+// Anatomy
+<Form.Provider>
+  <Form.Field
+    control={...}
+    name={"..."}
+    render={() => (
+      <Form.Item>
+        <Form.Label />
+        <Form.Control>
+          { /* form field component */}
+        </Form.Control>
+        <Form.Description />
+        <Form.Message />
+      </Form.Item>
+    )}
+  />
+</Form.Provider>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+<ComponentPreview name="form" file="basic" />
+
+</Section>
+</ContentContainer>

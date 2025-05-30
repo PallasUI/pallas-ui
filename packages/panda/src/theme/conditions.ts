@@ -42,5 +42,6 @@ export const conditions = {
     inputWarning: '&:has(input[data-status=warning])',
     inputWarningHover: '&:has(input[data-status=warning]:hover:not(:disabled))',
     inputWarningFocus: '&:has(input[data-status=warning]:focus:not(:disabled))',
+    errorState: '&[data-field-state=error]',
   },
 }

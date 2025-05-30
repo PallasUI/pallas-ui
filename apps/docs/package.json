@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@hookform/resolvers": "^5.0.1",
     "@pallas-ui/breadcrumb": "workspace:*",
     "@pallas-ui/components": "workspace:*",
+    "@pallas-ui/form": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
@@ -47,10 +49,12 @@
     "react-aria-components": "^1.5.0",
     "react-day-picker": "^9.5.0",
     "react-dom": "19.1.0",
+    "react-hook-form": "^7.56.3",
     "rehype-pretty-code": "^0.14.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@content-collections/core": "^0.8.2",
