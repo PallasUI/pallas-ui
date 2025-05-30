@@ -27,6 +27,7 @@ import { sidebar } from './sidebar'
 import { skeleton } from './skeleton'
 import { slider } from './slider'
 import { spinner } from './spinner'
+import { steps } from './steps'
 import { switchRecipe } from './switch'
 import { tabs } from './tabs'
 import { textarea } from './textarea'
@@ -65,6 +66,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   segmented,
   select,
   slider,
+  steps,
   switchRecipe,
   tabs,
   toast,
