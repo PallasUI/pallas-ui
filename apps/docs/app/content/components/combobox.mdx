@@ -1,0 +1,100 @@
+---
+title: Combobox
+description: Autocomplete input with command palette and suggestions.
+references:
+  cmdk:
+    link: https://github.com/pacocoursey/cmdk
+    api: https://github.com/pacocoursey/cmdk#parts-and-styling
+---
+<ContentContainer>
+
+<Section gap="1">
+# Command
+<Paragraph size={'extraLarge'} color={'tertiary'}>Autocomplete input with command palette and suggestions.</Paragraph>
+<ComponentPreview name="combobox" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+The Combobox is built by composing `Popover` and `Command` components.
+
+See installation instructions for [Popover](/docs/components/popover#installation) and [Command](/docs/components/command#installation) components.
+
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import {
+  Popover
+} from "@/components/ui/popover"
+import {
+  Command
+} from '@/components/ui/command'
+```
+
+```tsx
+<Popover.Root open={open} onOpenChange={setOpen}>
+  <Popover.Trigger
+    asChild
+  >
+    <Button
+      variant="outlined"
+      icon={<ChevronsUpDown className="opacity-50" />}
+      ...
+    >
+      <span className={css({ lineHeight: 1 })}>
+        {value
+          ? frameworks.find((framework) => framework.value === value)
+              ?.label
+          : "Select framework..."}
+      </span>
+    </Button>
+  </Popover.Trigger>
+  <Popover.Content css={{ p: 0, width: 200, bg: "transparent" }}>
+    <Command.Root label="Combobox Menu">
+      <Command.Input placeholder="Search framework..." />
+      <Command.List>
+        <Command.Empty>No results found.</Command.Empty>
+        <Command.Group heading="Frameworks">
+          {frameworks.map((framework) => (
+            <Command.Item
+              key={framework.value}
+              value={framework.value}
+              onSelect={(currentValue) => {
+                setValue(currentValue === value ? "" : currentValue)
+                setOpen(false)
+              }}
+            >
+              {framework.label}
+              <Check
+                className={css({
+                  ml: "auto",
+                  opacity: value === framework.value ? 1 : 0,
+                })}
+              />
+            </Command.Item>
+          ))}
+        </Command.Group>
+      </Command.List>
+    </Command.Root>
+  </Popover.Content>
+</Popover.Root>
+```
+</Section>
+
+<Section>
+## Examples
+### Default
+
+<ComponentPreview name="combobox" />
+
+### Dialog
+
+<ComponentPreview name="combobox" file="popover" />
+
+</Section>
+
+</ContentContainer>

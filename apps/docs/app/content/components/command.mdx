@@ -1,0 +1,96 @@
+---
+title: Command
+description: Composable command menu.
+references:
+  cmdk:
+    link: https://github.com/pacocoursey/cmdk
+    api: https://github.com/pacocoursey/cmdk#parts-and-styling
+---
+<ContentContainer>
+
+<Section gap="1">
+# Command
+<Paragraph size={'extraLarge'} color={'tertiary'}>Composable command menu.</Paragraph>
+<ComponentPreview name="command" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="cmdk @radix-ui/react-dialog" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="command" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import {
+  Command
+} from '@/components/ui/command'
+```
+
+```tsx
+<Command.Root>
+  <Command.Input placeholder="Type a command or search..." />
+  <Command.List>
+    <Command.Empty>No results found.</Command.Empty>
+    <Command.Group heading="Suggestions">
+      <Command.Item>
+        <Calendar />
+        <span>Calendar</span>
+      </Command.Item>
+      <Command.Item>
+        <Smile />
+        <span>Search Emoji</span>
+      </Command.Item>
+      <Command.Item disabled>
+        <Calculator />
+        <span>Calculator</span>
+      </Command.Item>
+    </Command.Group>
+    <Command.Separator />
+    <Command.Group heading="Settings">
+      <Command.Item>
+        <User />
+        <span>Profile</span>
+      </Command.Item>
+      <Command.Item>
+        <CreditCard />
+        <span>Billing</span>
+      </Command.Item>
+      <Command.Item>
+        <Settings />
+        <span>Settings</span>
+      </Command.Item>
+    </Command.Group>
+  </Command.List>
+</Command.Root>
+```
+</Section>
+
+<Section>
+## Examples
+### Default
+
+<ComponentPreview name="command" />
+
+### Dialog
+
+<ComponentPreview name="command" file="dialog" />
+
+</Section>
+
+</ContentContainer>
