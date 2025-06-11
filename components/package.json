@@ -13,6 +13,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.9.2",
     "@pallas-ui/breadcrumb": "workspace:*",
     "@pallas-ui/form": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",

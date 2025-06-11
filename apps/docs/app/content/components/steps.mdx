@@ -1,0 +1,95 @@
+---
+title: Steps
+description: A multi-step component for displaying progress through a sequence of logical and numbered steps.
+---
+<ContentContainer>
+
+<Section gap="1">
+# Steps
+<Paragraph size={'extraLarge'} color={'tertiary'}>A multi-step component for displaying progress through a sequence of logical and numbered steps.</Paragraph>
+<ComponentPreview name="steps" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@ark-ui/react" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="steps" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Steps from '@/components/ui/steps'
+```
+
+```tsx
+<Steps.Root count={3} orientation="horizontal" size="md">
+  <Steps.List>
+    <Steps.Item index={0}>
+      <Steps.Trigger>
+        <Steps.Indicator>1</Steps.Indicator>
+        <span>First Step</span>
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+    <Steps.Item index={1}>
+      <Steps.Trigger>
+        <Steps.Indicator>2</Steps.Indicator>
+        <span>Second Step</span>
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+    <Steps.Item index={2}>
+      <Steps.Trigger>
+        <Steps.Indicator>3</Steps.Indicator>
+        <span>Third Step</span>
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+
+  <Steps.Content index={0}>
+    First step content
+  </Steps.Content>
+  <Steps.Content index={1}>
+    Second step content
+  </Steps.Content>
+  <Steps.Content index={2}>
+    Third step content
+  </Steps.Content>
+</Steps.Root>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+
+<ComponentPreview name="steps" />
+
+
+### Sizes
+
+<ComponentPreview name="steps" file="sizes" />
+
+### Interactive
+
+<ComponentPreview name="steps" file="interactive" />
+
+</Section>
+
+</ContentContainer>
