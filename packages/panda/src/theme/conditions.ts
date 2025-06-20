@@ -2,6 +2,10 @@ export const conditions = {
   extend: {
     collapsed: '&:is([aria-collapsed=true], [data-collapsed], [data-state="collapsed"])',
     current: '&:is([data-current])',
+    incomplete: '&:is([data-incomplete])',
+    complete: '&:is([data-complete])',
+    loading: '&:is([data-loading])',
+    disabled: '&:is([data-disabled])',
     hidden: '&:is([hidden])',
     hover: ['@media (hover: hover) and (pointer: fine)', '&:is(:hover, [data-hover])'],
     indeterminate:
@@ -24,6 +28,10 @@ export const conditions = {
     right: '&[data-side=right]',
     active: '&:is(:active, [data-active])',
     activeTrue: '&:is([data-active=true])',
+
+    // Orientation states
+    horizontal: '&[data-orientation=horizontal]',
+    vertical: '&[data-orientation=vertical]',
 
     // Base input states
     inputHover: '&:has(input:hover:not(:disabled))',
