@@ -18,6 +18,7 @@ import { form } from './form'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
+import { inputOTP } from './input-otp'
 import { label } from './label'
 import { menubar } from './menu-bar'
 import { modal } from './modal'
@@ -68,6 +69,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   drawer,
   daypicker,
   input,
+  inputOTP,
   modal,
   dialog,
   menubar,

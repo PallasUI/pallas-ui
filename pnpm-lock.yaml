@@ -47,6 +47,9 @@ importers:
       '@pallas-ui/form':
         specifier: workspace:*
         version: link:../../ui-primitives/form
+      '@pallas-ui/input-otp':
+        specifier: workspace:*
+        version: link:../../ui-primitives/input-otp
       '@pallas-ui/panda-preset':
         specifier: workspace:*
         version: link:../../packages/panda
@@ -270,6 +273,9 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      input-otp:
+        specifier: ^1.4.2
+        version: 1.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       lucide-react:
         specifier: 0.462.0
         version: 0.462.0(react@19.1.0)
@@ -549,6 +555,37 @@ importers:
       react-hook-form:
         specifier: ^7.56.3
         version: 7.56.3(react@19.1.0)
+    devDependencies:
+      '@pallas-ui/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@types/react':
+        specifier: ^19.0.7
+        version: 19.1.0
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.1.2(@types/react@19.1.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.7.3)(yaml@2.7.0)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
+
+  ui-primitives/input-otp:
+    dependencies:
+      '@radix-ui/react-slot':
+        specifier: ^1.1.1
+        version: 1.2.0(@types/react@19.1.0)(react@19.1.0)
+      input-otp:
+        specifier: ^1.4.2
+        version: 1.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     devDependencies:
       '@pallas-ui/typescript-config':
         specifier: workspace:*
@@ -5011,6 +5048,12 @@ packages:
 
   inline-style-parser@0.2.4:
     resolution: {integrity: sha512-0aO8FkhNZlj/ZIbNi7Lxxr12obT7cL1moPfE4tg1LkX7LlLfC6DeX4l2ZEud1ukP9jNQyNnfzQVqwbwmAATY4Q==}
+
+  input-otp@1.4.2:
+    resolution: {integrity: sha512-l3jWwYNvrEa6NTCt7BECfCm48GvwuZzkoeG3gBL2w4CHeOXW3eKFmf9UNYkNfYc3mxMrthMnxjIE07MT0zLBQA==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
 
   intl-messageformat@10.7.16:
     resolution: {integrity: sha512-UmdmHUmp5CIKKjSoE10la5yfU+AYJAaiYLsodbjL4lji83JNvgOQUjGaGhGrpFCb0Uh7sl7qfP1IyILa8Z40ug==}
@@ -12712,6 +12755,11 @@ snapshots:
   inherits@2.0.4: {}
 
   inline-style-parser@0.2.4: {}
+
+  input-otp@1.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   intl-messageformat@10.7.16:
     dependencies:

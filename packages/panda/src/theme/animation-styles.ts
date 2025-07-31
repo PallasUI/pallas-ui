@@ -125,6 +125,14 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationDirection: 'alternate',
     },
   },
+  caretBlink: {
+    value: {
+      animationName: 'caret-blink',
+      animationDuration: '1.2s',
+      animationTimingFunction: 'ease-out',
+      animationIterationCount: 'infinite',
+    },
+  },
 
   loading: {
     value: {
