@@ -23,6 +23,7 @@
     "@pallas-ui/form": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/sidebar": "workspace:*",
+    "@pallas-ui/input-otp": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",

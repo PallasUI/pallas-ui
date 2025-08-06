@@ -72,4 +72,18 @@ export const keyframes = defineKeyframes({
     from: { transform: 'translateX(0)' },
     to: { transform: 'translateX(100%)' },
   },
+  'caret-blink': {
+    '0%,70%,100%': { opacity: '1' },
+    '20%,50%': { opacity: '0' },
+  },
+  'fade-in-scale': {
+    '0%': {
+      opacity: 0,
+      transform: 'scale(0.5)',
+    },
+    '100%': {
+      opacity: 1,
+      transform: 'scale(1)',
+    },
+  },
 })

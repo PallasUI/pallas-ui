@@ -1,0 +1,142 @@
+---
+title: Input OTP
+description: Displays an input field for an OTP code.
+references:
+  input-otp:
+    link: https://input-otp.rodz.dev/
+---
+<ContentContainer>
+
+<Section gap="1">
+# Input OTP
+<Paragraph size={'extraLarge'} color={'tertiary'}>Displays an input field for an OTP code.</Paragraph>
+<ComponentPreview name="input-otp" withRecipe/>
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="input-otp" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="input-otp" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Input } from '@/components/ui/input-otp'
+```
+```tsx
+
+// Basic otp input
+<InputOTP.Root maxLength={6}>
+    <InputOTP.Group>
+        <InputOTP.Slot index={0} />
+        <InputOTP.Slot index={1} />
+        <InputOTP.Slot index={2} />
+    </InputOTP.Group>
+    <InputOTP.Separator />
+    <InputOTP.Group>
+        <InputOTP.Slot index={3} />
+        <InputOTP.Slot index={4} />
+        <InputOTP.Slot index={5} />
+    </InputOTP.Group>
+</InputOTP.Root>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+<ComponentPreview name="input-otp" />
+
+### Style Variants
+<ComponentPreview name="input-otp" file="variants" />
+
+### Radii Variants
+<ComponentPreview name="input-otp" file="radii" />
+
+### Size Variants
+<ComponentPreview name="input-otp" file="size" />
+
+### With Separator and Separate Groups
+<ComponentPreview name="input-otp" file="separator" />
+
+### With Custom Placeholder
+<ComponentPreview name="input-otp" file="placeholder" />
+
+### Disabled
+<ComponentPreview name="input-otp" file="disabled" />
+
+### Success State
+<ComponentPreview name="input-otp" file="success" />
+
+### Error State
+<ComponentPreview name="input-otp" file="error" />
+
+### Warning State
+<ComponentPreview name="input-otp" file="warning" />
+
+### Form
+<ComponentPreview name="input-otp" file="form" />
+
+</Section>
+
+<Section>
+## API Reference
+
+### InputOTP.Root
+The root element that wraps the entire component.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `styling` | `string` | `box` | Visual style of the otp input field | `box`, `filled`, `underlined`, `borderless`|
+| `slotSize` | `string` | `md` | Size of the slots | `sm`, `md`, `lg` |
+| `shape` | `string` | `default` | Shape of the slots | `default`, `rounded` |
+| `maxLength` | `number` | `6` | Number of slots/size of input | - |
+| `pattern` | `string` | `^[a-zA-Z0-9]*$` | Regular expression to specify pattern of input code | - |
+| `dataStatus` | `string` | `none` | Validation state of the input | `none`, `success`, `error`, `warning` |
+| `disabled` | `boolean` | - | Disabled state of the input | `true`, `false` |
+| `placeholder` | `string` | `-` | Specify a custom placeholder in the slots | - |
+
+
+InputOTP.Root also accepts props by the OTPInput component from [input-otp](https://input-otp.rodz.dev/):
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `value` | `string` | - | Controlled value | - |
+| `onChange` | `(newValue:`<br/>`string) => unknown` | - | Change handler | - |
+| `onComplete` | `(...args:any[])`<br/>`=> unknown` | - | Called when the input is complete | - |
+| `textAlign` | `string` | `left` | WText alignment | `left`, `center`, `right` |
+| `inputMode` | `string` | `numeric` | Mobile keyboard type | `numeric`, `text`, `decimal`, `tel`, `search`, `email`, `url` |
+| `pasteTransformer` | `(pastedText:string)`<br/>`=> string` | - | Paste transform function | - |
+| `pushPassword`-<br/>`ManagerStrategy` | `string` | `increase-width` | Password manager badge strategy | `increase-width`, `none` |
+| `noScriptCSS`-<br/>`Fallback` | `string` | - | Fallback for no-JS pages | - |
+
+### InputOTP.Group
+The group wrapper element that wraps multiple slots.
+
+### InputOTP.Slot
+The slot element that represents each individual character input.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `index` | `number` | - | Index of the slot | - |
+
+### InputOTP.Separator
+A separator element that visually separates groups of slots.
+
+</Section>
+</ContentContainer>

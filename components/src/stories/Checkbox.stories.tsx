@@ -20,12 +20,29 @@ export const Variants = () => (
       <Label htmlFor="checkbox-1">Checkbox 1</Label>
     </HStack>
     <HStack gap="2">
-      <Checkbox id="checkbox-2" checked />
+      <Checkbox id="checkbox-2" checked="indeterminate" />
       <Label htmlFor="checkbox-2">Checkbox 2</Label>
     </HStack>
     <HStack gap="2">
       <Checkbox id="checkbox-3" disabled />
       <Label htmlFor="checkbox-3">Checkbox 3</Label>
+    </HStack>
+  </Grid>
+)
+
+export const SizeVariants = () => (
+  <Grid gap="2.5">
+    <HStack gap="2">
+      <Checkbox id="checkbox-1" size="sm" />
+      <Label htmlFor="checkbox-1">Small</Label>
+    </HStack>
+    <HStack gap="2">
+      <Checkbox id="checkbox-2" size="md" />
+      <Label htmlFor="checkbox-2">Medium</Label>
+    </HStack>
+    <HStack gap="2">
+      <Checkbox id="checkbox-3" size="lg" />
+      <Label htmlFor="checkbox-3">Large</Label>
     </HStack>
   </Grid>
 )

@@ -38,7 +38,7 @@ export const popover = defineSlotRecipe({
       },
     },
     arrow: {
-      fill: '{colors.surface.spotlight}',
+      fill: '{colors.border}',
     },
     close: {
       position: 'absolute',

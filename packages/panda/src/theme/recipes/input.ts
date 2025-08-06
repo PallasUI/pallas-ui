@@ -8,62 +8,19 @@ export const input = defineSlotRecipe({
     root: {
       display: 'flex',
       w: 'full',
-      rounded: '{radii.md}',
-      bg: '{colors.surface.elevated}',
       px: '{spacing.padding.inline.md}',
       py: '0',
-      color: '{colors.text.secondary}',
-      textStyle: 'sm',
-      focusRingOffsetColor: '{colors.fill.secondary}',
       alignItems: 'center',
       '&:has(input[type=number])': {
         appearance: 'textfield',
       },
+      transition: 'common',
+      position: 'relative',
+
       // Base styles
-      border: '.8px solid {colors.border}',
-      _inputHover: {
-        borderColor: '{colors.primary.hover}',
-      },
-      _inputFocus: {
-        borderColor: '{colors.primary.hover}',
-        shadow: '0 0 0 2px {colors.primary.bgHover}',
-      },
-
-      // Success state
-      _inputSuccess: {
-        borderColor: '{colors.success.border}',
-      },
-      _inputSuccessHover: {
-        borderColor: '{colors.success.borderHover}',
-      },
-      _inputSuccessFocus: {
-        borderColor: '{colors.success.borderHover}',
-        shadow: '0 0 0 2px {colors.success.bgHover}',
-      },
-
-      // Error state
-      _inputError: {
-        borderColor: '{colors.error.border}',
-      },
-      _inputErrorHover: {
-        borderColor: '{colors.error.borderHover}',
-      },
-      _inputErrorFocus: {
-        borderColor: '{colors.error.borderHover}',
-        shadow: '0 0 0 2px {colors.error.bgHover}',
-      },
-
-      // Warning state
-      _inputWarning: {
-        borderColor: '{colors.warning.border}',
-      },
-      _inputWarningHover: {
-        borderColor: '{colors.warning.borderHover}',
-      },
-      _inputWarningFocus: {
-        borderColor: '{colors.warning.borderHover}',
-        shadow: '0 0 0 2px {colors.warning.bgHover}',
-      },
+      focusRingOffsetColor: '{colors.fill.secondary}',
+      bg: '{colors.surface.elevated}',
+      color: '{colors.text.secondary}',
 
       // Disabled state
       _inputDisabled: {
@@ -71,7 +28,11 @@ export const input = defineSlotRecipe({
         opacity: '0.5',
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
-        borderColor: '{colors.border.secondary}',
+        border: '{borders.disabled.xs}',
+      },
+
+      '&:has(input[type="number"])': {
+        pr: '0!',
       },
     },
     prefix: {
@@ -80,7 +41,7 @@ export const input = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text.secondary}',
-      fontSize: 'sm',
+      textStyle: 'sm',
     },
     postfix: {
       display: 'flex',
@@ -88,7 +49,7 @@ export const input = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text.secondary}',
-      fontSize: 'sm',
+      textStyle: 'sm',
     },
     field: {
       w: 'full',
@@ -105,15 +66,19 @@ export const input = defineSlotRecipe({
         outline: 'none',
         border: 'none',
       },
+
       _file: {
         border: 'none',
         bg: 'transparent',
         color: '{colors.text.secondary}',
         textStyle: 'sm',
-        lineHeight: '1',
         fontWeight: 'semibold',
-        marginRight: '2',
+        marginRight: '{spacing.layout.internal.xs}',
         transform: 'translateY(-2px)',
+      },
+
+      '&[type="file"]': {
+        cursor: 'pointer',
       },
 
       _placeholder: {
@@ -130,7 +95,7 @@ export const input = defineSlotRecipe({
           WebkitTextFillColor: '{colors.text.secondary} !important',
         },
 
-      _disabled: {
+      '&[disabled]': {
         cursor: 'not-allowed',
       },
     },
@@ -139,7 +104,7 @@ export const input = defineSlotRecipe({
       right: '2',
       top: '50%',
       transform: 'translateY(-50%)',
-      fontSize: 'xs',
+      textStyle: 'xs',
       color: '{colors.text.tertiary}',
       pointerEvents: 'none',
       userSelect: 'none',
@@ -152,11 +117,7 @@ export const input = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '6',
-      height: '3',
-      borderRadius: 'sm',
-      border: '1px solid {colors.border}',
-      bg: '{colors.surface.elevated}',
+      flex: '1',
       color: '{colors.text.secondary}',
       cursor: 'pointer',
       _hover: {
@@ -165,28 +126,196 @@ export const input = defineSlotRecipe({
       _active: {
         bg: '{colors.fill}',
       },
-      _disabled: {
+      '&[disabled]': {
         opacity: 0.5,
         cursor: 'not-allowed',
+        _hover: {
+          bg: 'revert',
+        },
+      },
+      _first: {
+        borderTopRightRadius: '{radii.md}',
+      },
+      _last: {
+        borderBottomRightRadius: '{radii.md}',
       },
     },
   },
   variants: {
+    styling: {
+      outline: {
+        root: {
+          border: '{borders.default.xs}',
+          _inputHover: {
+            border: '{borders.hover.xs}',
+          },
+          _inputFocus: {
+            border: '{borders.hover.xs}',
+            shadow: '{shadows.primary.2xs}',
+          },
+
+          // Success state
+          _inputSuccess: {
+            border: '{borders.success.xs}',
+          },
+          _inputSuccessHover: {
+            border: '{borders.successHover.xs}',
+          },
+          _inputSuccessFocus: {
+            border: '{borders.successHover.xs}',
+            shadow: '{shadows.success.2xs}',
+          },
+
+          // Error state
+          _inputError: {
+            border: '{borders.error.xs}',
+          },
+          _inputErrorHover: {
+            border: '{borders.errorHover.xs}',
+          },
+          _inputErrorFocus: {
+            border: '{borders.errorHover.xs}',
+            shadow: '{shadows.error.2xs}',
+          },
+
+          // Warning state
+          _inputWarning: {
+            border: '{borders.warning.xs}',
+          },
+          _inputWarningHover: {
+            border: '{borders.warningHover.xs}',
+          },
+          _inputWarningFocus: {
+            border: '{borders.warningHover.xs}',
+            shadow: '{shadows.warning.2xs}',
+          },
+        },
+      },
+      underlined: {
+        root: {
+          borderBottom: '{borders.default.xs}',
+          rounded: '0',
+          _inputHover: {
+            borderBottom: '{borders.hover.xs}',
+          },
+          _inputFocus: {
+            borderBottom: '{borders.hover.xs}',
+          },
+
+          // Success state
+          _inputSuccess: {
+            borderBottom: '{borders.success.xs}',
+          },
+          _inputSuccessHover: {
+            borderBottom: '{borders.successHover.xs}',
+          },
+          _inputSuccessFocus: {
+            borderBottom: '{borders.successHover.xs}',
+          },
+
+          // Error state
+          _inputError: {
+            borderBottom: '{borders.error.xs}',
+          },
+          _inputErrorHover: {
+            borderBottom: '{borders.errorHover.xs}',
+          },
+          _inputErrorFocus: {
+            borderBottom: '{borders.errorHover.xs}',
+          },
+
+          // Warning state
+          _inputWarning: {
+            borderBottom: '{borders.warning.xs}',
+          },
+          _inputWarningHover: {
+            borderBottom: '{borders.warningHover.xs}',
+          },
+          _inputWarningFocus: {
+            borderBottom: '{borders.warningHover.xs}',
+          },
+        },
+        control: {
+          rounded: '0',
+        },
+      },
+      filled: {
+        root: {
+          bg: '{colors.fill.secondary}',
+          border: '{borders.default.xs}',
+          borderColor: 'transparent',
+          _inputHover: {
+            bg: '{colors.fill}',
+          },
+          _inputFocus: {
+            bg: '{colors.surface.elevated}!',
+            border: '{borders.hover.xs}',
+          },
+          transition: 'common',
+
+          // Success state
+          _inputSuccess: {
+            bg: '{colors.success.bg}',
+          },
+          _inputSuccessHover: {
+            bg: '{colors.success.bgHover}',
+          },
+          _inputSuccessFocus: {
+            border: '{borders.success.xs}',
+          },
+
+          // Error state
+          _inputError: {
+            bg: '{colors.error.bg}',
+          },
+          _inputErrorHover: {
+            bg: '{colors.error.bgHover}',
+          },
+          _inputErrorFocus: {
+            border: '{borders.error.xs}',
+          },
+
+          // Warning state
+          _inputWarning: {
+            bg: '{colors.warning.bg}',
+          },
+          _inputWarningHover: {
+            bg: '{colors.warning.bgHover}',
+          },
+          _inputWarningFocus: {
+            border: '{borders.warning.xs}',
+          },
+        },
+      },
+      borderless: {
+        root: {
+          color: {
+            _inputSuccess: '{colors.success.text}',
+            _inputError: '{colors.error.text}',
+            _inputWarning: '{colors.warning.text}',
+          },
+        },
+        control: {
+          rounded: '0',
+        },
+      },
+    },
     size: {
       sm: {
         root: {
           h: '{sizes.controlHeight.sm}',
-          pl: '{spacing.padding.inline.sm}',
-          pr: '{spacing.padding.inline.sm}',
-          py: '0',
+          px: '{spacing.padding.inline.sm}',
         },
         field: {
           textStyle: 'sm',
           py: '{spacing.padding.block.sm}',
+
+          _file: {
+            textStyle: 'xs',
+          },
         },
         control: {
-          width: '4',
-          height: '2',
+          width: '6',
         },
         prefix: {
           pr: '{spacing.padding.inline.xs}',
@@ -198,17 +327,18 @@ export const input = defineSlotRecipe({
       md: {
         root: {
           h: '{sizes.controlHeight.md}',
-          pl: '{spacing.padding.inline.md}',
-          pr: '{spacing.padding.inline.md}',
-          py: '0',
+          px: '{spacing.padding.inline.md}',
         },
         field: {
-          textStyle: 'sm',
+          textStyle: 'md',
           py: '{spacing.padding.block.md}',
+
+          '&[type="file"]': {
+            lineHeight: '0',
+          },
         },
         control: {
-          width: '5',
-          height: '3',
+          width: '7',
         },
         prefix: {
           pr: '{spacing.padding.inline.sm}',
@@ -220,17 +350,21 @@ export const input = defineSlotRecipe({
       lg: {
         root: {
           h: '{sizes.controlHeight.lg}',
-          pl: '{spacing.padding.inline.lg}',
-          pr: '{spacing.padding.inline.lg}',
-          py: '0',
+          px: '{spacing.padding.inline.lg}',
         },
         field: {
-          textStyle: 'md',
+          textStyle: 'lg',
           py: '{spacing.padding.block.lg}',
+
+          _file: {
+            textStyle: 'md',
+          },
+          '&[type="file"]': {
+            lineHeight: '0',
+          },
         },
         control: {
-          width: '6',
-          height: '4',
+          width: '8',
         },
         prefix: {
           pr: '{spacing.padding.inline.md}',
@@ -240,27 +374,54 @@ export const input = defineSlotRecipe({
         },
       },
     },
-    shape: {
-      default: {
+    radii: {
+      sm: {
         root: {
-          borderRadius: '{radii.md}',
+          rounded: '{radii.sm}',
+        },
+        control: {
+          _first: {
+            borderTopRightRadius: '{radii.sm}',
+          },
+          _last: {
+            borderBottomRightRadius: '{radii.sm}',
+          },
         },
       },
-
-      rounded: {
+      md: {
         root: {
-          borderRadius: '{radii.4xl}',
+          rounded: '{radii.md}',
         },
       },
-      circle: {
+      lg: {
         root: {
-          borderRadius: '{radii.full}',
+          rounded: '{radii.lg}',
+        },
+        _first: {
+          borderTopRightRadius: '{radii.lg}',
+        },
+        _last: {
+          borderBottomRightRadius: '{radii.lg}',
+        },
+      },
+      full: {
+        root: {
+          rounded: '{radii.full}',
+        },
+        control: {
+          _first: {
+            borderTopRightRadius: '{radii.full}',
+          },
+          _last: {
+            borderBottomRightRadius: '{radii.full}',
+          },
         },
       },
     },
   },
   defaultVariants: {
+    styling: 'outline',
     size: 'md',
-    shape: 'default',
+    radii: 'md',
   },
 })

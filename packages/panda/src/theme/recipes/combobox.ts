@@ -7,26 +7,18 @@ export const combobox = defineSlotRecipe({
   base: {
     root: {},
     trigger: {
-      border: '1px solid {colors.border}',
-
-      _focus: {
-        borderColor: '{colors.primary.hover} !important',
-        shadow: '0 0 0 2px {colors.primary.bgHover}',
-        outline: '2px solid {colors.primary.bgHover}',
-        outlineOffset: '2px',
-      },
-      _hover: {
-        borderColor: '{colors.primary.hover}',
-        color: '{colors.text} !important',
-      },
-      _disabled: {
+      shadow: 'none',
+      '[disabled]&': {
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
-        bg: '{colors.fill.disabled}',
+        bg: '{colors.fill.disabled}!',
         borderColor: '{colors.border}',
         _hover: {
-          borderColor: '{colors.border} !important',
+          borderColor: '{colors.border}!',
         },
+      },
+      _focus: {
+        outline: 'none',
       },
       justifyContent: 'start',
       '& span': {
@@ -41,58 +33,23 @@ export const combobox = defineSlotRecipe({
       '& svg': {
         color: '{colors.text.tertiary}',
       },
-
-      '&[data-status=error]': {
-        borderColor: '{colors.error.border} !important',
-        '&:is(:hover, [data-hover])': {
-          borderColor: '{colors.error.borderHover}',
-        },
-        '&:is(:focus, [data-focus])': {
-          borderColor: '{colors.error.borderHover} !important',
-          shadow: '0 0 0 2px {colors.error.bgHover}',
-          outline: '2px solid {colors.error.bgHover}',
-        },
-      },
-
-      '&[data-status=success]': {
-        borderColor: '{colors.success.border} !important',
-        '&:is(:hover, [data-hover])': {
-          borderColor: '{colors.success.borderHover}',
-        },
-        '&:is(:focus, [data-focus])': {
-          borderColor: '{colors.success.borderHover} !important',
-          shadow: '0 0 0 2px {colors.success.bgHover}',
-          outline: '2px solid {colors.success.bgHover}',
-        },
-      },
-
-      '&[data-status=warning]': {
-        borderColor: '{colors.warning.border} !important',
-        '&:is(:hover, [data-hover])': {
-          borderColor: '{colors.warning.borderHover}',
-        },
-        '&:is(:focus, [data-focus])': {
-          borderColor: '{colors.warning.borderHover} !important',
-          shadow: '0 0 0 2px {colors.warning.bgHover}',
-          outline: '2px solid {colors.warning.bgHover}',
-        },
-      },
+      transition: 'common',
     },
-    content: {},
+    content: {
+      animationStyle: 'slideFadeIn',
+    },
     input: {},
     group: {},
     item: {
       position: 'relative',
       display: 'flex',
-      cursor: 'default',
+      cursor: 'pointer!',
       userSelect: 'none',
       alignItems: 'center',
-      rounded: '{radii.sm}',
-      py: '{spacing.padding.block.md}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
-      textStyle: 'sm',
-      outline: '2px solid transparent',
+      outline: 'none',
+      transition: 'common',
 
       _focus: {
         bg: '{colors.primary.bg}',
@@ -121,16 +78,161 @@ export const combobox = defineSlotRecipe({
     },
   },
   variants: {
+    styling: {
+      outline: {
+        trigger: {
+          border: '{borders.default.xs}',
+          _hover: {
+            border: '{borders.hover.xs}',
+          },
+          _focus: {
+            border: '{borders.hover.xs}!',
+            shadow: '{shadows.primary.2xs}',
+          },
+
+          '&[data-status=error]': {
+            borderColor: '{colors.error.border}!',
+            _hover: {
+              borderColor: '{colors.error.borderHover}!',
+            },
+            _focus: {
+              borderColor: '{colors.error.borderHover}!',
+              shadow: '{shadows.error.2xs}',
+            },
+          },
+
+          '&[data-status=success]': {
+            borderColor: '{colors.success.border}!',
+            _hover: {
+              borderColor: '{colors.success.borderHover}!',
+            },
+            _focus: {
+              borderColor: '{colors.success.borderHover}!',
+              shadow: '{shadows.success.2xs}',
+            },
+          },
+
+          '&[data-status=warning]': {
+            borderColor: '{colors.warning.border}!',
+            _hover: {
+              borderColor: '{colors.warning.borderHover}!',
+            },
+            _focus: {
+              borderColor: '{colors.warning.borderHover}!',
+              shadow: '{shadows.warning.2xs}',
+            },
+          },
+        },
+      },
+      underlined: {
+        trigger: {
+          borderColor: 'transparent!',
+          position: 'relative',
+          _after: {
+            content: '""',
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            h: '{sizes.underlineHeight.default}',
+            bg: {
+              base: '{colors.border}',
+              '[data-status="error"]&': '{colors.error.border}',
+              '[data-status="success"]&': '{colors.success.border}',
+              '[data-status="warning"]&': '{colors.warning.border}',
+            },
+          },
+          _hover: {
+            _after: {
+              bg: {
+                base: '{colors.primary.hover}',
+                '[data-status="error"]&': '{colors.error.hover}',
+                '[data-status="success"]&': '{colors.success.hover}',
+                '[data-status="warning"]&': '{colors.warning.hover}',
+              },
+            },
+          },
+          _focus: {
+            _after: {
+              h: '{sizes.underlineHeight.active}',
+              bg: {
+                base: '{colors.primary.hover}',
+                '[data-status="error"]&': '{colors.error.hover}',
+                '[data-status="success"]&': '{colors.success.hover}',
+                '[data-status="warning"]&': '{colors.warning.hover}',
+              },
+            },
+          },
+        },
+      },
+      filled: {
+        trigger: {
+          bg: '{colors.fill.secondary}!',
+          borderColor: 'transparent!',
+
+          _hover: {
+            bg: '{colors.fill}!',
+            color: '{colors.text}!',
+            '& span': {
+              color: {
+                '[data-status="error"]&': '{colors.error.text}',
+                ' [data-status="warning"]&': '{colors.warning.text}',
+                ' [data-status="success"]&': '{colors.success.text}',
+              },
+            },
+          },
+          _focus: {
+            bg: '{colors.surface.elevated}!',
+            border: '{borders.hover.xs}!',
+          },
+
+          '&[data-status="success"]': {
+            bg: '{colors.success.bg}!',
+            _hover: { bg: '{colors.success.bgHover}!' },
+            _focus: { border: '{borders.success.xs}!' },
+          },
+
+          '&[data-status="error"]': {
+            bg: '{colors.error.bg} !',
+            _hover: { bg: '{colors.error.bgHover}!' },
+            _focus: { border: '{borders.error.xs}!' },
+          },
+
+          '&[data-status="warning"]': {
+            bg: '{colors.warning.bg}!',
+            _hover: { bg: '{colors.warning.bgHover}!' },
+            _focus: { border: '{borders.warning.xs}!' },
+          },
+        },
+      },
+      borderless: {
+        trigger: {
+          borderColor: 'transparent!',
+          '& span': {
+            color: {
+              '[data-status="error"]&': '{colors.error.text}',
+              ' [data-status="warning"]&': '{colors.warning.text}',
+              ' [data-status="success"]&': '{colors.success.text}',
+            },
+          },
+        },
+      },
+    },
     size: {
       sm: {
         trigger: {
           minH: '{sizes.controlHeight.sm}',
           maxH: '{sizes.controlHeight.sm}',
+          px: '{spacing.padding.inline.sm}!',
+          py: '{spacing.padding.block.sm}!',
           '& *': {
             textStyle: 'sm',
           },
-          px: '{spacing.padding.inline.sm} !important',
-          py: '{spacing.padding.block.sm} !important',
+        },
+        content: {
+          '& *': {
+            textStyle: 'sm',
+          },
         },
         item: {
           py: '{spacing.padding.block.sm}',
@@ -140,28 +242,101 @@ export const combobox = defineSlotRecipe({
         trigger: {
           minH: '{sizes.controlHeight.md}',
           maxH: '{sizes.controlHeight.md}',
+          px: '{spacing.padding.inline.md}',
+          py: '{spacing.padding.block.md}',
           '& *': {
-            textStyle: 'sm',
+            textStyle: 'md',
           },
-          px: '{spacing.padding.inline.md} !important',
-          py: '{spacing.padding.block.md} !important',
+        },
+        content: {
+          '& *': {
+            textStyle: 'md',
+          },
+        },
+        item: {
+          py: '{spacing.padding.block.md}',
         },
       },
       lg: {
         trigger: {
           minH: '{sizes.controlHeight.lg}',
           maxH: '{sizes.controlHeight.lg}',
+          px: '{spacing.padding.inline.lg}!',
+          py: '{spacing.padding.block.lg}!',
+
           '& *': {
-            textStyle: 'md',
+            textStyle: 'lg',
           },
-          px: '{spacing.padding.inline.md} !important',
-          py: '{spacing.padding.block.md} !important',
+        },
+        content: {
+          '& *': {
+            textStyle: 'lg',
+          },
+        },
+        item: {
+          py: '{spacing.padding.block.lg}',
+        },
+      },
+    },
+    radii: {
+      sm: {
+        trigger: {
+          rounded: '{radii.sm}',
+        },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.sm}',
+          },
+        },
+        item: {
+          rounded: '{radii.xs}',
+        },
+      },
+      md: {
+        trigger: {
+          rounded: '{radii.md}',
+        },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.md}',
+          },
+        },
+        item: {
+          rounded: '{radii.sm}',
+        },
+      },
+      lg: {
+        trigger: {
+          rounded: '{radii.lg}',
+        },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.lg}',
+          },
+        },
+        item: {
+          rounded: '{radii.md}',
+        },
+      },
+      full: {
+        trigger: {
+          rounded: '{radii.full}',
+        },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.xl}',
+          },
+        },
+        item: {
+          rounded: '{radii.lg}',
         },
       },
     },
   },
   defaultVariants: {
+    styling: 'outline',
     size: 'md',
+    radii: 'md',
   },
   staticCss: [{ size: ['*'] }],
 })

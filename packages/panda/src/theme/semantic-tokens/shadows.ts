@@ -10,4 +10,23 @@ export const shadows = defineSemanticTokens.shadows({
   inner: { value: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)' },
   minimal: { value: '0px 2px 0px 0px rgba(0, 0, 0, 0.02)' },
   insetMinimal: { value: 'inset 0px 1px 0px 0px rgba(0, 0, 0, 0.04)' },
+
+  primary: {
+    '2xs': { value: '{shadows.2xs} {colors.primary.bgHover}' },
+  },
+  success: {
+    '2xs': { value: '{shadows.2xs} {colors.success.bgHover}' },
+  },
+  error: {
+    '2xs': { value: '{shadows.2xs} {colors.error.bgHover}' },
+  },
+  warning: {
+    '2xs': { value: '{shadows.2xs} {colors.warning.bgHover}' },
+  },
+
+  primaryLight: {
+    xxl: { value: '{shadows.xxl} rgb(145, 202, 255, 0.5)' },
+    '3xl': { value: '{shadows.3xl} rgb(145, 202, 255, 0.5)' },
+    '4xl': { value: '{shadows.4xl} rgb(145, 202, 255, 0.5)' },
+  },
 })
