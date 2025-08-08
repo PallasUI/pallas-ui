@@ -1,0 +1,262 @@
+---
+title: Sidebar
+description: A flexible and accessible sidebar navigation component built with Radix UI primitives.
+---
+
+<ContentContainer>
+
+<Section gap="1">
+# Sidebar
+<Paragraph size={'extraLarge'} color={'tertiary'}>A flexible and accessible sidebar navigation component built with Radix UI primitives.</Paragraph>
+<ComponentPreview name="sidebar" withRecipe/>
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-slot" />
+
+### Copy and paste the following code into your project
+
+#### provider.tsx:
+<ComponentSource name="sidebar" file="provider"/>
+
+#### root.tsx:
+<ComponentSource name="sidebar" file="root"/>
+
+#### content.tsx:
+<ComponentSource name="sidebar" file="content"/>
+
+#### inset.tsx:
+<ComponentSource name="sidebar" file="inset"/>
+
+#### header.tsx:
+<ComponentSource name="sidebar" file="header"/>
+
+#### footer.tsx:
+<ComponentSource name="sidebar" file="footer"/>
+
+#### group.tsx:
+<ComponentSource name="sidebar" file="group"/>
+
+#### menu.tsx:
+<ComponentSource name="sidebar" file="menu"/>
+
+#### subMenu.tsx:
+<ComponentSource name="sidebar" file="subMenu"/>
+
+#### rail.tsx:
+<ComponentSource name="sidebar" file="rail"/>
+
+#### separator.tsx:
+<ComponentSource name="sidebar" file="separator"/>
+
+#### trigger.tsx:
+<ComponentSource name="sidebar" file="trigger"/>
+
+#### index.tsx:
+<ComponentSource name="sidebar"/>
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+
+## Usage
+
+```tsx 
+import Sidebar from '@/components/ui/sidebar'
+``` 
+
+```tsx
+<Sidebar.Provider>
+    <Sidebar.Root>
+        <Sidebar.Header></Sidebar.Header>
+        <Sidebar.Content>
+        <Sidebar.Group>
+            <Sidebar.GroupLabel></Sidebar.GroupLabel>
+            <Sidebar.GroupAction></Sidebar.GroupAction>
+            <Sidebar.GroupContent>
+            <Sidebar.Menu>
+                <Sidebar.MenuItem>
+                <Sidebar.MenuButton></Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                <Sidebar.MenuButton></Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+                <Sidebar.MenuItem>
+                <Sidebar.MenuButton></Sidebar.MenuButton>
+                <Sidebar.MenuSub>
+                    <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
+                    </Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
+                    </Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
+                    </Sidebar.MenuSubItem>
+                </Sidebar.MenuSub>
+                </Sidebar.MenuItem>
+            </Sidebar.Menu>
+            </Sidebar.GroupContent>
+        </Sidebar.Group>
+        </Sidebar.Content>
+        <Sidebar.Footer></Sidebar.Footer>
+    </Sidebar.Root>
+</Sidebar.Provider>
+```
+
+</Section>
+
+<Section>
+
+## Examples
+
+### Default
+<ComponentPreview name="sidebar" />
+
+### Inset
+<ComponentPreview name="sidebar" file="inset" />
+
+### Floating
+<ComponentPreview name="sidebar" file="floating" />
+
+### Icons
+<ComponentPreview name="sidebar" file="icons" />
+
+</Section>
+
+<Section>
+## API Reference
+
+### Sidebar.Provider
+Wraps all sidebar parts and provides shared state (open/closed, mobile mode, toggling) via context.
+
+#### Props
+| Property       | Type                                    | Default | Description                                               |Options |
+| -------------- | --------------------------------------- | ------- | --------------------------------------------------------- |--------|
+| `defaultOpen`  | `boolean`                               | `true`  | Initial open state (uncontrolled).                        | `true`, `false`|
+| `open`         | `boolean`                               | -       | Controlled open state.                                    | `true`, `false`|
+| `onOpenChange` | `(open: boolean) => void`               | -       | Callback fired when open state changes (controlled mode). | - |
+
+### Sidebar.Root
+The root element
+
+### Sidebar.Inset
+The wrapper element for sidebar siblings in 'inset' variant
+
+### Sidebar.Content
+The content wrapper element
+
+### Sidebar.Header
+The header wrapper element
+
+### Sidebar.Footer
+The footer wrapper element
+
+### Sidebar.Group
+The group wrapper element
+
+### Sidebar.GroupLabel
+The group label element
+
+#### Props
+| Property | Type            | Default | Description                                     | Options     |
+| -------- | --------------- | ------- | ----------------------------------------------- | ----------- |
+| asChild  | boolean         | `false`   | Render as a child component instead of a div | `true`, `false` |
+
+### Sidebar.GroupAction
+The group action element
+
+#### Props
+| Property | Type            | Default | Description                                     | Options     |
+| -------- | --------------- | ------- | ----------------------------------------------- | ----------- |
+| asChild  | boolean         | `false`   | Render as a child component instead of a button | `true`, `false` |
+
+
+### Sidebar.GroupContent
+The group content wrapper element
+
+### Sidebar.Menu
+The menu wrapper element
+
+### Sidebar.MenuItem
+The menu item element
+
+### Sidebar.MenuButton
+The menu button element
+
+#### Props
+| Property | Type            | Default | Description                            | Options     |
+| -------- | --------------- | ------- | -------------------------------------- | ----------- |
+| asChild  | boolean         | `false`   | Render as child instead of button      | `true`, `false` |
+| isActive | boolean         | `false`   | Indicates if the menu button is active | `true`, `false` |
+
+#### Data attributes
+| Attribute    | Values        |
+| ------------ | ------------- |
+| data-active  | `true`, `false`   |
+
+### Sidebar.MenuAction
+The menu action element
+
+#### Props
+| Property    | Type            | Default | Description                       | Options     |
+| ----------- | --------------- | ------- | --------------------------------- | ----------- |
+| asChild     | boolean         | `false`   | Render as child instead of button | `true`, `false` |
+| showOnHover | boolean         | `false`   | Show action only on hover         | `true`, `false` |
+
+#### Data attributes
+| Attribute        | Values        |
+| ---------------- | ------------- |
+| data-showOnHover | `true`, `false`   |
+
+### Sidebar.MenuBadge
+The menu badge element
+
+### Sidebar.MenuSub
+The sub menu wrapper element
+
+### Sidebar.MenuSubItem
+The sub menu item element
+
+### Sidebar.MenuSubButton
+The sub menu button element
+
+#### Props
+| Property | Type                 | Default | Description                       | Options     |
+| -------- | -------------------- | ------- | --------------------------------- | ----------- |
+| asChild  | boolean              | `false`   | Render as child instead of anchor | `true`, `false` |
+| size     | 'sm' \| 'md' \| 'lg' | `md`      | Button size                       | `sm`, `md`, `lg`  |
+| isActive | boolean              | -      | If the sub menu button is active  | `true`, `false` |
+
+#### Data attributes
+| Attribute    | Values            |
+| ------------ | ----------------- |
+| data-size    | `sm`, `md`, `lg`        |
+| data-active  | `true`, `false`       |
+
+### Sidebar.Trigger
+The trigger element for toggle
+
+#### Props
+| Property | Type                              | Default | Description                           | Options |
+| -------- | --------------------------------- | ------- | ------------------------------------- | ------- |
+| onClick  | (event: React.MouseEvent) => void | -       | Click handler before toggling sidebar | -      |
+
+### Sidebar.Rail
+The rail element for toggle
+
+### Sidebar.useSidebar
+The hook to control toggle manually
+
+</Section>
+</ContentContainer>
