@@ -307,6 +307,9 @@ export const sidebar = defineSlotRecipe({
       minWidth: '0',
       pl: 4,
       pr: 2,
+      '.group:is([data-collapsible=icon]) &': {
+        pl: 2,
+      },
     },
     groupLabel: {
       // cx(
@@ -391,9 +394,6 @@ export const sidebar = defineSlotRecipe({
         w: '8!',
         h: '8!',
       },
-      '&:has(svg,img)': {
-        gap: '0.5',
-      },
       transition: 'width 200ms linear, height 200ms linear, padding 200ms linear',
 
       '& > span:last-of-type': {
@@ -402,19 +402,19 @@ export const sidebar = defineSlotRecipe({
       '& > svg': {
         size: '1rem',
         flexShrink: 0,
-        left: '-4px',
-        position: 'relative',
-      },
-      '&[data-active=true]': {
-        size: '1rem',
-        flexShrink: 0,
-        left: '-4px',
-        position: 'relative',
       },
       _activeTrue: {
         backgroundColor: '{colors.primary.bg}!',
         color: '{colors.primary.text}!',
       },
+      // _activeTrue: {
+      //   size: '1rem',
+      //   flexShrink: 0,
+      //   left: '-4px',
+      //   position: 'relative',
+      //   backgroundColor: '{colors.primary.bg}!',
+      //   color: '{colors.primary.text}!',
+      // },
     },
     menuAction: {
       // 'absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0',
@@ -477,7 +477,7 @@ export const sidebar = defineSlotRecipe({
         top: 2.5,
       },
 
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
     },
@@ -492,7 +492,7 @@ export const sidebar = defineSlotRecipe({
       borderColor: '{colors.border}',
       px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.xs}',
-      ml: '{spacing.padding.inline.md}',
+      ml: '{spacing.padding.inline.lg}',
       mr: '{spacing.padding.inline.xs}',
       transform: 'translateX(1px)',
       fontWeight: 'normal',

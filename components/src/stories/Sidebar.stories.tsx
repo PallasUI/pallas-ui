@@ -219,7 +219,7 @@ export const Floating = () => (
 export const Icons = () => (
   <Box h="50vh">
     <Sidebar.Provider>
-      <main>
+      <main style={{ flex: 1 }}>
         <Sidebar.Trigger>
           <PanelLeft size={16} />
         </Sidebar.Trigger>
