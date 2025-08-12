@@ -13,6 +13,7 @@ interface ComponentPreviewProps {
   hasRecipe?: boolean
   hasSlotRecipe?: boolean
   children?: React.ReactNode
+  noPadding?: boolean
 }
 
 export function ComponentPreview({
@@ -21,6 +22,7 @@ export function ComponentPreview({
   withRecipe,
   hasRecipe,
   children,
+  noPadding,
 }: ComponentPreviewProps) {
   // const nameMap: Record<string, string> = {
   //   accordion: 'accordian',
@@ -49,7 +51,9 @@ export function ComponentPreview({
 
   const [code, recipe] = childrenArray
 
-  const styles = docTabs({ variant: 'preview' })
+  const styles = docTabs({ variant: 'preview', noPadding })
+
+  const previewClassName = css({ padding: noPadding ? '0!' : undefined })
 
   return (
     <div className={styles.root}>
@@ -72,8 +76,8 @@ export function ComponentPreview({
           )}
         </TabList>
 
-        <Content value="preview">
-          <Preview>
+        <Content value="preview" className={styles.content}>
+          <Preview className={previewClassName}>
             <React.Suspense
               fallback={
                 <div

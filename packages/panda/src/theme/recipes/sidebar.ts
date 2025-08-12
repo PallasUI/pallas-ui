@@ -43,9 +43,10 @@ export const sidebar = defineSlotRecipe({
     },
     root: {
       // className="group peer hidden text-sidebar-foreground md:block"
+      position: 'relative',
       display: 'none',
-      color: '{colors.text}',
       md: { display: 'block' },
+      color: '{colors.text}',
       bg: '{colors.surface.layout}',
     },
     rootNonCollapsible: {
@@ -224,7 +225,7 @@ export const sidebar = defineSlotRecipe({
       bottom: '0',
       zIndex: 20,
       insetY: 0,
-      width: 1,
+      width: 4,
       transform: 'translateX(-50%)',
       transition: 'all linear',
 
@@ -239,7 +240,7 @@ export const sidebar = defineSlotRecipe({
         insetY: 0,
         bottom: '0',
         left: '50%',
-        width: '2px',
+        width: '3px',
       },
       '&:is(:hover, [data-hover])::after': {
         backgroundColor: '{colors.border}',

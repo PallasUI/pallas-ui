@@ -1,12 +1,13 @@
 import Sidebar from '@/components/ui/sidebar'
+import { Box } from '@styled-system/jsx'
 import { PanelLeft } from 'lucide-react'
 import { Footer, Header, SidebarContentGroup } from '.'
 
 export default function Default() {
   return (
-    <>
+    <Box h="50vh" w="full">
       <Sidebar.Provider>
-        <Sidebar.Root variant="floating" side="left" collapsible="none">
+        <Sidebar.Root variant="floating" style={{ position: 'absolute' }}>
           <Sidebar.Header>
             <Sidebar.Menu>
               <Sidebar.MenuItem>
@@ -42,6 +43,6 @@ export default function Default() {
           </Sidebar.Trigger>
         </main>
       </Sidebar.Provider>
-    </>
+    </Box>
   )
 }

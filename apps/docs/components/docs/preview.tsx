@@ -1,12 +1,7 @@
 import { css, cx } from '@styled-system/css'
 import type React from 'react'
 
-interface PreviewProps {
-  className?: string
-  children: React.ReactNode
-}
-
-export function Preview({ className, children }: PreviewProps) {
+export function Preview({ className, children }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       className={cx(

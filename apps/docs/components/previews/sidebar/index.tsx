@@ -3,6 +3,7 @@
 import Avatar from '@/components/ui/avatar'
 import Sidebar from '@/components/ui/sidebar'
 import { css } from '@styled-system/css'
+import { Box } from '@styled-system/jsx'
 import {
   Calendar,
   Command,
@@ -17,9 +18,9 @@ import {
 
 export default function Default() {
   return (
-    <>
+    <Box h="50vh" w="full">
       <Sidebar.Provider>
-        <Sidebar.Root variant="inset" side="left" collapsible="none">
+        <Sidebar.Root style={{ position: 'absolute' }}>
           <Sidebar.Header>
             <Sidebar.Menu>
               <Sidebar.MenuItem>
@@ -49,13 +50,13 @@ export default function Default() {
           <Sidebar.Rail />
         </Sidebar.Root>
 
-        <main>
+        <main style={{ flex: 1 }}>
           <Sidebar.Trigger>
             <PanelLeft size={16} />
           </Sidebar.Trigger>
         </main>
       </Sidebar.Provider>
-    </>
+    </Box>
   )
 }
 
