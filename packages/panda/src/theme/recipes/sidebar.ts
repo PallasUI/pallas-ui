@@ -35,7 +35,7 @@ export const sidebar = defineSlotRecipe({
     provider: {
       // 'group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar'
       display: 'flex',
-      height: '100%', // or use a token if defined
+      height: 'full',
       width: 'full',
       '&:has([data-variant=inset])': {
         backgroundColor: '{colors.surface.layout}',
@@ -98,7 +98,7 @@ export const sidebar = defineSlotRecipe({
       position: 'fixed',
       insetY: '0',
       zIndex: 10,
-      h: 'screen',
+      h: 'full',
       w: '{sizes.2xs}',
       transition: 'left 200ms linear, right 200ms linear, width 200ms linear',
       display: 'none',
@@ -164,7 +164,7 @@ export const sidebar = defineSlotRecipe({
       backgroundColor: '{colors.surface.container}',
       md: {
         '.peer:is([data-variant=inset])': {
-          p: 2,
+          m: 2,
           ml: 0,
           rounded: 'xl',
           shadow: 'md',
