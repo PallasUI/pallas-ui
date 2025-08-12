@@ -153,6 +153,10 @@ export const sidebar = defineSlotRecipe({
         border: '1px solid {colors.border}',
         shadow: 'lg',
       },
+
+      '.group:is([data-variant=inset]) &': {
+        bg: 'transparent',
+      },
     },
     inset: {
       // 'relative flex w-full flex-1 flex-col bg-background',
@@ -348,7 +352,7 @@ export const sidebar = defineSlotRecipe({
       //   'after:absolute after:-inset-2 after:md:hidden',
       //   'group-data-[collapsible=icon]:hidden',
       position: 'absolute',
-      right: 3,
+      right: '{spacing.padding.inline.lg}',
       top: 3,
       aspectRatio: 1,
       w: 5,
@@ -369,7 +373,7 @@ export const sidebar = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       minWidth: 0,
-      gap: 2,
+      gap: '{spacing.gap.inline.sm}',
     },
     menuItem: {
       // 'group/menu-item relative'
@@ -387,7 +391,6 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
-      mt: 2,
       gap: '{spacing.gap.inline.xs}',
       h: 'auto!',
       '.group:is([data-collapsible=icon]) &': {
@@ -431,11 +434,9 @@ export const sidebar = defineSlotRecipe({
       position: 'absolute',
       right: 1,
       top: 0,
-      '.menu-button.button--size_sm ~ &': {
-        top: 1,
-      },
+
       '.menu-button.button--size_md ~ &': {
-        top: 1.5,
+        top: 1,
       },
       '.menu-button.button--size_lg ~ &': {
         top: 2.5,
@@ -465,17 +466,17 @@ export const sidebar = defineSlotRecipe({
       // 'group-data-[collapsible=icon]:hidden',
       position: 'absolute',
       h: 5,
-      right: 1,
+      right: '{spacing.padding.inline.md}',
       userSelect: 'none',
 
       '.menu-button.button--size_sm ~ &': {
-        top: 1,
+        top: '{spacing.padding.block.sm}',
       },
       '.menu-button.button--size_md ~ &': {
-        top: 1.5,
+        top: '{spacing.padding.block.md}',
       },
       '.menu-button.button--size_lg ~ &': {
-        top: 2.5,
+        top: '{spacing.padding.block.lg}',
       },
 
       '.group:is([data-collapsible=icon]) &': {

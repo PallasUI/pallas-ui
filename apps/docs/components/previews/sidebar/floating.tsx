@@ -1,7 +1,7 @@
 import Sidebar from '@/components/ui/sidebar'
 import { Box } from '@styled-system/jsx'
 import { PanelLeft } from 'lucide-react'
-import { Footer, Header, SidebarContentGroup } from '.'
+import { Footer, Header, PageContent, SidebarContentGroup } from '.'
 
 export default function Default() {
   return (
@@ -37,10 +37,14 @@ export default function Default() {
           <Sidebar.Rail />
         </Sidebar.Root>
 
-        <main>
-          <Sidebar.Trigger>
-            <PanelLeft size={16} />
-          </Sidebar.Trigger>
+        <main
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <PageContent />
         </main>
       </Sidebar.Provider>
     </Box>

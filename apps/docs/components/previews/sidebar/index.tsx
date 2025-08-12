@@ -50,10 +50,14 @@ export default function Default() {
           <Sidebar.Rail />
         </Sidebar.Root>
 
-        <main style={{ flex: 1 }}>
-          <Sidebar.Trigger>
-            <PanelLeft size={16} />
-          </Sidebar.Trigger>
+        <main
+          style={{
+            flex: 1,
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          <PageContent />
         </main>
       </Sidebar.Provider>
     </Box>
@@ -238,3 +242,137 @@ export const SidebarContentGroup = () => (
     </Sidebar.GroupContent>
   </Sidebar.Group>
 )
+
+export const PageContent = () => {
+  return (
+    <>
+      {/* Top bar with trigger */}
+      <div
+        className={css({
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          px: 2,
+          h: '53px',
+          borderBottom: '1px solid',
+          borderColor: 'border',
+          gap: 2,
+        })}
+      >
+        <Sidebar.Trigger>
+          <PanelLeft size={20} />
+        </Sidebar.Trigger>
+        <span
+          className={css({
+            fontWeight: 'semibold',
+            fontSize: 'lg',
+            color: 'text',
+          })}
+        >
+          Dashboard
+        </span>
+        <div />
+      </div>
+
+      {/* 3 skeleton cards */}
+      <div
+        className={css({
+          display: 'flex',
+          gap: 4,
+          px: 6,
+          py: 6,
+          bg: 'transparent',
+        })}
+      >
+        {[1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className={css({
+              flex: 1,
+              h: '24',
+              borderRadius: 'lg',
+              boxShadow: 'sm',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: 2,
+              position: 'relative',
+              overflow: 'hidden',
+            })}
+          >
+            <div
+              className={css({
+                w: '40%',
+                h: 2,
+                bg: 'border',
+                borderRadius: 'full',
+              })}
+            />
+            <div
+              className={css({
+                w: '40%',
+                h: 2,
+                bg: 'border',
+                borderRadius: 'full',
+              })}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* 1 large card */}
+      <div
+        className={css({
+          flex: 1,
+          px: 6,
+          pb: 6,
+          display: 'flex',
+          flexDirection: 'column',
+        })}
+      >
+        <div
+          className={css({
+            flex: 1,
+            borderRadius: 'xl',
+            boxShadow: 'md',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 4,
+            position: 'relative',
+            overflow: 'hidden',
+          })}
+        >
+          <div
+            className={css({
+              w: '40%',
+              h: 3,
+              bg: 'border',
+              borderRadius: 'full',
+              mb: 3,
+            })}
+          />
+          <div
+            className={css({
+              w: '60%',
+              h: 3,
+              bg: 'border',
+              borderRadius: 'full',
+              mb: 2,
+            })}
+          />
+          <div
+            className={css({
+              w: '30%',
+              h: 3,
+              bg: 'border',
+              borderRadius: 'full',
+            })}
+          />
+        </div>
+      </div>
+    </>
+  )
+}
