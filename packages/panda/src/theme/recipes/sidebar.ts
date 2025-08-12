@@ -35,7 +35,7 @@ export const sidebar = defineSlotRecipe({
     provider: {
       // 'group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar'
       display: 'flex',
-      height: '100%', // or use a token if defined
+      height: 'full',
       width: 'full',
       '&:has([data-variant=inset])': {
         backgroundColor: '{colors.surface.layout}',
@@ -43,9 +43,10 @@ export const sidebar = defineSlotRecipe({
     },
     root: {
       // className="group peer hidden text-sidebar-foreground md:block"
+      position: 'relative',
       display: 'none',
-      color: '{colors.text}',
       md: { display: 'block' },
+      color: '{colors.text}',
       bg: '{colors.surface.layout}',
     },
     rootNonCollapsible: {
@@ -73,13 +74,13 @@ export const sidebar = defineSlotRecipe({
       bg: 'transparent',
       transition: 'width 200ms linear',
 
-      '& .group:is([data-collapsible=offcanvas]) &': { width: '0' },
-      '& .group:is([data-side=right]) &': { transform: 'rotate(180deg)' },
+      '.group:is([data-collapsible=offcanvas]) &': { width: '0' },
+      '.group:is([data-side=right]) &': { transform: 'rotate(180deg)' },
 
-      '& .group:is([data-variant=floating], [data-variant=inset]):is([data-collapsible=icon]) &': {
+      '.group:is([data-variant=floating], [data-variant=inset]):is([data-collapsible=icon]) &': {
         w: 'calc(3rem + {spacing.4})',
       },
-      '& .group:is([data-variant=sidebar]):is([data-collapsible=icon]) &': {
+      '.group:is([data-variant=sidebar]):is([data-collapsible=icon]) &': {
         w: '3rem',
       },
     },
@@ -98,43 +99,43 @@ export const sidebar = defineSlotRecipe({
       position: 'fixed',
       insetY: '0',
       zIndex: 10,
-      h: 'screen',
+      h: 'full',
       w: '{sizes.2xs}',
       transition: 'left 200ms linear, right 200ms linear, width 200ms linear',
       display: 'none',
       md: { display: 'flex' },
       borderColor: '{colors.border}',
 
-      '& .group:is([data-side=left]) &': {
+      '.group:is([data-side=left]) &': {
         left: '0',
         right: 'auto',
       },
-      '& .group:is([data-side=right]) &': {
+      '.group:is([data-side=right]) &': {
         right: '0',
         left: 'auto',
       },
 
-      '& .group:is([data-collapsible=offcanvas]):is([data-side=left]) &': {
+      '.group:is([data-collapsible=offcanvas]):is([data-side=left]) &': {
         left: 'calc({sizes.2xs} * -1)',
       },
-      '& .group:is([data-collapsible=offcanvas]):is([data-side=right]) &': {
+      '.group:is([data-collapsible=offcanvas]):is([data-side=right]) &': {
         right: 'calc({sizes.2xs} * -1)',
       },
 
-      '& .group:is([data-variant=floating], [data-variant=inset]) &': {
+      '.group:is([data-variant=floating], [data-variant=inset]) &': {
         p: 2,
       },
 
-      '& .group:is([data-variant=floating], [data-variant=inset]):is([data-collapsible=icon]) &': {
+      '.group:is([data-variant=floating], [data-variant=inset]):is([data-collapsible=icon]) &': {
         w: 'calc(3rem + {spacing.4} + 2px)',
       },
-      '& .group:is([data-variant=sidebar]):is([data-collapsible=icon]) &': {
+      '.group:is([data-variant=sidebar]):is([data-collapsible=icon]) &': {
         w: '3rem',
       },
-      '& .group:is([data-variant=sidebar]):is([data-side=left]) &': {
+      '.group:is([data-variant=sidebar]):is([data-side=left]) &': {
         borderRightWidth: '1',
       },
-      '& .group:is([data-variant=sidebar]):is([data-side=right]) &': {
+      '.group:is([data-variant=sidebar]):is([data-side=right]) &': {
         borderLeftWidth: '1',
       },
     },
@@ -147,10 +148,14 @@ export const sidebar = defineSlotRecipe({
       flexDirection: 'column',
       bg: '{colors.surface.elevated}',
 
-      '& .group:is([data-variant=floating]) &': {
+      '.group:is([data-variant=floating]) &': {
         rounded: 'lg',
         border: '1px solid {colors.border}',
         shadow: 'lg',
+      },
+
+      '.group:is([data-variant=inset]) &': {
+        bg: 'transparent',
       },
     },
     inset: {
@@ -163,13 +168,13 @@ export const sidebar = defineSlotRecipe({
       flex: '1',
       backgroundColor: '{colors.surface.container}',
       md: {
-        '& .peer:is([data-variant=inset])': {
-          p: 2,
+        '.peer:is([data-variant=inset])': {
+          m: 2,
           ml: 0,
           rounded: 'xl',
           shadow: 'md',
         },
-        '& .peer:is([data-variant=inset]):is([data-state=collapsed])': {
+        '.peer:is([data-variant=inset]):is([data-state=collapsed])': {
           ml: 2,
         },
       },
@@ -200,7 +205,7 @@ export const sidebar = defineSlotRecipe({
       },
 
       gap: 2,
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         overflow: 'hidden',
       },
     },
@@ -224,7 +229,7 @@ export const sidebar = defineSlotRecipe({
       bottom: '0',
       zIndex: 20,
       insetY: 0,
-      width: 1,
+      width: 4,
       transform: 'translateX(-50%)',
       transition: 'all linear',
 
@@ -239,29 +244,29 @@ export const sidebar = defineSlotRecipe({
         insetY: 0,
         bottom: '0',
         left: '50%',
-        width: '2px',
+        width: '3px',
       },
       '&:is(:hover, [data-hover])::after': {
         backgroundColor: '{colors.border}',
       },
 
-      '& .group:is([data-side=left]) &': {
+      '.group:is([data-side=left]) &': {
         right: '-4',
         cursor: 'w-resize',
       },
-      '& .group:is([data-side=right]) &': {
+      '.group:is([data-side=right]) &': {
         left: 0,
         cursor: 'e-resize',
       },
 
-      '& .group:is([data-side=left]):is([data-state=collapsed]) &': {
+      '.group:is([data-side=left]):is([data-state=collapsed]) &': {
         cursor: 'e-resize',
       },
-      '& .group:is([data-side=right]):is([data-state=collapsed]) &': {
+      '.group:is([data-side=right]):is([data-state=collapsed]) &': {
         cursor: 'w-resize',
       },
 
-      '& .group:is([data-collapsible=offcanvas]) &': {
+      '.group:is([data-collapsible=offcanvas]) &': {
         transform: 'translateX(0)',
         '&:is(:hover, [data-hover])::after': {
           backgroundColor: '{colors.border}',
@@ -271,10 +276,10 @@ export const sidebar = defineSlotRecipe({
         },
       },
 
-      '& .group:is([data-side=left]):is([data-collapsible=offcanvas]) &': {
+      '.group:is([data-side=left]):is([data-collapsible=offcanvas]) &': {
         right: '-2',
       },
-      '& .group:is([data-side=right]):is([data-collapsible=offcanvas]) &': {
+      '.group:is([data-side=right]):is([data-collapsible=offcanvas]) &': {
         left: '-2',
       },
     },
@@ -307,6 +312,9 @@ export const sidebar = defineSlotRecipe({
       minWidth: '0',
       pl: 4,
       pr: 2,
+      '.group:is([data-collapsible=icon]) &': {
+        pl: 2,
+      },
     },
     groupLabel: {
       // cx(
@@ -327,7 +335,7 @@ export const sidebar = defineSlotRecipe({
       outline: 'none',
       transition: 'opacity 200ms linear, margin 200ms linear',
 
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         mt: -6,
         opacity: 0,
       },
@@ -344,7 +352,7 @@ export const sidebar = defineSlotRecipe({
       //   'after:absolute after:-inset-2 after:md:hidden',
       //   'group-data-[collapsible=icon]:hidden',
       position: 'absolute',
-      right: 3,
+      right: '{spacing.padding.inline.lg}',
       top: 3,
       aspectRatio: 1,
       w: 5,
@@ -356,7 +364,7 @@ export const sidebar = defineSlotRecipe({
         size: '1rem',
         flexShrink: 0,
       },
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
     },
@@ -365,7 +373,7 @@ export const sidebar = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       minWidth: 0,
-      gap: 2,
+      gap: '{spacing.gap.inline.sm}',
     },
     menuItem: {
       // 'group/menu-item relative'
@@ -383,16 +391,12 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
-      mt: 2,
       gap: '{spacing.gap.inline.xs}',
       h: 'auto!',
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         p: '2!',
         w: '8!',
         h: '8!',
-      },
-      '&:has(svg,img)': {
-        gap: '0.5',
       },
       transition: 'width 200ms linear, height 200ms linear, padding 200ms linear',
 
@@ -402,19 +406,19 @@ export const sidebar = defineSlotRecipe({
       '& > svg': {
         size: '1rem',
         flexShrink: 0,
-        left: '-4px',
-        position: 'relative',
-      },
-      '& > img': {
-        size: '1rem',
-        flexShrink: 0,
-        left: '-4px',
-        position: 'relative',
       },
       _activeTrue: {
         backgroundColor: '{colors.primary.bg}!',
         color: '{colors.primary.text}!',
       },
+      // _activeTrue: {
+      //   size: '1rem',
+      //   flexShrink: 0,
+      //   left: '-4px',
+      //   position: 'relative',
+      //   backgroundColor: '{colors.primary.bg}!',
+      //   color: '{colors.primary.text}!',
+      // },
     },
     menuAction: {
       // 'absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0',
@@ -430,11 +434,9 @@ export const sidebar = defineSlotRecipe({
       position: 'absolute',
       right: 1,
       top: 0,
-      '.menu-button.button--size_sm ~ &': {
-        top: 1,
-      },
+
       '.menu-button.button--size_md ~ &': {
-        top: 1.5,
+        top: 1,
       },
       '.menu-button.button--size_lg ~ &': {
         top: 2.5,
@@ -451,7 +453,7 @@ export const sidebar = defineSlotRecipe({
       //   size: '1rem',
       //   flexShrink: 0,
       // },
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
     },
@@ -464,20 +466,20 @@ export const sidebar = defineSlotRecipe({
       // 'group-data-[collapsible=icon]:hidden',
       position: 'absolute',
       h: 5,
-      right: 1,
+      right: '{spacing.padding.inline.md}',
       userSelect: 'none',
 
       '.menu-button.button--size_sm ~ &': {
-        top: 1,
+        top: '{spacing.padding.block.sm}',
       },
       '.menu-button.button--size_md ~ &': {
-        top: 1.5,
+        top: '{spacing.padding.block.md}',
       },
       '.menu-button.button--size_lg ~ &': {
-        top: 2.5,
+        top: '{spacing.padding.block.lg}',
       },
 
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
     },
@@ -492,11 +494,11 @@ export const sidebar = defineSlotRecipe({
       borderColor: '{colors.border}',
       px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.xs}',
-      ml: '{spacing.padding.inline.md}',
+      ml: '{spacing.padding.inline.lg}',
       mr: '{spacing.padding.inline.xs}',
       transform: 'translateX(1px)',
       fontWeight: 'normal',
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
     },
@@ -550,7 +552,7 @@ export const sidebar = defineSlotRecipe({
         fontSize: 'lg',
       },
 
-      '& .group:is([data-collapsible=icon]) &': {
+      '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
 

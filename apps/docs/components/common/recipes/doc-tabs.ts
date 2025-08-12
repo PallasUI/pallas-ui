@@ -76,6 +76,13 @@ export const docTabs = sva({
         },
       },
     },
+    noPadding: {
+      true: {
+        content: {
+          p: '0!',
+        },
+      },
+    },
   },
   defaultVariants: {
     variant: 'preview',
