@@ -1,5 +1,10 @@
 packages:
-  - "packages/*"
-  - "components"
-  - "ui-primitives/*"
-  - "apps/*"
+  - packages/*
+  - components
+  - ui-primitives/*
+  - apps/*
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - esbuild
+  - sharp

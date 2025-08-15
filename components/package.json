@@ -6,19 +6,143 @@
     "prepare": "panda codegen --silent",
     "lint": "biome lint ./src",
     "dev": "vite",
+    "build": "tsup",
     "typecheck": "tsc",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "studio": "panda studio",
     "check-types": "tsc --noEmit"
   },
+  "files": ["dist/"],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./accordion": {
+      "require": "./dist/accordion/index.cjs",
+      "import": "./dist/accordion/index.js"
+    },
+    "./avatar": {
+      "require": "./dist/avatar/index.cjs",
+      "import": "./dist/avatar/index.js"
+    },
+    "./badge": {
+      "require": "./dist/badge/index.cjs",
+      "import": "./dist/badge/index.js"
+    },
+    "./breadcrumb": {
+      "require": "./dist/breadcrumb/index.cjs",
+      "import": "./dist/breadcrumb/index.js"
+    },
+    "./button": {
+      "require": "./dist/button/index.cjs",
+      "import": "./dist/button/index.js"
+    },
+    "./carousel": {
+      "require": "./dist/carousel/index.cjs",
+      "import": "./dist/carousel/index.js"
+    },
+    "./checkbox": {
+      "require": "./dist/checkbox/index.cjs",
+      "import": "./dist/checkbox/index.js"
+    },
+    "./combobox": {
+      "require": "./dist/combobox/index.cjs",
+      "import": "./dist/combobox/index.js"
+    },
+    "./command": {
+      "require": "./dist/command/index.cjs",
+      "import": "./dist/command/index.js"
+    },
+    "./daypicker": {
+      "require": "./dist/daypicker/index.cjs",
+      "import": "./dist/daypicker/index.js"
+    },
+    "./drawer": {
+      "require": "./dist/drawer/index.cjs",
+      "import": "./dist/drawer/index.js"
+    },
+    "./form": {
+      "require": "./dist/form/index.cjs",
+      "import": "./dist/form/index.js"
+    },
+    "./input": {
+      "require": "./dist/input/index.cjs",
+      "import": "./dist/input/index.js"
+    },
+    "./label": {
+      "require": "./dist/label/index.cjs",
+      "import": "./dist/label/index.js"
+    },
+    "./modal": {
+      "require": "./dist/modal/modal.cjs",
+      "import": "./dist/modal/modal.js"
+    },
+    "./popover": {
+      "require": "./dist/popover/index.cjs",
+      "import": "./dist/popover/index.js"
+    },
+    "./radio-group": {
+      "require": "./dist/radio-group/index.cjs",
+      "import": "./dist/radio-group/index.js"
+    },
+    "./render-helpers": {
+      "require": "./dist/render-helpers/decorative-box.cjs",
+      "import": "./dist/render-helpers/decorative-box.js"
+    },
+    "./segmented": {
+      "require": "./dist/segmented/index.cjs",
+      "import": "./dist/segmented/index.js"
+    },
+    "./select": {
+      "require": "./dist/select/index.cjs",
+      "import": "./dist/select/index.js"
+    },
+    "./sidebar": {
+      "require": "./dist/sidebar/index.cjs",
+      "import": "./dist/sidebar/index.js"
+    },
+    "./skeleton": {
+      "require": "./dist/skeleton/index.cjs",
+      "import": "./dist/skeleton/index.js"
+    },
+    "./slider": {
+      "require": "./dist/slider/index.cjs",
+      "import": "./dist/slider/index.js"
+    },
+    "./spinner": {
+      "require": "./dist/spinner/index.cjs",
+      "import": "./dist/spinner/index.js"
+    },
+    "./steps": {
+      "require": "./dist/steps/index.cjs",
+      "import": "./dist/steps/index.js"
+    },
+    "./textarea": {
+      "require": "./dist/textarea/index.cjs",
+      "import": "./dist/textarea/index.js"
+    },
+    "./toast": {
+      "require": "./dist/toast/index.cjs",
+      "import": "./dist/toast/index.js"
+    },
+    "./tooltip": {
+      "require": "./dist/tooltip/index.cjs",
+      "import": "./dist/tooltip/index.js"
+    },
+    "./typography": {
+      "require": "./dist/typography/index.cjs",
+      "import": "./dist/typography/index.js"
+    }
+  },
   "dependencies": {
     "@ark-ui/react": "^5.9.2",
     "@pallas-ui/breadcrumb": "workspace:*",
     "@pallas-ui/carousel": "workspace:*",
-    "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/form": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
+    "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
@@ -42,8 +166,8 @@
     "react": "19.1.0",
     "react-aria-components": "^1.5.0",
     "react-day-picker": "^9.5.0",
-    "vaul": "1.1.2",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "vaul": "1.1.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.4",
@@ -78,6 +202,8 @@
     "kleur": "^4.1.5",
     "react-hook-form": "^7.56.3",
     "storybook": "^8.5.3",
+    "terser": "^5.43.1",
+    "tsup": "^8.5.0",
     "typescript": "5.7.2",
     "vite": "6.2.6",
     "vite-tsconfig-paths": "5.1.4",
