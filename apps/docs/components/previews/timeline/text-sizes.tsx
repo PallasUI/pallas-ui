@@ -1,5 +1,5 @@
-import Timeline from "@/components/ui/timeline";
-import { Box, VStack } from "@styled-system/jsx";
+import Timeline from '@/components/ui/timeline'
+import { Box, VStack } from '@styled-system/jsx'
 
 export default function TimelineTextSizesPreview() {
   return (
@@ -14,9 +14,7 @@ export default function TimelineTextSizesPreview() {
             <Timeline.Content>
               <Timeline.Time>9:30 AM</Timeline.Time>
               <Timeline.Title>Small Text Size</Timeline.Title>
-              <Timeline.Description>
-                Timeline content with small text styling.
-              </Timeline.Description>
+              <Timeline.Description>Timeline content with small text styling.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -50,9 +48,7 @@ export default function TimelineTextSizesPreview() {
             <Timeline.Content>
               <Timeline.Time>9:30 AM</Timeline.Time>
               <Timeline.Title>Large Text Size</Timeline.Title>
-              <Timeline.Description>
-                Timeline content with large text styling.
-              </Timeline.Description>
+              <Timeline.Description>Timeline content with large text styling.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -76,5 +72,5 @@ export default function TimelineTextSizesPreview() {
         </Timeline.Root>
       </VStack>
     </VStack>
-  );
+  )
 }

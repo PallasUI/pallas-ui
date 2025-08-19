@@ -1,5 +1,5 @@
-import Timeline from "@/components/ui/timeline";
-import { Box, VStack } from "@styled-system/jsx";
+import Timeline from '@/components/ui/timeline'
+import { Box, VStack } from '@styled-system/jsx'
 
 export default function TimelineOrientationsPreview() {
   return (
@@ -28,9 +28,7 @@ export default function TimelineOrientationsPreview() {
             <Timeline.Content>
               <Timeline.Time>11:00 AM</Timeline.Time>
               <Timeline.Title>Development Phase</Timeline.Title>
-              <Timeline.Description>
-                Core features implementation in progress.
-              </Timeline.Description>
+              <Timeline.Description>Core features implementation in progress.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
@@ -40,9 +38,7 @@ export default function TimelineOrientationsPreview() {
             <Timeline.Content>
               <Timeline.Time>2:30 PM</Timeline.Time>
               <Timeline.Title>Testing Phase</Timeline.Title>
-              <Timeline.Description>
-                Quality assurance and bug fixing phase.
-              </Timeline.Description>
+              <Timeline.Description>Quality assurance and bug fixing phase.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -97,5 +93,5 @@ export default function TimelineOrientationsPreview() {
         </Timeline.Root>
       </Box>
     </VStack>
-  );
+  )
 }

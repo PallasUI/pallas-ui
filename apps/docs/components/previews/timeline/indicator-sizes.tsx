@@ -1,5 +1,5 @@
-import Timeline from "@/components/ui/timeline";
-import { Box, VStack } from "@styled-system/jsx";
+import Timeline from '@/components/ui/timeline'
+import { Box, VStack } from '@styled-system/jsx'
 
 export default function TimelineIndicatorSizesPreview() {
   return (
@@ -14,9 +14,7 @@ export default function TimelineIndicatorSizesPreview() {
             <Timeline.Content>
               <Timeline.Time>9:30 AM</Timeline.Time>
               <Timeline.Title>Small Indicator</Timeline.Title>
-              <Timeline.Description>
-                Timeline with small indicator size.
-              </Timeline.Description>
+              <Timeline.Description>Timeline with small indicator size.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -32,9 +30,7 @@ export default function TimelineIndicatorSizesPreview() {
             <Timeline.Content>
               <Timeline.Time>9:30 AM</Timeline.Time>
               <Timeline.Title>Medium Indicator</Timeline.Title>
-              <Timeline.Description>
-                Timeline with medium indicator size.
-              </Timeline.Description>
+              <Timeline.Description>Timeline with medium indicator size.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -50,9 +46,7 @@ export default function TimelineIndicatorSizesPreview() {
             <Timeline.Content>
               <Timeline.Time>9:30 AM</Timeline.Time>
               <Timeline.Title>Large Indicator</Timeline.Title>
-              <Timeline.Description>
-                Timeline with large indicator size.
-              </Timeline.Description>
+              <Timeline.Description>Timeline with large indicator size.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -68,13 +62,11 @@ export default function TimelineIndicatorSizesPreview() {
             <Timeline.Content>
               <Timeline.Time>9:30 AM</Timeline.Time>
               <Timeline.Title>Extra Large Indicator</Timeline.Title>
-              <Timeline.Description>
-                Timeline with extra large indicator size.
-              </Timeline.Description>
+              <Timeline.Description>Timeline with extra large indicator size.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
       </VStack>
     </VStack>
-  );
+  )
 }

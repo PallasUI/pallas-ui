@@ -1,5 +1,5 @@
-import Timeline from "@/components/ui/timeline";
-import { Box, VStack } from "@styled-system/jsx";
+import Timeline from '@/components/ui/timeline'
+import { Box, VStack } from '@styled-system/jsx'
 
 export default function TimelineDotVariantsPreview() {
   return (
@@ -32,8 +32,7 @@ export default function TimelineDotVariantsPreview() {
               <Timeline.Time>Step 2</Timeline.Time>
               <Timeline.Title>Success State</Timeline.Title>
               <Timeline.Description>
-                Use the success variant to indicate completed or successful
-                steps.
+                Use the success variant to indicate completed or successful steps.
               </Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
@@ -74,5 +73,5 @@ export default function TimelineDotVariantsPreview() {
         </Timeline.Root>
       </Box>
     </VStack>
-  );
+  )
 }

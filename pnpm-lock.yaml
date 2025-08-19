@@ -442,7 +442,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: 8.3.5
-        version: 8.3.5(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)
+        version: 8.3.5(postcss@8.4.49)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)
       tsx:
         specifier: ^4.19.2
         version: 4.19.4
@@ -466,7 +466,7 @@ importers:
         version: 19.1.0
       tsup:
         specifier: ^8.0.1
-        version: 8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0)
+        version: 8.4.0(postcss@8.4.49)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0)
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -6248,6 +6248,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
@@ -13693,6 +13694,14 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
+  postcss-load-config@6.0.1(postcss@8.4.49)(tsx@4.19.4)(yaml@2.7.0):
+    dependencies:
+      lilconfig: 3.1.3
+    optionalDependencies:
+      postcss: 8.4.49
+      tsx: 4.19.4
+      yaml: 2.7.0
+
   postcss-load-config@6.0.1(postcss@8.5.3)(tsx@4.19.4)(yaml@2.7.0):
     dependencies:
       lilconfig: 3.1.3
@@ -14674,7 +14683,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.3.5(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0):
+  tsup@8.3.5(postcss@8.4.49)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.24.0)
       cac: 6.7.14
@@ -14684,7 +14693,7 @@ snapshots:
       esbuild: 0.24.0
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.5.3)(tsx@4.19.4)(yaml@2.7.0)
+      postcss-load-config: 6.0.1(postcss@8.4.49)(tsx@4.19.4)(yaml@2.7.0)
       resolve-from: 5.0.0
       rollup: 4.40.1
       source-map: 0.8.0-beta.0
@@ -14693,7 +14702,7 @@ snapshots:
       tinyglobby: 0.2.13
       tree-kill: 1.2.2
     optionalDependencies:
-      postcss: 8.5.3
+      postcss: 8.4.49
       typescript: 5.8.3
     transitivePeerDependencies:
       - jiti
@@ -14701,7 +14710,7 @@ snapshots:
       - tsx
       - yaml
 
-  tsup@8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0):
+  tsup@8.4.0(postcss@8.4.49)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.3)
       cac: 6.7.14
@@ -14711,7 +14720,7 @@ snapshots:
       esbuild: 0.25.3
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.5.3)(tsx@4.19.4)(yaml@2.7.0)
+      postcss-load-config: 6.0.1(postcss@8.4.49)(tsx@4.19.4)(yaml@2.7.0)
       resolve-from: 5.0.0
       rollup: 4.40.1
       source-map: 0.8.0-beta.0
@@ -14720,7 +14729,7 @@ snapshots:
       tinyglobby: 0.2.13
       tree-kill: 1.2.2
     optionalDependencies:
-      postcss: 8.5.3
+      postcss: 8.4.49
       typescript: 5.5.4
     transitivePeerDependencies:
       - jiti

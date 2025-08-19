@@ -1,5 +1,5 @@
-import Timeline from "@/components/ui/timeline";
-import { Box, Flex, VStack } from "@styled-system/jsx";
+import Timeline from '@/components/ui/timeline'
+import { Box, Flex, VStack } from '@styled-system/jsx'
 
 export default function TimelinePlacementsPreview() {
   return (
@@ -40,9 +40,7 @@ export default function TimelinePlacementsPreview() {
             <Timeline.Content>
               <Timeline.Time>12:30 PM</Timeline.Time>
               <Timeline.Title>Deployment</Timeline.Title>
-              <Timeline.Description>
-                Deployed changes to staging environment.
-              </Timeline.Description>
+              <Timeline.Description>Deployed changes to staging environment.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -84,9 +82,7 @@ export default function TimelinePlacementsPreview() {
             <Timeline.Content>
               <Timeline.Time>11:00 AM</Timeline.Time>
               <Timeline.Title>Meeting Ended</Timeline.Title>
-              <Timeline.Description>
-                All action items documented and assigned.
-              </Timeline.Description>
+              <Timeline.Description>All action items documented and assigned.</Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
         </Timeline.Root>
@@ -104,8 +100,7 @@ export default function TimelinePlacementsPreview() {
               <Timeline.Time>Phase 1</Timeline.Time>
               <Timeline.Title>Research & Discovery</Timeline.Title>
               <Timeline.Description>
-                Conducted user research and market analysis to understand
-                requirements.
+                Conducted user research and market analysis to understand requirements.
               </Timeline.Description>
             </Timeline.Content>
           </Timeline.Item>
@@ -187,9 +182,7 @@ export default function TimelinePlacementsPreview() {
               <Timeline.Content>
                 <Timeline.Time>Q3</Timeline.Time>
                 <Timeline.Title>Testing</Timeline.Title>
-                <Timeline.Description>
-                  Quality assurance and testing phase.
-                </Timeline.Description>
+                <Timeline.Description>Quality assurance and testing phase.</Timeline.Description>
               </Timeline.Content>
             </Timeline.Item>
           </Timeline.Root>
@@ -208,9 +201,7 @@ export default function TimelinePlacementsPreview() {
               <Timeline.Content>
                 <Timeline.Time>Jan</Timeline.Time>
                 <Timeline.Title>Kickoff</Timeline.Title>
-                <Timeline.Description>
-                  Project initialization and team setup.
-                </Timeline.Description>
+                <Timeline.Description>Project initialization and team setup.</Timeline.Description>
               </Timeline.Content>
             </Timeline.Item>
             <Timeline.Item>
@@ -221,9 +212,7 @@ export default function TimelinePlacementsPreview() {
               <Timeline.Content>
                 <Timeline.Time>Mar</Timeline.Time>
                 <Timeline.Title>Milestone 1</Timeline.Title>
-                <Timeline.Description>
-                  First major milestone achieved.
-                </Timeline.Description>
+                <Timeline.Description>First major milestone achieved.</Timeline.Description>
               </Timeline.Content>
             </Timeline.Item>
             <Timeline.Item>
@@ -233,14 +222,12 @@ export default function TimelinePlacementsPreview() {
               <Timeline.Content>
                 <Timeline.Time>May</Timeline.Time>
                 <Timeline.Title>Launch</Timeline.Title>
-                <Timeline.Description>
-                  Product launch and go-live.
-                </Timeline.Description>
+                <Timeline.Description>Product launch and go-live.</Timeline.Description>
               </Timeline.Content>
             </Timeline.Item>
           </Timeline.Root>
         </Flex>
       </Flex>
     </VStack>
-  );
+  )
 }
