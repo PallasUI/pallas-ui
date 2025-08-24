@@ -1,31 +1,51 @@
 'use client'
 
 import { type Assign, createStyleContext } from '@pallas-ui/style-context'
-import { timeline } from '@styled-system/recipes'
+import { type TimelineVariantProps, timeline } from '@styled-system/recipes'
 import type { HTMLStyledProps } from '@styled-system/types'
 import * as React from 'react'
 
 const { withProvider, withContext } = createStyleContext(timeline)
 
-type RootProps =
-  | Assign<
-      HTMLStyledProps<'div'>,
-      {
-        orientation?: 'vertical'
-        placement?: 'left' | 'right' | 'alternate'
-        indicatorSize?: 'sm' | 'md' | 'lg' | 'xl'
-        textSize?: 'sm' | 'md' | 'lg' | 'xl'
-      }
-    >
-  | Assign<
-      HTMLStyledProps<'div'>,
-      {
-        orientation: 'horizontal'
-        placement?: 'top' | 'bottom'
-        indicatorSize?: 'sm' | 'md' | 'lg' | 'xl'
-        textSize?: 'sm' | 'md' | 'lg' | 'xl'
-      }
-    >
+// Custom placement types to avoid repetition
+/** Valid placement values for vertical timeline orientation */
+type VerticalPlacement = 'left' | 'right' | 'alternate'
+/** Valid placement values for horizontal timeline orientation */
+type HorizontalPlacement = 'top' | 'bottom'
+
+// Helper functions for type-safe placement handling
+/**
+ * Safely extracts vertical placement value, falling back to 'right' if invalid
+ */
+const getVerticalPlacement = (
+  placement: VerticalPlacement | HorizontalPlacement | undefined,
+): VerticalPlacement => {
+  if (placement === 'left' || placement === 'right' || placement === 'alternate') {
+    return placement
+  }
+  return 'right' // default
+}
+
+/**
+ * Safely extracts horizontal placement value, falling back to 'bottom' if invalid
+ */
+const getHorizontalPlacement = (
+  placement: VerticalPlacement | HorizontalPlacement | undefined,
+): HorizontalPlacement => {
+  if (placement === 'top' || placement === 'bottom') {
+    return placement
+  }
+  return 'bottom' // default
+}
+
+// Use the generated TimelineVariantProps as base, then extend with conditional logic
+type RootProps = Assign<
+  HTMLStyledProps<'div'>,
+  TimelineVariantProps & {
+    // Override placement to be conditional based on orientation
+    placement?: VerticalPlacement | HorizontalPlacement
+  }
+>
 
 const RootPrimitive = withProvider<React.ComponentRef<'div'>, RootProps>('div', 'root')
 
@@ -33,12 +53,11 @@ export const Root = React.forwardRef<React.ComponentRef<'div'>, RootProps>((prop
   const { orientation = 'vertical', placement, indicatorSize, textSize, ...rest } = props
 
   if (orientation === 'vertical') {
-    const verticalPlacement = placement as 'left' | 'right' | 'alternate' | undefined
     return (
       <RootPrimitive
         ref={ref}
         orientation={orientation}
-        placement={verticalPlacement ?? 'right'}
+        placement={getVerticalPlacement(placement)}
         indicatorSize={indicatorSize ?? 'md'}
         textSize={textSize ?? 'sm'}
         {...rest}
@@ -46,12 +65,11 @@ export const Root = React.forwardRef<React.ComponentRef<'div'>, RootProps>((prop
     )
   }
 
-  const horizontalPlacement = placement as 'top' | 'bottom' | undefined
   return (
     <RootPrimitive
       ref={ref}
       orientation={orientation}
-      placement={horizontalPlacement ?? 'bottom'}
+      placement={getHorizontalPlacement(placement)}
       indicatorSize={indicatorSize ?? 'md'}
       textSize={textSize ?? 'sm'}
       {...rest}
@@ -72,7 +90,7 @@ export const Indicator = withContext<React.ComponentRef<'div'>, HTMLStyledProps<
 // Dot
 export const Dot = withProvider<
   React.ComponentRef<'div'>,
-  Assign<HTMLStyledProps<'div'>, { variant?: 'default' | 'success' | 'warning' | 'error' }>
+  Assign<HTMLStyledProps<'div'>, Pick<TimelineVariantProps, 'variant'>>
 >('div', 'dot')
 
 // Icon

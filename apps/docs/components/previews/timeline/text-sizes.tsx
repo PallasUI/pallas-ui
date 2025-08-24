@@ -1,76 +1,75 @@
+'use client'
+
+import Segmented from '@/components/ui/segmented'
 import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
+import { useState } from 'react'
 
 export default function TimelineTextSizesPreview() {
+  const [textSize, setTextSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md')
+
+  const renderTimeline = () => (
+    <Timeline.Root textSize={textSize}>
+      <Timeline.Item>
+        <Timeline.Indicator>
+          <Timeline.Dot />
+        </Timeline.Indicator>
+        <Timeline.Connector />
+        <Timeline.Content>
+          <Timeline.Time>9:30 AM</Timeline.Time>
+          <Timeline.Title>
+            {textSize.charAt(0).toUpperCase() + textSize.slice(1)} Text Size
+          </Timeline.Title>
+          <Timeline.Description>Timeline content with {textSize} text size.</Timeline.Description>
+        </Timeline.Content>
+      </Timeline.Item>
+      <Timeline.Item>
+        <Timeline.Indicator>
+          <Timeline.Dot />
+        </Timeline.Indicator>
+        <Timeline.Connector />
+        <Timeline.Content>
+          <Timeline.Time>11:00 AM</Timeline.Time>
+          <Timeline.Title>Development Phase</Timeline.Title>
+          <Timeline.Description>Core features implementation in progress.</Timeline.Description>
+        </Timeline.Content>
+      </Timeline.Item>
+      <Timeline.Item>
+        <Timeline.Indicator>
+          <Timeline.Dot />
+        </Timeline.Indicator>
+        <Timeline.Content>
+          <Timeline.Time>2:30 PM</Timeline.Time>
+          <Timeline.Title>Testing Phase</Timeline.Title>
+          <Timeline.Description>Quality assurance and validation.</Timeline.Description>
+        </Timeline.Content>
+      </Timeline.Item>
+    </Timeline.Root>
+  )
+
   return (
-    <VStack gap="gap.component.md">
-      <VStack gap="gap.inline.sm">
-        <Box>Small Text</Box>
-        <Timeline.Root textSize="sm">
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>9:30 AM</Timeline.Time>
-              <Timeline.Title>Small Text Size</Timeline.Title>
-              <Timeline.Description>Timeline content with small text styling.</Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </VStack>
+    <VStack gap={4} align="start">
+      <Segmented.Root
+        value={textSize}
+        onValueChange={(value) => setTextSize(value as 'sm' | 'md' | 'lg' | 'xl')}
+      >
+        <Segmented.Option value="sm">
+          <Segmented.Text>Small</Segmented.Text>
+        </Segmented.Option>
+        <Segmented.Option value="md">
+          <Segmented.Text>Medium</Segmented.Text>
+        </Segmented.Option>
+        <Segmented.Option value="lg">
+          <Segmented.Text>Large</Segmented.Text>
+        </Segmented.Option>
+        <Segmented.Option value="xl">
+          <Segmented.Text>Extra Large</Segmented.Text>
+        </Segmented.Option>
+      </Segmented.Root>
 
-      <VStack gap="gap.inline.sm">
-        <Box>Medium Text</Box>
-        <Timeline.Root textSize="md">
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>9:30 AM</Timeline.Time>
-              <Timeline.Title>Medium Text Size</Timeline.Title>
-              <Timeline.Description>
-                Timeline content with medium text styling.
-              </Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </VStack>
-
-      <VStack gap="gap.inline.sm">
-        <Box>Large Text</Box>
-        <Timeline.Root textSize="lg">
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>9:30 AM</Timeline.Time>
-              <Timeline.Title>Large Text Size</Timeline.Title>
-              <Timeline.Description>Timeline content with large text styling.</Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </VStack>
-
-      <VStack gap="gap.inline.sm">
-        <Box>Extra Large Text</Box>
-        <Timeline.Root textSize="xl">
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>9:30 AM</Timeline.Time>
-              <Timeline.Title>Extra Large Text</Timeline.Title>
-              <Timeline.Description>
-                Timeline content with extra large text styling.
-              </Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </VStack>
+      <Box minH="200px" minW="450px" w="full">
+        {renderTimeline()}
+      </Box>
     </VStack>
   )
 }

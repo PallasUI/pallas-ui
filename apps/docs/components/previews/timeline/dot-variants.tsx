@@ -1,76 +1,94 @@
+'use client'
+
+import Segmented from '@/components/ui/segmented'
 import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
+import { useState } from 'react'
 
 export default function TimelineDotVariantsPreview() {
+  const [variant, setVariant] = useState<'default' | 'success' | 'warning' | 'error'>('default')
+
+  const getVariantInfo = () => {
+    switch (variant) {
+      case 'success':
+        return {
+          title: 'Success State',
+          description: 'Use the success variant to indicate successful steps.',
+          step: 'Step 2',
+        }
+      case 'warning':
+        return {
+          title: 'Warning State',
+          description: 'The warning variant highlights steps that need attention.',
+          step: 'Step 3',
+        }
+      case 'error':
+        return {
+          title: 'Error State',
+          description: 'Error variant shows failed or problematic steps.',
+          step: 'Step 4',
+        }
+      default:
+        return {
+          title: 'Default State',
+          description: 'Default variant for regular timeline steps.',
+          step: 'Step 1',
+        }
+    }
+  }
+
+  const renderTimeline = () => {
+    const info = getVariantInfo()
+
+    return (
+      <Timeline.Root>
+        <Timeline.Item>
+          <Timeline.Indicator>
+            <Timeline.Dot variant="default" />
+          </Timeline.Indicator>
+          <Timeline.Connector />
+          <Timeline.Content>
+            <Timeline.Time>9:30 AM</Timeline.Time>
+            <Timeline.Title>Project Started</Timeline.Title>
+            <Timeline.Description>Initial project setup and configuration.</Timeline.Description>
+          </Timeline.Content>
+        </Timeline.Item>
+        <Timeline.Item>
+          <Timeline.Indicator>
+            <Timeline.Dot variant={variant} />
+          </Timeline.Indicator>
+          <Timeline.Content>
+            <Timeline.Time>{info.step}</Timeline.Time>
+            <Timeline.Title>{info.title}</Timeline.Title>
+            <Timeline.Description>{info.description}</Timeline.Description>
+          </Timeline.Content>
+        </Timeline.Item>
+      </Timeline.Root>
+    )
+  }
+
   return (
-    <VStack gap={6}>
-      <Box>
-        <Box mb={2}>Default</Box>
-        <Timeline.Root>
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot variant="default" />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>Step 1</Timeline.Time>
-              <Timeline.Title>Default State</Timeline.Title>
-              <Timeline.Description>
-                This is the default variant used for regular timeline items.
-              </Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </Box>
-      <Box>
-        <Box mb={2}>Success</Box>
-        <Timeline.Root>
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot variant="success" />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>Step 2</Timeline.Time>
-              <Timeline.Title>Success State</Timeline.Title>
-              <Timeline.Description>
-                Use the success variant to indicate completed or successful steps.
-              </Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </Box>
-      <Box>
-        <Box mb={2}>Warning</Box>
-        <Timeline.Root>
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot variant="warning" />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>Step 3</Timeline.Time>
-              <Timeline.Title>Warning State</Timeline.Title>
-              <Timeline.Description>
-                The warning variant highlights steps that need attention.
-              </Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
-      </Box>
-      <Box>
-        <Box mb={2}>Error</Box>
-        <Timeline.Root>
-          <Timeline.Item>
-            <Timeline.Indicator>
-              <Timeline.Dot variant="error" />
-            </Timeline.Indicator>
-            <Timeline.Content>
-              <Timeline.Time>Step 4</Timeline.Time>
-              <Timeline.Title>Error State</Timeline.Title>
-              <Timeline.Description>
-                Use the error variant to indicate failed or problematic steps.
-              </Timeline.Description>
-            </Timeline.Content>
-          </Timeline.Item>
-        </Timeline.Root>
+    <VStack gap={4} align="start">
+      <Segmented.Root
+        value={variant}
+        onValueChange={(value) => setVariant(value as 'default' | 'success' | 'warning' | 'error')}
+      >
+        <Segmented.Option value="default">
+          <Segmented.Text>Default</Segmented.Text>
+        </Segmented.Option>
+        <Segmented.Option value="success">
+          <Segmented.Text>Success</Segmented.Text>
+        </Segmented.Option>
+        <Segmented.Option value="warning">
+          <Segmented.Text>Warning</Segmented.Text>
+        </Segmented.Option>
+        <Segmented.Option value="error">
+          <Segmented.Text>Error</Segmented.Text>
+        </Segmented.Option>
+      </Segmented.Root>
+
+      <Box minH="200px" minW="450px" w="full">
+        {renderTimeline()}
       </Box>
     </VStack>
   )
