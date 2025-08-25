@@ -1,0 +1,82 @@
+---
+title: Chat
+description: An accessible chat component for building conversational interfaces.
+
+---
+<ContentContainer>
+
+<Section gap='1'>
+# Chat
+<Paragraph size={'extraLarge'} color={'tertiary'}>An accessible chat component for building conversational interfaces.</Paragraph>
+<ComponentPreview name='chat' withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+The Chat component uses `Avatar` component.
+
+See installation instructions for [Avatar](/docs/components/avatar#installation) component.
+
+<InstallTabs pkg="lucide-react" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="chat" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Chat from '@/components/ui/chat'
+```
+
+```tsx
+<Chat.Root>
+  <Chat.Message variant='assistant'>
+    <Chat.Avatar fallback={<Bot size={20} />} />
+    <Chat.Bubble>Hello! How can I help you today?</Chat.Bubble>
+    <Chat.Metadata>2:30 PM</Chat.Metadata>
+  </Chat.Message>
+  
+  <Chat.Input>
+    <Chat.TextArea placeholder='Type your message...' />
+    <Chat.InputActions>
+      <Button size='icon' shape='circle'>
+        <SendHorizonal size={16} />
+      </Button>
+    </Chat.InputActions>
+  </Chat.Input>
+</Chat.Root>
+```
+</Section>
+
+<Section>
+
+## Examples
+
+### Basic Chat
+<ComponentPreview name='chat' file='basic' />
+
+### Input Layouts
+<ComponentPreview name='chat' file='layouts' />
+
+### Suggestion Variants
+<ComponentPreview name='chat' file='suggestions' />
+
+### Select Widgets
+<ComponentPreview name='chat' file='widgets' />
+
+</Section>
+
+</ContentContainer>
