@@ -101,6 +101,7 @@ export function rehypeComponent() {
 
         const nameMap = {
           accordion: 'accordion',
+          card: 'card',
         }
         const dirName = nameMap[componentName] || componentName
 
