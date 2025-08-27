@@ -28,7 +28,7 @@ const mockChats: ChatData[] = [
       {
         id: '1-2',
         content:
-          'Custom hooks are functions that start with 'use' and can call other hooks. They help you reuse stateful logic between components.',
+          'Custom hooks are functions that start with "use" and can call other hooks. They help you reuse stateful logic between components.',
         variant: 'assistant',
         timestamp: new Date('2024-08-27T14:25:30'),
         isNew: false,

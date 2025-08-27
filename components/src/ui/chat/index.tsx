@@ -385,6 +385,12 @@ const CustomMessages = React.forwardRef<
     [shouldAutoScroll],
   )
 
+  // Combine the internal ref with the forwarded ref
+  React.useImperativeHandle(ref, () => ({
+    ...(messagesRef.current as HTMLDivElement),
+    forceScrollToBottom: () => scrollToBottom(true),
+  }))
+
   // Auto-scroll when new messages are added or content changes
   React.useEffect(() => {
     const element = messagesRef.current
