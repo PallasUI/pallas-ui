@@ -44,20 +44,30 @@ import Chat from '@/components/ui/chat'
 
 ```tsx
 <Chat.Root>
-  <Chat.Message variant='assistant'>
-    <Chat.Avatar fallback={<Bot size={20} />} />
-    <Chat.Bubble>Hello! How can I help you today?</Chat.Bubble>
-    <Chat.Metadata>2:30 PM</Chat.Metadata>
-  </Chat.Message>
+  <Chat.Messages>
+    <Chat.Message variant='assistant'>
+      <Chat.Avatar fallback={<Bot size={20} />} />
+      <Chat.Bubble>Hello! How can I help you today?</Chat.Bubble>
+      <Chat.Metadata>2:30 PM</Chat.Metadata>
+    </Chat.Message>
+  </Chat.Messages>
   
-  <Chat.Input>
-    <Chat.TextArea placeholder='Type your message...' />
-    <Chat.InputActions>
-      <Button size='icon' shape='circle'>
-        <SendHorizonal size={16} />
-      </Button>
-    </Chat.InputActions>
-  </Chat.Input>
+  <Chat.Composer>
+    <Chat.Suggestions suggestionVariant='outlined' suggestionShape='pill'>
+      <Chat.Suggestion>Tell me a fun fact!</Chat.Suggestion>
+      <Chat.Suggestion>How can I improve my productivity?</Chat.Suggestion>
+      <Chat.Suggestion>Suggest a good book to read</Chat.Suggestion>
+    </Chat.Suggestions>
+    
+    <Chat.Input inputLayout='vertical'>
+      <Chat.TextArea placeholder='Type your message...' />
+      <Chat.InputActions>
+        <Button size='icon' shape='circle'>
+          <SendHorizonal size={16} />
+        </Button>
+      </Chat.InputActions>
+    </Chat.Input>
+  </Chat.Composer>
 </Chat.Root>
 ```
 </Section>
