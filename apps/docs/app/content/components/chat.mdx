@@ -47,8 +47,10 @@ import Chat from '@/components/ui/chat'
   <Chat.Messages>
     <Chat.Message variant='assistant'>
       <Chat.Avatar fallback={<Bot size={20} />} />
-      <Chat.Bubble>Hello! How can I help you today?</Chat.Bubble>
-      <Chat.Metadata>2:30 PM</Chat.Metadata>
+      <Chat.Bubble>
+        <Chat.Content>Hello! How can I help you today?</Chat.Content>
+        <Chat.Metadata>2:30 PM</Chat.Metadata>
+      </Chat.Bubble>
     </Chat.Message>
   </Chat.Messages>
   

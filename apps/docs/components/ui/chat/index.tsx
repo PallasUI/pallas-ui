@@ -143,7 +143,7 @@ const CustomTextArea = React.forwardRef<
 CustomTextArea.displayName = 'TextArea'
 
 // Custom Bubble component with typing effect support
-const CustomBubble = React.forwardRef<
+const CustomContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     typingSpeed?: number
@@ -216,7 +216,7 @@ const CustomBubble = React.forwardRef<
     </div>
   )
 })
-CustomBubble.displayName = 'Bubble'
+CustomContent.displayName = 'Bubble'
 
 // Widget Context for managing selection state
 const OptionsContext = React.createContext<{
@@ -476,9 +476,14 @@ export const Avatar = withContext<
 >(CustomAvatar, 'avatar')
 
 export const Bubble = withContext<
-  React.ComponentRef<typeof CustomBubble>,
-  Assign<React.ComponentPropsWithoutRef<typeof CustomBubble>, JsxStyleProps>
->(CustomBubble, 'bubble')
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('div', 'bubble')
+
+export const Content = withContext<
+  React.ComponentRef<typeof CustomContent>,
+  Assign<React.ComponentPropsWithoutRef<typeof CustomContent>, JsxStyleProps>
+>(CustomContent, 'content')
 
 export const Metadata = withContext<
   HTMLSpanElement,
@@ -589,6 +594,7 @@ const Chat = {
   OptionGroupLabel,
   Option,
   Composer,
+  Content,
 }
 
 export default Chat

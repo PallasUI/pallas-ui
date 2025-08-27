@@ -4,7 +4,6 @@ import Avatar from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import Chat from '@/components/ui/chat'
 import Sidebar from '@/components/ui/sidebar'
-import { Skeleton } from '@/components/ui/skeleton'
 import { Paragraph } from '@/components/ui/typography'
 import { css } from '@styled-system/css'
 import { Box, Flex, HStack } from '@styled-system/jsx'
@@ -18,21 +17,20 @@ const mockChats: ChatData[] = [
   {
     id: '1',
     title: 'React Component Help',
-    timestamp: '2:30 PM',
     messages: [
       {
         id: '1-1',
         content: 'How to create a custom hook for state management in React?',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-27T14:25:00'),
         isNew: false,
       },
       {
         id: '1-2',
         content:
-          'Custom hooks are functions that start with "use" and can call other hooks. They help you reuse stateful logic between components.',
+          'Custom hooks are functions that start with 'use' and can call other hooks. They help you reuse stateful logic between components.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-27T14:25:30'),
         isNew: false,
       },
     ],
@@ -40,13 +38,12 @@ const mockChats: ChatData[] = [
   {
     id: '2',
     title: 'TypeScript Question',
-    timestamp: '1:15 PM',
     messages: [
       {
         id: '2-1',
         content: 'What is the difference between interface and type in TypeScript?',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-27T13:10:00'),
         isNew: false,
       },
       {
@@ -54,7 +51,7 @@ const mockChats: ChatData[] = [
         content:
           'Interfaces can be extended and merged, while types are more flexible for unions and computed properties. Both define object shapes.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-27T13:10:45'),
         isNew: false,
       },
     ],
@@ -62,13 +59,12 @@ const mockChats: ChatData[] = [
   {
     id: '3',
     title: 'API Integration',
-    timestamp: '11:45 AM',
     messages: [
       {
         id: '3-1',
         content: 'What are the best practices for handling REST API calls?',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-27T11:45:00'),
         isNew: false,
       },
       {
@@ -76,7 +72,7 @@ const mockChats: ChatData[] = [
         content:
           'Handle errors properly, show loading states, implement caching, add retry logic, and use TypeScript for type safety.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-27T11:45:20'),
         isNew: false,
       },
     ],
@@ -84,13 +80,12 @@ const mockChats: ChatData[] = [
   {
     id: '4',
     title: 'CSS Grid Layout',
-    timestamp: 'Yesterday',
     messages: [
       {
         id: '4-1',
         content: 'Help me understand CSS Grid.',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-26T16:30:00'),
         isNew: false,
       },
       {
@@ -98,7 +93,7 @@ const mockChats: ChatData[] = [
         content:
           'CSS Grid is a layout system for creating complex layouts. Use display: grid, define columns and rows, and position items with grid properties.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-26T16:30:25'),
         isNew: false,
       },
     ],
@@ -106,13 +101,12 @@ const mockChats: ChatData[] = [
   {
     id: '5',
     title: 'Database Design',
-    timestamp: 'Yesterday',
     messages: [
       {
         id: '5-1',
         content: 'How to design a relational database schema?',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-26T10:15:00'),
         isNew: false,
       },
       {
@@ -120,7 +114,7 @@ const mockChats: ChatData[] = [
         content:
           'Start by identifying entities and their relationships. Use normalization to reduce redundancy, define primary and foreign keys, and add appropriate constraints.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-26T10:15:40'),
         isNew: false,
       },
     ],
@@ -128,13 +122,12 @@ const mockChats: ChatData[] = [
   {
     id: '6',
     title: 'Performance Optimization',
-    timestamp: 'Mar 15',
     messages: [
       {
         id: '6-1',
         content: 'Give me some tips for optimizing React application performance.',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-20T09:30:00'),
         isNew: false,
       },
       {
@@ -142,7 +135,7 @@ const mockChats: ChatData[] = [
         content:
           'Use React.memo to prevent unnecessary re-renders, memoize expensive calculations with useMemo, implement code splitting, and profile your app to identify bottlenecks.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-20T09:31:10'),
         isNew: false,
       },
     ],
@@ -150,13 +143,12 @@ const mockChats: ChatData[] = [
   {
     id: '7',
     title: 'Authentication Setup',
-    timestamp: 'Mar 14',
     messages: [
       {
         id: '7-1',
         content: 'How to implement JWT authentication in a React app?',
         variant: 'user',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-19T14:20:00'),
         isNew: false,
       },
       {
@@ -164,7 +156,7 @@ const mockChats: ChatData[] = [
         content:
           'Store the JWT token securely, include it in API request headers, protect routes with authentication checks, and implement token refresh for long sessions.',
         variant: 'assistant',
-        timestamp: new Date(),
+        timestamp: new Date('2024-08-19T14:20:35'),
         isNew: false,
       },
     ],
@@ -178,7 +170,11 @@ const mockChatHistory = [
     items: mockChats.slice(0, 3).map((chat) => ({
       id: chat.id,
       title: chat.title,
-      timestamp: chat.timestamp,
+      timestamp:
+        chat.messages[chat.messages.length - 1]?.timestamp.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+        }) || '',
       preview: `${chat.messages[chat.messages.length - 1]?.content.substring(0, 100)}`,
     })),
   },
@@ -187,7 +183,7 @@ const mockChatHistory = [
     items: mockChats.slice(3, 5).map((chat) => ({
       id: chat.id,
       title: chat.title,
-      timestamp: chat.timestamp,
+      timestamp: 'Yesterday',
       preview: `${chat.messages[chat.messages.length - 1]?.content.substring(0, 100)}`,
     })),
   },
@@ -196,7 +192,11 @@ const mockChatHistory = [
     items: mockChats.slice(5, 7).map((chat) => ({
       id: chat.id,
       title: chat.title,
-      timestamp: chat.timestamp,
+      timestamp:
+        chat.messages[chat.messages.length - 1]?.timestamp.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+        }) || '',
       preview: `${chat.messages[chat.messages.length - 1]?.content.substring(0, 100)}`,
     })),
   },
@@ -251,7 +251,6 @@ interface Message {
 interface ChatData {
   id: string
   title: string
-  timestamp: string
   messages: Message[]
 }
 
@@ -337,7 +336,7 @@ function ChatPreview({ initialMessages = [], chatId }: ChatPreviewProps) {
                 ...msg,
                 content:
                   'This is a sample response. Thank you for your message! I\'m here to assist you with any questions or information you need. If you\'d like a fun fact, productivity tips, book suggestions, or anything else, just let me know. How can I help you today?',
-                isNew: true
+                isNew: true,
               }
             : { ...msg, isNew: false },
         ),
@@ -358,8 +357,16 @@ function ChatPreview({ initialMessages = [], chatId }: ChatPreviewProps) {
             <Chat.Avatar
               fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
             />
-            <Chat.Bubble showTypingEffect={message.variant === 'assistant' && message.isNew}>
-              {message.content === '...' ? <Skeleton>{message.content}</Skeleton> : message.content}
+            <Chat.Bubble>
+              <Chat.Content showTypingEffect={message.variant === 'assistant' && message.isNew}>
+                {message.content}
+              </Chat.Content>
+              <Chat.Metadata>
+                {message.timestamp.toLocaleTimeString([], {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}
+              </Chat.Metadata>
             </Chat.Bubble>
           </Chat.Message>
         ))}

@@ -5,11 +5,10 @@ import Chat from '@/components/ui/chat'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
-import { Skeleton } from '@/components/ui/skeleton'
+import { css } from '@styled-system/css'
 import { Box, Grid, HStack, VStack } from '@styled-system/jsx'
 import { Bot, Mic, Plus, SendHorizontal, User } from 'lucide-react'
 import { useState } from 'react'
-import { css } from '@styled-system/css'
 
 interface Message {
   id: string
@@ -89,12 +88,12 @@ export default function ChatPreview() {
   }
 
   return (
-    <VStack gap={6} w=' full' p=' padding.block.lg'>
+    <VStack gap={6} w='full' p='padding.block.lg'>
       <Grid columnGap={4} rowGap={4} css={{ gridTemplateColumns: 'auto 1fr' }}>
         <Label css={{ alignSelf: 'end' }}>Show Typing Effect</Label>
         <HStack gap={2}>
           <Switch
-            id=' typing-effect'
+            id='typing-effect'
             checked={showTypingEffect}
             onCheckedChange={setShowTypingEffect}
           />
@@ -120,17 +119,21 @@ export default function ChatPreview() {
                 <Chat.Avatar
                   fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
                 />
-                <Chat.Bubble
-                  showTypingEffect={
-                    message.variant === 'assistant' && message.isNew && showTypingEffect
-                  }
-                  typingSpeed={typingSpeed}
-                >
-                  {message.content === '...' ? (
-                    <Skeleton>{message.content}</Skeleton>
-                  ) : (
-                    message.content
-                  )}
+                <Chat.Bubble>
+                  <Chat.Content
+                    showTypingEffect={
+                      message.variant === 'assistant' && message.isNew && showTypingEffect
+                    }
+                    typingSpeed={typingSpeed}
+                  >
+                    {message.content}
+                  </Chat.Content>
+                  <Chat.Metadata>
+                    {message.timestamp.toLocaleTimeString([], {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                    })}
+                  </Chat.Metadata>
                 </Chat.Bubble>
               </Chat.Message>
             ))}

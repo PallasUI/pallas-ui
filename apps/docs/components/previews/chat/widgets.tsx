@@ -56,7 +56,9 @@ export default function ChatOptionsPreview() {
               <Chat.Avatar
                 fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
               />
-              <Chat.Bubble>{message.content}</Chat.Bubble>
+              <Chat.Bubble>
+                <Chat.Content>{message.content}</Chat.Content>
+              </Chat.Bubble>
             </Chat.Message>
           ))}
           <Chat.Message>
