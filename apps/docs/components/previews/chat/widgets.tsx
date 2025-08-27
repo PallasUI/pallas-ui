@@ -5,7 +5,7 @@ import Chat from '@/components/ui/chat'
 import { Label } from '@/components/ui/label'
 import Segmented from '@/components/ui/segmented'
 import { Switch } from '@/components/ui/switch'
-import { Box, VStack, Grid } from '@styled-system/jsx'
+import { Box, Grid, VStack } from '@styled-system/jsx'
 import { Bot, Plus, SendHorizonal, User } from 'lucide-react'
 import { useState } from 'react'
 
@@ -50,71 +50,82 @@ export default function ChatOptionsPreview() {
   const renderChat = () => {
     return (
       <Chat.Root>
-        {messages.map((message) => (
-          <Chat.Message key={message.id} variant={message.variant}>
-            <Chat.Avatar
-              fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
-            />
-            <Chat.Bubble>{message.content}</Chat.Bubble>
+        <Chat.Messages>
+          {messages.map((message) => (
+            <Chat.Message key={message.id} variant={message.variant}>
+              <Chat.Avatar
+                fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
+              />
+              <Chat.Bubble>{message.content}</Chat.Bubble>
+            </Chat.Message>
+          ))}
+          <Chat.Message>
+            <Chat.Avatar fallback={<Bot size={20} />} />
+            <Chat.Bubble>
+              Sure! What type of cuisine are you in the mood for today? Whether you're craving
+              something spicy, savory, or sweet, we have a variety of cuisines that can satisfy your
+              taste buds.
+              <Chat.Widget>
+                <Chat.WidgetHeader>Choose Your Favorite Cuisine</Chat.WidgetHeader>
+                <Chat.WidgetContent>
+                  <Chat.Options
+                    optionLayout={optionLayout}
+                    optionVariant={optionVariant}
+                    showCheck={showCheck}
+                    multiple={multiple}
+                    onOptionSelect={handleOptionSelect}
+                  >
+                    {optionLayout === 'inline'
+                      ? options.flatMap((group) =>
+                          group.items.map((option) => (
+                            <Chat.Option key={option.value} value={option.value}>
+                              {option.label}
+                            </Chat.Option>
+                          )),
+                        )
+                      : options.map((group) => (
+                          <Chat.OptionGroup key={group.group}>
+                            <Chat.OptionGroupLabel>{group.group}</Chat.OptionGroupLabel>
+                            {group.items.map((option) => (
+                              <Chat.Option key={option.value} value={option.value}>
+                                {option.label}
+                              </Chat.Option>
+                            ))}
+                          </Chat.OptionGroup>
+                        ))}
+                  </Chat.Options>
+                </Chat.WidgetContent>
+                <Chat.WidgetActions>
+                  <Button>Confirm Selection</Button>
+                </Chat.WidgetActions>
+              </Chat.Widget>
+            </Chat.Bubble>
           </Chat.Message>
-        ))}
+        </Chat.Messages>
 
-        <Chat.Message>
-          <Chat.Avatar fallback={<Bot size={20} />} />
-          <Chat.Bubble>
-            Sure! What type of cuisine are you in the mood for today? Whether you're craving
-            something spicy, savory, or sweet, we have a variety of cuisines that can satisfy your
-            taste buds.
-            <Chat.Widget>
-              <Chat.WidgetHeader>Choose Your Favorite Cuisine</Chat.WidgetHeader>
-              <Chat.WidgetContent>
-                <Chat.Options
-                  optionLayout={optionLayout}
-                  optionVariant={optionVariant}
-                  showCheck={showCheck}
-                  multiple={multiple}
-                  onOptionSelect={handleOptionSelect}
-                >
-                  {options.map((group) => (
-                    <Chat.OptionGroup key={group.group}>
-                      <Chat.OptionGroupLabel>{group.group}</Chat.OptionGroupLabel>
-                      {group.items.map((option) => (
-                        <Chat.Option key={option.value} value={option.value}>
-                          {option.label}
-                        </Chat.Option>
-                      ))}
-                    </Chat.OptionGroup>
-                  ))}
-                </Chat.Options>
-              </Chat.WidgetContent>
-              <Chat.WidgetActions>
-                <Button>Confirm Selection</Button>
-              </Chat.WidgetActions>
-            </Chat.Widget>
-          </Chat.Bubble>
-        </Chat.Message>
+        <Chat.Composer>
+          <Chat.Input inputLayout="vertical">
+            <Chat.TextArea
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Tell me about your food preferences..."
+            />
 
-        <Chat.Input layout="vertical">
-          <Chat.TextArea
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Tell me about your food preferences..."
-          />
-
-          <Chat.InputActions>
-            <Button size="icon" variant="text" shape="circle">
-              <Plus size={16} />
-            </Button>
-            <Button
-              size="icon"
-              shape="circle"
-              disabled={!newMessage.trim()}
-              css={{ marginLeft: 'auto' }}
-            >
-              <SendHorizonal size={16} />
-            </Button>
-          </Chat.InputActions>
-        </Chat.Input>
+            <Chat.InputActions>
+              <Button size="icon" variant="text" shape="circle">
+                <Plus size={16} />
+              </Button>
+              <Button
+                size="icon"
+                shape="circle"
+                disabled={!newMessage.trim()}
+                css={{ marginLeft: 'auto' }}
+              >
+                <SendHorizonal size={16} />
+              </Button>
+            </Chat.InputActions>
+          </Chat.Input>
+        </Chat.Composer>
       </Chat.Root>
     )
   }
@@ -166,7 +177,9 @@ export default function ChatOptionsPreview() {
         <Switch id="multiple-select" checked={multiple} onCheckedChange={setMultiple} />
       </Grid>
 
-      <Box>{renderChat()}</Box>
+      <Box w="full" h="800px">
+        {renderChat()}
+      </Box>
     </VStack>
   )
 }

@@ -8,8 +8,8 @@ import { Box, VStack, Grid } from '@styled-system/jsx'
 import { Bot, Mic, Plus, SendHorizonal, User } from 'lucide-react'
 import { useState } from 'react'
 
-export default function ChatLayoutsPreview() {
-  const [layout, setLayout] = useState<'vertical' | 'horizontal'>('vertical')
+export default function ChatinputLayoutsPreview() {
+  const [inputLayout, setinputLayout] = useState<'vertical' | 'horizontal'>('vertical')
   const [newMessage, setNewMessage] = useState('')
 
   const messages = [
@@ -28,73 +28,79 @@ export default function ChatLayoutsPreview() {
   const renderChat = () => {
     return (
       <Chat.Root>
-        {messages.map((message) => (
-          <Chat.Message key={message.id} variant={message.variant}>
-            <Chat.Avatar
-              fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
-            />
-            <Chat.Bubble>{message.content}</Chat.Bubble>
-          </Chat.Message>
-        ))}
+        <Chat.Messages>
+          {messages.map((message) => (
+            <Chat.Message key={message.id} variant={message.variant}>
+              <Chat.Avatar
+                fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
+              />
+              <Chat.Bubble>{message.content}</Chat.Bubble>
+            </Chat.Message>
+          ))}
+        </Chat.Messages>
 
-        <Chat.Input layout={layout}>
-          {layout === 'horizontal' && (
+        <Chat.Composer>
+          <Chat.Input inputLayout={inputLayout}>
+            {inputLayout === 'horizontal' && (
+              <Chat.InputActions>
+                <Button size='icon' variant='text' shape='circle'>
+                  <Plus size={16} />
+                </Button>
+              </Chat.InputActions>
+            )}
+
+            <Chat.TextArea
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder='Type your message...'
+            />
+
             <Chat.InputActions>
-              <Button size="icon" variant="text" shape="circle">
-                <Plus size={16} />
+              {inputLayout === 'vertical' && (
+                <Button size='icon' variant='text' shape='circle'>
+                  <Plus size={16} />
+                </Button>
+              )}
+              <Button
+                size='icon'
+                variant='text'
+                shape='circle'
+                css={{ marginLeft: inputLayout === 'vertical' ? 'auto' : undefined }}
+              >
+                <Mic size={16} />
+              </Button>
+              <Button size='icon' shape='circle' disabled={!newMessage.trim()}>
+                <SendHorizonal size={16} />
               </Button>
             </Chat.InputActions>
-          )}
-
-          <Chat.TextArea
-            value={newMessage}
-            onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message..."
-          />
-
-          <Chat.InputActions>
-            {layout === 'vertical' && (
-              <Button size="icon" variant="text" shape="circle">
-                <Plus size={16} />
-              </Button>
-            )}
-            <Button
-              size="icon"
-              variant="text"
-              shape="circle"
-              css={{ marginLeft: layout === 'vertical' ? 'auto' : undefined }}
-            >
-              <Mic size={16} />
-            </Button>
-            <Button size="icon" shape="circle" disabled={!newMessage.trim()}>
-              <SendHorizonal size={16} />
-            </Button>
-          </Chat.InputActions>
-        </Chat.Input>
+          </Chat.Input>
+        </Chat.Composer>
       </Chat.Root>
     )
   }
 
   return (
-    <VStack gap={6} w="full" p="padding.block.lg">
+    <VStack gap={6} w='full' p='padding.block.lg'>
       <Grid columnGap={4} rowGap={4} css={{ gridTemplateColumns: 'auto 1fr' }}>
-        <Label htmlFor="layout" css={{ alignSelf: 'end' }}>
+        <Label htmlFor='inputLayout' css={{ alignSelf: 'end' }}>
           Input Layout
         </Label>
         <Segmented.Root
-          value={layout}
-          onValueChange={(value) => setLayout(value as 'vertical' | 'horizontal')}
+          value={inputLayout}
+          onValueChange={(value) => setinputLayout(value as 'vertical' | 'horizontal')}
         >
-          <Segmented.Option value="vertical">
+          <Segmented.Option value='vertical'>
             <Segmented.Text>Vertical</Segmented.Text>
           </Segmented.Option>
-          <Segmented.Option value="horizontal">
+          <Segmented.Option value='horizontal'>
             <Segmented.Text>Horizontal</Segmented.Text>
           </Segmented.Option>
         </Segmented.Root>
       </Grid>
 
-      <Box>{renderChat()}</Box>
+      <Box w='full' h='500px'>
+        {renderChat()}
+      </Box>
     </VStack>
   )
 }

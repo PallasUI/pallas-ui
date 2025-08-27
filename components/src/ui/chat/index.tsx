@@ -65,7 +65,6 @@ const CustomTextArea = React.forwardRef<
 
     const { min, max } = getHeightValues()
 
-    // Check if textarea is empty
     const isEmpty = !textarea.value.trim()
 
     if (isEmpty) {
@@ -78,7 +77,6 @@ const CustomTextArea = React.forwardRef<
     // First, set height to minimum to get baseline measurement
     textarea.style.height = `${min}px`
 
-    // Check if content overflows at minimum height
     const isOverflowing = textarea.scrollHeight > min
 
     if (!isOverflowing) {
@@ -362,12 +360,110 @@ const CustomOption = React.forwardRef<
 })
 CustomOption.displayName = 'Option'
 
+// Custom Messages component with auto-scroll functionality
+const CustomMessages = React.forwardRef<
+  HTMLDivElement & { forceScrollToBottom: () => void },
+  React.HTMLAttributes<HTMLDivElement> & {}
+>(({ children, onScroll, ...props }, ref) => {
+  const messagesRef = React.useRef<HTMLDivElement>(null)
+  const [shouldAutoScroll, setShouldAutoScroll] = React.useState(true)
+  const lastScrollHeight = React.useRef(0)
+  const childrenCount = React.useRef(0)
+
+  const scrollToBottom = React.useCallback(
+    (force = false) => {
+      if (messagesRef.current && (shouldAutoScroll || force)) {
+        messagesRef.current.scrollTo({
+          top: messagesRef.current.scrollHeight,
+          behavior: 'smooth',
+        })
+        if (force) {
+          setShouldAutoScroll(true)
+        }
+      }
+    },
+    [shouldAutoScroll],
+  )
+
+  // Auto-scroll when new messages are added or content changes
+  React.useEffect(() => {
+    const element = messagesRef.current
+    if (!element) return
+
+    // Count current children to detect new messages
+    const currentChildrenCount = React.Children.count(children)
+    const isNewMessage = currentChildrenCount > childrenCount.current
+    childrenCount.current = currentChildrenCount
+
+    const observer = new MutationObserver(() => {
+      requestAnimationFrame(() => {
+        scrollToBottom(isNewMessage)
+      })
+    })
+
+    observer.observe(element, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+    })
+
+    return () => observer.disconnect()
+  }, [scrollToBottom, children])
+
+  React.useEffect(() => {
+    const element = messagesRef.current
+    if (!element) return
+
+    const resizeObserver = new ResizeObserver(() => {
+      const currentScrollHeight = element.scrollHeight
+      if (currentScrollHeight !== lastScrollHeight.current) {
+        lastScrollHeight.current = currentScrollHeight
+        requestAnimationFrame(() => {
+          scrollToBottom()
+        })
+      }
+    })
+
+    resizeObserver.observe(element)
+
+    return () => resizeObserver.disconnect()
+  }, [scrollToBottom])
+
+  // Handle manual scroll - disable auto-scroll if user scrolls up
+  const handleScroll = React.useCallback(
+    (e: React.UIEvent<HTMLDivElement>) => {
+      const element = e.currentTarget
+      const { scrollTop, scrollHeight, clientHeight } = element
+
+      // Check if user is near the bottom (within 50px)
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 50
+      setShouldAutoScroll(isNearBottom)
+
+      onScroll?.(e)
+    },
+    [onScroll],
+  )
+
+  return (
+    <div ref={messagesRef} onScroll={handleScroll} {...props}>
+      {children}
+    </div>
+  )
+})
+CustomMessages.displayName = 'Messages'
+
 export type RootProps = WithFixedClassName<React.HTMLAttributes<HTMLDivElement>>
 
 export const Root = withProvider<
   HTMLDivElement,
   Assign<React.HTMLAttributes<HTMLDivElement>, ChatVariantProps & JsxStyleProps>
 >('div', 'root')
+
+export const Messages = withContext<
+  React.ComponentRef<typeof CustomMessages>,
+  Assign<React.ComponentPropsWithoutRef<typeof CustomMessages>, JsxStyleProps>
+>(CustomMessages, 'messages')
 
 export const Message = withProvider<
   HTMLDivElement,
@@ -391,7 +487,10 @@ export const Metadata = withContext<
 
 export const Input = withProvider<
   HTMLDivElement,
-  Assign<React.HTMLAttributes<HTMLDivElement>, Pick<ChatVariantProps, 'layout'> & JsxStyleProps>
+  Assign<
+    React.HTMLAttributes<HTMLDivElement>,
+    Pick<ChatVariantProps, 'inputLayout'> & JsxStyleProps
+  >
 >('div', 'input')
 
 export const TextArea = withContext<
@@ -461,8 +560,17 @@ export const OptionGroupLabel = withContext<
   Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
 >('p', 'optionGroupLabel')
 
+export const Composer = withProvider<
+  HTMLDivElement,
+  Assign<
+    React.HTMLAttributes<HTMLDivElement> & Pick<ChatVariantProps, 'composerPosition'>,
+    JsxStyleProps
+  >
+>('div', 'composer')
+
 const Chat = {
   Root,
+  Messages,
   Message,
   Avatar,
   Bubble,
@@ -480,6 +588,7 @@ const Chat = {
   OptionGroup,
   OptionGroupLabel,
   Option,
+  Composer,
 }
 
 export default Chat

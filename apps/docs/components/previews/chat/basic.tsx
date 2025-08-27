@@ -74,7 +74,7 @@ export default function ChatPreview() {
             ? {
                 ...msg,
                 content:
-                  "This is a sample response. Thank you for your message! I'm here to assist you with any questions or information you need. If you'd like a fun fact, productivity tips, book suggestions, or anything else, just let me know. How can I help you today?",
+                  'This is a sample response. Thank you for your message! I\'m here to assist you with any questions or information you need. If you\'d like a fun fact, productivity tips, book suggestions, or anything else, just let me know. How can I help you today?',
                 isNew: true,
               }
             : { ...msg, isNew: false },
@@ -89,21 +89,21 @@ export default function ChatPreview() {
   }
 
   return (
-    <VStack gap={6} w=" full" p=" padding.block.lg">
+    <VStack gap={6} w=' full' p=' padding.block.lg'>
       <Grid columnGap={4} rowGap={4} css={{ gridTemplateColumns: 'auto 1fr' }}>
         <Label css={{ alignSelf: 'end' }}>Show Typing Effect</Label>
         <HStack gap={2}>
           <Switch
-            id=" typing-effect"
+            id=' typing-effect'
             checked={showTypingEffect}
             onCheckedChange={setShowTypingEffect}
           />
         </HStack>
 
         <Label css={{ alignSelf: 'end' }}>Typing Speed (ms)</Label>
-        <Input size="md" className={css({ w: '80px' })}>
+        <Input size='md' className={css({ w: '80px' })}>
           <Input.Number
-            placeholder="Enter a number"
+            placeholder='Enter a number'
             min={0}
             max={100}
             value={typingSpeed}
@@ -112,63 +112,67 @@ export default function ChatPreview() {
         </Input>
       </Grid>
 
-      <Box>
+      <Box w='full' h='500px'>
         <Chat.Root>
-          {messages.map((message) => (
-            <Chat.Message key={message.id} variant={message.variant}>
-              <Chat.Avatar
-                fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
+          <Chat.Messages>
+            {messages.map((message) => (
+              <Chat.Message key={message.id} variant={message.variant}>
+                <Chat.Avatar
+                  fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
+                />
+                <Chat.Bubble
+                  showTypingEffect={
+                    message.variant === 'assistant' && message.isNew && showTypingEffect
+                  }
+                  typingSpeed={typingSpeed}
+                >
+                  {message.content === '...' ? (
+                    <Skeleton>{message.content}</Skeleton>
+                  ) : (
+                    message.content
+                  )}
+                </Chat.Bubble>
+              </Chat.Message>
+            ))}
+          </Chat.Messages>
+
+          <Chat.Composer>
+            {showSuggestions && (
+              <Chat.Suggestions suggestionVariant='outlined' suggestionShape='pill'>
+                {suggestions.map((suggestion, index) => (
+                  <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                    {suggestion}
+                  </Chat.Suggestion>
+                ))}
+              </Chat.Suggestions>
+            )}
+
+            <Chat.Input inputLayout='vertical'>
+              <Chat.TextArea
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                placeholder='Type your message...'
+                onSend={addMessage}
               />
-              <Chat.Bubble
-                showTypingEffect={
-                  message.variant === 'assistant' && message.isNew && showTypingEffect
-                }
-                typingSpeed={typingSpeed}
-              >
-                {message.content === '...' ? (
-                  <Skeleton>{message.content}</Skeleton>
-                ) : (
-                  message.content
-                )}
-              </Chat.Bubble>
-            </Chat.Message>
-          ))}
-
-          {showSuggestions && (
-            <Chat.Suggestions suggestionVariant="outlined" suggestionShape="pill">
-              {suggestions.map((suggestion, index) => (
-                <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                  {suggestion}
-                </Chat.Suggestion>
-              ))}
-            </Chat.Suggestions>
-          )}
-
-          <Chat.Input layout="vertical">
-            <Chat.TextArea
-              value={newMessage}
-              onChange={(e) => setNewMessage(e.target.value)}
-              placeholder="Type your message..."
-              onSend={addMessage}
-            />
-            <Chat.InputActions>
-              <Button size="icon" variant="text" shape="circle">
-                <Plus size={16} />
-              </Button>
-              <Button size="icon" variant="text" shape="circle" css={{ marginLeft: 'auto' }}>
-                <Mic size={16} />
-              </Button>
-              <Button
-                size="icon"
-                variant="primary"
-                shape="circle"
-                onClick={addMessage}
-                disabled={!newMessage.trim()}
-              >
-                <SendHorizontal size={16} />
-              </Button>
-            </Chat.InputActions>
-          </Chat.Input>
+              <Chat.InputActions>
+                <Button size='icon' variant='text' shape='circle'>
+                  <Plus size={16} />
+                </Button>
+                <Button size='icon' variant='text' shape='circle' css={{ marginLeft: 'auto' }}>
+                  <Mic size={16} />
+                </Button>
+                <Button
+                  size='icon'
+                  variant='primary'
+                  shape='circle'
+                  onClick={addMessage}
+                  disabled={!newMessage.trim()}
+                >
+                  <SendHorizontal size={16} />
+                </Button>
+              </Chat.InputActions>
+            </Chat.Input>
+          </Chat.Composer>
         </Chat.Root>
       </Box>
     </VStack>

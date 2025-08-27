@@ -5,6 +5,7 @@ export const chat = defineSlotRecipe({
   description: 'Accessible chat component',
   slots: [
     'root',
+    'messages',
     'message',
     'avatar',
     'bubble',
@@ -22,15 +23,25 @@ export const chat = defineSlotRecipe({
     'option',
     'optionGroup',
     'optionGroupLabel',
+    'composer',
   ],
   base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
+      position: 'relative',
       width: 'full',
+      height: 'full',
       gap: 'gap.component.md',
       p: 'padding.block.lg',
       textStyle: 'sm',
+    },
+    messages: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'gap.component.md',
+      flex: 1,
+      overflowY: 'auto',
     },
     message: {
       display: 'grid',
@@ -62,6 +73,7 @@ export const chat = defineSlotRecipe({
     },
     input: {
       display: 'flex',
+      w: 'full',
       gap: 'gap.inline.sm',
       px: 'padding.block.md',
       py: 'padding.block.lg',
@@ -181,6 +193,12 @@ export const chat = defineSlotRecipe({
       letterSpacing: 'wide',
       px: 'padding.block.sm',
     },
+    composer: {
+      display: 'flex',
+      flexDirection: 'column',
+      bg: 'surface.elevated',
+      flexShrink: 0,
+    },
   },
   variants: {
     variant: {
@@ -205,7 +223,7 @@ export const chat = defineSlotRecipe({
         },
       },
     },
-    layout: {
+    inputLayout: {
       vertical: {
         input: {
           flexDirection: 'column',
@@ -349,21 +367,40 @@ export const chat = defineSlotRecipe({
         },
       },
     },
+    composerPosition: {
+      bottom: {
+        composer: {
+          mt: 'auto',
+        },
+      },
+      center: {
+        composer: {
+          position: 'absolute',
+          bottom: '50%',
+          left: '0',
+          right: '0',
+          transform: 'translateY(50%)',
+          flexDirection: 'column-reverse',
+        },
+      },
+    },
   },
   defaultVariants: {
     variant: 'assistant',
-    layout: 'vertical',
+    inputLayout: 'vertical',
     suggestionVariant: 'outlined',
     suggestionShape: 'pill',
     optionLayout: 'list',
     optionVariant: 'default',
+    composerPosition: 'bottom',
   },
   staticCss: [
     { variant: ['*'] },
-    { layout: ['*'] },
+    { inputLayout: ['*'] },
     { suggestionVariant: ['*'] },
     { suggestionShape: ['*'] },
     { optionLayout: ['*'] },
     { optionVariant: ['*'] },
+    { composerPosition: ['*'] },
   ],
 })
