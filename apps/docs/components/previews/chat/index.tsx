@@ -286,7 +286,23 @@ interface ChatSidebarProps {
   onNewChat: () => void
 }
 
-function ChatPreview({ initialMessages = [], chatId }: ChatPreviewProps) {
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = React.useState(false)
+
+  React.useEffect(() => {
+    const media = window.matchMedia(query)
+    if (media.matches !== matches) {
+      setMatches(media.matches)
+    }
+    const listener = () => setMatches(media.matches)
+    media.addEventListener('change', listener)
+    return () => media.removeEventListener('change', listener)
+  }, [matches, query])
+
+  return matches
+}
+
+function ChatPreview({ initialMessages = [] }: ChatPreviewProps) {
   const [messages, setMessages] = useState<Message[]>(initialMessages)
   const [showSuggestions, setShowSuggestions] = useState(initialMessages.length === 0)
   const [suggestions] = useState([
@@ -415,6 +431,8 @@ function ChatSidebar({
   onChatSelect,
   onNewChat,
 }: ChatSidebarProps) {
+  const isMobile = useMediaQuery('(max-width: 768px)')
+
   return (
     <Sidebar.Provider open={open} onOpenChange={onOpenChange}>
       <Sidebar.Root
@@ -480,7 +498,7 @@ function ChatSidebar({
         <Sidebar.Rail />
       </Sidebar.Root>
 
-      {!open && (
+      {(!open || isMobile) && (
         <Sidebar.Trigger onClick={() => onOpenChange(!open)}>
           <PanelLeft />
         </Sidebar.Trigger>
