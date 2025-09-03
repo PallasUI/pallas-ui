@@ -1,8 +1,13 @@
 {
   "name": "@pallas-ui/panda-preset",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Panda CSS Preset for Pallas UI",
-  "keywords": ["Pallas UI", "Panda CSS", "Preset", "Pallas UI"],
+  "keywords": [
+    "Pallas UI",
+    "Panda CSS",
+    "Preset",
+    "Pallas UI"
+  ],
   "homepage": "https://pallas-ui.com",
   "license": "MIT",
   "publishConfig": {
@@ -41,7 +46,9 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "types": "src/index.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -85,11 +92,17 @@
     }
   },
   "tsup": {
-    "entry": ["src/index.ts", "src/colors/*.ts", "src/utils/index.ts"],
+    "entry": [
+      "src/index.ts",
+      "src/colors/*.ts",
+      "src/utils/index.ts"
+    ],
     "clean": true,
     "dts": true,
     "sourcemap": true,
-    "format": ["esm", "cjs"]
+    "format": [
+      "esm",
+      "cjs"
+    ]
   }
 }
-
