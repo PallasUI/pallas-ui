@@ -475,7 +475,7 @@ importers:
         version: 19.1.0
       tsup:
         specifier: ^8.0.1
-        version: 8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0)
+        version: 8.4.0(postcss@8.4.49)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0)
       typescript:
         specifier: 5.5.4
         version: 5.5.4
@@ -15270,7 +15270,7 @@ snapshots:
       - tsx
       - yaml
 
-  tsup@8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0):
+  tsup@8.4.0(postcss@8.4.49)(tsx@4.19.4)(typescript@5.5.4)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.3)
       cac: 6.7.14
@@ -15280,7 +15280,7 @@ snapshots:
       esbuild: 0.25.3
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.5.3)(tsx@4.19.4)(yaml@2.7.0)
+      postcss-load-config: 6.0.1(postcss@8.4.49)(tsx@4.19.4)(yaml@2.7.0)
       resolve-from: 5.0.0
       rollup: 4.40.1
       source-map: 0.8.0-beta.0
@@ -15289,7 +15289,7 @@ snapshots:
       tinyglobby: 0.2.13
       tree-kill: 1.2.2
     optionalDependencies:
-      postcss: 8.5.3
+      postcss: 8.4.49
       typescript: 5.5.4
     transitivePeerDependencies:
       - jiti
