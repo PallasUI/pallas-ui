@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - feat/changeset
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -11,14 +11,21 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
         with:
-          node-version: 20.x
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
 
       - name: Enable corepack
         run: corepack enable pnpm
