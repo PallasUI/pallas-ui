@@ -1,32 +1,29 @@
 {
-    "name": "@pallas-ui/style-context",
-    "version": "0.1.0",
-    "private": true,
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "sideEffects": false,
-    "license": "MIT",
-    "files": [
-        "dist/**",
-        "styled-system/**"
-    ],
-    "scripts": {
-        "prepare": "panda codegen --silent",
-        "build": "tsup",
-        "dev": "tsup --watch",
-        "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
-    },
-    "devDependencies": {
-        "@pallas-ui/typescript-config": "workspace:*",
-        "@pandacss/dev": "0.50.0",
-        "@types/react": "19.1.0",
-        "@types/react-dom": "19.1.0",
-        "react": "^19.1.0",
-        "tsup": "^8.0.1",
-        "typescript": "5.5.4"
-    },
-    "peerDependencies": {
-        "react": "^19.1.0"
-    }
+  "name": "@pallas-ui/style-context",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": ["dist/**", "styled-system/**"],
+  "scripts": {
+    "prepare": "panda codegen --silent",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@pallas-ui/typescript-config": "workspace:*",
+    "@pandacss/dev": "0.50.0",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0",
+    "react": "^19.1.0",
+    "tsup": "^8.0.1",
+    "typescript": "5.5.4"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0"
+  }
 }
+
