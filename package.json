@@ -12,7 +12,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "sync-components": "rsync -av --delete ./components/src/ui/ ./apps/docs/components/ui/ && node ./scripts/process-imports.js"
+    "sync-components": "rsync -av --delete ./components/src/ui/ ./apps/docs/components/ui/ && node ./scripts/process-imports.js",
+    "release": "changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
