@@ -1,12 +1,15 @@
 {
   "name": "@pallas-ui/style-context",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "license": "MIT",
-  "files": ["dist/**", "styled-system/**"],
+  "files": [
+    "dist/**",
+    "styled-system/**"
+  ],
   "scripts": {
     "prepare": "panda codegen --silent",
     "build": "tsup",
@@ -26,4 +29,3 @@
     "react": "^19.1.0"
   }
 }
-
