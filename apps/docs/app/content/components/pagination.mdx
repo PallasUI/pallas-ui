@@ -1,0 +1,89 @@
+---
+title: Pagination
+description: A navigation component that allows users to browse through pages of content.
+references:
+  ark:
+    link: https://ark-ui.com/react/docs/components/pagination
+    api: https://ark-ui.com/react/docs/components/pagination#api-reference
+---
+<ContentContainer>
+
+<Section gap="1">
+# Pagination
+<Paragraph size={'extraLarge'} color={'tertiary'}>A navigation component that allows users to browse through pages of content.</Paragraph>
+<ComponentPreview name="pagination" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@ark-ui/react" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="pagination" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Pagination from '@/components/ui/pagination'
+```
+
+```tsx
+<Pagination.Root count={100} pageSize={10}>
+  <Pagination.PrevTrigger>Previous</Pagination.PrevTrigger>
+  <Pagination.Context>
+    {({ pages }) =>
+      pages.map((page, index) =>
+        page.type === 'page' ? (
+          <Pagination.Item key={index} type="page" value={page.value}>
+            {page.value}
+          </Pagination.Item>
+        ) : (
+          <Pagination.Ellipsis key={index} index={index}>
+            &#8230;
+          </Pagination.Ellipsis>
+        )
+      )
+    }
+  </Pagination.Context>
+  <Pagination.NextTrigger>Next</Pagination.NextTrigger>
+</Pagination.Root>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+
+<ComponentPreview name="pagination" />
+
+### Controlled
+
+<ComponentPreview name="pagination" file="controlled" />
+
+### With Ellipsis
+
+When there are many pages, the pagination shows ellipsis to indicate omitted pages. Use `siblingCount` and `boundaryCount` to control how many pages are visible.
+
+<ComponentPreview name="pagination" file="with-ellipsis" />
+
+### Sizes
+
+<ComponentPreview name="pagination" file="sizes" />
+
+</Section>
+
+</ContentContainer>

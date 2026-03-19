@@ -40,6 +40,7 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
+import { pagination } from './pagination'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
@@ -59,6 +60,7 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   accordion,
+  pagination,
   avatar,
   breadcrumb,
   card,
