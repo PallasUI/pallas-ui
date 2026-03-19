@@ -37,6 +37,16 @@ export const pagination = defineSlotRecipe({
           bg: '{colors.surface.elevated}',
         },
       },
+      '&[data-size=sm], [data-size=sm] &': {
+        minWidth: '{sizes.controlHeight.sm}',
+        height: '{sizes.controlHeight.sm}',
+        padding: '0 {spacing.padding.inline.xs}',
+      },
+      '&[data-size=lg], [data-size=lg] &': {
+        minWidth: '{sizes.controlHeight.lg}',
+        height: '{sizes.controlHeight.lg}',
+        padding: '0 {spacing.padding.inline.md}',
+      },
     },
     nextTrigger: {
       display: 'inline-flex',
@@ -61,6 +71,16 @@ export const pagination = defineSlotRecipe({
         _hover: {
           bg: '{colors.surface.elevated}',
         },
+      },
+      '&[data-size=sm], [data-size=sm] &': {
+        minWidth: '{sizes.controlHeight.sm}',
+        height: '{sizes.controlHeight.sm}',
+        padding: '0 {spacing.padding.inline.xs}',
+      },
+      '&[data-size=lg], [data-size=lg] &': {
+        minWidth: '{sizes.controlHeight.lg}',
+        height: '{sizes.controlHeight.lg}',
+        padding: '0 {spacing.padding.inline.md}',
       },
     },
     item: {
@@ -90,6 +110,18 @@ export const pagination = defineSlotRecipe({
           color: '{colors.bgSolid.text}',
         },
       },
+      '&[data-size=sm], [data-size=sm] &': {
+        minWidth: '{sizes.controlHeight.sm}',
+        height: '{sizes.controlHeight.sm}',
+        padding: '0 {spacing.padding.inline.xs}',
+        textStyle: 'xs',
+      },
+      '&[data-size=lg], [data-size=lg] &': {
+        minWidth: '{sizes.controlHeight.lg}',
+        height: '{sizes.controlHeight.lg}',
+        padding: '0 {spacing.padding.inline.md}',
+        textStyle: 'md',
+      },
     },
     ellipsis: {
       display: 'inline-flex',
@@ -99,6 +131,16 @@ export const pagination = defineSlotRecipe({
       height: '{sizes.controlHeight.md}',
       color: '{colors.text.tertiary}',
       textStyle: 'sm',
+      '&[data-size=sm], [data-size=sm] &': {
+        minWidth: '{sizes.controlHeight.sm}',
+        height: '{sizes.controlHeight.sm}',
+        textStyle: 'xs',
+      },
+      '&[data-size=lg], [data-size=lg] &': {
+        minWidth: '{sizes.controlHeight.lg}',
+        height: '{sizes.controlHeight.lg}',
+        textStyle: 'md',
+      },
     },
   },
   variants: {

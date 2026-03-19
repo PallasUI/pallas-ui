@@ -6,7 +6,7 @@ import { VStack } from '@styled-system/jsx'
 
 function PaginationExample({ size }: { size: 'sm' | 'md' | 'lg' }) {
   return (
-    <Pagination.Root count={20} pageSize={5} size={size}>
+    <Pagination.Root count={20} pageSize={5} size={size} data-size={size}>
       <Pagination.PrevTrigger>
         <ChevronLeft />
       </Pagination.PrevTrigger>
