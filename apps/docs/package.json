@@ -6,7 +6,7 @@
   "scripts": {
     "prepare": "pnpm exec pandacss codegen && node ../../scripts/sync-components.js",
     "predev": "pnpm prepare",
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "prebuild": "pnpm prepare",
     "build": "next build",
     "start": "next start",

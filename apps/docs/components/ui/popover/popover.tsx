@@ -14,24 +14,24 @@ export type RootProps = WithFixedClassName<PopoverPrimitive.PopoverProps>
 export const Root = withProvider<
   React.ComponentRef<typeof PopoverPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
->(PopoverPrimitive.Root, 'root')
+>(PopoverPrimitive.Root as any, 'root')
 
 export const Trigger = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
   PopoverPrimitive.PopoverTriggerProps
->(PopoverPrimitive.Trigger, 'trigger')
+>(PopoverPrimitive.Trigger as any, 'trigger')
 
 const Arrow = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Arrow>,
   Assign<PopoverPrimitive.PopoverArrowProps, JsxStyleProps>
->(PopoverPrimitive.Arrow, 'arrow')
+>(PopoverPrimitive.Arrow as any, 'arrow')
 
 const CustomContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverPrimitive.PopoverContentProps
 >(({ align = 'center', sideOffset = 4, children, ...props }, ref) => (
   <Portal>
-    <PopoverPrimitive.Content ref={ref} align={align} sideOffset={sideOffset} {...props}>
+    <PopoverPrimitive.Content ref={ref} align={align} sideOffset={sideOffset} {...(props as any)}>
       {children}
       <Arrow />
     </PopoverPrimitive.Content>
@@ -42,12 +42,12 @@ CustomContent.displayName = PopoverPrimitive.Content.displayName
 export const Content = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   Assign<PopoverPrimitive.PopoverContentProps, JsxStyleProps>
->(CustomContent, 'content')
+>(CustomContent as any, 'content')
 
 export const Close = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Close>,
   Assign<PopoverPrimitive.PopoverCloseProps, JsxStyleProps>
->(PopoverPrimitive.Close, 'close')
+>(PopoverPrimitive.Close as any, 'close')
 
 const Popover = {
   Root,

@@ -12,5 +12,5 @@ const SeparatorStyled = withContext<
 
 export const Separator = (props: SideSeparatorProps) => {
   const [separatorProps, { className, ...rest }] = separator.splitVariantProps(props)
-  return <SeparatorStyled className={cx(separator(separatorProps), className)} {...rest} />
+  return <SeparatorStyled className={cx(separator(separatorProps), className)} {...(rest as any)} />
 }

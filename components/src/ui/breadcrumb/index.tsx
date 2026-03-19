@@ -11,21 +11,25 @@ export type RootProps = WithFixedClassName<ComponentProps<typeof BreadcrumbPrimi
 export const Root = withProvider<
   React.ComponentRef<typeof BreadcrumbPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
+  // @ts-expect-error - Breadcrumb primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(BreadcrumbPrimitive.Root, 'root')
 
 export const List = withContext<
   React.ComponentRef<typeof BreadcrumbPrimitive.List>,
   Assign<ComponentProps<typeof BreadcrumbPrimitive.List>, JsxStyleProps>
+  // @ts-expect-error - Breadcrumb primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(BreadcrumbPrimitive.List, 'list')
 
 export const Item = withContext<
   React.ComponentRef<typeof BreadcrumbPrimitive.Item>,
   Assign<ComponentProps<typeof BreadcrumbPrimitive.Item>, JsxStyleProps>
+  // @ts-expect-error - Breadcrumb primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(BreadcrumbPrimitive.Item, 'item')
 
 export const Link = withContext<
   React.ComponentRef<typeof BreadcrumbPrimitive.Link>,
   Assign<ComponentProps<typeof BreadcrumbPrimitive.Link>, JsxStyleProps>
+  // @ts-expect-error - Breadcrumb primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(BreadcrumbPrimitive.Link, 'link')
 
 export const Separator = withContext<

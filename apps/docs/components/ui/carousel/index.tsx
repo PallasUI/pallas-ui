@@ -25,6 +25,7 @@ export type NextProps = Assign<
 >
 
 export const Root = withProvider<React.ComponentRef<typeof CarouselPrimitive.Root>, RootProps>(
+  // @ts-expect-error - Carousel primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
   CarouselPrimitive.Root,
   'root',
 )
@@ -32,11 +33,13 @@ export const Root = withProvider<React.ComponentRef<typeof CarouselPrimitive.Roo
 export const List = withContext<
   React.ComponentRef<typeof CarouselPrimitive.List>,
   Assign<ComponentProps<typeof CarouselPrimitive.List>, JsxStyleProps>
+  // @ts-expect-error - Carousel primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(CarouselPrimitive.List, 'list')
 
 export const Item = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Item>,
   Assign<ComponentProps<typeof CarouselPrimitive.Item>, JsxStyleProps>
+  // @ts-expect-error - Carousel primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(CarouselPrimitive.Item, 'item')
 
 const PreviousButton = React.forwardRef<
@@ -55,9 +58,11 @@ const PreviousButton = React.forwardRef<
   )
 })
 
+PreviousButton.displayName = 'PreviousButton'
 export const Previous = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Previous>,
   PreviousProps
+  // @ts-expect-error - forwardRef component incompatible with style-context ElementType (React 19)
 >(PreviousButton, 'previous')
 
 const NextButton = React.forwardRef<
@@ -76,7 +81,10 @@ const NextButton = React.forwardRef<
   )
 })
 
+NextButton.displayName = 'NextButton'
+
 export const Next = withContext<React.ComponentRef<typeof CarouselPrimitive.Next>, NextProps>(
+  // @ts-expect-error - forwardRef component incompatible with style-context ElementType (React 19)
   NextButton,
   'next',
 )
@@ -84,11 +92,13 @@ export const Next = withContext<React.ComponentRef<typeof CarouselPrimitive.Next
 export const Dots = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Dots>,
   Assign<ComponentProps<typeof CarouselPrimitive.Dots>, JsxStyleProps>
+  // @ts-expect-error - Carousel primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(CarouselPrimitive.Dots, 'dots')
 
 export const Dot = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Dot>,
   Assign<CarouselPrimitive.CarouselDotProps, JsxStyleProps>
+  // @ts-expect-error - Carousel primitive ForwardRefExoticComponent incompatible with style-context ElementType (React 19)
 >(CarouselPrimitive.Dot, 'dot')
 
 const Carousel = {

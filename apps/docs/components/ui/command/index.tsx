@@ -37,15 +37,16 @@ const CustomRoot = React.forwardRef<React.ComponentRef<typeof CommandPrimitive>,
   },
 )
 
+CustomRoot.displayName = 'CustomRoot'
 export const Root = withProvider<
   React.ComponentRef<typeof CommandPrimitive>,
   Assign<RootProps, JsxStyleProps>
->(CustomRoot, 'root')
+>(CustomRoot as any, 'root')
 
 const ModalRoot = withProvider<
   React.ComponentRef<typeof CommandPrimitive>,
   Assign<RootProps, CommandVariantProps & JsxStyleProps>
->(CommandPrimitive, 'root')
+>(CommandPrimitive as any, 'root')
 
 export type DialogProps = RootProps &
   ComponentProps<typeof DialogPrimitive.Root> & {
@@ -78,7 +79,7 @@ const CommandDialog = React.forwardRef<
         ref={ref}
       >
         <CommandContext.Provider value={{ isModal: true }}>
-          <ModalRoot type="floating" {...props}>
+          <ModalRoot type="floating" {...(props as any)}>
             {children}
             {showCloseButton && (
               <DialogPrimitive.Close
@@ -98,10 +99,11 @@ const CommandDialog = React.forwardRef<
   </DialogPrimitive.Root>
 ))
 
+CommandDialog.displayName = 'CommandDialog'
 export const Dialog = withProvider<
   React.ComponentRef<typeof DialogPrimitive.Root>,
   Assign<DialogProps, JsxStyleProps>
->(CommandDialog, 'dialog')
+>(CommandDialog as any, 'dialog')
 
 const CommandInput = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive.Input>,
@@ -111,7 +113,7 @@ const CommandInput = React.forwardRef<
   return (
     <div className={hstack()} data-slot="command-input-wrapper">
       <SearchIcon data-slot="command-input-icon" className={icon({ dimmed: true })} />
-      <CommandPrimitive.Input {...props} ref={ref} autoFocus={isModal} />
+      <CommandPrimitive.Input {...(props as any)} ref={ref} autoFocus={isModal} />
     </div>
   )
 })
@@ -121,22 +123,22 @@ CommandInput.displayName = CommandPrimitive.Input.displayName
 export const Input = withContext<
   React.ComponentRef<typeof CommandPrimitive.Input>,
   Assign<ComponentProps<typeof CommandPrimitive.Input>, JsxStyleProps>
->(CommandInput, 'input')
+>(CommandInput as any, 'input')
 
 export const List = withContext<
   React.ComponentRef<typeof CommandPrimitive.List>,
   Assign<ComponentProps<typeof CommandPrimitive.List>, JsxStyleProps>
->(CommandPrimitive.List, 'list')
+>(CommandPrimitive.List as any, 'list')
 
 export const Empty = withContext<
   React.ComponentRef<typeof CommandPrimitive.Empty>,
   Assign<ComponentProps<typeof CommandPrimitive.Empty>, JsxStyleProps>
->(CommandPrimitive.Empty, 'empty')
+>(CommandPrimitive.Empty as any, 'empty')
 
 export const Group = withContext<
   React.ComponentRef<typeof CommandPrimitive.Group>,
   Assign<ComponentProps<typeof CommandPrimitive.Group>, JsxStyleProps>
->(CommandPrimitive.Group, 'group')
+>(CommandPrimitive.Group as any, 'group')
 
 export const ItemIndicator = withContext<
   React.ComponentRef<'div'>,
@@ -167,12 +169,12 @@ export const Item = withContext<
     },
     JsxStyleProps
   >
->(CustomItem, 'item')
+>(CustomItem as any, 'item')
 
 export const Separator = withContext<
   React.ComponentRef<typeof CommandPrimitive.Separator>,
   Assign<ComponentProps<typeof CommandPrimitive.Separator>, JsxStyleProps>
->(CommandPrimitive.Separator, 'separator')
+>(CommandPrimitive.Separator as any, 'separator')
 
 const Command = {
   Root,

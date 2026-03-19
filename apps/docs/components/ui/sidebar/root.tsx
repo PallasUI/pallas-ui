@@ -20,27 +20,27 @@ export type SidebarRootProps = React.ComponentPropsWithoutRef<'div'> & {
 const RootCollapsibleStyled = withContext<
   React.ComponentRef<typeof RootCollapsible>,
   React.ComponentProps<typeof RootCollapsible>
->(RootCollapsible, 'root')
+>(RootCollapsible as any, 'root')
 
 const RootNonCollapsibleStyled = withContext<
   React.ComponentRef<typeof RootNonCollapsible>,
   React.ComponentProps<typeof RootNonCollapsible>
->(RootNonCollapsible, 'rootNonCollapsible')
+>(RootNonCollapsible as any, 'rootNonCollapsible')
 
 const GapStyled = withContext<
   React.ComponentRef<typeof RootGap>,
   React.ComponentProps<typeof RootGap>
->(RootGap, 'gap')
+>(RootGap as any, 'gap')
 
 const FixedStyled = withContext<
   React.ComponentRef<typeof RootFixed>,
   React.ComponentProps<typeof RootFixed>
->(RootFixed, 'fixed')
+>(RootFixed as any, 'fixed')
 
 const InnerStyled = withContext<
   React.ComponentRef<typeof RootInner>,
   React.ComponentProps<typeof RootInner>
->(RootInner, 'inner')
+>(RootInner as any, 'inner')
 
 export const Root = React.forwardRef<
   React.ComponentRef<typeof RootNonCollapsibleStyled>,
@@ -50,7 +50,7 @@ export const Root = React.forwardRef<
 
   if (isMobile) {
     return (
-      <Drawer.Root open={openMobile} onOpenChange={setOpenMobile} {...props} side={side}>
+      <Drawer.Root open={openMobile} onOpenChange={setOpenMobile} {...(props as any)} side={side}>
         <Drawer.Content data-sidebar="sidebar" data-mobile="true">
           <Drawer.Header className={css({ srOnly: true })}>
             <Drawer.Title>Sidebar</Drawer.Title>
@@ -69,7 +69,7 @@ export const Root = React.forwardRef<
   }
   if (collapsible === 'none') {
     return (
-      <RootNonCollapsibleStyled ref={ref} {...props}>
+      <RootNonCollapsibleStyled ref={ref} {...(props as any)}>
         {children}
       </RootNonCollapsibleStyled>
     )
@@ -86,7 +86,7 @@ export const Root = React.forwardRef<
     >
       {/* This is what handles the sidebar gap on desktop */}
       <GapStyled />
-      <FixedStyled {...props}>
+      <FixedStyled {...(props as any)}>
         <InnerStyled>{children}</InnerStyled>
       </FixedStyled>
     </RootCollapsibleStyled>

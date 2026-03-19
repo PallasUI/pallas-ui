@@ -21,18 +21,18 @@ import { withContext } from './provider'
 export const Menu = withContext<
   React.ComponentRef<typeof MenuPrimitive>,
   Assign<React.ComponentProps<typeof MenuPrimitive>, JsxStyleProps>
->(MenuPrimitive, 'menu')
+>(MenuPrimitive as any, 'menu')
 
 type MenuItemProps = Assign<React.ComponentProps<typeof MenuItemPrimitive>, JsxStyleProps>
 const MenuItemStyled = withContext<React.ComponentRef<typeof MenuItemPrimitive>, MenuItemProps>(
-  MenuItemPrimitive,
+  MenuItemPrimitive as any,
   'menuItem',
 )
 export const MenuItem = React.forwardRef<
   React.ComponentRef<typeof MenuItemPrimitive>,
   MenuItemProps
 >(({ className, ...props }, ref) => (
-  <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...props} />
+  <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...(props as any)} />
 ))
 
 // const sidebarMenuButtonVariants = cva({
@@ -94,7 +94,7 @@ type SidebarMenuButtonProps = Assign<MenuButtonProps, ButtonProps> & {
 const MenuButtonStyled = withContext<
   React.ComponentRef<typeof MenuButtonPrimitive>,
   SidebarMenuButtonProps
->(MenuButtonPrimitive, 'menuButton')
+>(MenuButtonPrimitive as any, 'menuButton')
 
 export const MenuButton = React.forwardRef<
   React.ComponentRef<typeof MenuButtonPrimitive>,
@@ -109,7 +109,7 @@ export const MenuButton = React.forwardRef<
     <Comp
       ref={ref}
       className={cx('menu-button', button({ variant: 'text', ...buttonProps }), className)}
-      {...rest}
+      {...(rest as any)}
     />
   )
 
@@ -140,7 +140,7 @@ type SidebarMenuActionProps = Assign<MenuActionProps, ButtonProps>
 const SidebarMenuActionStyled = withContext<
   React.ComponentRef<typeof MenuActionPrimitive>,
   SidebarMenuActionProps
->(MenuActionPrimitive, 'menuAction')
+>(MenuActionPrimitive as any, 'menuAction')
 export const MenuAction = React.forwardRef<
   React.ComponentRef<typeof MenuActionPrimitive>,
   SidebarMenuActionProps
@@ -150,7 +150,7 @@ export const MenuAction = React.forwardRef<
     <SidebarMenuActionStyled
       ref={ref}
       className={cx(button(buttonVariantProps), className)}
-      {...rest}
+      {...(rest as any)}
     />
   )
 })
@@ -158,4 +158,4 @@ export const MenuAction = React.forwardRef<
 export const MenuBadge = withContext<
   React.ComponentRef<typeof MenuBadgePrimitive>,
   Assign<React.ComponentProps<typeof MenuBadgePrimitive>, JsxStyleProps>
->(MenuBadgePrimitive, 'menuBadge')
+>(MenuBadgePrimitive as any, 'menuBadge')

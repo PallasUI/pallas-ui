@@ -15,7 +15,7 @@ export type RootProps = Assign<
 export const Option = withContext<
   React.ComponentRef<typeof Tabs.Trigger>,
   Assign<WithFixedClassName<ComponentProps<typeof Tabs.Trigger>>, JsxStyleProps>
->(Tabs.Trigger, 'option')
+>(Tabs.Trigger as any, 'option')
 
 export const Text = withContext<
   React.ComponentRef<'p'>,

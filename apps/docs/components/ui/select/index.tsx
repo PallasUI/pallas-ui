@@ -16,7 +16,7 @@ const Trigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
 >(({ children, ...props }, ref) => {
   return (
-    <SelectPrimitive.Trigger ref={ref} {...props}>
+    <SelectPrimitive.Trigger ref={ref} {...(props as any)}>
       {children}
       <SelectPrimitive.Icon asChild>
         <ChevronDown className={icon({ dimmed: true })} />
@@ -29,14 +29,14 @@ Trigger.displayName = SelectPrimitive.Trigger.displayName
 const Viewport = withContext<
   React.ComponentRef<typeof SelectPrimitive.Viewport>,
   Assign<WithFixedClassName<SelectPrimitive.SelectViewportProps>, JsxStyleProps>
->(SelectPrimitive.Viewport, 'viewport')
+>(SelectPrimitive.Viewport as any, 'viewport')
 
 const Content = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >(({ children, position = 'popper', ...props }, ref) => (
   <SelectPrimitive.Portal>
-    <SelectPrimitive.Content ref={ref} position={position} data-position={position} {...props}>
+    <SelectPrimitive.Content ref={ref} position={position} data-position={position} {...(props as any)}>
       <Viewport data-position={position}>{children}</Viewport>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
@@ -46,13 +46,13 @@ Content.displayName = SelectPrimitive.Content.displayName
 const ItemIndicator = withContext<
   React.ComponentRef<typeof SelectPrimitive.ItemIndicator>,
   Assign<WithFixedClassName<SelectPrimitive.SelectItemIndicatorProps>, JsxStyleProps>
->(styled(SelectPrimitive.ItemIndicator), 'itemIndicator')
+>(styled(SelectPrimitive.ItemIndicator) as any, 'itemIndicator')
 
 const Item = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ children, ...props }, ref) => (
-  <SelectPrimitive.Item ref={ref} {...props}>
+  <SelectPrimitive.Item ref={ref} {...(props as any)}>
     <ItemIndicator>
       <Check className={icon()} />
     </ItemIndicator>
@@ -68,42 +68,42 @@ export type RootProps = WithFixedClassName<
 export const Root = withProvider<
   React.ComponentRef<typeof SelectPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
->(SelectPrimitive.Root, 'root')
+>(SelectPrimitive.Root as any, 'root')
 
 export const Group = withContext<
   React.ComponentRef<typeof SelectPrimitive.Group>,
   Assign<WithFixedClassName<SelectPrimitive.SelectGroupProps>, JsxStyleProps>
->(SelectPrimitive.Group, 'group')
+>(SelectPrimitive.Group as any, 'group')
 
 export const Value = withContext<
   React.ComponentRef<typeof SelectPrimitive.Value>,
   Assign<WithFixedClassName<SelectPrimitive.SelectValueProps>, JsxStyleProps>
->(SelectPrimitive.Value, 'value')
+>(SelectPrimitive.Value as any, 'value')
 
 export const SelectTrigger = withContext<
   React.ComponentRef<typeof SelectPrimitive.Trigger>,
   Assign<WithFixedClassName<SelectPrimitive.SelectTriggerProps>, JsxStyleProps>
->(Trigger, 'trigger')
+>(Trigger as any, 'trigger')
 
 export const SelectContent = withContext<
   React.ComponentRef<typeof SelectPrimitive.Content>,
   Assign<WithFixedClassName<SelectPrimitive.SelectContentProps>, JsxStyleProps>
->(Content, 'content')
+>(Content as any, 'content')
 
 export const SelectLabel = withContext<
   React.ComponentRef<typeof SelectPrimitive.Label>,
   Assign<WithFixedClassName<SelectPrimitive.SelectLabelProps>, JsxStyleProps>
->(SelectPrimitive.Label, 'label')
+>(SelectPrimitive.Label as any, 'label')
 
 export const SelectItem = withContext<
   React.ComponentRef<typeof SelectPrimitive.Item>,
   Assign<WithFixedClassName<SelectPrimitive.SelectItemProps>, JsxStyleProps>
->(Item, 'item')
+>(Item as any, 'item')
 
 export const SelectSeparator = withContext<
   React.ComponentRef<typeof SelectPrimitive.Separator>,
   Assign<WithFixedClassName<SelectPrimitive.SelectSeparatorProps>, JsxStyleProps>
->(SelectPrimitive.Separator, 'separator')
+>(SelectPrimitive.Separator as any, 'separator')
 
 const Select = {
   Root,

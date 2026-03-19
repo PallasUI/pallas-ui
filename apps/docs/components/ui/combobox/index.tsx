@@ -39,6 +39,7 @@ const CustomRoot = React.forwardRef<
     </ComboboxContext.Provider>
   )
 })
+CustomRoot.displayName = 'CustomRoot'
 
 export const Root = withProvider<
   React.ComponentRef<typeof PopoverPrimitive.Root>,
@@ -49,7 +50,7 @@ export const Root = withProvider<
       disabled?: boolean
     } & JsxStyleProps
   >
->(CustomRoot, 'root')
+>(CustomRoot as any, 'root')
 
 const CustomTrigger = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
@@ -73,6 +74,8 @@ const CustomTrigger = React.forwardRef<
     </PopoverPrimitive.Trigger>
   )
 })
+CustomTrigger.displayName = 'CustomTrigger'
+
 export const Trigger = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
   Assign<
@@ -82,6 +85,7 @@ export const Trigger = withContext<
     },
     JsxStyleProps
   >
+  // @ts-expect-error - forwardRef incompatible with style-context ElementType (React 19)
 >(CustomTrigger, 'trigger')
 
 const CustomEmpty = React.forwardRef<
@@ -95,6 +99,7 @@ const CustomEmpty = React.forwardRef<
     </CommandPrimitive.Empty>
   )
 })
+CustomEmpty.displayName = 'CustomEmpty'
 
 export const CustomContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
@@ -104,7 +109,7 @@ export const CustomContent = React.forwardRef<
   }
 >(({ children, placeholder = 'Search items', emptyState, ...props }, ref) => {
   return (
-    <PopoverPrimitive.Content ref={ref} {...props} data-slot="combobox-content">
+    <PopoverPrimitive.Content ref={ref} {...(props as any)} data-slot="combobox-content">
       <CommandPrimitive.Root>
         <CommandPrimitive.Input placeholder={placeholder} />
         <CommandPrimitive.List>
@@ -127,6 +132,7 @@ export const Content = withContext<
     },
     JsxStyleProps
   >
+  // @ts-expect-error - forwardRef incompatible with style-context ElementType (React 19)
 >(CustomContent, 'content')
 
 export const Input = withContext<

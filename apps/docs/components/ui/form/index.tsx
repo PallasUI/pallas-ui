@@ -13,7 +13,7 @@ const { withProvider, withContext } = createStyleContext(form)
 const Root = withProvider<
   React.ComponentRef<typeof PrimitiveForm.Root>,
   Assign<ComponentProps<typeof PrimitiveForm.Root>, JsxStyleProps>
->(PrimitiveForm.Root, 'root')
+>(PrimitiveForm.Root as any, 'root')
 
 const Provider = <
   TFielValues extends FieldValues = FieldValues,
@@ -35,17 +35,17 @@ const Provider = <
 export const Label = withContext<
   React.ComponentRef<typeof PrimitiveForm.Label>,
   Assign<ComponentProps<typeof PrimitiveForm.Label>, JsxStyleProps>
->(PrimitiveForm.Label, 'label')
+>(PrimitiveForm.Label as any, 'label')
 
 export const Description = withContext<
   React.ComponentRef<typeof PrimitiveForm.Description>,
   Assign<ComponentProps<typeof PrimitiveForm.Description>, JsxStyleProps>
->(PrimitiveForm.Description, 'description')
+>(PrimitiveForm.Description as any, 'description')
 
 export const Message = withContext<
   React.ComponentRef<typeof PrimitiveForm.Message>,
   Assign<ComponentProps<typeof PrimitiveForm.Message>, JsxStyleProps>
->(PrimitiveForm.Message, 'message')
+>(PrimitiveForm.Message as any, 'message')
 
 export const Field = PrimitiveForm.Field
 

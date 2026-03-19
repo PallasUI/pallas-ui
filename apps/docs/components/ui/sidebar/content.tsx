@@ -7,4 +7,4 @@ import { withContext } from './provider'
 export const Content = withContext<
   React.ComponentRef<typeof ContentPrimitive>,
   Assign<React.ComponentProps<typeof ContentPrimitive>, JsxStyleProps>
->(ContentPrimitive, 'content')
+>(ContentPrimitive as any, 'content')

@@ -32,7 +32,7 @@ export const LineFill = ({
       strokeWidth={strokeWidth}
       strokeLinecap={strokeLinecap}
       strokeDasharray={strokeDasharray}
-      {...props}
+      {...(props as any)}
     />
   )
 }

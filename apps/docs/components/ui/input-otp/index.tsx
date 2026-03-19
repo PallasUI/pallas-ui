@@ -18,12 +18,12 @@ type RootProps = Assign<JsxStyleProps, InputOTPProps>
 const InputOTPRoot = withProvider<
   React.ComponentRef<typeof RootPrimitive>,
   RootProps & InputOTPVariantProps
->(RootPrimitive, 'root')
+>(RootPrimitive as any, 'root')
 
 // group component
 type GroupProps = Assign<JsxStyleProps, ComponentProps<typeof GroupPrimitive>>
 const InputOTPGroup = withContext<React.ComponentRef<typeof GroupPrimitive>, GroupProps>(
-  GroupPrimitive,
+  GroupPrimitive as any,
   'group',
 )
 
@@ -31,13 +31,13 @@ const InputOTPGroup = withContext<React.ComponentRef<typeof GroupPrimitive>, Gro
 const InputOTPSlot = withContext<
   React.ComponentRef<typeof SlotPrimitive>,
   React.ComponentProps<typeof SlotPrimitive>
->(SlotPrimitive, 'slot')
+>(SlotPrimitive as any, 'slot')
 
 // separator component
 const InputOTPSep = withContext<
   React.ComponentRef<typeof SeparatorPrimitive>,
   React.ComponentProps<typeof SeparatorPrimitive>
->(SeparatorPrimitive, 'separator')
+>(SeparatorPrimitive as any, 'separator')
 
 // compose the InputOTP object
 export default {

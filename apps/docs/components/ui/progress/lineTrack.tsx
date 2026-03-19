@@ -31,7 +31,7 @@ export const LineTrack = (props: HTMLStyledProps<'line'>) => {
       strokeWidth={strokeWidth}
       strokeLinecap={strokeLinecap}
       strokeDasharray={strokeDasharray}
-      {...props}
+      {...(props as any)}
     />
   )
 }
