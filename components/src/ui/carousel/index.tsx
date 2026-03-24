@@ -55,6 +55,7 @@ const PreviousButton = React.forwardRef<
   )
 })
 
+PreviousButton.displayName = 'PreviousButton'
 export const Previous = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Previous>,
   PreviousProps
@@ -76,6 +77,7 @@ const NextButton = React.forwardRef<
   )
 })
 
+NextButton.displayName = 'NextButton'
 export const Next = withContext<React.ComponentRef<typeof CarouselPrimitive.Next>, NextProps>(
   NextButton,
   'next',

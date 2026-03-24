@@ -39,6 +39,7 @@ export const GroupAction = React.forwardRef<
   )
 })
 
+GroupAction.displayName = 'GroupAction'
 export const GroupContent = withContext<
   React.ComponentRef<typeof GroupContentPrimitive>,
   Assign<SidebarGroupLabelProps, JsxStyleProps>

@@ -13,7 +13,7 @@ export const CircleFill = ({
   ...props
 }: HTMLStyledProps<'circle'> & { percentage?: number }) => {
   const { height, width, strokeWidth, steps, stepToGapRatio } = useProgressContext()
-  const maskId = useMemo(() => crypto.randomUUID(), [])
+  const maskId = useRef(crypto.randomUUID()).current
 
   const cx = width / 2
   const cy = height / 2

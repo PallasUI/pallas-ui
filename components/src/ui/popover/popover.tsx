@@ -24,7 +24,7 @@ export const Trigger = withContext<
 const Arrow = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Arrow>,
   Assign<PopoverPrimitive.PopoverArrowProps, JsxStyleProps>
->(PopoverPrimitive.Arrow as any, 'arrow')
+>(PopoverPrimitive.Arrow, 'arrow')
 
 const CustomContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,

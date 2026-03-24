@@ -34,8 +34,8 @@ export const MenuItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...props} />
 ))
-
 MenuItem.displayName = 'MenuItem'
+
 // const sidebarMenuButtonVariants = cva({
 //   variants: {
 // variant: {

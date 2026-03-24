@@ -40,6 +40,7 @@ const CustomRoot = React.forwardRef<
   )
 })
 CustomRoot.displayName = 'CustomRoot'
+
 export const Root = withProvider<
   React.ComponentRef<typeof PopoverPrimitive.Root>,
   Assign<
@@ -97,6 +98,7 @@ const CustomEmpty = React.forwardRef<
   )
 })
 CustomEmpty.displayName = 'CustomEmpty'
+
 export const CustomContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
   PopoverContentProps & {

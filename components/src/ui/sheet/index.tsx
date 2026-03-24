@@ -43,6 +43,7 @@ export const Trigger = forwardRef<
   )
 })
 
+Trigger.displayName = 'Trigger'
 export const Handle = withContext<
   React.ComponentRef<typeof SheetPrimitive.Handle>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Handle>, JsxStyleProps>
