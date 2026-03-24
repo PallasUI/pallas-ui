@@ -1,6 +1,6 @@
 'use client'
 
-import { Pagination } from '@ark-ui/react/pagination'
+import { Pagination, usePagination } from '@ark-ui/react/pagination'
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as React from 'react'
 
@@ -17,6 +17,17 @@ export const Root = withProvider<
   React.ComponentRef<typeof Pagination.Root>,
   Assign<RootProps, JsxStyleProps>
 >(Pagination.Root, 'root', { forwardProps: ['data-size'] })
+
+export type RootProviderProps = WithFixedClassName<ComponentProps<typeof Pagination.RootProvider>> & {
+  size?: 'sm' | 'md' | 'lg'
+}
+
+export const RootProvider = withProvider<
+  React.ComponentRef<typeof Pagination.RootProvider>,
+  Assign<RootProviderProps, JsxStyleProps>
+>(Pagination.RootProvider, 'root', { forwardProps: ['data-size'] })
+
+export { usePagination }
 
 export const PrevTrigger = withContext<
   React.ComponentRef<typeof Pagination.PrevTrigger>,
@@ -42,11 +53,13 @@ export const Context = Pagination.Context
 
 const PaginationComponent = {
   Root,
+  RootProvider,
   PrevTrigger,
   NextTrigger,
   Item,
   Ellipsis,
   Context,
+  usePagination,
 }
 
 export default PaginationComponent

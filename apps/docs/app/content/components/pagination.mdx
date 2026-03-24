@@ -74,6 +74,12 @@ import Pagination from '@/components/ui/pagination'
 
 <ComponentPreview name="pagination" file="controlled" />
 
+### Root provider
+
+Use [`usePagination`](https://ark-ui.com/react/docs/components/pagination) hook to create the pagination API outside the tree, then pass it to `Pagination.RootProvider`. This is useful when you need pagination state and methods (for example `setPage`, `goToNextPage`, `slice`) from a parent or sibling component.
+
+<ComponentPreview name="pagination" file="root-provider" />
+
 ### With Ellipsis
 
 When there are many pages, the pagination shows ellipsis to indicate omitted pages. Use `siblingCount` and `boundaryCount` to control how many pages are visible.
