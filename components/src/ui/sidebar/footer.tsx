@@ -6,4 +6,4 @@ import { withContext } from './provider'
 export const Footer = withContext<
   React.ComponentRef<typeof FooterPrimitive>,
   Assign<React.ComponentProps<typeof FooterPrimitive>, JsxStyleProps>
->(FooterPrimitive as any, 'footer')
+>(FooterPrimitive, 'footer')

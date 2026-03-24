@@ -11,14 +11,14 @@ const { withProvider, withContext } = createStyleContext(radioGroup)
 const Indicator = withContext<
   React.ComponentRef<typeof RadioGroupPrimitive.Indicator>,
   Assign<WithFixedClassName<RadioGroupPrimitive.RadioGroupIndicatorProps>, JsxStyleProps>
->(RadioGroupPrimitive.Indicator as any, 'indicator')
+>(RadioGroupPrimitive.Indicator, 'indicator')
 
 const RadioGroupItem = React.forwardRef<
   React.ComponentRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
 >(({ children: _children, ...props }, ref) => {
   return (
-    <RadioGroupPrimitive.Item ref={ref} {...(props as any)}>
+    <RadioGroupPrimitive.Item ref={ref} {...props}>
       <Indicator />
     </RadioGroupPrimitive.Item>
   )
@@ -31,12 +31,12 @@ export type RootProps = WithFixedClassName<
 export const Root = withProvider<
   React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
->(RadioGroupPrimitive.Root as any, 'root')
+>(RadioGroupPrimitive.Root, 'root')
 
 export const Item = withContext<
   React.ComponentRef<typeof RadioGroupPrimitive.Item>,
   Assign<WithFixedClassName<RadioGroupPrimitive.RadioGroupItemProps>, JsxStyleProps>
->(RadioGroupItem as any, 'item')
+>(RadioGroupItem, 'item')
 
 const RadioGroup = {
   Root,

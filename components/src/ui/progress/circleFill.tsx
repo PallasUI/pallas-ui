@@ -52,7 +52,7 @@ export const CircleFill = ({
         strokeDashoffset={strokeDashoffset}
         transform={`rotate(-90 ${cx} ${cy})`}
         mask={steps > 1 ? `url(#${maskId})` : undefined}
-        {...(props as any)}
+        {...props}
       />
     </>
   )

@@ -14,24 +14,24 @@ export type RootProps = Assign<
 >
 
 export const Root = withProvider<React.ComponentRef<typeof SheetPrimitive.Root>, RootProps>(
-  SheetPrimitive.Root as any,
+  SheetPrimitive.Root,
   'root',
 )
 
 export const NestedRoot = withProvider<
   React.ComponentRef<typeof SheetPrimitive.NestedRoot>,
   RootProps
->(SheetPrimitive.NestedRoot as any, 'nestedRoot')
+>(SheetPrimitive.NestedRoot, 'nestedRoot')
 
 export const Overlay = withContext<
   React.ComponentRef<typeof SheetPrimitive.Overlay>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Overlay>, JsxStyleProps>
->(SheetPrimitive.Overlay as any, 'overlay')
+>(SheetPrimitive.Overlay, 'overlay')
 
 const TriggerComponent = withContext<
   React.ComponentRef<typeof SheetPrimitive.Trigger>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Trigger>, JsxStyleProps & ButtonProps>
->(SheetPrimitive.Trigger as any, 'trigger')
+>(SheetPrimitive.Trigger, 'trigger')
 
 export const Trigger = forwardRef<
   React.ComponentRef<typeof SheetPrimitive.Trigger>,
@@ -39,34 +39,35 @@ export const Trigger = forwardRef<
 >((props, ref) => {
   const [buttonProps, { className, ...rest }] = button.splitVariantProps(props)
   return (
-    <TriggerComponent ref={ref} className={cx(button(buttonProps), className)} {...(rest as any)} />
+    <TriggerComponent ref={ref} className={cx(button(buttonProps), className)} {...rest} />
   )
 })
 
+Trigger.displayName = 'Trigger'
 export const Handle = withContext<
   React.ComponentRef<typeof SheetPrimitive.Handle>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Handle>, JsxStyleProps>
->(SheetPrimitive.Handle as any, 'handle')
+>(SheetPrimitive.Handle, 'handle')
 
 export const Content = withContext<
   React.ComponentRef<typeof SheetPrimitive.Content>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Content>, JsxStyleProps>
->(SheetPrimitive.Content as any, 'content')
+>(SheetPrimitive.Content, 'content')
 
 export const Title = withContext<
   React.ComponentRef<typeof SheetPrimitive.Title>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Title>, JsxStyleProps>
->(SheetPrimitive.Title as any, 'title')
+>(SheetPrimitive.Title, 'title')
 
 export const Description = withContext<
   React.ComponentRef<typeof SheetPrimitive.Description>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Description>, JsxStyleProps>
->(SheetPrimitive.Description as any, 'description')
+>(SheetPrimitive.Description, 'description')
 
 export const Close = withContext<
   React.ComponentRef<typeof SheetPrimitive.Close>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Close>, JsxStyleProps>
->(SheetPrimitive.Close as any, 'close')
+>(SheetPrimitive.Close, 'close')
 
 const SheetHeader = ({ ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props} />
 SheetHeader.displayName = 'SheetHeader'

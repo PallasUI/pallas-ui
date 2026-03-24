@@ -15,17 +15,17 @@ export type RootProps = WithFixedClassName<DrawerPrimitive.DialogProps>
 export const Root = withProvider<
   React.ComponentRef<typeof DrawerPrimitive.Root>,
   Assign<RootProps, DrawerVariantProps & JsxStyleProps>
->(DrawerPrimitive.Root as any, 'root')
+>(DrawerPrimitive.Root, 'root')
 
 export const Trigger = withContext<
   React.ComponentRef<typeof DrawerPrimitive.Trigger>,
   DrawerPrimitive.DialogTriggerProps
->(DrawerPrimitive.Trigger as any, 'trigger')
+>(DrawerPrimitive.Trigger, 'trigger')
 
 const Overlay = withContext<
   React.ComponentRef<typeof DrawerPrimitive.Overlay>,
   Assign<DrawerPrimitive.DialogOverlayProps, JsxStyleProps>
->(DrawerPrimitive.Overlay as any, 'overlay')
+>(DrawerPrimitive.Overlay, 'overlay')
 
 const CustomContent = React.forwardRef<
   React.ComponentRef<typeof DrawerPrimitive.Content>,
@@ -33,7 +33,7 @@ const CustomContent = React.forwardRef<
 >(({ children, ...props }, ref) => (
   <Portal>
     <Overlay />
-    <DrawerPrimitive.Content ref={ref} {...(props as any)}>
+    <DrawerPrimitive.Content ref={ref} {...props}>
       {children}
     </DrawerPrimitive.Content>
   </Portal>
@@ -43,22 +43,22 @@ CustomContent.displayName = DrawerPrimitive.Content.displayName
 export const Content = withContext<
   React.ComponentRef<typeof DrawerPrimitive.Content>,
   Assign<DrawerPrimitive.DialogContentProps, JsxStyleProps>
->(CustomContent as any, 'content')
+>(CustomContent, 'content')
 
 export const Close = withContext<
   React.ComponentRef<typeof DrawerPrimitive.Close>,
   Assign<DrawerPrimitive.DialogCloseProps, JsxStyleProps>
->(DrawerPrimitive.Close as any, 'close')
+>(DrawerPrimitive.Close, 'close')
 
 export const Title = withContext<
   React.ComponentRef<typeof DrawerPrimitive.Title>,
   Assign<DrawerPrimitive.DialogTitleProps, JsxStyleProps>
->(DrawerPrimitive.Title as any, 'title')
+>(DrawerPrimitive.Title, 'title')
 
 export const Description = withContext<
   React.ComponentRef<typeof DrawerPrimitive.Description>,
   Assign<DrawerPrimitive.DialogDescriptionProps, JsxStyleProps>
->(DrawerPrimitive.Description as any, 'description')
+>(DrawerPrimitive.Description, 'description')
 
 export const Header = withContext<
   React.ComponentRef<'div'>,

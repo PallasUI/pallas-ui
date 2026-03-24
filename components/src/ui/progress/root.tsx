@@ -8,13 +8,13 @@ import { ProgressContext } from './context'
 export const { withProvider, withContext } = createStyleContext(progress)
 
 const RootComponent = withProvider<React.ElementRef<typeof ProgressBar>, RootProps>(
-  ProgressBar as any,
+  ProgressBar,
   'root',
 )
 
 export const Root = (props: RootProps) => {
-  // biome-ignore format: to apply ts-ignore on props type
-  //@ts-ignore
+  // biome-ignore format: keep directive on line before splitVariantProps
+  // @ts-expect-error Panda recipe splitVariantProps return type does not match RootProps destructuring
   const [variantProps, { width: w, height: h, steps, stepToGapRatio, children }] = progress.splitVariantProps(props)
 
   const width = w || 100
@@ -72,7 +72,7 @@ export const Root = (props: RootProps) => {
         stepToGapRatio: stepToGapRatio || 9,
       }}
     >
-      <RootComponent {...(props as any)}>{children}</RootComponent>
+      <RootComponent {...props}>{children}</RootComponent>
     </ProgressContext.Provider>
   )
 }

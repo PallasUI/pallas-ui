@@ -16,18 +16,18 @@ import { withContext } from './provider'
 export const Group = withContext<
   React.ComponentRef<typeof GroupPrimitive>,
   Assign<React.ComponentProps<typeof GroupPrimitive>, JsxStyleProps>
->(GroupPrimitive as any, 'group')
+>(GroupPrimitive, 'group')
 
 export const GroupLabel = withContext<
   React.ComponentRef<typeof GroupLabelPrimitive>,
   Assign<SidebarGroupLabelProps, JsxStyleProps>
->(GroupLabelPrimitive as any, 'groupLabel')
+>(GroupLabelPrimitive, 'groupLabel')
 
 type ActionButtonProps = Assign<SidebarGroupActionProps, ButtonProps>
 const GroupActionStyled = withContext<
   React.ComponentRef<typeof GroupActionPrimitive>,
   ActionButtonProps
->(GroupActionPrimitive as any, 'groupAction')
+>(GroupActionPrimitive, 'groupAction')
 
 export const GroupAction = React.forwardRef<
   React.ComponentRef<typeof GroupActionStyled>,
@@ -35,11 +35,12 @@ export const GroupAction = React.forwardRef<
 >((props, ref) => {
   const [buttonProps, { className, ...rest }] = button.splitVariantProps(props)
   return (
-    <GroupActionStyled ref={ref} className={cx(button(buttonProps), className)} {...(rest as any)} />
+    <GroupActionStyled ref={ref} className={cx(button(buttonProps), className)} {...rest} />
   )
 })
 
+GroupAction.displayName = 'GroupAction'
 export const GroupContent = withContext<
   React.ComponentRef<typeof GroupContentPrimitive>,
   Assign<SidebarGroupLabelProps, JsxStyleProps>
->(GroupContentPrimitive as any, 'groupContent')
+>(GroupContentPrimitive, 'groupContent')

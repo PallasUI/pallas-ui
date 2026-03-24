@@ -6,4 +6,4 @@ import { withContext } from './provider'
 export const Inset = withContext<
   React.ComponentRef<'main'>,
   Assign<React.ComponentProps<typeof InsetPrimitive>, JsxStyleProps>
->(InsetPrimitive as any, 'inset')
+>(InsetPrimitive, 'inset')

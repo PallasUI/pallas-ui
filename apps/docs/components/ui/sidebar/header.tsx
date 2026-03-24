@@ -7,4 +7,4 @@ import { withContext } from './provider'
 export const Header = withContext<
   React.ComponentRef<typeof HeaderPrimitive>,
   Assign<React.ComponentProps<typeof HeaderPrimitive>, JsxStyleProps>
->(HeaderPrimitive as any, 'header')
+>(HeaderPrimitive, 'header')

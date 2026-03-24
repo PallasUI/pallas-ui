@@ -30,7 +30,7 @@ export const CircleTrack = (props: HTMLStyledProps<'circle'>) => {
       strokeWidth={strokeWidth}
       strokeDasharray={strokeDasharray}
       transform={`rotate(-90 ${cx} ${cy})`}
-      {...(props as any)}
+      {...props}
     />
   )
 }

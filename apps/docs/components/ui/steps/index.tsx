@@ -16,27 +16,27 @@ export type RootProps = WithFixedClassName<ComponentProps<typeof Steps.Root>> & 
 export const Root = withProvider<
   React.ComponentRef<typeof Steps.Root>,
   Assign<RootProps, JsxStyleProps>
->(Steps.Root as any, 'root')
+>(Steps.Root, 'root')
 
 export const Trigger = withContext<
   React.ComponentRef<typeof Steps.Trigger>,
   Assign<ComponentProps<typeof Steps.Trigger>, JsxStyleProps>
->(Steps.Trigger as any, 'trigger')
+>(Steps.Trigger, 'trigger')
 
 const Content = withContext<
   React.ComponentRef<typeof Steps.Content>,
   Assign<ComponentProps<typeof Steps.Content>, JsxStyleProps>
->(Steps.Content as any, 'stepContent')
+>(Steps.Content, 'stepContent')
 
 const List = withContext<
   React.ComponentRef<typeof Steps.List>,
   Assign<ComponentProps<typeof Steps.List>, JsxStyleProps>
->(Steps.List as any, 'list')
+>(Steps.List, 'list')
 
 const Item = withContext<
   React.ComponentRef<typeof Steps.Item>,
   Assign<ComponentProps<typeof Steps.Item>, JsxStyleProps>
->(Steps.Item as any, 'item')
+>(Steps.Item, 'item')
 
 export type IndicatorProps = Assign<ComponentProps<typeof Steps.Indicator>, JsxStyleProps> & {
   loading?: boolean
@@ -46,13 +46,13 @@ export type IndicatorProps = Assign<ComponentProps<typeof Steps.Indicator>, JsxS
 const BaseIndicator = withContext<
   React.ComponentRef<typeof Steps.Indicator>,
   Assign<ComponentProps<typeof Steps.Indicator>, JsxStyleProps>
->(Steps.Indicator as any, 'indicator')
+>(Steps.Indicator, 'indicator')
 
 const Indicator = React.forwardRef<React.ComponentRef<typeof Steps.Indicator>, IndicatorProps>(
   ({ loading, disabled, ...props }, ref) => {
     return (
       <BaseIndicator
-        {...(props as any)}
+        {...props}
         ref={ref}
         data-loading={loading || undefined}
         data-disabled={disabled || undefined}
@@ -65,7 +65,7 @@ Indicator.displayName = 'Steps.Indicator'
 const Separator = withContext<
   React.ComponentRef<typeof Steps.Separator>,
   Assign<ComponentProps<typeof Steps.Separator>, JsxStyleProps>
->(Steps.Separator as any, 'separator')
+>(Steps.Separator, 'separator')
 
 const Dialog = {
   Root,

@@ -13,22 +13,22 @@ export type RootProps = WithFixedClassName<ComponentProps<typeof RadixTabs.Root>
 export const Root = withProvider<
   React.ComponentRef<typeof RadixTabs.Root>,
   Assign<RootProps, TabsVariantProps>
->(RadixTabs.Root as any, 'root')
+>(RadixTabs.Root, 'root')
 
 export const TabList = withContext<
   React.ComponentRef<typeof RadixTabs.List>,
   Assign<WithFixedClassName<ComponentProps<typeof RadixTabs.List>>, JsxStyleProps>
->(RadixTabs.List as any, 'tabList')
+>(RadixTabs.List, 'tabList')
 
 export const Trigger = withContext<
   React.ComponentRef<typeof RadixTabs.Trigger>,
   Assign<WithFixedClassName<ComponentProps<typeof RadixTabs.Trigger>>, JsxStyleProps>
->(RadixTabs.Trigger as any, 'trigger')
+>(RadixTabs.Trigger, 'trigger')
 
 export const Content = withContext<
   React.ComponentRef<typeof RadixTabs.Content>,
   Assign<WithFixedClassName<ComponentProps<typeof RadixTabs.Content>>, JsxStyleProps>
->(RadixTabs.Content as any, 'content')
+>(RadixTabs.Content, 'content')
 
 const Tabs = {
   Root,

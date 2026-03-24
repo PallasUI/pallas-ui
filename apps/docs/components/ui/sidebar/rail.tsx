@@ -5,4 +5,4 @@ import { withContext } from './provider'
 export const Rail = withContext<
   React.ComponentRef<typeof RailPrimitive>,
   Assign<React.ComponentProps<typeof RailPrimitive>, JsxStyleProps>
->(RailPrimitive as any, 'rail')
+>(RailPrimitive, 'rail')

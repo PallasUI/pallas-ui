@@ -21,20 +21,21 @@ import { withContext } from './provider'
 export const Menu = withContext<
   React.ComponentRef<typeof MenuPrimitive>,
   Assign<React.ComponentProps<typeof MenuPrimitive>, JsxStyleProps>
->(MenuPrimitive as any, 'menu')
+>(MenuPrimitive, 'menu')
 
 type MenuItemProps = Assign<React.ComponentProps<typeof MenuItemPrimitive>, JsxStyleProps>
 const MenuItemStyled = withContext<React.ComponentRef<typeof MenuItemPrimitive>, MenuItemProps>(
-  MenuItemPrimitive as any,
+  MenuItemPrimitive,
   'menuItem',
 )
 export const MenuItem = React.forwardRef<
   React.ComponentRef<typeof MenuItemPrimitive>,
   MenuItemProps
 >(({ className, ...props }, ref) => (
-  <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...(props as any)} />
+  <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...props} />
 ))
 
+MenuItem.displayName = 'MenuItem'
 // const sidebarMenuButtonVariants = cva({
 //   variants: {
 // variant: {
@@ -94,13 +95,13 @@ type SidebarMenuButtonProps = Assign<MenuButtonProps, ButtonProps> & {
 const MenuButtonStyled = withContext<
   React.ComponentRef<typeof MenuButtonPrimitive>,
   SidebarMenuButtonProps
->(MenuButtonPrimitive as any, 'menuButton')
+>(MenuButtonPrimitive, 'menuButton')
 
 export const MenuButton = React.forwardRef<
   React.ComponentRef<typeof MenuButtonPrimitive>,
   SidebarMenuButtonProps
 >((props, ref) => {
-  let [buttonProps, { asChild = false, isActive = false, tooltip, className, ...rest }] =
+  const [buttonProps, { asChild = false, isActive = false, tooltip, className, ...rest }] =
     button.splitVariantProps(props)
   const Comp = asChild ? Slot : MenuButtonStyled
   const { isMobile, state } = useSidebar()
@@ -109,7 +110,7 @@ export const MenuButton = React.forwardRef<
     <Comp
       ref={ref}
       className={cx('menu-button', button({ variant: 'text', ...buttonProps }), className)}
-      {...(rest as any)}
+      {...rest}
     />
   )
 
@@ -132,11 +133,12 @@ export const MenuButton = React.forwardRef<
   )
 })
 
+MenuButton.displayName = 'MenuButton'
 type SidebarMenuActionProps = Assign<MenuActionProps, ButtonProps>
 const SidebarMenuActionStyled = withContext<
   React.ComponentRef<typeof MenuActionPrimitive>,
   SidebarMenuActionProps
->(MenuActionPrimitive as any, 'menuAction')
+>(MenuActionPrimitive, 'menuAction')
 export const MenuAction = React.forwardRef<
   React.ComponentRef<typeof MenuActionPrimitive>,
   SidebarMenuActionProps
@@ -146,12 +148,13 @@ export const MenuAction = React.forwardRef<
     <SidebarMenuActionStyled
       ref={ref}
       className={cx(button(buttonVariantProps), className)}
-      {...(rest as any)}
+      {...rest}
     />
   )
 })
 
+MenuAction.displayName = 'MenuAction'
 export const MenuBadge = withContext<
   React.ComponentRef<typeof MenuBadgePrimitive>,
   Assign<React.ComponentProps<typeof MenuBadgePrimitive>, JsxStyleProps>
->(MenuBadgePrimitive as any, 'menuBadge')
+>(MenuBadgePrimitive, 'menuBadge')

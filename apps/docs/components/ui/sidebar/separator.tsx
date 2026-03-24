@@ -8,9 +8,9 @@ type SideSeparatorProps = React.ComponentProps<typeof SeparatorPrimitive> & Sepa
 const SeparatorStyled = withContext<
   React.ComponentRef<typeof SeparatorPrimitive>,
   SideSeparatorProps
->(SeparatorPrimitive as any, 'separator')
+>(SeparatorPrimitive, 'separator')
 
 export const Separator = (props: SideSeparatorProps) => {
   const [separatorProps, { className, ...rest }] = separator.splitVariantProps(props)
-  return <SeparatorStyled className={cx(separator(separatorProps), className)} {...(rest as any)} />
+  return <SeparatorStyled className={cx(separator(separatorProps), className)} {...rest} />
 }

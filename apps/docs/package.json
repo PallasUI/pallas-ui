@@ -67,7 +67,7 @@
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.6",
     "@pallas-ui/typescript-config": "workspace:*",
-    "@pandacss/dev": "0.50.0",
+    "@pandacss/dev": "^1.9.1",
     "@types/node": "^20",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
@@ -75,11 +75,5 @@
     "eslint-config-next": "16.2.0",
     "typescript": "5.7.3",
     "unified": "^11.0.5"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.14",
-      "@types/react-dom": "19.2.3"
-    }
   }
 }

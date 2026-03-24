@@ -13,7 +13,7 @@ export const CircleFill = ({
   ...props
 }: HTMLStyledProps<'circle'> & { percentage?: number }) => {
   const { height, width, strokeWidth, steps, stepToGapRatio } = useProgressContext()
-  const maskId = useRef(crypto.randomUUID()).current
+  const maskId = useMemo(() => crypto.randomUUID(), [])
 
   const cx = width / 2
   const cy = height / 2
@@ -52,7 +52,7 @@ export const CircleFill = ({
         strokeDashoffset={strokeDashoffset}
         transform={`rotate(-90 ${cx} ${cy})`}
         mask={steps > 1 ? `url(#${maskId})` : undefined}
-        {...(props as any)}
+        {...props}
       />
     </>
   )

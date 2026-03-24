@@ -49,7 +49,7 @@ export const Root = withProvider<
       disabled?: boolean
     } & JsxStyleProps
   >
->(CustomRoot as any, 'root')
+>(CustomRoot, 'root')
 
 const CustomTrigger = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
@@ -82,7 +82,7 @@ export const Trigger = withContext<
     },
     JsxStyleProps
   >
->(CustomTrigger as any, 'trigger')
+>(CustomTrigger, 'trigger')
 
 const CustomEmpty = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive.Empty>,
@@ -104,7 +104,7 @@ export const CustomContent = React.forwardRef<
   }
 >(({ children, placeholder = 'Search items', emptyState, ...props }, ref) => {
   return (
-    <PopoverPrimitive.Content ref={ref} {...(props as any)} data-slot="combobox-content">
+    <PopoverPrimitive.Content ref={ref} {...props} data-slot="combobox-content">
       <CommandPrimitive.Root>
         <CommandPrimitive.Input placeholder={placeholder} />
         <CommandPrimitive.List>
@@ -127,17 +127,17 @@ export const Content = withContext<
     },
     JsxStyleProps
   >
->(CustomContent as any, 'content')
+>(CustomContent, 'content')
 
 export const Input = withContext<
   React.ComponentRef<typeof CommandPrimitive.Input>,
   Assign<ComponentProps<typeof CommandPrimitive.Input>, JsxStyleProps>
->(CommandPrimitive.Input as any, 'input')
+>(CommandPrimitive.Input, 'input')
 
 export const Group = withContext<
   React.ComponentRef<typeof CommandPrimitive.Group>,
   Assign<ComponentProps<typeof CommandPrimitive.Group>, JsxStyleProps>
->(CommandPrimitive.Group as any, 'group')
+>(CommandPrimitive.Group, 'group')
 
 export const ItemIndicator = withContext<
   React.ComponentRef<'div'>,
@@ -152,12 +152,12 @@ export const Item = withContext<
     },
     JsxStyleProps
   >
->(CommandPrimitive.Item as any, 'item')
+>(CommandPrimitive.Item, 'item')
 
 export const Separator = withContext<
   React.ComponentRef<typeof CommandPrimitive.Separator>,
   Assign<ComponentProps<typeof CommandPrimitive.Separator>, JsxStyleProps>
->(CommandPrimitive.Separator as any, 'separator')
+>(CommandPrimitive.Separator, 'separator')
 
 const Combobox = {
   Root,

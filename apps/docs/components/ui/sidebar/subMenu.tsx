@@ -12,14 +12,14 @@ import { withContext } from './provider'
 export const MenuSub = withContext<
   React.ComponentRef<typeof MenuSubPrimitive>,
   Assign<React.ComponentProps<typeof MenuSubPrimitive>, JsxStyleProps>
->(MenuSubPrimitive as any, 'menuSub')
+>(MenuSubPrimitive, 'menuSub')
 
 export const MenuSubItem = withContext<
   React.ComponentRef<typeof MenuSubItemPrimitive>,
   Assign<React.ComponentProps<typeof MenuSubItemPrimitive>, JsxStyleProps>
->(MenuSubItemPrimitive as any, 'menuSubItem')
+>(MenuSubItemPrimitive, 'menuSubItem')
 
 export const MenuSubButton = withContext<
   React.ComponentRef<typeof MenuSubButtomPrimitive>,
   Assign<MenuSubButtonProps, JsxStyleProps>
->(MenuSubButtomPrimitive as any, 'menuSubButton')
+>(MenuSubButtomPrimitive, 'menuSubButton')
