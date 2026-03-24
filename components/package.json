@@ -7,6 +7,8 @@
     "lint": "biome lint ./src",
     "dev": "vite",
     "typecheck": "tsc",
+    "prestorybook": "panda codegen --silent",
+    "prebuild-storybook": "panda codegen --silent",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "studio": "panda studio",
