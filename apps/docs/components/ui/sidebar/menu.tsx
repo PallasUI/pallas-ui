@@ -117,11 +117,7 @@ export const MenuButton = React.forwardRef<
     return Button
   }
 
-  if (typeof tooltip === 'string') {
-    tooltip = {
-      children: tooltip,
-    }
-  }
+  const tooltipContentProps = typeof tooltip === 'string' ? { children: tooltip } : tooltip
 
   return (
     <Tooltip.Root>
@@ -130,7 +126,7 @@ export const MenuButton = React.forwardRef<
         side="right"
         align="center"
         hidden={state !== 'collapsed' || isMobile}
-        {...tooltip}
+        {...tooltipContentProps}
       />
     </Tooltip.Root>
   )

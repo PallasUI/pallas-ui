@@ -12,20 +12,17 @@ export type RootProps = WithFixedClassName<ComponentProps<typeof RadixAvatar.Roo
 export const Root = withProvider<
   React.ComponentRef<typeof RadixAvatar.Root>,
   Assign<RootProps, AvatarVariantProps & JsxStyleProps>
-  // @ts-expect-error - Radix Avatar primitive incompatible with style-context ElementType (React 19)
->(RadixAvatar.Root, 'root')
+>(RadixAvatar.Root as any, 'root')
 
 export const Image = withContext<
   React.ComponentRef<typeof RadixAvatar.Image>,
   Assign<ComponentProps<typeof RadixAvatar.Image>, JsxStyleProps>
-  // @ts-expect-error - Radix Avatar primitive incompatible with style-context ElementType (React 19)
->(RadixAvatar.Image, 'image')
+>(RadixAvatar.Image as any, 'image')
 
 export const Fallback = withContext<
   React.ComponentRef<typeof RadixAvatar.Fallback>,
   Assign<ComponentProps<typeof RadixAvatar.Fallback>, JsxStyleProps>
-  // @ts-expect-error - Radix Avatar primitive incompatible with style-context ElementType (React 19)
->(RadixAvatar.Fallback, 'fallback')
+>(RadixAvatar.Fallback as any, 'fallback')
 
 const Avatar = {
   Root,

@@ -1,6 +1,6 @@
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import type { PopoverContentProps } from '@radix-ui/react-popover'
-import { css, cx } from '@styled-system/css'
+import { cx } from '@styled-system/css'
 import { type ComboboxVariantProps, combobox } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { useCommandState } from 'cmdk'
@@ -49,7 +49,7 @@ export const Root = withProvider<
       disabled?: boolean
     } & JsxStyleProps
   >
->(CustomRoot, 'root')
+>(CustomRoot as any, 'root')
 
 const CustomTrigger = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
@@ -82,7 +82,7 @@ export const Trigger = withContext<
     },
     JsxStyleProps
   >
->(CustomTrigger, 'trigger')
+>(CustomTrigger as any, 'trigger')
 
 const CustomEmpty = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive.Empty>,
@@ -104,7 +104,7 @@ export const CustomContent = React.forwardRef<
   }
 >(({ children, placeholder = 'Search items', emptyState, ...props }, ref) => {
   return (
-    <PopoverPrimitive.Content ref={ref} {...props} data-slot="combobox-content">
+    <PopoverPrimitive.Content ref={ref} {...(props as any)} data-slot="combobox-content">
       <CommandPrimitive.Root>
         <CommandPrimitive.Input placeholder={placeholder} />
         <CommandPrimitive.List>
@@ -127,17 +127,17 @@ export const Content = withContext<
     },
     JsxStyleProps
   >
->(CustomContent, 'content')
+>(CustomContent as any, 'content')
 
 export const Input = withContext<
   React.ComponentRef<typeof CommandPrimitive.Input>,
   Assign<ComponentProps<typeof CommandPrimitive.Input>, JsxStyleProps>
->(CommandPrimitive.Input, 'input')
+>(CommandPrimitive.Input as any, 'input')
 
 export const Group = withContext<
   React.ComponentRef<typeof CommandPrimitive.Group>,
   Assign<ComponentProps<typeof CommandPrimitive.Group>, JsxStyleProps>
->(CommandPrimitive.Group, 'group')
+>(CommandPrimitive.Group as any, 'group')
 
 export const ItemIndicator = withContext<
   React.ComponentRef<'div'>,
@@ -152,12 +152,12 @@ export const Item = withContext<
     },
     JsxStyleProps
   >
->(CommandPrimitive.Item, 'item')
+>(CommandPrimitive.Item as any, 'item')
 
 export const Separator = withContext<
   React.ComponentRef<typeof CommandPrimitive.Separator>,
   Assign<ComponentProps<typeof CommandPrimitive.Separator>, JsxStyleProps>
->(CommandPrimitive.Separator, 'separator')
+>(CommandPrimitive.Separator as any, 'separator')
 
 const Combobox = {
   Root,

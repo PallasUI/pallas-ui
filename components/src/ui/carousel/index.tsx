@@ -25,19 +25,19 @@ export type NextProps = Assign<
 >
 
 export const Root = withProvider<React.ComponentRef<typeof CarouselPrimitive.Root>, RootProps>(
-  CarouselPrimitive.Root,
+  CarouselPrimitive.Root as any,
   'root',
 )
 
 export const List = withContext<
   React.ComponentRef<typeof CarouselPrimitive.List>,
   Assign<ComponentProps<typeof CarouselPrimitive.List>, JsxStyleProps>
->(CarouselPrimitive.List, 'list')
+>(CarouselPrimitive.List as any, 'list')
 
 export const Item = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Item>,
   Assign<ComponentProps<typeof CarouselPrimitive.Item>, JsxStyleProps>
->(CarouselPrimitive.Item, 'item')
+>(CarouselPrimitive.Item as any, 'item')
 
 const PreviousButton = React.forwardRef<
   React.ComponentRef<typeof CarouselPrimitive.Previous>,
@@ -48,7 +48,7 @@ const PreviousButton = React.forwardRef<
     <CarouselPrimitive.Previous
       ref={ref}
       className={cx(button({ variant: 'text', ...buttonProps }), className)}
-      {...restProps}
+      {...(restProps as any)}
     >
       {children}
     </CarouselPrimitive.Previous>
@@ -58,7 +58,7 @@ const PreviousButton = React.forwardRef<
 export const Previous = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Previous>,
   PreviousProps
->(PreviousButton, 'previous')
+>(PreviousButton as any, 'previous')
 
 const NextButton = React.forwardRef<
   React.ComponentRef<typeof CarouselPrimitive.Next>,
@@ -69,7 +69,7 @@ const NextButton = React.forwardRef<
     <CarouselPrimitive.Next
       ref={ref}
       className={cx(button({ variant: 'text', ...buttonProps }), className)}
-      {...restProps}
+      {...(restProps as any)}
     >
       {children}
     </CarouselPrimitive.Next>
@@ -77,19 +77,19 @@ const NextButton = React.forwardRef<
 })
 
 export const Next = withContext<React.ComponentRef<typeof CarouselPrimitive.Next>, NextProps>(
-  NextButton,
+  NextButton as any,
   'next',
 )
 
 export const Dots = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Dots>,
   Assign<ComponentProps<typeof CarouselPrimitive.Dots>, JsxStyleProps>
->(CarouselPrimitive.Dots, 'dots')
+>(CarouselPrimitive.Dots as any, 'dots')
 
 export const Dot = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Dot>,
   Assign<CarouselPrimitive.CarouselDotProps, JsxStyleProps>
->(CarouselPrimitive.Dot, 'dot')
+>(CarouselPrimitive.Dot as any, 'dot')
 
 const Carousel = {
   Root,

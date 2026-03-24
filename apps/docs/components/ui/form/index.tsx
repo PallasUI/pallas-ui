@@ -26,7 +26,7 @@ const Provider = <
   form: UseFormReturn<TFielValues, TContext, TTransformedValues>
 }) => {
   return (
-    <PrimitiveForm.Provider {...form}>
+    <PrimitiveForm.Provider {...(form as any)}>
       <Root {...props} />
     </PrimitiveForm.Provider>
   )

@@ -38,7 +38,9 @@ export const Trigger = forwardRef<
   Assign<React.ComponentProps<typeof SheetPrimitive.Trigger>, JsxStyleProps & ButtonProps>
 >((props, ref) => {
   const [buttonProps, { className, ...rest }] = button.splitVariantProps(props)
-  return <TriggerComponent ref={ref} className={cx(button(buttonProps), className)} {...(rest as any)} />
+  return (
+    <TriggerComponent ref={ref} className={cx(button(buttonProps), className)} {...(rest as any)} />
+  )
 })
 
 export const Handle = withContext<

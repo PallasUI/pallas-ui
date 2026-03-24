@@ -9,7 +9,7 @@ import { withContext } from './provider'
 type TriggerProps = Assign<React.ComponentProps<typeof TriggerPrimitive>, ButtonProps>
 
 const TriggerStyled = withContext<React.ComponentRef<typeof TriggerPrimitive>, TriggerProps>(
-  TriggerPrimitive,
+  TriggerPrimitive as any,
   'trigger',
 )
 
@@ -20,7 +20,7 @@ export const Trigger = React.forwardRef<React.ComponentRef<typeof TriggerPrimiti
       <TriggerStyled
         ref={ref}
         className={cx(button({ variant: 'text', ...buttonProps }), className)}
-        {...restProps}
+        {...(restProps as any)}
       >
         {children}
         <span className={css({ srOnly: true })}>Toggle Sidebar</span>

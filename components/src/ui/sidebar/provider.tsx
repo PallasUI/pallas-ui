@@ -11,7 +11,7 @@ export const { withProvider, withContext } = createStyleContext(sidebar)
 const ProviderStyled = withProvider<
   React.ComponentRef<typeof ProviderPrimitive>,
   Assign<SidebarProviderProps, JsxStyleProps>
->(ProviderPrimitive, 'provider')
+>(ProviderPrimitive as any, 'provider')
 
 export const Provider = React.forwardRef<
   React.ComponentRef<typeof ProviderStyled>,
@@ -19,7 +19,7 @@ export const Provider = React.forwardRef<
 >(({ className, style, children, ...props }, ref) => {
   return (
     <Tooltip.Provider delayDuration={0}>
-      <ProviderStyled className={cx('group/sidebar-wrapper', className)} ref={ref} {...props}>
+      <ProviderStyled className={cx('group/sidebar-wrapper', className)} ref={ref} {...(props as any)}>
         {children}
       </ProviderStyled>
     </Tooltip.Provider>

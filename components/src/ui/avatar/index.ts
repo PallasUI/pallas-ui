@@ -12,17 +12,17 @@ export type RootProps = WithFixedClassName<ComponentProps<typeof RadixAvatar.Roo
 export const Root = withProvider<
   React.ComponentRef<typeof RadixAvatar.Root>,
   Assign<RootProps, AvatarVariantProps & JsxStyleProps>
->(RadixAvatar.Root, 'root')
+>(RadixAvatar.Root as any, 'root')
 
 export const Image = withContext<
   React.ComponentRef<typeof RadixAvatar.Image>,
   Assign<ComponentProps<typeof RadixAvatar.Image>, JsxStyleProps>
->(RadixAvatar.Image, 'image')
+>(RadixAvatar.Image as any, 'image')
 
 export const Fallback = withContext<
   React.ComponentRef<typeof RadixAvatar.Fallback>,
   Assign<ComponentProps<typeof RadixAvatar.Fallback>, JsxStyleProps>
->(RadixAvatar.Fallback, 'fallback')
+>(RadixAvatar.Fallback as any, 'fallback')
 
 const Avatar = {
   Root,

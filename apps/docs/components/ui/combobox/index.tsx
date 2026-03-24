@@ -1,6 +1,6 @@
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import type { PopoverContentProps } from '@radix-ui/react-popover'
-import { css, cx } from '@styled-system/css'
+import { cx } from '@styled-system/css'
 import { type ComboboxVariantProps, combobox } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { useCommandState } from 'cmdk'
@@ -39,7 +39,6 @@ const CustomRoot = React.forwardRef<
     </ComboboxContext.Provider>
   )
 })
-CustomRoot.displayName = 'CustomRoot'
 
 export const Root = withProvider<
   React.ComponentRef<typeof PopoverPrimitive.Root>,
@@ -74,8 +73,6 @@ const CustomTrigger = React.forwardRef<
     </PopoverPrimitive.Trigger>
   )
 })
-CustomTrigger.displayName = 'CustomTrigger'
-
 export const Trigger = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
   Assign<
@@ -85,8 +82,7 @@ export const Trigger = withContext<
     },
     JsxStyleProps
   >
-  // @ts-expect-error - forwardRef incompatible with style-context ElementType (React 19)
->(CustomTrigger, 'trigger')
+>(CustomTrigger as any, 'trigger')
 
 const CustomEmpty = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive.Empty>,
@@ -99,7 +95,6 @@ const CustomEmpty = React.forwardRef<
     </CommandPrimitive.Empty>
   )
 })
-CustomEmpty.displayName = 'CustomEmpty'
 
 export const CustomContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,
@@ -132,18 +127,17 @@ export const Content = withContext<
     },
     JsxStyleProps
   >
-  // @ts-expect-error - forwardRef incompatible with style-context ElementType (React 19)
->(CustomContent, 'content')
+>(CustomContent as any, 'content')
 
 export const Input = withContext<
   React.ComponentRef<typeof CommandPrimitive.Input>,
   Assign<ComponentProps<typeof CommandPrimitive.Input>, JsxStyleProps>
->(CommandPrimitive.Input, 'input')
+>(CommandPrimitive.Input as any, 'input')
 
 export const Group = withContext<
   React.ComponentRef<typeof CommandPrimitive.Group>,
   Assign<ComponentProps<typeof CommandPrimitive.Group>, JsxStyleProps>
->(CommandPrimitive.Group, 'group')
+>(CommandPrimitive.Group as any, 'group')
 
 export const ItemIndicator = withContext<
   React.ComponentRef<'div'>,
@@ -158,12 +152,12 @@ export const Item = withContext<
     },
     JsxStyleProps
   >
->(CommandPrimitive.Item, 'item')
+>(CommandPrimitive.Item as any, 'item')
 
 export const Separator = withContext<
   React.ComponentRef<typeof CommandPrimitive.Separator>,
   Assign<ComponentProps<typeof CommandPrimitive.Separator>, JsxStyleProps>
->(CommandPrimitive.Separator, 'separator')
+>(CommandPrimitive.Separator as any, 'separator')
 
 const Combobox = {
   Root,

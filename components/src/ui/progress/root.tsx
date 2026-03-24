@@ -8,7 +8,7 @@ import { ProgressContext } from './context'
 export const { withProvider, withContext } = createStyleContext(progress)
 
 const RootComponent = withProvider<React.ElementRef<typeof ProgressBar>, RootProps>(
-  ProgressBar,
+  ProgressBar as any,
   'root',
 )
 
@@ -72,7 +72,7 @@ export const Root = (props: RootProps) => {
         stepToGapRatio: stepToGapRatio || 9,
       }}
     >
-      <RootComponent {...props}>{children}</RootComponent>
+      <RootComponent {...(props as any)}>{children}</RootComponent>
     </ProgressContext.Provider>
   )
 }

@@ -16,7 +16,7 @@ const Trigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
 >(({ children, ...props }, ref) => {
   return (
-    <SelectPrimitive.Trigger ref={ref} {...(props as any)}>
+    <SelectPrimitive.Trigger ref={ref} {...props}>
       {children}
       <SelectPrimitive.Icon asChild>
         <ChevronDown className={icon({ dimmed: true })} />
@@ -36,7 +36,7 @@ const Content = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 >(({ children, position = 'popper', ...props }, ref) => (
   <SelectPrimitive.Portal>
-    <SelectPrimitive.Content ref={ref} position={position} data-position={position} {...(props as any)}>
+    <SelectPrimitive.Content ref={ref} position={position} data-position={position} {...props}>
       <Viewport data-position={position}>{children}</Viewport>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
@@ -52,7 +52,7 @@ const Item = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 >(({ children, ...props }, ref) => (
-  <SelectPrimitive.Item ref={ref} {...(props as any)}>
+  <SelectPrimitive.Item ref={ref} {...props}>
     <ItemIndicator>
       <Check className={icon()} />
     </ItemIndicator>

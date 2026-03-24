@@ -16,27 +16,27 @@ export type RootProps = WithFixedClassName<
 export const Root = withProvider<
   React.ComponentRef<typeof RadixAccordion.Root>,
   Assign<RootProps, AccordionVariantProps & JsxStyleProps>
->(RadixAccordion.Root, 'root')
+>(RadixAccordion.Root as any, 'root')
 
 export const Item = withContext<
   React.ComponentRef<typeof RadixAccordion.Item>,
   Assign<ComponentProps<typeof RadixAccordion.Item>, JsxStyleProps>
->(RadixAccordion.Item, 'item')
+>(RadixAccordion.Item as any, 'item')
 
 export const ItemHeader = withContext<
   React.ComponentRef<typeof RadixAccordion.Header>,
   Assign<ComponentProps<typeof RadixAccordion.Header>, JsxStyleProps>
->(RadixAccordion.Header, 'itemHeader')
+>(RadixAccordion.Header as any, 'itemHeader')
 
 export const ItemTrigger = withContext<
   React.ComponentRef<typeof RadixAccordion.Trigger>,
   Assign<ComponentProps<typeof RadixAccordion.Trigger>, JsxStyleProps>
->(RadixAccordion.Trigger, 'itemTrigger')
+>(RadixAccordion.Trigger as any, 'itemTrigger')
 
 export const ItemContent = withContext<
   React.ComponentRef<typeof RadixAccordion.Content>,
   Assign<ComponentProps<typeof RadixAccordion.Content>, JsxStyleProps>
->(RadixAccordion.Content, 'itemContent')
+>(RadixAccordion.Content as any, 'itemContent')
 
 const Accordion = {
   Root,
