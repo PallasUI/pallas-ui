@@ -5,7 +5,7 @@ import { type ChatVariantProps, chat } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import { Check } from 'lucide-react'
 import * as React from 'react'
-import PallasAvatar from '../avatar' // adjust the path
+import PallasAvatar from '../avatar'
 
 const { withProvider, withContext } = createStyleContext(chat)
 

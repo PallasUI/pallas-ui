@@ -66,6 +66,8 @@ export default function ChatPreview() {
     }
     setMessages((prev) => [...prev.map((msg) => ({ ...msg, isNew: false })), typingMessage])
 
+    // Simulated assistant delay for this docs preview only (not a production pattern).
+    const assistantReplyDelayMs = 1500
     setTimeout(() => {
       setMessages((prev) =>
         prev.map((msg) =>
@@ -79,7 +81,7 @@ export default function ChatPreview() {
             : { ...msg, isNew: false },
         ),
       )
-    }, 1500)
+    }, assistantReplyDelayMs)
   }
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -142,8 +144,8 @@ export default function ChatPreview() {
           <Chat.Composer>
             {showSuggestions && (
               <Chat.Suggestions suggestionVariant='outlined' suggestionShape='pill'>
-                {suggestions.map((suggestion, index) => (
-                  <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion)}>
+                {suggestions.map((suggestion) => (
+                  <Chat.Suggestion key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
                     {suggestion}
                   </Chat.Suggestion>
                 ))}
