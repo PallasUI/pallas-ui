@@ -103,7 +103,7 @@ const CustomTextArea = React.forwardRef<
     adjustHeight()
   }, [adjustHeight])
 
-  const handleInput = (e: React.FormEvent<HTMLTextAreaElement>) => {
+  const handleInput = (e: React.InputEvent<HTMLTextAreaElement>) => {
     adjustHeight()
     props.onInput?.(e)
   }
@@ -124,7 +124,7 @@ const CustomTextArea = React.forwardRef<
     onKeyDown?.(e)
   }
 
-  const { min } = getHeightValues()
+  const initialMinHeightPx = minHeight ?? 30
 
   return (
     <textarea
@@ -132,8 +132,8 @@ const CustomTextArea = React.forwardRef<
       onKeyDown={handleKeyDown}
       onInput={handleInput}
       style={{
-        minHeight: `${min}px`,
-        height: `${min}px`,
+        minHeight: `${initialMinHeightPx}px`,
+        height: `${initialMinHeightPx}px`,
         ...props.style,
       }}
       {...props}
