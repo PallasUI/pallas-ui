@@ -48,7 +48,7 @@ const PreviousButton = React.forwardRef<
     <CarouselPrimitive.Previous
       ref={ref}
       className={cx(button({ variant: 'text', ...buttonProps }), className)}
-      {...(restProps)}
+      {...restProps}
     >
       {children}
     </CarouselPrimitive.Previous>

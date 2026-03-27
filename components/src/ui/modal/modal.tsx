@@ -25,7 +25,7 @@ const ContentRaw = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ModalPortal>
     <ModalOverlay />
-    <AlertDialogPrimitive.Content ref={ref} className={className} {...(props as any)} />
+    <AlertDialogPrimitive.Content ref={ref} className={className} {...props} />
   </ModalPortal>
 ))
 ContentRaw.displayName = AlertDialogPrimitive.Content.displayName

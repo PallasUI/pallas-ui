@@ -79,7 +79,7 @@ const CommandDialog = React.forwardRef<
         ref={ref}
       >
         <CommandContext.Provider value={{ isModal: true }}>
-          <ModalRoot type="floating" {...(props)}>
+          <ModalRoot type="floating" {...props}>
             {children}
             {showCloseButton && (
               <DialogPrimitive.Close
@@ -112,7 +112,7 @@ const CommandInput = React.forwardRef<
   return (
     <div className={hstack()} data-slot="command-input-wrapper">
       <SearchIcon data-slot="command-input-icon" className={icon({ dimmed: true })} />
-      <CommandPrimitive.Input {...(props)} ref={ref} autoFocus={isModal} />
+      <CommandPrimitive.Input {...props} ref={ref} autoFocus={isModal} />
     </div>
   )
 })
