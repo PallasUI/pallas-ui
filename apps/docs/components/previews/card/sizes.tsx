@@ -1,8 +1,9 @@
 'use client'
 
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Flex, VStack } from '@styled-system/jsx'
+import Image from 'next/image'
 
 export default function SizesCardPreview() {
   return (
@@ -10,10 +11,11 @@ export default function SizesCardPreview() {
       <VStack maxW="280px" align="stretch">
         <Card.Root size="sm">
           <Card.Cover>
-            <img
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=280&h=160&fit=crop"
+            <Image
+              src="/card-cover.jpeg"
               alt="Small Card Cover"
-              style={{ width: '100%', height: '160px', objectFit: 'cover' }}
+              width={280}
+              height={160}
             />
           </Card.Cover>
           <Card.Header>
@@ -32,10 +34,11 @@ export default function SizesCardPreview() {
       <VStack maxW="350px" align="stretch">
         <Card.Root size="md">
           <Card.Cover>
-            <img
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=350&h=200&fit=crop"
+            <Image
+              src="/card-cover.jpeg"
               alt="Medium Card Cover"
-              style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              width={350}
+              height={200}
             />
           </Card.Cover>
           <Card.Header>
@@ -54,10 +57,11 @@ export default function SizesCardPreview() {
       <VStack maxW="420px" align="stretch">
         <Card.Root size="lg">
           <Card.Cover>
-            <img
-              src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=420&h=240&fit=crop"
+            <Image
+              src="/card-cover.jpeg"
               alt="Large Card Cover"
-              style={{ width: '100%', height: '240px', objectFit: 'cover' }}
+              width={420}
+              height={240}
             />
           </Card.Cover>
           <Card.Header>
@@ -74,4 +78,4 @@ export default function SizesCardPreview() {
       </VStack>
     </Flex>
   )
-} 
+}

@@ -1,7 +1,7 @@
 'use client'
 
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Box } from '@styled-system/jsx'
 
 export default function CardPreview() {
@@ -10,7 +10,7 @@ export default function CardPreview() {
       <Card.Root>
         <Card.Header>
           <Card.Title>Welcome Back</Card.Title>
-          <Card.Description>Here's what's happening with your projects</Card.Description>
+          <Card.Description>Here&apos;s what&apos;s happening with your projects</Card.Description>
         </Card.Header>
         <Card.Body>
           <p>This is a default card with some content.</p>
@@ -21,4 +21,4 @@ export default function CardPreview() {
       </Card.Root>
     </Box>
   )
-} 
+}

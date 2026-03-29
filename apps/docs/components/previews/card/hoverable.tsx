@@ -1,7 +1,7 @@
 'use client'
 
-import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
 import { Box } from '@styled-system/jsx'
 
 export default function HoverableCardPreview() {
@@ -21,4 +21,4 @@ export default function HoverableCardPreview() {
       </Card.Root>
     </Box>
   )
-} 
+}

@@ -9,4 +9,4 @@ export default function LoadingCardPreview() {
       <Card.Root loading />
     </Box>
   )
-} 
+}

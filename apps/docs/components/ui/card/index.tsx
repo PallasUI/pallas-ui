@@ -1,93 +1,58 @@
-import { cx } from '@styled-system/css'
+'use client'
+
+import { type Assign, createStyleContext } from '@pallas-ui/style-context'
 import { type CardVariantProps, card } from '@styled-system/recipes'
-import React, { createContext, useContext, useMemo } from 'react'
+import type { JsxStyleProps } from '@styled-system/types'
+import * as React from 'react'
 import { Skeleton } from '../skeleton'
 
-const CardVariantContext = createContext<CardVariantProps>({
-  size: 'md',
-  variant: 'elevated',
-  hoverable: false,
-})
+const { withProvider, withContext } = createStyleContext(card)
 
-const useCardVariant = () => useContext(CardVariantContext)
+type CardRootProviderProps = Assign<
+  React.ComponentPropsWithoutRef<'div'>,
+  CardVariantProps & JsxStyleProps
+>
 
-interface CardCoverProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const CardCover = React.forwardRef<HTMLDivElement, CardCoverProps>(
-  ({ children, className, ...props }, ref) => {
-    const variantProps = useCardVariant()
-    const slots = card(variantProps)
-    return (
-      <div ref={ref} className={cx(slots.cover, className)} {...props}>
-        {children}
-      </div>
-    )
-  },
+const CardRootPrimitive = withProvider<HTMLDivElement, CardRootProviderProps>('div', 'root')
+
+const CardCover = withContext<HTMLDivElement, Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>>(
+  'div',
+  'cover',
 )
+CardCover.displayName = 'Card.Cover'
 
-interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ children, className, ...props }, ref) => {
-    const variantProps = useCardVariant()
-    const slots = card(variantProps)
-    return (
-      <div ref={ref} className={cx(slots.header, className)} {...props}>
-        {children}
-      </div>
-    )
-  },
+const CardHeader = withContext<HTMLDivElement, Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>>(
+  'div',
+  'header',
 )
+CardHeader.displayName = 'Card.Header'
 
-interface CardBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
-  ({ children, className, ...props }, ref) => {
-    const variantProps = useCardVariant()
-    const slots = card(variantProps)
-    return (
-      <div ref={ref} className={cx(slots.body, className)} {...props}>
-        {children}
-      </div>
-    )
-  },
+const CardBody = withContext<HTMLDivElement, Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>>(
+  'div',
+  'body',
 )
+CardBody.displayName = 'Card.Body'
 
-interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ children, className, ...props }, ref) => {
-    const variantProps = useCardVariant()
-    const slots = card(variantProps)
-    return (
-      <div ref={ref} className={cx(slots.footer, className)} {...props}>
-        {children}
-      </div>
-    )
-  },
+const CardFooter = withContext<HTMLDivElement, Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>>(
+  'div',
+  'footer',
 )
+CardFooter.displayName = 'Card.Footer'
 
-interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
-export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
-  ({ children, className, ...props }, ref) => {
-    const variantProps = useCardVariant()
-    const slots = card(variantProps)
-    return (
-      <h3 ref={ref} className={cx(slots.title, className)} {...props}>
-        {children}
-      </h3>
-    )
-  },
-)
+const CardTitle = withContext<
+  HTMLHeadingElement,
+  Assign<React.ComponentPropsWithoutRef<'h3'>, JsxStyleProps>
+>('h3', 'title')
+CardTitle.displayName = 'Card.Title'
 
-interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
-export const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(
-  ({ children, className, ...props }, ref) => {
-    const variantProps = useCardVariant()
-    const slots = card(variantProps)
-    return (
-      <p ref={ref} className={cx(slots.description, className)} {...props}>
-        {children}
-      </p>
-    )
-  },
-)
+const CardDescription = withContext<
+  HTMLParagraphElement,
+  Assign<React.ComponentPropsWithoutRef<'p'>, JsxStyleProps>
+>('p', 'description')
+CardDescription.displayName = 'Card.Description'
+
+const CardSkeletonSlot = withContext<HTMLDivElement, React.ComponentPropsWithoutRef<'div'>>('div', 'skeleton')
+CardSkeletonSlot.displayName = 'Card.Skeleton'
 
 const CardSkeletonContent: React.FC<{ size: 'sm' | 'md' | 'lg' }> = ({ size }) => {
   const skeletonHeights = {
@@ -107,60 +72,33 @@ const CardSkeletonContent: React.FC<{ size: 'sm' | 'md' | 'lg' }> = ({ size }) =
     </>
   )
 }
+CardSkeletonContent.displayName = 'Card.SkeletonContent'
 
-export interface CardRootProps extends React.HTMLAttributes<HTMLDivElement>, CardVariantProps {
-  children?: React.ReactNode
-  cover?: React.ReactNode
-  hoverable?: boolean
-  size?: 'sm' | 'md' | 'lg'
-  variant?: 'elevated' | 'container'
+export interface CardRootProps extends CardRootProviderProps {
   loading?: boolean
 }
 
 const CardRoot = React.forwardRef<HTMLDivElement, CardRootProps>(
-  (
-    {
-      children,
-      cover,
-      hoverable = false,
-      size = 'md',
-      variant = 'elevated',
-      loading = false,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
-    // Memoize variant props so context value stable
-    const variantProps = useMemo(() => ({ size, hoverable, variant }), [size, hoverable, variant])
-    const slots = card(variantProps)
+  ({ loading = false, children, ...props }, ref) => {
+    const [variantProps] = card.splitVariantProps(props)
+    const raw = variantProps.size ?? 'md'
+    const size: 'sm' | 'md' | 'lg' =
+      raw === 'sm' || raw === 'md' || raw === 'lg' ? raw : 'md'
 
     return (
-      <CardVariantContext.Provider value={variantProps}>
-        <div ref={ref} className={cx(slots.root, className)} {...props}>
-          {loading ? (
-            <div className={slots.skeleton}>
-              <CardSkeletonContent size={size} />
-            </div>
-          ) : (
-            <>
-              {cover && <div className={slots.cover}>{cover}</div>}
-              {children}
-            </>
-          )}
-        </div>
-      </CardVariantContext.Provider>
+      <CardRootPrimitive ref={ref} {...props}>
+        {loading ? (
+          <CardSkeletonSlot>
+            <CardSkeletonContent size={size} />
+          </CardSkeletonSlot>
+        ) : (
+          children
+        )}
+      </CardRootPrimitive>
     )
   },
 )
-
 CardRoot.displayName = 'Card.Root'
-CardHeader.displayName = 'Card.Header'
-CardBody.displayName = 'Card.Body'
-CardFooter.displayName = 'Card.Footer'
-CardTitle.displayName = 'Card.Title'
-CardDescription.displayName = 'Card.Description'
-CardCover.displayName = 'Card.Cover'
 
 export const Card = {
   Root: CardRoot,
