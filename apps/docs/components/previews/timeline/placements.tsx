@@ -5,11 +5,13 @@ import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
 import { useState } from 'react'
 
+type TimelineOrientation = 'vertical' | 'horizontal'
+
+type TimelinePlacement = 'left' | 'right' | 'alternate' | 'top' | 'bottom'
+
 export default function TimelinePlacementsPreview() {
-  const [orientation, setOrientation] = useState<'vertical' | 'horizontal'>('vertical')
-  const [placement, setPlacement] = useState<'left' | 'right' | 'alternate' | 'top' | 'bottom'>(
-    'right',
-  )
+  const [orientation, setOrientation] = useState<TimelineOrientation>('vertical')
+  const [placement, setPlacement] = useState<TimelinePlacement>('right')
 
   const getPlacementOptions = () => {
     if (orientation === 'vertical') {
@@ -21,7 +23,7 @@ export default function TimelinePlacementsPreview() {
   const renderTimeline = () => {
     const currentPlacement = getPlacementOptions().includes(placement)
       ? placement
-      : (getPlacementOptions()[0] as 'left' | 'right' | 'alternate' | 'top' | 'bottom')
+      : (getPlacementOptions()[0] as TimelinePlacement)
 
     if (orientation === 'vertical') {
       return (
@@ -107,7 +109,7 @@ export default function TimelinePlacementsPreview() {
       <VStack gap={3} align="start">
         <Segmented.Root
           value={orientation}
-          onValueChange={(value) => setOrientation(value as 'vertical' | 'horizontal')}
+          onValueChange={(value: string) => setOrientation(value as TimelineOrientation)}
         >
           <Segmented.Option value="vertical">
             <Segmented.Text>Vertical</Segmented.Text>
@@ -119,9 +121,7 @@ export default function TimelinePlacementsPreview() {
 
         <Segmented.Root
           value={placement}
-          onValueChange={(value) =>
-            setPlacement(value as 'left' | 'right' | 'alternate' | 'top' | 'bottom')
-          }
+          onValueChange={(value: string) => setPlacement(value as TimelinePlacement)}
         >
           {getPlacementOptions().map((option) => (
             <Segmented.Option key={option} value={option}>

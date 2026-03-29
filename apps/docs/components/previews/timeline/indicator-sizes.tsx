@@ -5,8 +5,10 @@ import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
 import { useState } from 'react'
 
+type IndicatorSize = 'sm' | 'md' | 'lg' | 'xl'
+
 export default function TimelineIndicatorSizesPreview() {
-  const [size, setSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md')
+  const [size, setSize] = useState<IndicatorSize>('md')
 
   const renderTimeline = () => (
     <Timeline.Root indicatorSize={size}>
@@ -49,7 +51,7 @@ export default function TimelineIndicatorSizesPreview() {
     <VStack gap={4} align="start">
       <Segmented.Root
         value={size}
-        onValueChange={(value) => setSize(value as 'sm' | 'md' | 'lg' | 'xl')}
+        onValueChange={(value: string) => setSize(value as IndicatorSize)}
       >
         <Segmented.Option value="sm">
           <Segmented.Text>Small</Segmented.Text>

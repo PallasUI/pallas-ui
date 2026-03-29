@@ -1,7 +1,6 @@
 {
     "name": "@pallas-ui/style-context",
     "version": "0.1.0",
-    "private": true,
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
@@ -19,9 +18,9 @@
     },
     "devDependencies": {
         "@pallas-ui/typescript-config": "workspace:*",
-        "@pandacss/dev": "0.50.0",
-        "@types/react": "19.1.0",
-        "@types/react-dom": "19.1.0",
+        "@pandacss/dev": "^1.9.1",
+        "@types/react": "19.2.14",
+        "@types/react-dom": "19.2.3",
         "react": "^19.1.0",
         "tsup": "^8.0.1",
         "typescript": "5.5.4"

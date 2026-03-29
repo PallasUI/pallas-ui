@@ -5,14 +5,16 @@ import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
 import { useState } from 'react'
 
+type TimelineOrientation = 'vertical' | 'horizontal'
+
 export default function TimelineOrientationsPreview() {
-  const [orientation, setOrientation] = useState<'vertical' | 'horizontal'>('vertical')
+  const [orientation, setOrientation] = useState<TimelineOrientation>('vertical')
 
   return (
     <VStack gap={4} align="start">
       <Segmented.Root
         value={orientation}
-        onValueChange={(value) => setOrientation(value as 'vertical' | 'horizontal')}
+        onValueChange={(value: string) => setOrientation(value as TimelineOrientation)}
       >
         <Segmented.Option value="vertical">
           <Segmented.Text>Vertical</Segmented.Text>

@@ -5,8 +5,10 @@ import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
 import { useState } from 'react'
 
+type DotVariant = 'default' | 'success' | 'warning' | 'error'
+
 export default function TimelineDotVariantsPreview() {
-  const [variant, setVariant] = useState<'default' | 'success' | 'warning' | 'error'>('default')
+  const [variant, setVariant] = useState<DotVariant>('default')
 
   const getVariantInfo = () => {
     switch (variant) {
@@ -37,41 +39,13 @@ export default function TimelineDotVariantsPreview() {
     }
   }
 
-  const renderTimeline = () => {
-    const info = getVariantInfo()
-
-    return (
-      <Timeline.Root>
-        <Timeline.Item>
-          <Timeline.Indicator>
-            <Timeline.Dot variant="default" />
-          </Timeline.Indicator>
-          <Timeline.Connector />
-          <Timeline.Content>
-            <Timeline.Time>9:30 AM</Timeline.Time>
-            <Timeline.Title>Project Started</Timeline.Title>
-            <Timeline.Description>Initial project setup and configuration.</Timeline.Description>
-          </Timeline.Content>
-        </Timeline.Item>
-        <Timeline.Item>
-          <Timeline.Indicator>
-            <Timeline.Dot variant={variant} />
-          </Timeline.Indicator>
-          <Timeline.Content>
-            <Timeline.Time>{info.step}</Timeline.Time>
-            <Timeline.Title>{info.title}</Timeline.Title>
-            <Timeline.Description>{info.description}</Timeline.Description>
-          </Timeline.Content>
-        </Timeline.Item>
-      </Timeline.Root>
-    )
-  }
+  const info = getVariantInfo()
 
   return (
     <VStack gap={4} align="start">
       <Segmented.Root
         value={variant}
-        onValueChange={(value) => setVariant(value as 'default' | 'success' | 'warning' | 'error')}
+        onValueChange={(value: string) => setVariant(value as DotVariant)}
       >
         <Segmented.Option value="default">
           <Segmented.Text>Default</Segmented.Text>
@@ -88,7 +62,29 @@ export default function TimelineDotVariantsPreview() {
       </Segmented.Root>
 
       <Box minH="200px" minW="450px" w="full">
-        {renderTimeline()}
+        <Timeline.Root>
+          <Timeline.Item>
+            <Timeline.Indicator>
+              <Timeline.Dot variant="default" />
+            </Timeline.Indicator>
+            <Timeline.Connector />
+            <Timeline.Content>
+              <Timeline.Time>9:30 AM</Timeline.Time>
+              <Timeline.Title>Project Started</Timeline.Title>
+              <Timeline.Description>Initial project setup and configuration.</Timeline.Description>
+            </Timeline.Content>
+          </Timeline.Item>
+          <Timeline.Item>
+            <Timeline.Indicator>
+              <Timeline.Dot variant={variant} />
+            </Timeline.Indicator>
+            <Timeline.Content>
+              <Timeline.Time>{info.step}</Timeline.Time>
+              <Timeline.Title>{info.title}</Timeline.Title>
+              <Timeline.Description>{info.description}</Timeline.Description>
+            </Timeline.Content>
+          </Timeline.Item>
+        </Timeline.Root>
       </Box>
     </VStack>
   )

@@ -5,8 +5,10 @@ import Timeline from '@/components/ui/timeline'
 import { Box, VStack } from '@styled-system/jsx'
 import { useState } from 'react'
 
+type TextSize = 'sm' | 'md' | 'lg' | 'xl'
+
 export default function TimelineTextSizesPreview() {
-  const [textSize, setTextSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('md')
+  const [textSize, setTextSize] = useState<TextSize>('md')
 
   const renderTimeline = () => (
     <Timeline.Root textSize={textSize}>
@@ -51,7 +53,7 @@ export default function TimelineTextSizesPreview() {
     <VStack gap={4} align="start">
       <Segmented.Root
         value={textSize}
-        onValueChange={(value) => setTextSize(value as 'sm' | 'md' | 'lg' | 'xl')}
+        onValueChange={(value: string) => setTextSize(value as TextSize)}
       >
         <Segmented.Option value="sm">
           <Segmented.Text>Small</Segmented.Text>
