@@ -1,0 +1,79 @@
+---
+title: Timeline
+description: A visual representation of events in chronological order with support for different orientations and styles.
+---
+
+<ContentContainer>
+
+<Section gap="1">
+# Timeline
+<Paragraph size={'extraLarge'} color={'tertiary'}>A visual representation of events in chronological order with support for different orientations and styles.</Paragraph>
+<ComponentPreview name="timeline" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Copy and paste the following code into your project
+
+<ComponentSource name="timeline" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Timeline from '@/components/ui/timeline'
+```
+```tsx
+<Timeline.Root orientation="vertical" placement="right">
+  <Timeline.Item>
+    <Timeline.Indicator>
+      <Timeline.Dot variant="success" />
+    </Timeline.Indicator>
+    <Timeline.Connector />
+    <Timeline.Content>
+      <Timeline.Time>9:30 AM</Timeline.Time>
+      <Timeline.Title>Event Title</Timeline.Title>
+      <Timeline.Description>
+        Event description goes here.
+      </Timeline.Description>
+    </Timeline.Content>
+  </Timeline.Item>
+</Timeline.Root>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Basic Timeline
+<ComponentPreview name="timeline" />
+
+### Orientations
+<ComponentPreview name="timeline" file="orientations" />
+
+### Placements
+<ComponentPreview name="timeline" file="placements" />
+
+### Indicator Sizes
+<ComponentPreview name="timeline" file="indicator-sizes" />
+
+### Text Sizes
+<ComponentPreview name="timeline" file="text-sizes" />
+
+### Dot Variants
+<ComponentPreview name="timeline" file="dot-variants" />
+
+### Icon Indicator
+<ComponentPreview name="timeline" file="icon-indicator" />
+
+</Section>
+
+</ContentContainer>

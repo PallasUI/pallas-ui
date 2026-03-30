@@ -38,6 +38,7 @@ import { steps } from './steps'
 import { switchRecipe } from './switch'
 import { tabs } from './tabs'
 import { textarea } from './textarea'
+import {timeline} from './timeline'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
 
@@ -87,4 +88,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   tooltip,
   sidebar,
   form,
+  timeline,
 }
