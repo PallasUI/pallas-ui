@@ -51,5 +51,23 @@ export const Caption = withContext<
   Assign<WithFixedClassName<React.HTMLAttributes<HTMLTableCaptionElement>>, JsxStyleProps>
 >('caption', 'caption')
 
-const Table = { Root, Header, Body, Footer, Row, Head, Cell, Caption }
+Root.displayName = 'Table.Root'
+Header.displayName = 'Table.Header'
+Body.displayName = 'Table.Body'
+Footer.displayName = 'Table.Footer'
+Row.displayName = 'Table.Row'
+Head.displayName = 'Table.Head'
+Cell.displayName = 'Table.Cell'
+Caption.displayName = 'Table.Caption'
+
+const Table = {
+  Root,
+  Header,
+  Body,
+  Footer,
+  Row,
+  Head,
+  Cell,
+  Caption,
+}
 export default Table
