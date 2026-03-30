@@ -3,6 +3,7 @@ import type { Tokens } from '@pandacss/types'
 import { borders } from './borders'
 import { durations } from './durations'
 import { radii } from './radii'
+import { shadows } from './shadows'
 import { sizes } from './size'
 import { spacing } from './spacing'
 import { fontSizes, fontWeights, fonts, letterSpacings, lineHeights } from './typography'
@@ -13,6 +14,7 @@ export const tokens: Tokens = defineTokens({
   spacing,
   durations,
   borders,
+  shadows,
   radii,
   fontSizes,
   fontWeights,

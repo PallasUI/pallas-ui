@@ -125,10 +125,25 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationDirection: 'alternate',
     },
   },
+  caretBlink: {
+    value: {
+      animationName: 'caret-blink',
+      animationDuration: '1.2s',
+      animationTimingFunction: 'ease-out',
+      animationIterationCount: 'infinite',
+    },
+  },
 
   loading: {
     value: {
       animation: 'rotation 1s linear infinite',
+    },
+  },
+  fadeInScale: {
+    value: {
+      animationName: 'fade-in-scale',
+      animationDuration: '0.2s',
+      animationTimingFunction: 'ease-out',
     },
   },
 })

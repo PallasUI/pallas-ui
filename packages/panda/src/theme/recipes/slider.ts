@@ -21,37 +21,121 @@ export const slider = defineSlotRecipe({
       overflow: 'hidden',
       rounded: 'full',
       bg: '{colors.fill.secondary}',
+      _hover: {
+        cursor: 'pointer',
+        bg: '{colors.fill}',
+      },
+      transition: 'common',
+      _disabled: {
+        cursor: 'not-allowed!',
+        bg: '{colors.fill.disabled}',
+        border: '{borders.disabled.xs}',
+        _hover: {
+          bg: '{colors.fill.disabled}',
+        },
+      },
     },
     range: {
       position: 'absolute',
       h: 'full',
       bg: '{colors.primary}',
+      _hover: {
+        bg: '{colors.primary.active}',
+      },
+      _disabled: {
+        bg: '{colors.fill.tertiary}',
+        _hover: {
+          bg: '{colors.fill.tertiary}',
+        },
+      },
     },
     thumb: {
       display: 'block',
-      h: '{sizes.icon.sm}',
-      w: '{sizes.icon.sm}',
       cursor: 'pointer',
       rounded: 'full',
-      borderWidth: '2px',
-      borderStyle: 'solid',
-      borderColor: '{colors.primary}',
+      border: '{borders.primary.md}',
       bg: '{colors.surface.elevated}',
       focusRingOffsetColor: '{colors.surface.elevated}',
-      transition: 'colors',
+      transition: 'common',
+
+      _hover: {
+        border: '{borders.primary.lg}',
+        shadow: '{shadows.primaryLight.xxl}',
+      },
 
       _focusVisible: {
-        outline: '2px solid transparent',
-        outlineOffset: '2px',
-        focusRingWidth: '2',
-        focusRingColor: 'ring',
-        focusRingOffsetWidth: '2',
+        outline: 'none',
+        border: '{borders.primary.lg}',
+        shadow: '{shadows.primaryLight.xxl}',
       },
 
       _disabled: {
-        pointerEvents: 'none',
-        opacity: '0.5',
+        cursor: 'not-allowed',
+        border: '{borders.disabled.xs}',
+        _hover: {
+          shadow: 'none!',
+          border: '{borders.disabled.xs}!',
+        },
       },
     },
+  },
+  variants: {
+    thumbSize: {
+      sm: {
+        thumb: {
+          h: '{sizes.icon.sm}',
+          w: '{sizes.icon.sm}',
+        },
+      },
+      md: {
+        thumb: {
+          h: '{sizes.icon.md}',
+          w: '{sizes.icon.md}',
+          _hover: {
+            border: '{borders.primary.xl}',
+            shadow: '{shadows.primaryLight.3xl}',
+          },
+          _focusVisible: {
+            border: '{borders.primary.xl}',
+            shadow: '{shadows.primaryLight.3xl}',
+          },
+        },
+      },
+      lg: {
+        thumb: {
+          h: '{sizes.icon.lg}',
+          w: '{sizes.icon.lg}',
+          _hover: {
+            border: '{borders.primary.2xl}',
+            shadow: '{shadows.primaryLight.4xl}',
+          },
+          _focusVisible: {
+            border: '{borders.primary.2xl}',
+            shadow: '{shadows.primaryLight.4xl}',
+          },
+        },
+      },
+    },
+    trackSize: {
+      sm: {
+        track: {
+          h: 1,
+        },
+      },
+      md: {
+        track: {
+          h: 2,
+        },
+      },
+      lg: {
+        track: {
+          h: 3,
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    thumbSize: 'sm',
+    trackSize: 'sm',
   },
 })
