@@ -12,8 +12,8 @@ export const dialog = defineSlotRecipe({
       position: 'fixed',
       inset: '0',
       zIndex: 50,
-      bg: '{colors.surface.spotlight}',
-      bgBlur: 'sm',
+      bg: '{colors.fill}',
+      // bgBlur: 'sm',
     },
     content: {
       position: 'fixed',

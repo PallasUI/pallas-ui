@@ -15,5 +15,10 @@ export const sizes = defineSemanticTokens.sizes({
     sm: { value: '1rem' },
     md: { value: '1.5rem' },
     lg: { value: '2rem' },
+    xl: { value: '2.75rem' },
+  },
+  underlineHeight: {
+    default: { value: '0.06rem' },
+    active: { value: '0.1rem' },
   },
 })

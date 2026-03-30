@@ -14,14 +14,16 @@ const { withProvider, withContext } = createStyleContext(select)
 const Trigger = React.forwardRef<
   React.ComponentRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ children, ...props }, ref) => (
-  <SelectPrimitive.Trigger ref={ref} {...props}>
-    {children}
-    <SelectPrimitive.Icon asChild>
-      <ChevronDown className={icon({ dimmed: true })} />
-    </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
-))
+>(({ children, ...props }, ref) => {
+  return (
+    <SelectPrimitive.Trigger ref={ref} {...props}>
+      {children}
+      <SelectPrimitive.Icon asChild>
+        <ChevronDown className={icon({ dimmed: true })} />
+      </SelectPrimitive.Icon>
+    </SelectPrimitive.Trigger>
+  )
+})
 Trigger.displayName = SelectPrimitive.Trigger.displayName
 
 const Viewport = withContext<

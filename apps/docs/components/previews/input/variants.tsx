@@ -21,16 +21,19 @@ export default function Example() {
       </Stack>
 
       <Stack w="full" align="flex-start" gap="2">
-        <h3 className={css({ fontSize: 'sm', fontWeight: 'medium' })}>Shape Variants</h3>
+        <h3 className={css({ fontSize: 'sm', fontWeight: 'medium' })}>Radii Variants</h3>
         <Stack w="full" align="flex-start" gap="2">
-          <Input shape="default">
-            <Input.Text placeholder="Default shape" />
+          <Input radii="sm">
+            <Input.Text placeholder="Small" />
           </Input>
-          <Input shape="rounded">
-            <Input.Text placeholder="Rounded shape" />
+          <Input>
+            <Input.Text placeholder="Medium" />
           </Input>
-          <Input shape="circle">
-            <Input.Text placeholder="Circle shape" />
+          <Input radii="lg">
+            <Input.Text placeholder="Large" />
+          </Input>
+          <Input radii="full">
+            <Input.Text placeholder="Full" />
           </Input>
         </Stack>
       </Stack>
