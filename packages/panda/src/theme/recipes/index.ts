@@ -36,6 +36,7 @@ import { slider } from './slider'
 import { spinner } from './spinner'
 import { steps } from './steps'
 import { switchRecipe } from './switch'
+import { table } from './table'
 import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
@@ -82,6 +83,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   slider,
   steps,
   switchRecipe,
+  table,
   tabs,
   toast,
   tooltip,
