@@ -96,9 +96,6 @@ export const table = defineSlotRecipe({
           borderColor: '{colors.border}',
           borderRadius: '{radii.md}',
         },
-        header: {
-          bg: '{colors.surface.elevated}',
-        },
         row: {
           _hover: { bg: '{colors.fill.secondary}' },
         },
@@ -123,7 +120,6 @@ export const table = defineSlotRecipe({
         },
         row: {
           _even: { bg: '{colors.fill.secondary}' },
-          _hover: { bg: '{colors.primary.bgHover}' },
         },
       },
     },

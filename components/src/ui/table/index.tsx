@@ -8,8 +8,9 @@ import type * as React from 'react'
 
 const { withProvider, withContext } = createStyleContext(table)
 
-export type RootProps = WithFixedClassName<React.HTMLAttributes<HTMLTableElement>> &
-  TableVariantProps
+export type RootProps = WithFixedClassName<
+  React.HTMLAttributes<HTMLTableElement> & TableVariantProps
+>
 
 export const Root = withProvider<HTMLTableElement, Assign<RootProps, JsxStyleProps>>(
   'table',

@@ -34,8 +34,8 @@ export default function TablePreview() {
       </Table.Body>
       <Table.Footer>
         <Table.Row>
-          <Table.Head colSpan={3}>Total</Table.Head>
-          <Table.Head>$1,750.00</Table.Head>
+          <Table.Cell colSpan={3}>Total</Table.Cell>
+          <Table.Cell>$1,750.00</Table.Cell>
         </Table.Row>
       </Table.Footer>
     </Table.Root>
