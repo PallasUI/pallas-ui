@@ -84,6 +84,16 @@ function CustomLink({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorEle
   )
 }
 
+type HeadingDomRest = Omit<React.HTMLAttributes<HTMLHeadingElement>, 'id' | 'children' | 'color'>
+
+/** MDX may set `color` on headings; strip it so `Heading` controls color. */
+function mdHeadingFieldProps(props: React.HTMLAttributes<HTMLHeadingElement>) {
+  const { id, children, ...spread } = props
+  const rest = { ...spread }
+  delete (rest as { color?: unknown }).color
+  return { id, children, rest: rest as HeadingDomRest }
+}
+
 function extractCodeString(children: React.ReactNode): string {
   // Handle undefined or null
   if (!children) return ''
@@ -117,17 +127,9 @@ function extractCodeString(children: React.ReactNode): string {
   return ''
 }
 
-function CodeBlock({
-  className,
-  children,
-  'data-filename': filename,
-}: {
-  className?: string
-  children: React.ReactNode
-  'data-filename'?: string
-}) {
-  const language = className?.replace(/language-/, '') || ''
-  const codeString = extractCodeString(children)
+function CodeBlock(props: React.HTMLAttributes<HTMLPreElement>) {
+  const { className, children } = props
+  const codeString = extractCodeString(children as React.ReactNode)
 
   return (
     <div
@@ -138,18 +140,21 @@ function CodeBlock({
       })}
     >
       <pre
-        className={css({
-          px: '5',
-          py: '6',
-          rounded: 'md',
-          bg: '#1E1E1E',
-          color: 'text.secondary',
-          border: '1px solid',
-          borderColor: 'border',
-          overflow: 'auto',
-          width: '100%',
-          maxWidth: '100%',
-        })}
+        className={cx(
+          css({
+            px: '5',
+            py: '6',
+            rounded: 'md',
+            bg: '#1E1E1E',
+            color: 'text.secondary',
+            border: '1px solid',
+            borderColor: 'border',
+            overflow: 'auto',
+            width: '100%',
+            maxWidth: '100%',
+          }),
+          className,
+        )}
       >
         <code
           className={css({
@@ -175,106 +180,121 @@ function CodeBlock({
 const components = {
   ContentContainer,
   Section,
-  h1: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
-      <Heading
-        id={id}
-        level={1}
-        color="default"
-        css={{
-          mt: '3',
-          mb: '2',
-          scrollMargin: '24',
-          display: 'flex',
-          alignItems: 'center',
-          fontWeight: '700',
-          fontSize: '5xl',
-        }}
-        {...props}
-      >
-        <span>{children}</span>
-        <HeadingAnchor id={id} level={1} />
-      </Heading>
-    </div>
-  ),
-  h2: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
-      <Heading
-        id={id}
-        level={2}
-        color="default"
-        css={{
-          mt: '6',
-          mb: '2',
-          scrollMargin: '24',
-          display: 'flex',
-          alignItems: 'center',
-          fontWeight: '600',
-          fontSize: '3xl',
-        }}
-        {...props}
-      >
-        <span>{children}</span>
-        <HeadingAnchor id={id} level={2} />
-      </Heading>
-    </div>
-  ),
-  h3: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
-      <Heading
-        id={id}
-        level={3}
-        color="default"
-        css={{
-          mt: '3',
-          mb: '1',
-          scrollMargin: '24',
-          display: 'flex',
-          alignItems: 'center',
-          fontWeight: '600',
-          fontSize: '2xl',
-        }}
-        {...props}
-      >
-        <span className={css({ mr: '3' })}>{children}</span>
-        <HeadingAnchor id={id} level={3} />
-      </Heading>
-    </div>
-  ),
-  h4: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
-      <Heading
-        id={id}
-        level={4}
-        color="default"
-        css={{
-          my: '2',
-          scrollMargin: '24',
-          display: 'flex',
-          alignItems: 'center',
-          fontWeight: '500',
-          fontSize: 'xl',
-        }}
-        {...props}
-      >
-        <span>{children}</span>
-        <HeadingAnchor id={id} level={4} />
-      </Heading>
-    </div>
-  ),
+  h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const { id, children, rest } = mdHeadingFieldProps(props)
+    return (
+      <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+        <Heading
+          id={id}
+          level={1}
+          color="default"
+          css={{
+            mt: '3',
+            mb: '2',
+            scrollMargin: '24',
+            display: 'flex',
+            alignItems: 'center',
+            fontWeight: '700',
+            fontSize: '5xl',
+          }}
+          {...rest}
+        >
+          <span>{children}</span>
+          <HeadingAnchor id={id} level={1} />
+        </Heading>
+      </div>
+    )
+  },
+  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const { id, children, rest } = mdHeadingFieldProps(props)
+    return (
+      <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+        <Heading
+          id={id}
+          level={2}
+          color="default"
+          css={{
+            mt: '6',
+            mb: '2',
+            scrollMargin: '24',
+            display: 'flex',
+            alignItems: 'center',
+            fontWeight: '600',
+            fontSize: '3xl',
+          }}
+          {...rest}
+        >
+          <span>{children}</span>
+          <HeadingAnchor id={id} level={2} />
+        </Heading>
+      </div>
+    )
+  },
+  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const { id, children, rest } = mdHeadingFieldProps(props)
+    return (
+      <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+        <Heading
+          id={id}
+          level={3}
+          color="default"
+          css={{
+            mt: '3',
+            mb: '1',
+            scrollMargin: '24',
+            display: 'flex',
+            alignItems: 'center',
+            fontWeight: '600',
+            fontSize: '2xl',
+          }}
+          {...rest}
+        >
+          <span className={css({ mr: '3' })}>{children}</span>
+          <HeadingAnchor id={id} level={3} />
+        </Heading>
+      </div>
+    )
+  },
+  h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => {
+    const { id, children, rest } = mdHeadingFieldProps(props)
+    return (
+      <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+        <Heading
+          id={id}
+          level={4}
+          color="default"
+          css={{
+            my: '2',
+            scrollMargin: '24',
+            display: 'flex',
+            alignItems: 'center',
+            fontWeight: '500',
+            fontSize: 'xl',
+          }}
+          {...rest}
+        >
+          <span>{children}</span>
+          <HeadingAnchor id={id} level={4} />
+        </Heading>
+      </div>
+    )
+  },
   a: CustomLink,
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => {
-    // Destructure any variant prop that might come from MDX
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-    const { variant: _variant, ...restProps } = props as any
+  p: (props: React.HTMLAttributes<HTMLParagraphElement> & { variant?: string }) => {
+    const rest = { ...props }
+    delete rest.variant
+    delete (rest as { color?: unknown }).color
+    type ParagraphDomRest = Omit<
+      React.HTMLAttributes<HTMLParagraphElement>,
+      'variant' | 'color'
+    >
     return (
       <Paragraph
-        variant="default"
         css={{
           fontSize: 'md',
           lineHeight: 'relaxed',
         }}
-        {...restProps}
+        {...(rest as ParagraphDomRest)}
       />
     )
   },
@@ -305,8 +325,7 @@ const components = {
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={css({ color: 'text' })} {...props} />
   ),
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  pre: (props: any) => <CodeBlock {...props} />,
+  pre: (props: React.HTMLAttributes<HTMLPreElement>) => <CodeBlock {...props} />,
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cx(
@@ -385,34 +404,16 @@ export function MdxComponent({ code }: MdxComponentProps) {
     )
   }
 
-  try {
-    return (
-      <div
-        data-mdx-content="true"
-        className={css({
-          width: '100%',
-          position: 'relative',
-        })}
-      >
-        {/* @ts-expect-error - MDXContent has incompatible component types with our components object */}
-        <MDXContent code={code} components={components} />
-      </div>
-    )
-  } catch (error) {
-    console.error('Error rendering MDX:', error)
-    return (
-      <div
-        className={css({
-          p: '10',
-          border: '1px solid',
-          borderColor: 'error.border',
-          bg: 'error.bg',
-          color: 'error.text',
-          rounded: 'md',
-        })}
-      >
-        <p>Error rendering content: {String(error)}</p>
-      </div>
-    )
-  }
+  return (
+    <div
+      data-mdx-content="true"
+      className={css({
+        width: '100%',
+        position: 'relative',
+      })}
+    >
+      {/* @ts-expect-error - MDXContent has incompatible component types with our components object */}
+      <MDXContent code={code} components={components} />
+    </div>
+  )
 }

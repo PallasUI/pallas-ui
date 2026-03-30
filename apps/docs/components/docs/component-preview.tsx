@@ -53,8 +53,6 @@ export function ComponentPreview({
 
   const styles = docTabs({ variant: 'preview', noPadding })
 
-  const previewClassName = css({ padding: noPadding ? '0!' : undefined })
-
   return (
     <div className={styles.root}>
       <Root defaultValue="preview">
@@ -77,7 +75,7 @@ export function ComponentPreview({
         </TabList>
 
         <Content value="preview" className={styles.content}>
-          <Preview className={previewClassName}>
+          <Preview noPadding={noPadding}>
             <React.Suspense
               fallback={
                 <div

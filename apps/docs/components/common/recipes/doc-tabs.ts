@@ -76,6 +76,8 @@ export const docTabs = sva({
         },
       },
     },
+    // `!` is intentional: tab `Content` merges both the `tabs` recipe (e.g. `py` on `position: top`)
+    // and these doc-tab styles on one node; important keeps the preview panel flush when requested.
     noPadding: {
       true: {
         content: {
