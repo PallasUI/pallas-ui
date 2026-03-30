@@ -1,12 +1,13 @@
 import Sidebar from '@/components/ui/sidebar'
+import { Box } from '@styled-system/jsx'
 import { PanelLeft } from 'lucide-react'
-import { Footer, Header, SidebarContentGroup } from '.'
+import { Footer, Header, PageContent, SidebarContentGroup } from '.'
 
 export default function Inset() {
   return (
-    <>
+    <Box h="50vh" w="full">
       <Sidebar.Provider>
-        <Sidebar.Root variant="inset" side="left" collapsible="none">
+        <Sidebar.Root variant="inset" style={{ position: 'absolute' }}>
           <Sidebar.Header>
             <Sidebar.Menu>
               <Sidebar.MenuItem>
@@ -36,12 +37,10 @@ export default function Inset() {
           <Sidebar.Rail />
         </Sidebar.Root>
 
-        <main>
-          <Sidebar.Trigger>
-            <PanelLeft size={16} />
-          </Sidebar.Trigger>
-        </main>
+        <Sidebar.Inset>
+          <PageContent />
+        </Sidebar.Inset>
       </Sidebar.Provider>
-    </>
+    </Box>
   )
 }

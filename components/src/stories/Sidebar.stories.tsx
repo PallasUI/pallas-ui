@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { css } from '@styled-system/css'
+import { Box } from '@styled-system/jsx'
 import {
   Calendar,
   Command,
@@ -78,175 +79,183 @@ export const Default: Story = {
   render: (props) => {
     const Main = props['variant'] === 'inset' ? Sidebar.Inset : 'main'
     return (
-      <Sidebar.Provider>
-        {props['side'] === 'right' && (
-          <Main style={{ flex: 1 }}>
-            <Sidebar.Trigger>
-              <PanelLeft size={16} />
-            </Sidebar.Trigger>
-          </Main>
-        )}
+      <Box h="50vh">
+        <Sidebar.Provider>
+          {props['side'] === 'right' && (
+            <Main style={{ flex: 1 }}>
+              <Sidebar.Trigger>
+                <PanelLeft size={16} />
+              </Sidebar.Trigger>
+            </Main>
+          )}
 
-        <Sidebar.Root {...props}>
-          <Sidebar.Header>
-            <Sidebar.Menu>
-              <Sidebar.MenuItem>
-                <Sidebar.MenuButton size="lg" asChild>
-                  <Header />
-                </Sidebar.MenuButton>
-              </Sidebar.MenuItem>
-            </Sidebar.Menu>
-          </Sidebar.Header>
+          <Sidebar.Root {...props}>
+            <Sidebar.Header>
+              <Sidebar.Menu>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton size="lg" asChild>
+                    <Header />
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.Menu>
+            </Sidebar.Header>
 
-          <Sidebar.Separator />
+            <Sidebar.Separator />
 
-          <Sidebar.Content>
-            <SidebarContentGroup />
-          </Sidebar.Content>
+            <Sidebar.Content>
+              <SidebarContentGroup />
+            </Sidebar.Content>
 
-          <Sidebar.Footer>
-            <Sidebar.Menu>
-              <Sidebar.MenuItem>
-                <Sidebar.MenuButton size="lg" asChild>
-                  <Footer />
-                </Sidebar.MenuButton>
-              </Sidebar.MenuItem>
-            </Sidebar.Menu>
-          </Sidebar.Footer>
+            <Sidebar.Footer>
+              <Sidebar.Menu>
+                <Sidebar.MenuItem>
+                  <Sidebar.MenuButton size="lg" asChild>
+                    <Footer />
+                  </Sidebar.MenuButton>
+                </Sidebar.MenuItem>
+              </Sidebar.Menu>
+            </Sidebar.Footer>
 
-          <Sidebar.Rail />
-        </Sidebar.Root>
+            <Sidebar.Rail />
+          </Sidebar.Root>
 
-        {props['side'] === 'left' && (
-          <Main>
-            <Sidebar.Trigger>
-              <PanelLeft size={16} />
-            </Sidebar.Trigger>
-          </Main>
-        )}
-      </Sidebar.Provider>
+          {props['side'] === 'left' && (
+            <Main style={{ height: 'full' }}>
+              <Sidebar.Trigger>
+                <PanelLeft size={16} />
+              </Sidebar.Trigger>
+            </Main>
+          )}
+        </Sidebar.Provider>
+      </Box>
     )
   },
 }
 
 export const Inset = () => (
-  <Sidebar.Provider>
-    <Sidebar.Root variant="inset" side="left" collapsible="offcanvas">
-      <Sidebar.Header>
-        <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <Header />
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
-        </Sidebar.Menu>
-      </Sidebar.Header>
+  <Box h="50vh">
+    <Sidebar.Provider>
+      <Sidebar.Root variant="inset" side="left" collapsible="offcanvas">
+        <Sidebar.Header>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" asChild>
+                <Header />
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Header>
 
-      <Sidebar.Separator />
+        <Sidebar.Separator />
 
-      <Sidebar.Content>
-        <SidebarContentGroup />
-      </Sidebar.Content>
+        <Sidebar.Content>
+          <SidebarContentGroup />
+        </Sidebar.Content>
 
-      <Sidebar.Footer>
-        <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <Footer />
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
-        </Sidebar.Menu>
-      </Sidebar.Footer>
+        <Sidebar.Footer>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" asChild>
+                <Footer />
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Footer>
 
-      <Sidebar.Rail />
-    </Sidebar.Root>
+        <Sidebar.Rail />
+      </Sidebar.Root>
 
-    <Sidebar.Inset>
-      <Sidebar.Trigger>
-        <PanelLeft size={16} />
-      </Sidebar.Trigger>
-    </Sidebar.Inset>
-  </Sidebar.Provider>
+      <Sidebar.Inset>
+        <Sidebar.Trigger>
+          <PanelLeft size={16} />
+        </Sidebar.Trigger>
+      </Sidebar.Inset>
+    </Sidebar.Provider>
+  </Box>
 )
 
 export const Floating = () => (
-  <Sidebar.Provider>
-    <Sidebar.Root variant="floating" side="left" collapsible="offcanvas">
-      <Sidebar.Header>
-        <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <Header />
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
-        </Sidebar.Menu>
-      </Sidebar.Header>
+  <Box h="50vh">
+    <Sidebar.Provider>
+      <Sidebar.Root variant="floating" side="left" collapsible="offcanvas">
+        <Sidebar.Header>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" asChild>
+                <Header />
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Header>
 
-      <Sidebar.Separator />
+        <Sidebar.Separator />
 
-      <Sidebar.Content>
-        <SidebarContentGroup />
-      </Sidebar.Content>
+        <Sidebar.Content>
+          <SidebarContentGroup />
+        </Sidebar.Content>
 
-      <Sidebar.Footer>
-        <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <Footer />
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
-        </Sidebar.Menu>
-      </Sidebar.Footer>
+        <Sidebar.Footer>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" asChild>
+                <Footer />
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Footer>
 
-      <Sidebar.Rail />
-    </Sidebar.Root>
+        <Sidebar.Rail />
+      </Sidebar.Root>
 
-    <main>
-      <Sidebar.Trigger>
-        <PanelLeft size={16} />
-      </Sidebar.Trigger>
-    </main>
-  </Sidebar.Provider>
+      <main>
+        <Sidebar.Trigger>
+          <PanelLeft size={16} />
+        </Sidebar.Trigger>
+      </main>
+    </Sidebar.Provider>
+  </Box>
 )
 
 export const Icons = () => (
-  <Sidebar.Provider>
-    <main>
-      <Sidebar.Trigger>
-        <PanelLeft size={16} />
-      </Sidebar.Trigger>
-    </main>
+  <Box h="50vh">
+    <Sidebar.Provider>
+      <main style={{ flex: 1 }}>
+        <Sidebar.Trigger>
+          <PanelLeft size={16} />
+        </Sidebar.Trigger>
+      </main>
 
-    <Sidebar.Root variant="sidebar" side="right" collapsible="icon">
-      <Sidebar.Header>
-        <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <Header />
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
-        </Sidebar.Menu>
-      </Sidebar.Header>
+      <Sidebar.Root variant="sidebar" side="right" collapsible="icon">
+        <Sidebar.Header>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" asChild>
+                <Header />
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Header>
 
-      <Sidebar.Separator />
+        <Sidebar.Separator />
 
-      <Sidebar.Content>
-        <SidebarContentGroup />
-      </Sidebar.Content>
+        <Sidebar.Content>
+          <SidebarContentGroup />
+        </Sidebar.Content>
 
-      <Sidebar.Footer>
-        <Sidebar.Menu>
-          <Sidebar.MenuItem>
-            <Sidebar.MenuButton size="lg" asChild>
-              <Footer />
-            </Sidebar.MenuButton>
-          </Sidebar.MenuItem>
-        </Sidebar.Menu>
-      </Sidebar.Footer>
+        <Sidebar.Footer>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton size="lg" asChild>
+                <Footer />
+              </Sidebar.MenuButton>
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.Footer>
 
-      <Sidebar.Rail />
-    </Sidebar.Root>
-  </Sidebar.Provider>
+        <Sidebar.Rail />
+      </Sidebar.Root>
+    </Sidebar.Provider>
+  </Box>
 )
 
 const Header = () => (

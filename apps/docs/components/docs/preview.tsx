@@ -1,12 +1,12 @@
 import { css, cx } from '@styled-system/css'
 import type React from 'react'
 
-interface PreviewProps {
-  className?: string
-  children: React.ReactNode
+export type PreviewProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Omit default inset padding for full-bleed previews (e.g. sidebar). */
+  noPadding?: boolean
 }
 
-export function Preview({ className, children }: PreviewProps) {
+export function Preview({ className, children, noPadding, ...props }: PreviewProps) {
   return (
     <div
       className={cx(
@@ -14,13 +14,14 @@ export function Preview({ className, children }: PreviewProps) {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          p: '{spacing.padding.inline.lg}', // Changed from padding.inline.lg
+          ...(noPadding ? {} : { p: '{spacing.padding.inline.lg}' }),
           minH: { base: '100px', md: '200px' },
           bg: 'surface.elevated',
           color: 'text',
         }),
         className,
       )}
+      {...props}
     >
       {children}
     </div>

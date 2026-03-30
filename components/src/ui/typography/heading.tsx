@@ -18,7 +18,6 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
       variant,
       color,
     })
-    console.log(headingStylesRaw)
     const headingClassName = cx(headingStylesRaw, css(cssProp || {}))
     const Tag: keyof React.JSX.IntrinsicElements = `h${level}`
 
