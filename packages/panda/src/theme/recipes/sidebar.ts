@@ -47,6 +47,8 @@ export const sidebar = defineSlotRecipe({
       color: '{colors.text}',
       md: { display: 'block' },
       bg: '{colors.surface.layout}',
+
+      '&[data-state=collapsed]': { display: 'none' },
     },
     rootNonCollapsible: {
       // 'flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground',

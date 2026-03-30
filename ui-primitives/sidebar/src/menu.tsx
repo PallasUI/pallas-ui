@@ -33,7 +33,9 @@ export type MenuActionProps = React.ComponentProps<'button'> & {
 export const SidebarMenuAction = React.forwardRef<HTMLButtonElement, MenuActionProps>(
   ({ asChild = false, showOnHover = false, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button'
-    return <Comp ref={ref} data-sidebar="menu-action" data-showOnHover={showOnHover} {...props} />
+    return (
+      <Comp ref={ref} data-sidebar="menu-action" data-showonhover={showOnHover} {...props} />
+    )
   },
 )
 SidebarMenuAction.displayName = 'SidebarMenuAction'
