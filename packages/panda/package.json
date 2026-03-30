@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
-    "@pallas-ui/typescript-config": "workspace:*",
     "effect": "3.11.3"
   },
   "devDependencies": {
+    "@pallas-ui/typescript-config": "workspace:*",
     "@pandacss/config": "^0.53.3",
     "@pandacss/dev": "^0.53.3",
     "@pandacss/logger": "^0.53.3",
