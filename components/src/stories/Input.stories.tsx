@@ -30,6 +30,53 @@ export const Default = () => (
   </Stack>
 )
 
+export const NumberInputVariants = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Basic Number Input</Label>
+      <Input size="md">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Disabled</Label>
+      <Input size="md">
+        <Input.Number placeholder="Enter number" disabled />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
+      <Input size="md" styling="filled">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <Input size="md" styling="underlined">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
+      <Input size="md" styling="borderless">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Small</Label>
+      <Input size="sm">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Large and Full radii</Label>
+      <Input size="lg" radii="full">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+  </Stack>
+)
+
 export const TextInputVariants = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
@@ -66,6 +113,49 @@ export const TextInputVariants = () => (
   </Stack>
 )
 
+export const FileInputVariants = () => (
+  <Stack align="flex-start" gap="6">
+    <h3>Input Sizes</h3>
+    <Stack align="flex-start" gap="1">
+      <Label>Medium</Label>
+      <Input size="md">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Small</Label>
+      <Input size="sm">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Large</Label>
+      <Input size="lg">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <h3>Input Styles</h3>
+    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
+      <Input styling="filled">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <Input styling="underlined">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
+      <Input styling="borderless">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+  </Stack>
+)
+
 export const InputSizes = () => (
   <Stack align="flex-start" gap="6">
     <h3>Input Sizes</h3>
@@ -94,15 +184,37 @@ export const InputSizes = () => (
   </Stack>
 )
 
-export const InputStyles = () => (
+export const InputBorderRadii = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
-      <Label>Rounded Input</Label>
-      <Input size="md" shape="rounded">
-        <Input.Text placeholder="Rounded input" />
+      <Label>Small</Label>
+      <Input size="md" radii="sm">
+        <Input.Text placeholder="Enter" />
       </Input>
     </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Medium</Label>
+      <Input size="md" radii="md">
+        <Input.Text placeholder="Enter" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Large</Label>
+      <Input size="md" radii="lg">
+        <Input.Text placeholder="Enter" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Full</Label>
+      <Input size="md" radii="full">
+        <Input.Text placeholder="Enter" />
+      </Input>
+    </Stack>
+  </Stack>
+)
 
+export const InputStyles = () => (
+  <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
       <Label>With Icon Prefix</Label>
       <Input size="md">
@@ -128,6 +240,73 @@ export const InputDayPicker = () => (
       <Label>Day Picker</Label>
       <Input size="md">
         <Input.DayPicker />
+      </Input>
+    </Stack>
+  </Stack>
+)
+
+export const StylingVariants = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Outline</Label>
+      <Input size="md">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+
+    <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <Input size="md" styling="underlined">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md" styling="underlined">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md" styling="underlined">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md" styling="underlined">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+
+    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
+      <Input size="md" styling="filled">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md" styling="filled">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md" styling="filled">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md" styling="filled">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
+      <Input size="md" styling="borderless">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md" styling="borderless">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md" styling="borderless">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md" styling="borderless">
+        <Input.Text status="warning" placeholder="Warning" />
       </Input>
     </Stack>
   </Stack>

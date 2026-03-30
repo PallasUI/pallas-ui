@@ -30,11 +30,11 @@ const InputRoot = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> &
     InputVariantProps & { 'data-status'?: 'error' | 'success' | 'warning' }
->(({ className, size, shape, 'data-status': dataStatus, ...props }, ref) => {
+>(({ className, styling, size, radii, 'data-status': dataStatus, ...props }, ref) => {
   const id = React.useId()
-  const { root } = input({ size, shape })
+  const { root } = input({ styling, size, radii })
   return (
-    <InputContext.Provider value={{ id, dataStatus, size, shape }}>
+    <InputContext.Provider value={{ id, dataStatus, styling, size, radii }}>
       <div ref={ref} className={cx(root, className)} {...props} />
     </InputContext.Provider>
   )
@@ -44,8 +44,8 @@ InputRoot.displayName = 'Input'
 // Prefix component
 const InputPrefix = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
-    const { size, shape } = useInputContext()
-    const { prefix } = input({ size, shape })
+    const { size, radii } = useInputContext()
+    const { prefix } = input({ size, radii })
     return <div ref={ref} className={cx(prefix, className)} {...props} />
   },
 )
@@ -54,8 +54,8 @@ InputPrefix.displayName = 'Input.Prefix'
 // Postfix component
 const InputPostfix = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
-    const { size, shape } = useInputContext()
-    const { postfix } = input({ size, shape })
+    const { size, radii } = useInputContext()
+    const { postfix } = input({ size, radii })
     return <div ref={ref} className={cx(postfix, className)} {...props} />
   },
 )
@@ -74,8 +74,8 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     { className, formatter, maxLength, showCount, status, onChange, value, defaultValue, ...props },
     ref,
   ) => {
-    const { id, dataStatus, size, shape } = useInputContext()
-    const { field, charCount } = input({ size, shape })
+    const { id, dataStatus, styling, size, radii } = useInputContext()
+    const { field, charCount } = input({ styling, size, radii })
     const [inputValue, setInputValue] = React.useState(value || defaultValue || '')
     const characterCount = String(inputValue).length
 
@@ -92,7 +92,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     }
 
     return (
-      <div className={css({ position: 'relative', width: '100%', height: '100%' })}>
+      <>
         <Slot className={css({ flexGrow: 1 })}>
           <input
             id={id}
@@ -112,7 +112,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
             {characterCount}/{maxLength}
           </div>
         )}
-      </div>
+      </>
     )
   },
 )
@@ -127,8 +127,9 @@ type InputNumberProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'
 
 const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
   ({ className, controls = true, step = 1, min, max, value, onChange, ...props }, ref) => {
-    const { id, dataStatus, size, shape } = useInputContext()
-    const { field, control } = input({ size, shape })
+    const { id, dataStatus, styling, size, radii } = useInputContext()
+    const { field, control } = input({ styling, size, radii })
+    const { disabled } = props
     const [localValue, setLocalValue] = React.useState<number | undefined>(
       value !== undefined ? Number(value) : undefined,
     )
@@ -172,7 +173,9 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     }
 
     return (
-      <div className={css({ display: 'flex', alignItems: 'center', width: '100%' })}>
+      <div
+        className={css({ display: 'flex', alignItems: 'center', width: '100%', height: '100%' })}
+      >
         <Slot className={css({ flexGrow: 1, position: 'relative' })}>
           <input
             id={id}
@@ -201,13 +204,17 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
             className={css({
               display: 'flex',
               flexDirection: 'column',
-              gap: '0.125rem',
+              justifyContent: 'space-between',
+              height: '100%',
             })}
           >
             <button
               type="button"
               onClick={increment}
-              disabled={localValue !== undefined && localValue >= (max ?? Number.POSITIVE_INFINITY)}
+              disabled={
+                disabled ||
+                (localValue !== undefined && localValue >= (max ?? Number.POSITIVE_INFINITY))
+              }
               className={control}
             >
               <ChevronUp size={14} />
@@ -215,7 +222,10 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
             <button
               type="button"
               onClick={decrement}
-              disabled={localValue !== undefined && localValue <= (min ?? Number.NEGATIVE_INFINITY)}
+              disabled={
+                disabled ||
+                (localValue !== undefined && localValue <= (min ?? Number.NEGATIVE_INFINITY))
+              }
               className={control}
             >
               <ChevronDown size={14} />
@@ -243,8 +253,8 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
     { className, value, onChange, format: formatStr = 'PP', placeholder = 'Pick a date', ...props },
     ref,
   ) => {
-    const { id, dataStatus, size, shape } = useInputContext()
-    const { field, postfix } = input({ size, shape })
+    const { id, dataStatus, styling, size, radii } = useInputContext()
+    const { field, postfix } = input({ styling, size, radii })
     const [selected, setSelected] = React.useState<Date | undefined>(value)
 
     // Update internal state when value prop changes
