@@ -225,6 +225,28 @@ By using controlled `expandedValue` state, you can programmatically expand or co
 | `nodeToChildren` | `(node: T) => T[]` | No | Extracts the children array from a node. Omit for flat lists |
 | `isNodeDisabled` | `(node: T) => boolean` | No | Return `true` to mark a node as non-interactive |
 
+### Sub-components
+
+All sub-components accept the same props as their underlying Ark UI counterpart plus PandaCSS style props. The table below documents the rendered element and purpose of each.
+
+| Sub-component | Renders | Purpose |
+| --- | --- | --- |
+| `TreeView.Label` | `<span>` | Accessible label for the tree |
+| `TreeView.Tree` | `<ul>` | Root list container |
+| `TreeView.Branch` | `<li>` | A node that has children |
+| `TreeView.BranchControl` | `<div>` | Clickable row for a branch node |
+| `TreeView.BranchTrigger` | `<button>` | Button that toggles expand/collapse |
+| `TreeView.BranchIndicator` | `<span>` | Animated chevron/icon slot |
+| `TreeView.BranchText` | `<span>` | Label text for a branch |
+| `TreeView.BranchContent` | `<ul>` | Container for child nodes |
+| `TreeView.BranchIndentGuide` | `<div>` | Vertical indent line |
+| `TreeView.Item` | `<li>` | A leaf node (no children) |
+| `TreeView.ItemText` | `<span>` | Label text for a leaf node |
+| `TreeView.ItemIndicator` | `<span>` | Icon/indicator slot for leaf nodes |
+| `TreeView.NodeCheckbox` | `<button>` | Checkbox control for multi-select |
+| `TreeView.NodeCheckboxIndicator` | `<span>` | Visual checkmark/indeterminate indicator |
+| `TreeView.NodeRenameInput` | `<input>` | Inline rename input, shown in rename mode |
+
 </Section>
 
 </ContentContainer>
