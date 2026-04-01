@@ -206,6 +206,8 @@ By using controlled `expandedValue` state, you can programmatically expand or co
 | `onSelectionChange` | `(details: { selectedValue: string[] }) => void` | — | Fired when selection changes |
 | `selectionMode` | `'single' \| 'multiple'` | `'single'` | Single or multi-node selection |
 | `defaultCheckedValue` | `string[]` | `[]` | Node IDs checked on initial render (checkbox mode) |
+| `checkedValue` | `string[]` | — | Controlled checked state |
+| `onCheckedChange` | `(details: { checkedValue: string[] }) => void` | — | Fired when checked nodes change |
 | `canRename` | `(node: T, indexPath: IndexPath) => boolean` | — | Determines if a node supports inline renaming |
 | `onRenameComplete` | `(details: RenameCompleteDetails) => void` | — | Fired when a rename is committed |
 | `expandOnClick` | `boolean` | `true` | Whether clicking a branch label expands it |
