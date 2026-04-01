@@ -201,6 +201,7 @@ const components = {
     <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
       <Heading
         id={id}
+        data-mdx-heading="true"
         level={2}
         color="default"
         css={{
@@ -223,6 +224,7 @@ const components = {
     <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
       <Heading
         id={id}
+        data-mdx-heading="true"
         level={3}
         color="default"
         css={{
