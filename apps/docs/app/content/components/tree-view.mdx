@@ -131,7 +131,7 @@ Three sizes are available: `xs`, `sm`, and `md` (default). The size controls tex
 
 ### Variants
 
-Three visual variants control the hover and selection appearance: `subtle` (default), `outline`, and `ghost`.
+Three visual variants control the hover and selection appearance: `subtle` (default), `outline`, and `solid`.
 
 <ComponentPreview name="tree-view" file="variants" />
 
@@ -182,7 +182,7 @@ By using controlled `expandedValue` state, you can programmatically expand or co
 | --- | --- | --- | --- |
 | `collection` | `TreeCollection<T>` | required | Tree data built with `createTreeCollection` |
 | `size` | `'xs' \| 'sm' \| 'md'` | `'md'` | Controls text size, padding, and icon sizes |
-| `variant` | `'subtle' \| 'outline' \| 'ghost'` | `'subtle'` | Visual style of hover and selection states |
+| `variant` | `'subtle' \| 'outline' \| 'solid'` | `'subtle'` | Visual style of hover and selection states |
 | `defaultExpandedValue` | `string[]` | `[]` | Node IDs expanded on initial render |
 | `expandedValue` | `string[]` | — | Controlled expanded state |
 | `onExpandedChange` | `(details: { expandedValue: string[] }) => void` | — | Fired when any node expands or collapses |

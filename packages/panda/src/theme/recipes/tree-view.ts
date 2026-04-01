@@ -29,7 +29,7 @@ export const treeView = defineSlotRecipe({
       width: 'full',
     },
     label: {
-      fontSize: '{fontSizes.sm}',
+      textStyle: 'sm',
       fontWeight: 'semibold',
       color: '{colors.text.secondary}',
       paddingBottom: '{spacing.gap.inline.xs}',
@@ -47,16 +47,18 @@ export const treeView = defineSlotRecipe({
       alignItems: 'center',
       gap: '{spacing.gap.inline.xs}',
       cursor: 'pointer',
-      borderRadius: '{radii.sm}',
-      transition: 'background 0.15s ease',
+      rounded: '{radii.sm}',
+      transition: 'common',
       width: 'full',
       _focusVisible: {
         outline: '2px solid {colors.primary}',
         outlineOffset: '-2px',
       },
       _disabled: {
+        cursor: 'not-allowed',
         pointerEvents: 'none',
         opacity: 0.5,
+        bg: '{colors.fill.disabled}',
       },
     },
     branchIndicator: {
@@ -64,7 +66,7 @@ export const treeView = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
-      transition: 'transform 0.15s ease',
+      transition: 'common',
       _open: {
         transform: 'rotate(90deg)',
       },
@@ -96,23 +98,25 @@ export const treeView = defineSlotRecipe({
       top: '0',
       bottom: '0',
       width: '1px',
-      backgroundColor: '{colors.border}',
+      bg: '{colors.border}',
     },
     item: {
       display: 'flex',
       alignItems: 'center',
       gap: '{spacing.gap.inline.xs}',
       cursor: 'pointer',
-      borderRadius: '{radii.sm}',
-      transition: 'background 0.15s ease',
+      rounded: '{radii.sm}',
+      transition: 'common',
       width: 'full',
       _focusVisible: {
         outline: '2px solid {colors.primary}',
         outlineOffset: '-2px',
       },
       _disabled: {
+        cursor: 'not-allowed',
         pointerEvents: 'none',
         opacity: 0.5,
+        bg: '{colors.fill.disabled}',
       },
     },
     itemText: {
@@ -130,20 +134,19 @@ export const treeView = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       flexShrink: 0,
-      width: '1rem',
-      height: '1rem',
-      borderRadius: '{radii.xs}',
-      border: '1px solid {colors.border}',
+      w: '{sizes.selectionControl.sm}',
+      h: '{sizes.selectionControl.sm}',
+      rounded: '{radii.xs}',
+      border: '{borders.default.sm}',
       cursor: 'pointer',
-      transition: 'background 0.15s ease, border-color 0.15s ease',
+      transition: 'common',
       _checked: {
-        backgroundColor: '{colors.primary}',
-        borderColor: '{colors.primary}',
-        color: '{colors.primary.textActive}',
+        bg: '{colors.primary}',
+        border: '{borders.primary.sm}',
       },
       _indeterminate: {
-        backgroundColor: '{colors.primary.subtle}',
-        borderColor: '{colors.primary}',
+        bg: '{colors.primary}',
+        border: '{borders.primary.sm}',
       },
     },
     nodeCheckboxIndicator: {
@@ -152,16 +155,16 @@ export const treeView = defineSlotRecipe({
       justifyContent: 'center',
       width: 'full',
       height: 'full',
-      fontSize: '0.6rem',
+      fontSize: '{fontSizes.xs}',
       lineHeight: 1,
-      color: 'inherit',
+      color: '{colors.surface.elevated}',
     },
     nodeRenameInput: {
       flex: 1,
       background: 'transparent',
       outline: '1px solid {colors.primary}',
       outlineOffset: '2px',
-      borderRadius: '{radii.sm}',
+      rounded: '{radii.sm}',
       fontSize: 'inherit',
       padding: '0 {spacing.gap.inline.xs}',
     },
@@ -226,65 +229,65 @@ export const treeView = defineSlotRecipe({
     variant: {
       subtle: {
         branchControl: {
-          '&:hover:not([data-disabled])': {
-            backgroundColor: '{colors.fill.secondary}',
+          _hover: {
+            bg: '{colors.fill.secondary}',
           },
           _selected: {
-            backgroundColor: '{colors.primary.bg}',
+            bg: '{colors.primary.bg}',
             color: '{colors.primary.textActive}',
           },
         },
         item: {
-          '&:hover:not([data-disabled])': {
-            backgroundColor: '{colors.fill.secondary}',
+          _hover: {
+            bg: '{colors.fill.secondary}',
           },
           _selected: {
-            backgroundColor: '{colors.primary.bg}',
+            bg: '{colors.primary.bg}',
             color: '{colors.primary.textActive}',
           },
         },
       },
       outline: {
         branchControl: {
-          '&:hover:not([data-disabled])': {
-            outline: '1px solid {colors.border}',
+          _hover: {
+            outline: '{borders.default.sm}',
             outlineOffset: '-1px',
           },
           _selected: {
-            outline: '1px solid {colors.primary}',
+            outline: '{borders.primary.sm}',
             outlineOffset: '-1px',
             color: '{colors.primary.textActive}',
           },
         },
         item: {
-          '&:hover:not([data-disabled])': {
-            outline: '1px solid {colors.border}',
+          _hover: {
+            outline: '{borders.default.sm}',
             outlineOffset: '-1px',
           },
           _selected: {
-            outline: '1px solid {colors.primary}',
+            outline: '{borders.primary.sm}',
             outlineOffset: '-1px',
             color: '{colors.primary.textActive}',
           },
         },
       },
-      ghost: {
+      solid: {
         branchControl: {
-          '&:hover:not([data-disabled])': {
-            color: '{colors.primary.textActive}',
+          _hover: {
+            bg: '{colors.primary.bgHover}',
           },
           _selected: {
-            backgroundColor: '{colors.primary.bg}',
-            color: '{colors.primary.textActive}',
+            bg: '{colors.primary}',
+            color: '{colors.bgSolid.text}',
           },
         },
         item: {
-          '&:hover:not([data-disabled])': {
-            color: '{colors.primary.textActive}',
+          _hover: {
+            bg: '{colors.primary.bgHover}',
           },
           _selected: {
-            backgroundColor: '{colors.primary.bg}',
-            color: '{colors.primary.textActive}',
+            bg: '{colors.primary}',
+            color: '{colors.bgSolid.text}',
           },
         },
       },

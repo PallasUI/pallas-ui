@@ -68,7 +68,7 @@ const rootChildren = collection.rootNode.children ?? []
 export default function VariantsPreview() {
   return (
     <HStack gap={8} align="flex-start">
-      {(['subtle', 'outline', 'ghost'] as const).map((variant) => (
+      {(['subtle', 'outline', 'solid'] as const).map((variant) => (
         <VStack key={variant} gap={2} align="flex-start">
           <TreeView.Root
             collection={collection as TreeCollection}

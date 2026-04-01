@@ -120,7 +120,7 @@ const meta: Meta<typeof TreeView.Root> = {
     },
     variant: {
       control: { type: 'select' },
-      options: ['subtle', 'outline', 'ghost'],
+      options: ['subtle', 'outline', 'solid'],
       description: 'Visual variant of the tree view',
     },
   },
@@ -226,10 +226,10 @@ export const Variants: Story = {
         </TreeView.Root>
       </VStack>
       <VStack gap={2} align="flex-start">
-        <Paragraph textStyle="bold">Ghost</Paragraph>
+        <Paragraph textStyle="bold">Solid</Paragraph>
         <TreeView.Root
           collection={basicCollection as TreeCollection}
-          variant={'ghost'}
+          variant={'solid'}
           defaultExpandedValue={['src']}
         >
           <TreeView.Label>File Explorer</TreeView.Label>

@@ -9,6 +9,7 @@ import TreeView, { createTreeCollection } from '@/components/ui/tree-view'
 interface FileNode {
   id: string
   name: string
+  disabled?: boolean
   children?: FileNode[]
 }
 
@@ -26,10 +27,10 @@ const collection = createTreeCollection<FileNode>({
         name: 'src',
         children: [
           { id: 'src/button', name: 'Button.tsx' },
-          { id: 'src/input', name: 'Input.tsx' },
+          { id: 'src/input', name: 'Input.tsx', disabled: true },
         ],
       },
-      { id: 'readme', name: 'README.md' },
+      { id: 'readme', name: 'README.md', disabled: true },
       { id: 'package', name: 'package.json' },
     ],
   },
@@ -70,10 +71,7 @@ const rootChildren = collection.rootNode.children ?? []
 export default function DisabledPreview() {
   return (
     <Stack w="320px">
-      <TreeView.Root
-        collection={collection as TreeCollection}
-        defaultExpandedValue={['src']}
-      >
+      <TreeView.Root collection={collection as TreeCollection} defaultExpandedValue={['src']}>
         <TreeView.Label>Project Files</TreeView.Label>
         <TreeView.Tree>
           {rootChildren.map((node, i) => (
