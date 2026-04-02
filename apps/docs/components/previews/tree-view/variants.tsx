@@ -68,24 +68,48 @@ const rootChildren = collection.rootNode.children ?? []
 export default function VariantsPreview() {
   return (
     <HStack gap={8} align="flex-start">
-      {(['subtle', 'outline', 'solid'] as const).map((variant) => (
-        <VStack key={variant} gap={2} align="flex-start">
-          <TreeView.Root
-            collection={collection as TreeCollection}
-            variant={variant}
-            defaultExpandedValue={['src']}
-          >
-            <TreeView.Label>
-              {variant.charAt(0).toUpperCase() + variant.slice(1)}
-            </TreeView.Label>
-            <TreeView.Tree>
-              {rootChildren.map((node, i) => (
-                <TreeNode key={node.id} node={node} indexPath={[i]} />
-              ))}
-            </TreeView.Tree>
-          </TreeView.Root>
-        </VStack>
-      ))}
+      <VStack gap={2} align="flex-start">
+        <TreeView.Root
+          collection={collection as TreeCollection}
+          variant={'subtle'}
+          defaultExpandedValue={['src']}
+        >
+          <TreeView.Label>Subtle</TreeView.Label>
+          <TreeView.Tree>
+            {rootChildren.map((node, i) => (
+              <TreeNode key={node.id} node={node} indexPath={[i]} />
+            ))}
+          </TreeView.Tree>
+        </TreeView.Root>
+      </VStack>
+      <VStack gap={2} align="flex-start">
+        <TreeView.Root
+          collection={collection as TreeCollection}
+          variant={'outline'}
+          defaultExpandedValue={['src']}
+        >
+          <TreeView.Label>Outline</TreeView.Label>
+          <TreeView.Tree>
+            {rootChildren.map((node, i) => (
+              <TreeNode key={node.id} node={node} indexPath={[i]} />
+            ))}
+          </TreeView.Tree>
+        </TreeView.Root>
+      </VStack>
+      <VStack gap={2} align="flex-start">
+        <TreeView.Root
+          collection={collection as TreeCollection}
+          variant={'solid'}
+          defaultExpandedValue={['src']}
+        >
+          <TreeView.Label>Solid</TreeView.Label>
+          <TreeView.Tree>
+            {rootChildren.map((node, i) => (
+              <TreeNode key={node.id} node={node} indexPath={[i]} />
+            ))}
+          </TreeView.Tree>
+        </TreeView.Root>
+      </VStack>
     </HStack>
   )
 }

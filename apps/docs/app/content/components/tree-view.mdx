@@ -161,7 +161,7 @@ Control both the expanded and selected state externally by passing `expandedValu
 
 ### Node Renaming
 
-Enable inline renaming by passing `canRename` to `TreeView.Root`. Add `TreeView.NodeRenameInput` inside each node — it will appear automatically when the node enters rename mode. Double-click any node to trigger renaming. Press `Enter` to confirm or `Escape` to cancel.
+Enable inline renaming by passing `canRename` to `TreeView.Root`. Add `TreeView.NodeRenameInput` inside each node — it will appear automatically when the node enters rename mode. Press F2 to activate rename mode on the focused node. Press `Enter` to confirm or `Escape` to cancel.
 
 <ComponentPreview name="tree-view" file="renaming" />
 
@@ -178,13 +178,19 @@ By using controlled `expandedValue` state, you can programmatically expand or co
 
 | Key | Description |
 | --- | --- |
-| `↓` / `↑` | Move focus to the next/previous visible node |
-| `→` | Expand a collapsed branch; if already expanded, move focus to its first child |
-| `←` | Collapse an expanded branch; if already collapsed, move focus to the parent branch |
-| `Home` | Move focus to the first node in the tree |
-| `End` | Move focus to the last visible node in the tree |
-| `Enter` / `Space` | Select the focused node |
-| Typeahead | Type a character to jump to the next node whose label starts with that character |
+| `Tab` | Brings focus into the tree, targeting the first item. |
+| `Enter` `Space` | Selects the focused item or branch. |
+| `ArrowDown` | Focuses the next visible node. |
+| `ArrowUp` | Focuses the previous visible node. |
+| `ArrowRight` | Opens a collapsed branch. If the branch is already open, focuses its first child. |
+| `ArrowLeft` | Closes an open branch. If already closed, moves focus up to the parent branch. |
+| `Home` | Jumps focus to the very first node in the tree without affecting expand/collapse state. |
+| `End` | Jumps focus to the last reachable node, skipping past any collapsed branches. |
+| `a-z` `A-Z` | Typeahead — jumps to the next node whose label begins with the typed character. Closed branch descendants are excluded from the search. |
+| `*` | Expands all branches at the same depth as the currently focused node. |
+| `Shift + ArrowDown` | Extends the selection downward, toggling the next node's selected state. |
+| `Shift + ArrowUp` | Extends the selection upward, toggling the previous node's selected state. |
+| `Ctrl + A` | Toggles selection of all nodes — selects everything if any are unselected, otherwise clears all. |
 
 </Section>
 

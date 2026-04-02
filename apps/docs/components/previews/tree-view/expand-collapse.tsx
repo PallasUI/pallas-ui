@@ -87,10 +87,10 @@ export default function ExpandCollapsePreview() {
   return (
     <Stack w="320px" gap={4}>
       <HStack gap={2}>
-        <Button size="sm" variant="outline" onClick={() => setExpandedValue(allBranchIds)}>
+        <Button size="sm" variant="outlined" onClick={() => setExpandedValue(allBranchIds)}>
           Expand All
         </Button>
-        <Button size="sm" variant="outline" onClick={() => setExpandedValue([])}>
+        <Button size="sm" variant="outlined" onClick={() => setExpandedValue([])}>
           Collapse All
         </Button>
       </HStack>

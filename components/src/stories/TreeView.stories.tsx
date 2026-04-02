@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import type { TreeCollection } from '@ark-ui/react/tree-view'
 
+import { Button } from '~/ui/button'
 import TreeView, { createTreeCollection } from '~/ui/tree-view'
 import { Paragraph } from '~/ui/typography'
 
@@ -136,7 +137,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    size: 'md',
+    size: 'sm',
     variant: 'subtle',
   },
   render: (args) => (
@@ -423,6 +424,87 @@ const deepCollection = createTreeCollection<FileNode>({
 })
 
 const deepRootChildren = deepCollection.rootNode.children ?? []
+
+// ---------------------------------------------------------------------------
+// 9. ExpandCollapse
+// ---------------------------------------------------------------------------
+
+export const ExpandCollapse: Story = {
+  render: () => {
+    const allBranchIds = ['src', 'src/components', 'public']
+    const [expandedValue, setExpandedValue] = useState<string[]>(['src'])
+
+    return (
+      <Stack gap={4} w="320px">
+        <HStack gap={2}>
+          <Button size="sm" variant="outlined" onClick={() => setExpandedValue(allBranchIds)}>
+            Expand All
+          </Button>
+          <Button size="sm" variant="outlined" onClick={() => setExpandedValue([])}>
+            Collapse All
+          </Button>
+        </HStack>
+        <TreeView.Root
+          collection={basicCollection as TreeCollection}
+          expandedValue={expandedValue}
+          onExpandedChange={(d) => setExpandedValue(d.expandedValue)}
+        >
+          <TreeView.Label>Project Files</TreeView.Label>
+          <TreeView.Tree>{renderNodes(rootChildren)}</TreeView.Tree>
+        </TreeView.Root>
+      </Stack>
+    )
+  },
+}
+
+// ---------------------------------------------------------------------------
+// 10. Renaming
+// ---------------------------------------------------------------------------
+
+export const Renaming: Story = {
+  render: () => {
+    const renderRenameNode = (node: FileNode, indexPath: number[]): React.ReactNode => (
+      <TreeView.NodeProvider key={node.value} node={node} indexPath={indexPath}>
+        {node.children && node.children.length > 0 ? (
+          <TreeView.Branch>
+            <TreeView.BranchControl>
+              <TreeView.BranchTrigger>
+                <TreeView.BranchIndicator>
+                  <ChevronRight size={14} />
+                </TreeView.BranchIndicator>
+              </TreeView.BranchTrigger>
+              <Folder size={14} style={{ flexShrink: 0 }} />
+              <TreeView.BranchText>{node.label}</TreeView.BranchText>
+              <TreeView.NodeRenameInput />
+            </TreeView.BranchControl>
+            <TreeView.BranchContent>
+              {node.children.map((child, i) => renderRenameNode(child, [...indexPath, i]))}
+            </TreeView.BranchContent>
+          </TreeView.Branch>
+        ) : (
+          <TreeView.Item>
+            <File size={14} style={{ flexShrink: 0 }} />
+            <TreeView.ItemText>{node.label}</TreeView.ItemText>
+            <TreeView.NodeRenameInput />
+          </TreeView.Item>
+        )}
+      </TreeView.NodeProvider>
+    )
+
+    return (
+      <Stack w="320px">
+        <TreeView.Root
+          collection={basicCollection as TreeCollection}
+          defaultExpandedValue={['src']}
+          canRename={() => true}
+        >
+          <TreeView.Label>Project Files (Press F2 to rename)</TreeView.Label>
+          <TreeView.Tree>{rootChildren.map((n, i) => renderRenameNode(n, [i]))}</TreeView.Tree>
+        </TreeView.Root>
+      </Stack>
+    )
+  },
+}
 
 export const Nested: Story = {
   render: () => (

@@ -14,6 +14,7 @@ interface FileNode {
 const collection = createTreeCollection<FileNode>({
   nodeToValue: (node) => node.id,
   nodeToString: (node) => node.name,
+  nodeToChildren: (node) => node.children ?? [],
   rootNode: {
     id: 'ROOT',
     name: '',

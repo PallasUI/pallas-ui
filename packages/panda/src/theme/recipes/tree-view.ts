@@ -25,7 +25,7 @@ export const treeView = defineSlotRecipe({
     root: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '{spacing.gap.component.xs}',
+      gap: '{spacing.gap.inline.xs}',
       width: 'full',
     },
     label: {
@@ -85,6 +85,7 @@ export const treeView = defineSlotRecipe({
     branchText: {
       flex: 1,
       userSelect: 'none',
+      '[data-renaming] &': { display: 'none' },
     },
     branchContent: {
       paddingLeft: '{spacing.gap.component.sm}',
@@ -122,6 +123,7 @@ export const treeView = defineSlotRecipe({
     itemText: {
       flex: 1,
       userSelect: 'none',
+      '[data-renaming] &': { display: 'none' },
     },
     itemIndicator: {
       display: 'flex',
@@ -167,6 +169,7 @@ export const treeView = defineSlotRecipe({
       rounded: '{radii.sm}',
       fontSize: 'inherit',
       padding: '0 {spacing.gap.inline.xs}',
+      marginBlock: '{spacing.padding.block.xs}',
     },
   },
   variants: {
@@ -229,7 +232,7 @@ export const treeView = defineSlotRecipe({
     variant: {
       subtle: {
         branchControl: {
-          _hover: {
+          '&:hover:not([data-selected])': {
             bg: '{colors.fill.secondary}',
           },
           _selected: {
@@ -238,7 +241,7 @@ export const treeView = defineSlotRecipe({
           },
         },
         item: {
-          _hover: {
+          '&:hover:not([data-selected])': {
             bg: '{colors.fill.secondary}',
           },
           _selected: {
@@ -249,7 +252,7 @@ export const treeView = defineSlotRecipe({
       },
       outline: {
         branchControl: {
-          _hover: {
+          '&:hover:not([data-selected])': {
             outline: '{borders.default.sm}',
             outlineOffset: '-1px',
           },
@@ -260,7 +263,7 @@ export const treeView = defineSlotRecipe({
           },
         },
         item: {
-          _hover: {
+          '&:hover:not([data-selected])': {
             outline: '{borders.default.sm}',
             outlineOffset: '-1px',
           },
@@ -273,7 +276,7 @@ export const treeView = defineSlotRecipe({
       },
       solid: {
         branchControl: {
-          _hover: {
+          '&:hover:not([data-selected])': {
             bg: '{colors.primary.bgHover}',
           },
           _selected: {
@@ -282,7 +285,7 @@ export const treeView = defineSlotRecipe({
           },
         },
         item: {
-          _hover: {
+          '&:hover:not([data-selected])': {
             bg: '{colors.primary.bgHover}',
           },
           _selected: {
@@ -294,7 +297,7 @@ export const treeView = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    size: 'md',
+    size: 'sm',
     variant: 'subtle',
   },
 })

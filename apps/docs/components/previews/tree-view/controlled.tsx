@@ -5,6 +5,7 @@ import { HStack, Stack, VStack } from '@styled-system/jsx'
 import { ChevronRight, File, Folder } from 'lucide-react'
 import { useState } from 'react'
 
+import { Paragraph } from '@/components/ui/typography'
 import TreeView, { createTreeCollection } from '@/components/ui/tree-view'
 
 interface FileNode {
@@ -86,16 +87,16 @@ export default function ControlledPreview() {
     <VStack gap={4} align="flex-start" w="320px">
       <HStack gap={6} w="full">
         <Stack gap={1}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>Expanded</span>
-          <span style={{ fontSize: '0.75rem', color: 'var(--colors-fg-tertiary)' }}>
+          <Paragraph size="compact" textStyle="bold">Expanded</Paragraph>
+          <Paragraph size="compact">
             {expandedValue.length ? expandedValue.join(', ') : 'none'}
-          </span>
+          </Paragraph>
         </Stack>
         <Stack gap={1}>
-          <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>Selected</span>
-          <span style={{ fontSize: '0.75rem', color: 'var(--colors-fg-tertiary)' }}>
+          <Paragraph size="compact" textStyle="bold">Selected</Paragraph>
+          <Paragraph size="compact">
             {selectedValue.length ? selectedValue.join(', ') : 'none'}
-          </span>
+          </Paragraph>
         </Stack>
       </HStack>
 
