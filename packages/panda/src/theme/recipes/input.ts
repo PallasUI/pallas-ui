@@ -68,16 +68,18 @@ export const input = defineSlotRecipe({
       },
 
       _file: {
-        border: 'none',
-        bg: 'transparent',
-        color: '{colors.text.secondary}',
+        border: '{borders.default.sm}',
+        bg: '{colors.fill.secondary}',
+        color: '{colors.text.DEFAULT}',
         textStyle: 'sm',
-        fontWeight: 'semibold',
-        marginRight: '{spacing.layout.internal.xs}',
-        transform: 'translateY(-2px)',
+        fontWeight: 'medium',
+        paddingInline: '{spacing.padding.inline.sm}',
+        paddingBlock: '{spacing.padding.block.xs}',
+        borderRadius: '{radii.sm}',
+        cursor: 'pointer',
       },
-
       '&[type="file"]': {
+        py: '0',
         cursor: 'pointer',
       },
 
@@ -312,6 +314,10 @@ export const input = defineSlotRecipe({
 
           _file: {
             textStyle: 'xs',
+            paddingBlock: '{spacing.padding.block.xs}',
+          },
+          '&[type="file"]': {
+            py: '0',
           },
         },
         control: {
@@ -330,11 +336,10 @@ export const input = defineSlotRecipe({
           px: '{spacing.padding.inline.md}',
         },
         field: {
-          textStyle: 'md',
+          textStyle: 'sm',
           py: '{spacing.padding.block.md}',
-
           '&[type="file"]': {
-            lineHeight: '0',
+            py: '0',
           },
         },
         control: {
@@ -353,14 +358,15 @@ export const input = defineSlotRecipe({
           px: '{spacing.padding.inline.lg}',
         },
         field: {
-          textStyle: 'lg',
+          textStyle: 'md',
           py: '{spacing.padding.block.lg}',
 
           _file: {
-            textStyle: 'md',
+            textStyle: 'sm',
+            paddingBlock: '{spacing.padding.block.md}',
           },
           '&[type="file"]': {
-            lineHeight: '0',
+            py: '0',
           },
         },
         control: {
