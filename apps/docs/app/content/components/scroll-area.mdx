@@ -1,0 +1,125 @@
+---
+title: ScrollArea
+description: A scrollable container that replaces native browser scrollbars with a custom, accessible alternative.
+---
+<ContentContainer>
+
+<Section gap="1">
+# ScrollArea
+<Paragraph size={'extraLarge'} color={'tertiary'}>A scrollable container that replaces native browser scrollbars with a custom, accessible alternative.</Paragraph>
+<ComponentPreview name="scroll-area" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-scroll-area" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="scroll-area" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import ScrollArea from '@/components/ui/scroll-area'
+```
+```tsx
+<ScrollArea.Root>
+  <ScrollArea.Viewport>
+    {/* scrollable content */}
+  </ScrollArea.Viewport>
+  <ScrollArea.Scrollbar orientation="vertical">
+    <ScrollArea.Thumb />
+  </ScrollArea.Scrollbar>
+  <ScrollArea.Scrollbar orientation="horizontal">
+    <ScrollArea.Thumb />
+  </ScrollArea.Scrollbar>
+  <ScrollArea.Corner />
+</ScrollArea.Root>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Horizontal Scroll
+
+Add a `ScrollArea.Scrollbar` with `orientation="horizontal"` to enable horizontal scrolling. Include `ScrollArea.Corner` when both axes are scrollable to fill the gap where the two scrollbars meet.
+
+<ComponentPreview name="scroll-area" file="horizontal" />
+
+### Sizes
+
+Use `size="sm"` for a thinner scrollbar or `size="md"` (default) for a standard-width track. Choose based on how prominent the scrollbar should be in context.
+
+<ComponentPreview name="scroll-area" file="sizes" />
+
+### Layouts
+
+Use `layout="overlay"` (default) to float the scrollbar over content without affecting layout. Use `layout="inset"` to reserve space for the scrollbar so it never obscures content.
+
+<ComponentPreview name="scroll-area" file="layouts" />
+
+</Section>
+
+<Section>
+## API Reference
+
+### ScrollArea.Root Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'sm' \| 'md'` | `'md'` | Thickness of the scrollbar track and thumb. |
+| `layout` | `'overlay' \| 'inset'` | `'overlay'` | Whether the scrollbar floats over content (`overlay`) or reserves space beside it (`inset`). |
+| `type` | `'auto' \| 'always' \| 'scroll' \| 'hover'` | `'hover'` | Controls when scrollbars are visible. `'auto'` shows them when content overflows, `'always'` keeps them visible, `'scroll'` shows them while scrolling, `'hover'` shows them on hover. |
+| `scrollHideDelay` | `number` | `600` | Delay in milliseconds before scrollbars are hidden. Only applies when `type` is `'scroll'` or `'hover'`. |
+| `dir` | `'ltr' \| 'rtl'` | — | Reading direction of the scroll area. Inherits from the document when omitted. |
+| `css` | `SystemStyleObject` | — | Inline PandaCSS style overrides. |
+
+The component also accepts all standard HTML `<div>` attributes.
+
+### ScrollArea.Viewport Props
+
+Renders the visible, clipped scrollable region. The component accepts all standard HTML `<div>` attributes.
+
+### ScrollArea.Scrollbar Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `'vertical' \| 'horizontal'` | — | **Required.** Direction of the scrollbar. |
+| `forceMount` | `boolean` | — | Forces the scrollbar to stay mounted in the DOM. Useful when controlling visibility with an animation library. |
+
+The component also accepts all standard HTML `<div>` attributes.
+
+### ScrollArea.Thumb Props
+
+Renders the draggable thumb inside a `ScrollArea.Scrollbar`. The component accepts all standard HTML `<div>` attributes.
+
+### ScrollArea.Corner Props
+
+Renders the corner fill where the vertical and horizontal scrollbars meet. The component accepts all standard HTML `<div>` attributes.
+
+</Section>
+
+<Section>
+
+## Accessibility
+
+> **ScrollArea:** All content inside `ScrollArea.Viewport` remains keyboard-navigable using standard browser focus and scroll interactions (Tab, Arrow keys, Page Up/Down). Screen readers announce the scrollable region naturally. The custom scrollbars are visually rendered but hidden from the accessibility tree — assistive technologies interact with native scroll behavior on the viewport instead.
+
+</Section>
+
+</ContentContainer>
