@@ -3,6 +3,7 @@
 import Accordion from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import ScrollArea from '@/components/ui/scroll-area'
 import { Heading, Paragraph } from '@/components/ui/typography'
 import { MDXContent } from '@content-collections/mdx/react'
 import { css, cx } from '@styled-system/css'
@@ -137,34 +138,48 @@ function CodeBlock({
         maxWidth: '100%',
       })}
     >
-      <pre
+      <ScrollArea.Root
         className={css({
-          px: '5',
-          py: '6',
           rounded: 'md',
           bg: '#1E1E1E',
-          color: 'text.secondary',
           border: '1px solid',
           borderColor: 'border',
-          overflow: 'auto',
           width: '100%',
           maxWidth: '100%',
         })}
       >
-        <code
-          className={css({
-            fontFamily: 'mono',
-            fontSize: 'sm',
-            fontWeight: 'normal',
-            whiteSpace: 'pre',
-            overflowWrap: 'normal',
-            color: 'text.primary',
-            display: 'block',
-          })}
+        <ScrollArea.Viewport>
+          <pre
+            className={css({
+              px: '5',
+              py: '6',
+              color: 'text.secondary',
+            })}
+          >
+            <code
+              className={css({
+                fontFamily: 'mono',
+                fontSize: 'sm',
+                fontWeight: 'normal',
+                whiteSpace: 'pre',
+                overflowWrap: 'normal',
+                color: 'text.primary',
+                display: 'block',
+              })}
+            >
+              {children}
+            </code>
+          </pre>
+        </ScrollArea.Viewport>
+        <ScrollArea.Scrollbar
+          orientation="horizontal"
+          css={{ _hover: { bg: 'rgba(255,255,255,0.08)' } }}
         >
-          {children}
-        </code>
-      </pre>
+          <ScrollArea.Thumb
+            css={{ bg: 'rgba(255,255,255,0.3)', _hover: { bg: 'rgba(255,255,255,0.5)' } }}
+          />
+        </ScrollArea.Scrollbar>
+      </ScrollArea.Root>
 
       {/* Only add the copy button if we have content to copy */}
       {codeString && <CopyButton value={codeString} />}
