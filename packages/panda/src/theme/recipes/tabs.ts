@@ -172,7 +172,7 @@ export const tabs = defineSlotRecipe({
       simple: {},
       card: {
         tabList: {
-          gap: '{spacing.gap.inline.sm}',
+          gap: '{spacing.gap.inline.2xs}',
         },
         trigger: {
           backgroundColor: '{colors.fill.disabled}',
