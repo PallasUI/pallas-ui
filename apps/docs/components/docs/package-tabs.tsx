@@ -20,7 +20,7 @@ const TabContent = ({ value }: { value: string }) => (
       rounded: 'md',
       color: 'text.secondary',
       border: '1px solid',
-      borderColor: 'border',
+      borderColor: 'border.secondary',
       overflow: 'auto',
       fontFamily: 'mono',
       fontSize: 'sm',

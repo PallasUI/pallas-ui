@@ -4,7 +4,8 @@ export const docTabs = sva({
   slots: ['root', 'tabList', 'trigger', 'content', 'contentContainer'],
   base: {
     root: {
-      border: '1px solid',
+      borderWidth: '1px',
+      borderStyle: 'solid',
       borderColor: 'border',
       rounded: 'md',
       overflow: 'hidden',
@@ -13,7 +14,8 @@ export const docTabs = sva({
       mt: '2',
     },
     tabList: {
-      borderBottom: '1px solid',
+      borderBottomWidth: '1px',
+      borderBottomStyle: 'solid',
       borderColor: 'border',
       position: 'relative',
       zIndex: 1,
