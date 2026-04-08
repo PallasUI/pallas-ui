@@ -1,0 +1,73 @@
+---
+title: Card
+description: A flexible container component for displaying content in a structured layout.
+---
+
+<ContentContainer>
+
+<Section gap="1">
+# Card
+<Paragraph size={'extraLarge'} color={'tertiary'}>A flexible container component for displaying content in a structured layout.</Paragraph>
+<ComponentPreview name="card" withRecipe/>
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="card" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+
+## Usage
+
+```tsx
+import { Card } from '@/components/ui/card'
+```
+
+```tsx
+<Card.Root>
+  <Card.Header>
+    <Card.Title>Card Title</Card.Title>
+    <Card.Description>Card description</Card.Description>
+  </Card.Header>
+</Card.Root>
+```
+
+</Section>
+
+<Section>
+
+## Examples
+
+### Default
+<ComponentPreview name="card" />
+
+### Container
+<ComponentPreview name="card" file="container" />
+
+### Sizes
+<ComponentPreview name="card" file="sizes" />
+
+### With Avatar
+<ComponentPreview name="card" file="with-avatar" />
+
+### Hoverable
+<ComponentPreview name="card" file="hoverable" />
+
+### Loading State
+<ComponentPreview name="card" file="loading" />
+
+</Section>
+
+</ContentContainer>
