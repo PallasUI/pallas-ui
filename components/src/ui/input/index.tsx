@@ -289,7 +289,7 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
             </div>
           </div>
         </Popover.Trigger>
-        <Popover.Content css={{ width: 'auto', padding: 0 }}>
+        <Popover.Content>
           <DayPicker mode="single" selected={selected} onSelect={handleSelect} />
         </Popover.Content>
       </Popover.Root>

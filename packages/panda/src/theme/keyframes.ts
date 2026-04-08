@@ -86,12 +86,4 @@ export const keyframes = defineKeyframes({
       transform: 'scale(1)',
     },
   },
-  'accordion-expand': {
-    from: { height: '0', opacity: '0' },
-    to: { height: 'var(--radix-accordion-content-height)', opacity: '1' },
-  },
-  'accordion-collapse': {
-    from: { height: 'var(--radix-accordion-content-height)', opacity: '1' },
-    to: { height: '0', opacity: '0' },
-  },
 })

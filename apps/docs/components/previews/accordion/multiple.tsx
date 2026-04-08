@@ -1,39 +1,40 @@
 import Accordion from '@/components/ui/accordion'
+import { ChevronDown } from 'lucide-react'
 
-export default function AccordionMultiple() {
+export default function AccordionMultiplePreview() {
   return (
-    <Accordion.Root type="multiple" defaultValue={['1', '2']}>
-      <Accordion.Item value={'1'}>
+    <Accordion.Root type="multiple" style={{ width: '100%', border: '0' }}>
+      <Accordion.Item value="item-1">
         <Accordion.ItemHeader>
+          Is it accessible?
           <Accordion.ItemTrigger>
-            Is it accessible?
-            <Accordion.ItemIndicator />
+            <ChevronDown />
           </Accordion.ItemTrigger>
         </Accordion.ItemHeader>
         <Accordion.ItemContent>
           Yes. It adheres to the WAI-ARIA design pattern.
         </Accordion.ItemContent>
       </Accordion.Item>
-      <Accordion.Item value={'2'}>
+      <Accordion.Item value="item-2">
         <Accordion.ItemHeader>
+          Is it styled?
           <Accordion.ItemTrigger>
-            Is it styled?
-            <Accordion.ItemIndicator />
+            <ChevronDown />
           </Accordion.ItemTrigger>
         </Accordion.ItemHeader>
         <Accordion.ItemContent>
-          Yes. It comes with default styles that match the other components\u2019 aesthetic.
+          Yes. It comes with default styles that matches the other components&apos; aesthetic.
         </Accordion.ItemContent>
       </Accordion.Item>
-      <Accordion.Item value={'3'}>
+      <Accordion.Item value="item-3">
         <Accordion.ItemHeader>
+          Is it animated?
           <Accordion.ItemTrigger>
-            Is it animated?
-            <Accordion.ItemIndicator />
+            <ChevronDown />
           </Accordion.ItemTrigger>
         </Accordion.ItemHeader>
         <Accordion.ItemContent>
-          Yes. It uses CSS keyframe animations that respect prefers-reduced-motion.
+          Yes. It&apos;s animated by default, but you can disable it if you prefer.
         </Accordion.ItemContent>
       </Accordion.Item>
     </Accordion.Root>

@@ -35,21 +35,21 @@ export const borders = defineSemanticTokens.borders({
   },
 
   success: {
-    xs: { value: '{borders.sm} {colors.success}' },
+    xs: { value: '{borders.xs} {colors.success.border}' },
   },
   successHover: {
-    xs: { value: '{borders.sm} {colors.success.active}' },
+    xs: { value: '{borders.xs} {colors.success.borderHover}' },
   },
   error: {
-    xs: { value: '{borders.sm} {colors.error}' },
+    xs: { value: '{borders.xs} {colors.error.border}' },
   },
   errorHover: {
-    xs: { value: '{borders.sm} {colors.error.active}' },
+    xs: { value: '{borders.xs} {colors.error.borderHover}' },
   },
   warning: {
-    xs: { value: '{borders.sm} {colors.warning}' },
+    xs: { value: '{borders.xs} {colors.warning.border}' },
   },
   warningHover: {
-    xs: { value: '{borders.sm} {colors.warning.active}' },
+    xs: { value: '{borders.xs} {colors.warning.borderHover}' },
   },
 })

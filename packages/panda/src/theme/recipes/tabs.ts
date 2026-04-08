@@ -23,23 +23,18 @@ export const tabs = defineSlotRecipe({
         cursor: 'pointer',
         color: '{colors.primary.hover}',
       },
-      _focusVisible: {
-        ringColor: '{colors.primary}',
-        ring: '2px',
-        ringOffset: '2px',
-      },
     },
     tabList: {
       display: 'flex',
       flexWrap: 'nowrap',
       gap: '{spacing.gap.component.sm}',
       borderColor: '{colors.border}',
-      fontWeight: 'medium',
+      fontWeight: '{medium}',
     },
     content: {
       overflow: 'hidden',
       color: '{colors.text}',
-      textStyle: 'sm',
+      textStyle: '{sm}',
     },
   },
   variants: {
@@ -172,7 +167,7 @@ export const tabs = defineSlotRecipe({
       simple: {},
       card: {
         tabList: {
-          gap: '{spacing.gap.inline.2xs}',
+          gap: '{spacing.gap.inline.sm}',
         },
         trigger: {
           backgroundColor: '{colors.fill.disabled}',
