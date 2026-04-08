@@ -28,7 +28,6 @@ references:
 <ComponentSource name="accordion" />
 
 ### Update the import paths to match your project setup
-
 </Section>
 </Steps>
 </Section>
@@ -37,49 +36,104 @@ references:
 ## Usage
 
 ```tsx
-import {
-  Accordion
-} from '@/components/ui/accordion'
+import Accordion from '@/components/ui/accordion'
 ```
-
 ```tsx
-<Accordion.root type="single" collapsible>
+<Accordion.Root type="single" collapsible>
   <Accordion.Item value="item-1">
-    <Accordion.ItemHeader>Is it accessible?</Accordion.ItemHeader>
-    <Accordion.ItemTrigger>
-            +
-    </Accordion.ItemTrigger>
-    <Accordion.ItemContent>Yes. It adheres to the WAI-ARIA design pattern.</Accordion.ItemContent>
+    <Accordion.ItemHeader>
+      <Accordion.ItemTrigger>Is it accessible?</Accordion.ItemTrigger>
+      <Accordion.ItemIndicator />
+    </Accordion.ItemHeader>
+    <Accordion.ItemContent>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </Accordion.ItemContent>
   </Accordion.Item>
-</Accordion>
+</Accordion.Root>
 ```
 </Section>
 
 <Section>
 ## Examples
-### Default
 
-<ComponentPreview name="accordion" />
+### Variants
+The accordion ships with four variants: `default`, `subtle`, `bordered`, and `plain`.
+<ComponentPreview name="accordion" file="variants" />
 
-### Collapsible
-
-<ComponentPreview name="accordion" file="collapsible" />
-
-### Controlled
-
-<ComponentPreview name="accordion" file="controlled" />
-
-### Custom Style
-
-<ComponentPreview name="accordion" file="custom-style" />
-
-### Dynamic
-
-<ComponentPreview name="accordion" file="dynamic" />
+### Sizes
+Three sizes are available: `sm`, `md` (default), and `lg`.
+<ComponentPreview name="accordion" file="sizes" />
 
 ### Multiple
-
+Use `type="multiple"` to allow multiple items to be open at the same time.
 <ComponentPreview name="accordion" file="multiple" />
+
+### Controlled
+Control the open state externally using `value` and `onValueChange`.
+<ComponentPreview name="accordion" file="controlled" />
+
+### Custom Indicator
+Use `asChild` on `Accordion.ItemIndicator` to swap the default chevron for any custom icon.
+<ComponentPreview name="accordion" file="custom-indicator" />
+</Section>
+
+<Section>
+## API Reference
+
+### Root Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| variant | `'default' \| 'subtle' \| 'bordered' \| 'plain'` | `'default'` | Visual style of the accordion |
+| size | `'sm' \| 'md' \| 'lg'` | `'md'` | Controls padding and text size |
+| type | `'single' \| 'multiple'` | — | Whether one or multiple items can be open at a time |
+| collapsible | `boolean` | `false` | Allow closing the open item (single mode only) |
+| value | `string \| string[]` | — | Controlled open state |
+| defaultValue | `string \| string[]` | — | Initial open state (uncontrolled) |
+| onValueChange | `(value: string \| string[]) => void` | — | Callback when the open state changes |
+
+### Item Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| value | `string` | — | Unique identifier for the item (required) |
+| disabled | `boolean` | `false` | Disables interaction with the item |
+
+### ItemTrigger Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| disabled | `boolean` | `false` | Disables the trigger button |
+| asChild | `boolean` | `false` | Render as child element instead of a button |
+
+### ItemContent Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| forceMount | `boolean` | `false` | Keep content mounted in the DOM even when closed |
+| asChild | `boolean` | `false` | Render as child element |
+
+### ItemIndicator Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| rotateOnOpen | `boolean` | `true` | Whether the indicator rotates when the item is open |
+| asChild | `boolean` | `false` | Replace the default ChevronDown with a custom element |
+
+</Section>
+
+<Section>
+## Accessibility
+
+Adheres to the [Accordion WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+
+### Keyboard Interactions
+
+| Key | Description |
+| --- | ----------- |
+| `Space` | When focus is on an `Accordion.ItemTrigger` of a collapsed section, expands the section. |
+| `Enter` | When focus is on an `Accordion.ItemTrigger` of a collapsed section, expands the section. |
+| `Tab` | Moves focus to the next focusable element. |
+| `Shift + Tab` | Moves focus to the previous focusable element. |
+| `ArrowDown` | Moves focus to the next `Accordion.ItemTrigger`. |
+| `ArrowUp` | Moves focus to the previous `Accordion.ItemTrigger`. |
+| `Home` | When focus is on an `Accordion.ItemTrigger`, moves focus to the first `Accordion.ItemTrigger`. |
+| `End` | When focus is on an `Accordion.ItemTrigger`, moves focus to the last `Accordion.ItemTrigger`. |
 
 </Section>
 
