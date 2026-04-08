@@ -15,14 +15,14 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.9.2",
+    "@ark-ui/react": "^5.35.0",
     "@pallas-ui/breadcrumb": "workspace:*",
     "@pallas-ui/carousel": "workspace:*",
     "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/form": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
-    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-avatar": "^1.1.2",
     "@radix-ui/react-checkbox": "1.1.3",
