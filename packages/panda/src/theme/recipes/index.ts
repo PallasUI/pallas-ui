@@ -28,6 +28,7 @@ import { progress } from './progress'
 import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
+import { scrollArea } from './scroll-area'
 import { separator } from './separator'
 import { sheet } from './sheet'
 import { sidebar } from './sidebar'
@@ -79,6 +80,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   radioGroup,
   segmented,
   select,
+  scrollArea,
   sheet,
   slider,
   steps,
