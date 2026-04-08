@@ -4,14 +4,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "clean:content-collections": "rm -rf .content-collections",
     "prepare": "pnpm exec pandacss codegen && node ../../scripts/sync-components.js",
     "predev": "pnpm prepare",
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "prebuild": "pnpm prepare",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --max-warnings 0 .",
+    "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
@@ -22,11 +21,11 @@
     "@pallas-ui/carousel": "workspace:*",
     "@pallas-ui/components": "workspace:*",
     "@pallas-ui/form": "workspace:*",
-    "@pallas-ui/input-otp": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/sidebar": "workspace:*",
+    "@pallas-ui/input-otp": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
-    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-avatar": "^1.1.2",
     "@radix-ui/react-checkbox": "1.1.3",
@@ -49,11 +48,11 @@
     "gsap": "^3.13.0",
     "lucide-react": "0.462.0",
     "mdx-bundler": "^10.1.1",
-    "next": "16.2.0",
-    "react": "19.2.4",
+    "next": "15.3.0",
+    "react": "19.1.0",
     "react-aria-components": "^1.5.0",
     "react-day-picker": "^9.5.0",
-    "react-dom": "19.2.4",
+    "react-dom": "19.1.0",
     "react-hook-form": "^7.56.3",
     "rehype-pretty-code": "^0.14.1",
     "rehype-slug": "^6.0.0",
@@ -67,13 +66,17 @@
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.6",
     "@pallas-ui/typescript-config": "workspace:*",
-    "@pandacss/dev": "^1.9.1",
+    "@pandacss/dev": "0.50.0",
     "@types/node": "^20",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "eslint": "^9.39.4",
-    "eslint-config-next": "16.2.0",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.2",
     "typescript": "5.7.3",
     "unified": "^11.0.5"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.1.0",
+      "@types/react-dom": "19.1.2"
+    }
   }
 }

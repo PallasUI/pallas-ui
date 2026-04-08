@@ -1,7 +1,7 @@
 import Accordion from '@/components/ui/accordion'
 import { ChevronDown } from 'lucide-react'
 
-export default function AccordionPreview() {
+export default function AccordionCollapsiblePreview() {
   return (
     <Accordion.Root type="single" collapsible={true} css={{ width: '100%', border: '0' }}>
       <Accordion.Item value="item-1">
