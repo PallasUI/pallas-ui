@@ -13,8 +13,8 @@ const RootComponent = withProvider<React.ElementRef<typeof ProgressBar>, RootPro
 )
 
 export const Root = (props: RootProps) => {
-  // biome-ignore format: to apply ts-ignore on props type
-  //@ts-ignore
+  // biome-ignore format: keep directive on line before splitVariantProps
+  // @ts-expect-error Panda recipe splitVariantProps return type does not match RootProps destructuring
   const [variantProps, { width: w, height: h, steps, stepToGapRatio, children }] = progress.splitVariantProps(props)
 
   const width = w || 100

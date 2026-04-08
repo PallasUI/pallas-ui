@@ -37,6 +37,7 @@ const CustomRoot = React.forwardRef<React.ComponentRef<typeof CommandPrimitive>,
   },
 )
 
+CustomRoot.displayName = 'CustomRoot'
 export const Root = withProvider<
   React.ComponentRef<typeof CommandPrimitive>,
   Assign<RootProps, JsxStyleProps>
@@ -97,7 +98,7 @@ const CommandDialog = React.forwardRef<
     </DialogPrimitive.Portal>
   </DialogPrimitive.Root>
 ))
-
+CommandDialog.displayName = 'CommandDialog'
 export const Dialog = withProvider<
   React.ComponentRef<typeof DialogPrimitive.Root>,
   Assign<DialogProps, JsxStyleProps>

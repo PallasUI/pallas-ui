@@ -1,6 +1,6 @@
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import type { PopoverContentProps } from '@radix-ui/react-popover'
-import { css, cx } from '@styled-system/css'
+import { cx } from '@styled-system/css'
 import { type ComboboxVariantProps, combobox } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { useCommandState } from 'cmdk'
@@ -39,6 +39,7 @@ const CustomRoot = React.forwardRef<
     </ComboboxContext.Provider>
   )
 })
+CustomRoot.displayName = 'CustomRoot'
 
 export const Root = withProvider<
   React.ComponentRef<typeof PopoverPrimitive.Root>,
@@ -73,6 +74,7 @@ const CustomTrigger = React.forwardRef<
     </PopoverPrimitive.Trigger>
   )
 })
+CustomTrigger.displayName = 'CustomTrigger'
 export const Trigger = withContext<
   React.ComponentRef<typeof PopoverPrimitive.Trigger>,
   Assign<
@@ -95,6 +97,7 @@ const CustomEmpty = React.forwardRef<
     </CommandPrimitive.Empty>
   )
 })
+CustomEmpty.displayName = 'CustomEmpty'
 
 export const CustomContent = React.forwardRef<
   React.ComponentRef<typeof PopoverPrimitive.Content>,

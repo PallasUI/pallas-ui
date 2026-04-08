@@ -25,3 +25,5 @@ export const Provider = React.forwardRef<
     </Tooltip.Provider>
   )
 })
+
+Provider.displayName = 'Provider'

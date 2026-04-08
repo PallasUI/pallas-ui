@@ -57,10 +57,10 @@ export function DocsBreadcrumb({ breadcrumb }: { breadcrumb: { section: string; 
             >
               {breadcrumb.section}
             </Breadcrumb.Link>
+            <Breadcrumb.Separator>
+              <ChevronRight size={18} className={css({ color: 'text.secondary' })} />
+            </Breadcrumb.Separator>
           </Breadcrumb.Item>
-          <Breadcrumb.Separator>
-            <ChevronRight size={18} className={css({ color: 'text.secondary' })} />
-          </Breadcrumb.Separator>
           <Breadcrumb.Item>
             <Breadcrumb.Link
               aria-current="page"
