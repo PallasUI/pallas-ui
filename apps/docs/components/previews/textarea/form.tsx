@@ -41,7 +41,7 @@ export default function TextareaFormDemo() {
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
-        {error && <p className={css({ fontSize: 'sm', color: 'red.500' })}>{error}</p>}
+        {error && <p className={css({ fontSize: 'sm', color: 'error.text' })}>{error}</p>}
         <p className={css({ fontSize: 'sm', color: 'text.tertiary' })}>
           You can <span className={css({ fontWeight: 'medium' })}>@mention</span> other users and
           organizations.
