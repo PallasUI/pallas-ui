@@ -117,14 +117,7 @@ export function ComponentSource({ name, children }: { name: string; children?: R
       })}
     >
       {children ? (
-        <div
-          className={css({
-            overflowX: 'auto',
-            width: '100%',
-          })}
-        >
-          {children}
-        </div>
+        <div>{children}</div>
       ) : (
         <div
           className={css({

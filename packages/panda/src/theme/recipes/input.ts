@@ -14,6 +14,10 @@ export const input = defineSlotRecipe({
       '&:has(input[type=number])': {
         appearance: 'textfield',
       },
+      '&:has(input[type="file"])': {
+        paddingInlineStart: '0',
+        overflow: 'hidden',
+      },
       transition: 'common',
       position: 'relative',
 
@@ -69,15 +73,22 @@ export const input = defineSlotRecipe({
 
       _file: {
         border: 'none',
-        bg: 'transparent',
-        color: '{colors.text.secondary}',
+        borderInlineEnd: '1px solid {colors.surface.elevated}',
+        bg: '{colors.fill.secondary}',
+        color: '{colors.text.DEFAULT}',
         textStyle: 'sm',
-        fontWeight: 'semibold',
-        marginRight: '{spacing.layout.internal.xs}',
-        transform: 'translateY(-2px)',
+        fontWeight: 'medium',
+        paddingInline: '{spacing.padding.inline.sm}',
+        paddingBlock: '0',
+        borderRadius: '0',
+        h: 'full',
+        marginBlock: '0',
+        cursor: 'pointer',
       },
-
       '&[type="file"]': {
+        py: '0',
+        h: 'full',
+        alignSelf: 'stretch',
         cursor: 'pointer',
       },
 
@@ -286,6 +297,16 @@ export const input = defineSlotRecipe({
             border: '{borders.warning.xs}',
           },
         },
+        field: {
+          _file: {
+            bg: '{colors.fill.secondary}',
+            borderInlineEnd: '0',
+            borderRight: '0',
+            _hover: {
+              bg: '{colors.fill.secondary}',
+            },
+          },
+        },
       },
       borderless: {
         root: {
@@ -305,6 +326,9 @@ export const input = defineSlotRecipe({
         root: {
           h: '{sizes.controlHeight.sm}',
           px: '{spacing.padding.inline.sm}',
+          '&:has(input[type="file"])': {
+            paddingInlineStart: '0',
+          },
         },
         field: {
           textStyle: 'sm',
@@ -312,6 +336,12 @@ export const input = defineSlotRecipe({
 
           _file: {
             textStyle: 'xs',
+            paddingBlock: '0',
+          },
+          '&[type="file"]': {
+            py: '0',
+            h: 'full',
+            alignSelf: 'stretch',
           },
         },
         control: {
@@ -328,13 +358,17 @@ export const input = defineSlotRecipe({
         root: {
           h: '{sizes.controlHeight.md}',
           px: '{spacing.padding.inline.md}',
+          '&:has(input[type="file"])': {
+            paddingInlineStart: '0',
+          },
         },
         field: {
-          textStyle: 'md',
+          textStyle: 'sm',
           py: '{spacing.padding.block.md}',
-
           '&[type="file"]': {
-            lineHeight: '0',
+            py: '0',
+            h: 'full',
+            alignSelf: 'stretch',
           },
         },
         control: {
@@ -351,16 +385,22 @@ export const input = defineSlotRecipe({
         root: {
           h: '{sizes.controlHeight.lg}',
           px: '{spacing.padding.inline.lg}',
+          '&:has(input[type="file"])': {
+            paddingInlineStart: '0',
+          },
         },
         field: {
-          textStyle: 'lg',
+          textStyle: 'md',
           py: '{spacing.padding.block.lg}',
 
           _file: {
-            textStyle: 'md',
+            textStyle: 'sm',
+            paddingBlock: '0',
           },
           '&[type="file"]': {
-            lineHeight: '0',
+            py: '0',
+            h: 'full',
+            alignSelf: 'stretch',
           },
         },
         control: {

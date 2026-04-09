@@ -65,11 +65,13 @@ export default function DocsLayout({
             pl={{ base: '6', md: '10' }}
             pt="{sizes.header.height}"
             className={css({
-              overflowX: 'auto',
-              borderRight: '1px solid',
-              borderColor: 'border.secondary',
-              boxSizing: 'border-box',
-              borderLeft: '1px solid',
+            overflowX: 'auto',
+            borderRightWidth: '1px',
+            borderRightStyle: 'solid',
+            borderLeftWidth: '1px',
+            borderLeftStyle: 'solid',
+            borderColor: 'border.secondary',
+            boxSizing: 'border-box',
             })}
           >
             {children}
@@ -84,9 +86,10 @@ export default function DocsLayout({
               position: 'sticky',
               top: '{sizes.header.height}',
               zIndex: 1,
-              borderLeft: '1px solid',
-              fontSize: 'sm',
+              borderLeftWidth: '1px',
+              borderLeftStyle: 'solid',
               borderColor: 'border.secondary',
+              fontSize: 'sm',
               boxSizing: 'content-box',
             })}
           >

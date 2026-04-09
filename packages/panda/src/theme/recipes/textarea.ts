@@ -5,170 +5,175 @@ export const textarea = defineRecipe({
   description: 'Styles for the Textarea component',
   base: {
     display: 'flex',
-    minH: '80px',
+    minH: '20',
     w: 'full',
-    bg: '{colors.surface.elevated}',
     px: '{spacing.padding.inline.md}',
     py: '{spacing.padding.block.md}',
+
     transition: 'common',
+
+    focusRingOffsetColor: '{colors.fill.secondary}',
+    bg: '{colors.surface.elevated}',
+    color: '{colors.text.secondary}',
+
     _placeholder: {
-      color: '{colors.text.secondary}',
+      color: '{colors.text.tertiary}',
     },
 
     _focusVisible: {
       outline: 'none',
     },
 
-    '&:disabled': {
+    _disabled: {
       cursor: 'not-allowed',
       color: '{colors.text.disabled}',
       bg: '{colors.fill.disabled}',
-      opacity: 0.75,
-      border: '{borders.input.disabled}!',
+      opacity: '0.6',
+      border: '{borders.disabled.xs}!',
     },
   },
 
   variants: {
-    styling: {
+    variant: {
       outline: {
-        border: '{borders.input.default}',
+        border: '{borders.default.xs}',
         _hover: {
-          border: '{borders.input.hover}',
+          border: '{borders.hover.xs}',
         },
         _focus: {
-          border: '{borders.input.hover}',
-          shadow: '{shadows.input.default}',
+          border: '{borders.hover.xs}',
+          shadow: '{shadows.primary.2xs}',
         },
 
         // Success state
-        '&[data-status="success"]': {
-          border: '{borders.input.success}',
+        _statusSuccess: {
+          border: '{borders.success.xs}',
           _hover: {
-            border: '{borders.input.successHover}',
+            border: '{borders.successHover.xs}',
           },
           _focus: {
-            border: '{borders.input.successHover}',
-            shadow: '{shadows.input.success}',
+            border: '{borders.successHover.xs}',
+            shadow: '{shadows.success.2xs}',
           },
         },
 
         // Error state
-        '&[data-status="error"]': {
-          border: '{borders.input.error}',
+        _statusError: {
+          border: '{borders.error.xs}',
           _hover: {
-            border: '{borders.input.errorHover}',
+            border: '{borders.errorHover.xs}',
           },
           _focus: {
-            border: '{borders.input.errorHover}',
-            shadow: '{shadows.input.error}',
+            border: '{borders.errorHover.xs}',
+            shadow: '{shadows.error.2xs}',
           },
         },
 
         // Warning state
-        '&[data-status="warning"]': {
-          border: '{borders.input.warning}',
+        _statusWarning: {
+          border: '{borders.warning.xs}',
           _hover: {
-            border: '{borders.input.warningHover}',
+            border: '{borders.warningHover.xs}',
           },
           _focus: {
-            border: '{borders.input.warningHover}',
-            shadow: '{shadows.input.warning}',
+            border: '{borders.warningHover.xs}',
+            shadow: '{shadows.warning.2xs}',
           },
         },
       },
       underlined: {
-        borderBottom: '{borders.input.default}',
+        borderBottom: '{borders.default.xs}',
         rounded: '0',
         _hover: {
-          borderBottom: '{borders.input.hover}',
+          borderBottom: '{borders.hover.xs}',
         },
         _focus: {
-          borderBottom: '{borders.input.hover}',
+          borderBottom: '{borders.hover.xs}',
         },
 
         // Success state
-        '&[data-status="success"]': {
-          borderBottom: '{borders.input.success}',
+        _statusSuccess: {
+          borderBottom: '{borders.success.xs}',
           _hover: {
-            borderBottom: '{borders.input.successHover}',
+            borderBottom: '{borders.successHover.xs}',
           },
           _focus: {
-            borderBottom: '{borders.input.successHover}',
+            borderBottom: '{borders.successHover.xs}',
           },
         },
 
         // Error state
-        '&[data-status="error"]': {
-          borderBottom: '{borders.input.error}',
+        _statusError: {
+          borderBottom: '{borders.error.xs}',
           _hover: {
-            borderBottom: '{borders.input.errorHover}',
+            borderBottom: '{borders.errorHover.xs}',
           },
           _focus: {
-            borderBottom: '{borders.input.errorHover}',
+            borderBottom: '{borders.errorHover.xs}',
           },
         },
 
         // Warning state
-        '&[data-status="warning"]': {
-          borderBottom: '{borders.input.warning}',
+        _statusWarning: {
+          borderBottom: '{borders.warning.xs}',
           _hover: {
-            borderBottom: '{borders.input.warningHover}',
+            borderBottom: '{borders.warningHover.xs}',
           },
           _focus: {
-            borderBottom: '{borders.input.warningHover}',
+            borderBottom: '{borders.warningHover.xs}',
           },
         },
       },
       filled: {
         bg: '{colors.fill.secondary}',
-        border: '{borders.input.default}',
+        border: '{borders.default.xs}',
         borderColor: 'transparent',
         _hover: {
           bg: '{colors.fill}',
         },
         _focus: {
           bg: '{colors.surface.elevated}!',
-          border: '{borders.input.hover}',
+          border: '{borders.hover.xs}',
         },
 
         // Success state
-        '&[data-status="success"]': {
+        _statusSuccess: {
           bg: '{colors.success.bg}',
           _hover: {
             bg: '{colors.success.bgHover}',
           },
           _focus: {
-            border: '{borders.input.success}',
+            border: '{borders.success.xs}',
           },
         },
 
         // Error state
-        '&[data-status="error"]': {
+        _statusError: {
           bg: '{colors.error.bg}',
           _hover: {
             bg: '{colors.error.bgHover}',
           },
           _focus: {
-            border: '{borders.input.error}',
+            border: '{borders.error.xs}',
           },
         },
 
         // Warning state
-        '&[data-status="warning"]': {
+        _statusWarning: {
           bg: '{colors.warning.bg}',
           _hover: {
             bg: '{colors.warning.bgHover}',
           },
           _focus: {
-            border: '{borders.input.warning}',
+            border: '{borders.warning.xs}',
           },
         },
       },
       borderless: {
         color: {
-          '&[data-status="success"]': '{colors.success.text}',
-          '&[data-status="error"]': '{colors.error.text}',
-          '&[data-status="warning"]': '{colors.warning.text}',
+          _statusSuccess: '{colors.success.text}',
+          _statusError: '{colors.error.text}',
+          _statusWarning: '{colors.warning.text}',
         },
       },
     },
@@ -176,13 +181,17 @@ export const textarea = defineRecipe({
       sm: {
         textStyle: 'sm',
         px: '{spacing.padding.inline.sm}',
+        py: '{spacing.padding.block.sm}',
       },
       md: {
         textStyle: 'md',
+        px: '{spacing.padding.inline.md}',
+        py: '{spacing.padding.block.md}',
       },
       lg: {
         textStyle: 'lg',
         px: '{spacing.padding.inline.lg}',
+        py: '{spacing.padding.block.lg}',
       },
     },
     radii: {
@@ -198,7 +207,7 @@ export const textarea = defineRecipe({
     },
   },
   defaultVariants: {
-    styling: 'outline',
+    variant: 'outline',
     size: 'md',
     radii: 'md',
   },

@@ -5,7 +5,6 @@ export const conditions = {
     incomplete: '&:is([data-incomplete])',
     complete: '&:is([data-complete])',
     loading: '&:is([data-loading])',
-    disabled: '&:is([data-disabled])',
     hidden: '&:is([hidden])',
     hover: ['@media (hover: hover) and (pointer: fine)', '&:is(:hover, [data-hover])'],
     indeterminate:
@@ -51,5 +50,18 @@ export const conditions = {
     inputWarningHover: '&:has(input[data-status=warning]:hover:not(:disabled))',
     inputWarningFocus: '&:has(input[data-status=warning]:focus:not(:disabled))',
     errorState: '&[data-field-state=error]',
+
+    // Generic validation states
+    statusSuccess: '&[data-status=success]',
+    statusSuccessHover: '&[data-status=success]:hover:not(:disabled)',
+    statusSuccessFocus: '&[data-status=success]:focus:not(:disabled)',
+
+    statusError: '&[data-status=error]',
+    statusErrorHover: '&[data-status=error]:hover:not(:disabled)',
+    statusErrorFocus: '&[data-status=error]:focus:not(:disabled)',
+
+    statusWarning: '&[data-status=warning]',
+    statusWarningHover: '&[data-status=warning]:hover:not(:disabled)',
+    statusWarningFocus: '&[data-status=warning]:focus:not(:disabled)',
   },
 }

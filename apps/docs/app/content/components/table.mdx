@@ -1,0 +1,70 @@
+---
+title: Table
+description: A responsive table component for displaying tabular data.
+---
+<ContentContainer>
+
+<Section gap="1">
+# Table
+<Paragraph size={'extraLarge'} color={'tertiary'}>A responsive table component for displaying tabular data.</Paragraph>
+<ComponentPreview name="table" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Copy and paste the following code into your project
+
+<ComponentSource name="table" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Table from '@/components/ui/table'
+```
+
+```tsx
+<Table.Root>
+  <Table.Header>
+    <Table.Row>
+      <Table.Head>Column</Table.Head>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell>Value</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table.Root>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+
+<ComponentPreview name="table" />
+
+### Surface
+
+<ComponentPreview name="table" file="surface" />
+
+### Striped
+
+<ComponentPreview name="table" file="striped" />
+
+### Bordered
+
+<ComponentPreview name="table" file="bordered" />
+</Section>
+
+</ContentContainer>

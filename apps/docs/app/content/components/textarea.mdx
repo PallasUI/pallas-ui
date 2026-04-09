@@ -30,8 +30,7 @@ description: Displays a multi-line text input field.
 
 ```tsx
 import { Textarea } from '@/components/ui/textarea'
-```
-```tsx
+
 <Textarea placeholder="Type your message here." />
 ```
 </Section>
@@ -39,20 +38,74 @@ import { Textarea } from '@/components/ui/textarea'
 <Section>
 ## Examples
 
+### Sizes
+
+Three sizes (`sm`, `md`, `lg`) to match the density of the surrounding form. The default is `md`.
+
+<ComponentPreview name="textarea" file="sizes" />
+
+### Variants
+
+Four visual styles — `outline` (default), `underlined`, `filled`, and `borderless` — matching the Input component's styling options. Choose based on your form's visual hierarchy.
+
+<ComponentPreview name="textarea" file="variants" />
+
+### Validation States
+
+Apply `data-status="error"`, `data-status="success"`, or `data-status="warning"` to show contextual feedback. Always pair the visual state with a helper text message — the color change alone is not sufficient for screen readers.
+
+<ComponentPreview name="textarea" file="validation" />
+
+### Border Radii
+
+Adjust corner rounding with the `radii` prop (`sm`, `md`, `lg`) independently of the variant. Use `lg` or `sm` to match the rounding style of surrounding form controls.
+
+<ComponentPreview name="textarea" file="radii" />
+
 ### Disabled
-<ComponentPreview name="textarea" file ="disabled"/>
+
+Use `disabled` to prevent interaction when the field is not applicable in the current state. The textarea is visually dimmed to signal its unavailability.
+
+<ComponentPreview name="textarea" file="disabled" />
 
 ### With Button
-<ComponentPreview name="textarea" file ="with-button"/>
+
+Pair the Textarea with a Button to build a message input area. Wrap both in a flex container and position the button below or alongside the field.
+
+<ComponentPreview name="textarea" file="with-button" />
 
 ### With Label
-<ComponentPreview name="textarea" file ="with-label"/>
+
+Always associate a `Label` with the Textarea using matching `htmlFor` and `id` attributes. This is required for accessible field identification.
+
+<ComponentPreview name="textarea" file="with-label" />
 
 ### With Helper Text
-<ComponentPreview name="textarea" file ="with-text"/>
+
+Add a supporting paragraph below the Textarea to provide instructions, character limits, or context about the expected input.
+
+<ComponentPreview name="textarea" file="with-text" />
 
 ### Form
-<ComponentPreview name="textarea" file ="form"/>
+
+Full form integration with controlled state, client-side validation, and inline error messaging.
+
+<ComponentPreview name="textarea" file="form" />
+</Section>
+
+<Section>
+## API Reference
+
+### Textarea Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'outline' \| 'underlined' \| 'filled' \| 'borderless'` | `'outline'` | Visual style of the textarea |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Controls text size and padding |
+| `radii` | `'sm' \| 'md' \| 'lg'` | `'md'` | Border radius of the textarea |
+| `resize` | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | Controls user resize behavior |
+| `disabled` | `boolean` | `false` | Disables the textarea |
+
 </Section>
 
 </ContentContainer>

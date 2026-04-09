@@ -1,0 +1,260 @@
+---
+title: TreeView
+description: A component for displaying hierarchical data in an expandable tree format.
+---
+<ContentContainer>
+
+<Section gap="1">
+# TreeView
+<Paragraph size={'extraLarge'} color={'tertiary'}>A component for displaying hierarchical data in an expandable tree format, with support for selection, checkboxes, inline renaming, and keyboard navigation.</Paragraph>
+<ComponentPreview name="tree-view" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@ark-ui/react" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="tree-view" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import TreeView, { createTreeCollection } from '@/components/ui/tree-view'
+```
+
+Use `createTreeCollection` to transform your data into a tree structure the component understands. Then wrap the output in `TreeView.Root` and render each node using `TreeView.NodeProvider`.
+
+```tsx
+interface FileNode {
+  id: string
+  name: string
+  children?: FileNode[]
+}
+
+const collection = createTreeCollection<FileNode>({
+  nodeToValue: (node) => node.id,
+  nodeToString: (node) => node.name,
+  nodeToChildren: (node) => node.children ?? [],
+  rootNode: {
+    id: 'ROOT',
+    name: '',
+    children: [
+      {
+        id: 'src',
+        name: 'src',
+        children: [
+          { id: 'src/index', name: 'index.tsx' },
+        ],
+      },
+    ],
+  },
+})
+
+<TreeView.Root collection={collection}>
+  <TreeView.Label>Files</TreeView.Label>
+  <TreeView.Tree>
+    <TreeView.NodeProvider node={collection.rootNode.children[0]} indexPath={[0]}>
+      <TreeView.Branch>
+        <TreeView.BranchControl>
+          <TreeView.BranchTrigger>
+            <TreeView.BranchIndicator />
+          </TreeView.BranchTrigger>
+          <TreeView.BranchText>src</TreeView.BranchText>
+        </TreeView.BranchControl>
+        <TreeView.BranchContent>
+          <TreeView.NodeProvider node={collection.rootNode.children[0].children[0]} indexPath={[0, 0]}>
+            <TreeView.Item>
+              <TreeView.ItemText>index.tsx</TreeView.ItemText>
+            </TreeView.Item>
+          </TreeView.NodeProvider>
+        </TreeView.BranchContent>
+      </TreeView.Branch>
+    </TreeView.NodeProvider>
+  </TreeView.Tree>
+</TreeView.Root>
+```
+
+For real-world usage, a recursive `renderNode` function is the recommended pattern:
+
+```tsx
+function renderNode(node: FileNode, indexPath: number[]) {
+  return (
+    <TreeView.NodeProvider key={node.id} node={node} indexPath={indexPath}>
+      {node.children ? (
+        <TreeView.Branch>
+          <TreeView.BranchControl>
+            <TreeView.BranchTrigger>
+              <TreeView.BranchIndicator />
+            </TreeView.BranchTrigger>
+            <TreeView.BranchText>{node.name}</TreeView.BranchText>
+          </TreeView.BranchControl>
+          <TreeView.BranchContent>
+            {node.children.map((child, i) => renderNode(child, [...indexPath, i]))}
+          </TreeView.BranchContent>
+        </TreeView.Branch>
+      ) : (
+        <TreeView.Item>
+          <TreeView.ItemText>{node.name}</TreeView.ItemText>
+        </TreeView.Item>
+      )}
+    </TreeView.NodeProvider>
+  )
+}
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+
+<ComponentPreview name="tree-view" />
+
+### Sizes
+
+Three sizes are available: `xs`, `sm`, and `md` (default). The size controls text size, padding, and icon dimensions throughout the tree.
+
+<ComponentPreview name="tree-view" file="sizes" />
+
+### Variants
+
+Three visual variants control the hover and selection appearance: `subtle` (default), `outline`, and `solid`.
+
+<ComponentPreview name="tree-view" file="variants" />
+
+### Indent Guides
+
+Add `TreeView.BranchIndentGuide` as the first child of `TreeView.BranchContent` to render a vertical line that visually connects parent nodes to their children.
+
+<ComponentPreview name="tree-view" file="indent-guides" />
+
+### Checkboxes
+
+Add `TreeView.NodeCheckbox` and `TreeView.NodeCheckboxIndicator` to each node to enable multi-select with checkboxes. Branch nodes automatically track the indeterminate state when their children are partially checked — pass the indeterminate character as the `indeterminate` prop.
+
+<ComponentPreview name="tree-view" file="checkboxes" />
+
+### Disabled Nodes
+
+Pass an `isNodeDisabled` callback to `createTreeCollection` to mark specific nodes as non-interactive. Disabled nodes are still visible but cannot be focused, selected, or expanded.
+
+<ComponentPreview name="tree-view" file="disabled" />
+
+### Controlled
+
+Control both the expanded and selected state externally by passing `expandedValue` and `selectedValue` alongside their change handlers. This is useful when you need to sync the tree state with other parts of your UI.
+
+<ComponentPreview name="tree-view" file="controlled" />
+
+### Node Renaming
+
+Enable inline renaming by passing `canRename` to `TreeView.Root`. Add `TreeView.NodeRenameInput` inside each node — it will appear automatically when the node enters rename mode. Press F2 to activate rename mode on the focused node. Press `Enter` to confirm or `Escape` to cancel.
+
+<ComponentPreview name="tree-view" file="renaming" />
+
+### Expand and Collapse All
+
+By using controlled `expandedValue` state, you can programmatically expand or collapse all branches at once by setting the value to an array of all branch IDs (expand) or an empty array (collapse).
+
+<ComponentPreview name="tree-view" file="expand-collapse" />
+
+</Section>
+
+<Section>
+## Keyboard Navigation
+
+| Key | Description |
+| --- | --- |
+| `Tab` | Brings focus into the tree, targeting the first item. |
+| `Enter` `Space` | Selects the focused item or branch. |
+| `ArrowDown` | Focuses the next visible node. |
+| `ArrowUp` | Focuses the previous visible node. |
+| `ArrowRight` | Opens a collapsed branch. If the branch is already open, focuses its first child. |
+| `ArrowLeft` | Closes an open branch. If already closed, moves focus up to the parent branch. |
+| `Home` | Jumps focus to the very first node in the tree without affecting expand/collapse state. |
+| `End` | Jumps focus to the last reachable node, skipping past any collapsed branches. |
+| `a-z` `A-Z` | Typeahead — jumps to the next node whose label begins with the typed character. Closed branch descendants are excluded from the search. |
+| `*` | Expands all branches at the same depth as the currently focused node. |
+| `Shift + ArrowDown` | Extends the selection downward, toggling the next node's selected state. |
+| `Shift + ArrowUp` | Extends the selection upward, toggling the previous node's selected state. |
+| `Ctrl + A` | Toggles selection of all nodes — selects everything if any are unselected, otherwise clears all. |
+
+</Section>
+
+<Section>
+## API Reference
+
+### TreeView.Root
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `collection` | `TreeCollection<T>` | required | Tree data built with `createTreeCollection` |
+| `size` | `'xs' \| 'sm' \| 'md'` | `'md'` | Controls text size, padding, and icon sizes |
+| `variant` | `'subtle' \| 'outline' \| 'solid'` | `'subtle'` | Visual style of hover and selection states |
+| `defaultExpandedValue` | `string[]` | `[]` | Node IDs expanded on initial render |
+| `expandedValue` | `string[]` | — | Controlled expanded state |
+| `onExpandedChange` | `(details: { expandedValue: string[] }) => void` | — | Fired when any node expands or collapses |
+| `defaultSelectedValue` | `string[]` | `[]` | Node IDs selected on initial render |
+| `selectedValue` | `string[]` | — | Controlled selection state |
+| `onSelectionChange` | `(details: { selectedValue: string[] }) => void` | — | Fired when selection changes |
+| `selectionMode` | `'single' \| 'multiple'` | `'single'` | Single or multi-node selection |
+| `defaultCheckedValue` | `string[]` | `[]` | Node IDs checked on initial render (checkbox mode) |
+| `checkedValue` | `string[]` | — | Controlled checked state |
+| `onCheckedChange` | `(details: { checkedValue: string[] }) => void` | — | Fired when checked nodes change |
+| `canRename` | `(node: T, indexPath: IndexPath) => boolean` | — | Determines if a node supports inline renaming |
+| `onRenameComplete` | `(details: RenameCompleteDetails) => void` | — | Fired when a rename is committed |
+| `expandOnClick` | `boolean` | `true` | Whether clicking a branch label expands it |
+| `typeahead` | `boolean` | `true` | Enables keyboard typeahead navigation |
+| `lazyMount` | `boolean` | `false` | Defers rendering collapsed branch content until first expansion |
+| `unmountOnExit` | `boolean` | `false` | Removes collapsed branch content from the DOM |
+
+### createTreeCollection
+
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `rootNode` | `T` | Yes | Root of your data tree. Its children become the top-level nodes; the root itself is not rendered |
+| `nodeToValue` | `(node: T) => string` | Yes | Extracts a unique string ID for each node |
+| `nodeToString` | `(node: T) => string` | Yes | Extracts the display label for each node |
+| `nodeToChildren` | `(node: T) => T[]` | No | Extracts the children array from a node. Omit for flat lists |
+| `isNodeDisabled` | `(node: T) => boolean` | No | Return `true` to mark a node as non-interactive |
+
+### Sub-components
+
+All sub-components accept the same props as their underlying Ark UI counterpart plus PandaCSS style props. The table below documents the rendered element and purpose of each.
+
+| Sub-component | Renders | Purpose |
+| --- | --- | --- |
+| `TreeView.Label` | `<h3>` | Accessible label for the tree |
+| `TreeView.Tree` | `<div>` | Root list container |
+| `TreeView.Branch` | `<div>` | A node that has children |
+| `TreeView.BranchControl` | `<div>` | Clickable row for a branch node |
+| `TreeView.BranchTrigger` | `<div>` | Clickable control that toggles expand/collapse |
+| `TreeView.BranchIndicator` | `<div>` | Animated chevron/icon slot |
+| `TreeView.BranchText` | `<span>` | Label text for a branch |
+| `TreeView.BranchContent` | `<div>` | Container for child nodes |
+| `TreeView.BranchIndentGuide` | `<div>` | Vertical indent line |
+| `TreeView.Item` | `<div>` | A leaf node (no children) |
+| `TreeView.ItemText` | `<span>` | Label text for a leaf node |
+| `TreeView.ItemIndicator` | `<div>` | Icon/indicator slot for leaf nodes |
+| `TreeView.NodeCheckbox` | `<span>` | Checkbox control for multi-select |
+| `TreeView.NodeCheckboxIndicator` | `—` | Visual checkmark/indeterminate indicator |
+| `TreeView.NodeRenameInput` | `<input>` | Inline rename input, shown in rename mode |
+| `TreeView.NodeProvider` | `—` | Context provider — wraps each node to supply tree state |
+| `TreeView.NodeContext` | `—` | Render-prop component — provides current node's state to children |
+
+</Section>
+
+</ContentContainer>

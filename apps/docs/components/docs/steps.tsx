@@ -9,7 +9,8 @@ export function Steps({ children }: StepsProps) {
   return (
     <div
       className={css({
-        borderLeft: '2px solid',
+        borderLeftWidth: '2px',
+        borderLeftStyle: 'solid',
         borderColor: 'border',
         pl: '4',
         py: '1',
