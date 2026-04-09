@@ -18,8 +18,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "^2.29.6",
-    "@pandacss/dev": "^0.50.0",
-    "globby": "^16.2.0",
+    "@pandacss/dev": "^1.9.1",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
     "typescript": "5.5.4"
@@ -27,5 +26,13 @@
   "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "19.2.14",
+      "@types/react-dom": "19.2.3",
+      "react": "19.2.4",
+      "react-dom": "19.2.4"
+    }
   }
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { docTabs } from '@/components/common/recipes/doc-tabs'
+import ScrollArea from '@/components/ui/scroll-area'
 import { css } from '@styled-system/css'
 import React from 'react'
 import { Content, Root, TabList, Trigger } from '../ui/tabs'
@@ -13,32 +14,58 @@ interface PackageTabsProps {
 }
 
 const TabContent = ({ value }: { value: string }) => (
-  <pre
+  <ScrollArea.Root
     className={css({
       bg: '#1E1E1E',
-      p: '3',
       rounded: 'md',
-      color: 'text.secondary',
       border: '1px solid',
       borderColor: 'border',
-      overflow: 'auto',
-      fontFamily: 'mono',
-      fontSize: 'sm',
+      _after: {
+        content: '""',
+        position: 'absolute',
+        top: '0',
+        right: '0',
+        bottom: '0',
+        width: '24',
+        background: 'linear-gradient(to right, transparent, #1E1E1E)',
+        pointerEvents: 'none',
+        zIndex: '1',
+      },
     })}
   >
-    <code
-      className={css({
-        fontWeight: '900',
-        background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
-        backgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        display: 'block',
-        whiteSpace: 'pre',
-      })}
+    <ScrollArea.Viewport>
+      <pre
+        className={css({
+          p: '3',
+          color: 'text.secondary',
+          fontFamily: 'mono',
+          fontSize: 'sm',
+          mr: '8', // Add right margin to prevent text from being hidden behind the CopyButton
+        })}
+      >
+        <code
+          className={css({
+            fontWeight: '900',
+            background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+            backgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            display: 'block',
+            whiteSpace: 'pre',
+          })}
+        >
+          {value}
+        </code>
+      </pre>
+    </ScrollArea.Viewport>
+    <ScrollArea.Scrollbar
+      orientation="horizontal"
+      css={{ zIndex: '2', _hover: { bg: 'rgba(255,255,255,0.08)' } }}
     >
-      {value}
-    </code>
-  </pre>
+      <ScrollArea.Thumb
+        css={{ bg: 'rgba(255,255,255,0.3)', _hover: { bg: 'rgba(255,255,255,0.5)' } }}
+      />
+    </ScrollArea.Scrollbar>
+  </ScrollArea.Root>
 )
 
 export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
@@ -105,6 +132,7 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
             className={css({
               top: '5',
               right: '4',
+              zIndex: '2',
             })}
           />
           <div>

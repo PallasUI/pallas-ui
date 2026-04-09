@@ -28,6 +28,7 @@ import { progress } from './progress'
 import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
+import { scrollArea } from './scroll-area'
 import { separator } from './separator'
 import { sheet } from './sheet'
 import { sidebar } from './sidebar'
@@ -41,6 +42,7 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
+import { treeView } from './tree-view'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
@@ -79,6 +81,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   radioGroup,
   segmented,
   select,
+  scrollArea,
   sheet,
   slider,
   steps,
@@ -87,6 +90,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   tabs,
   toast,
   tooltip,
+  treeView,
   sidebar,
   form,
 }
