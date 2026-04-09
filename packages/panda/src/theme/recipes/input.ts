@@ -73,7 +73,7 @@ export const input = defineSlotRecipe({
 
       _file: {
         border: 'none',
-        borderInlineEnd: '5px solid {colors.surface.elevated}',
+        borderInlineEnd: '1px solid {colors.surface.elevated}',
         bg: '{colors.fill.secondary}',
         color: '{colors.text.DEFAULT}',
         textStyle: 'sm',
@@ -295,6 +295,16 @@ export const input = defineSlotRecipe({
           },
           _inputWarningFocus: {
             border: '{borders.warning.xs}',
+          },
+        },
+        field: {
+          _file: {
+            bg: '{colors.fill.secondary}',
+            borderInlineEnd: '0',
+            borderRight: '0',
+            _hover: {
+              bg: '{colors.fill.secondary}',
+            },
           },
         },
       },
