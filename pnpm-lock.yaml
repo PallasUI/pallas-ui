@@ -430,13 +430,13 @@ importers:
       '@ctrl/tinycolor':
         specifier: ^4.1.0
         version: 4.1.0
-      '@pallas-ui/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
       effect:
         specifier: 3.11.3
         version: 3.11.3
     devDependencies:
+      '@pallas-ui/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
       '@pandacss/config':
         specifier: ^1.9.1
         version: 1.9.1
