@@ -30,8 +30,10 @@ export const daypicker = defineSlotRecipe({
   base: {
     root: { w: 'max-content', m: '{spacing.gap.component.sm}' },
     months: {
+      position: 'relative',
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
+      gap: '{spacing.gap.component.lg}',
     },
     month: {
       w: 'full',
@@ -58,10 +60,12 @@ export const daypicker = defineSlotRecipe({
       fontWeight: 'medium',
     },
     nav: {
-      position: 'relative',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      right: '0',
       display: 'flex',
       alignItems: 'flex-start',
-      w: 'full',
     },
     button_previous: {
       position: 'absolute',
