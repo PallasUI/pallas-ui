@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { DayPicker } from '@/components/ui/daypicker'
+import { DatePicker } from '@/components/ui/datepicker'
 import Popover from '@/components/ui/popover'
 import { css } from '@styled-system/css'
 import { styled } from '@styled-system/jsx'
@@ -54,7 +54,7 @@ export default function Example() {
           </Button>
         </Popover.Trigger>
         <Popover.Content css={{ width: 'auto', padding: 0, alignItems: 'start' }}>
-          <DayPicker
+          <DatePicker
             initialFocus
             mode="range"
             defaultMonth={date?.from}

@@ -13,7 +13,7 @@ description: A date input component that allows users to enter and edit dates.
 <Section>
 ## Installation
 
-The Date Picker is built using a composition of the `<Popover />` and the `<DayPicker />` components.
+The Date Picker is built using a composition of the `<Popover />` and the `<DatePicker />` components.
 
 <Steps>
 <Section>
@@ -23,7 +23,7 @@ The Date Picker is built using a composition of the `<Popover />` and the `<DayP
 
 ### Make sure you have the required components
 
-You'll need the [Popover](/docs/components/popover) and [DayPicker](/docs/components/daypicker) components.
+You'll need the [Popover](/docs/components/popover) and [DatePicker](/docs/components/datepicker) components.
 </Section>
 </Steps>
 </Section>
@@ -35,7 +35,7 @@ You'll need the [Popover](/docs/components/popover) and [DayPicker](/docs/compon
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { DayPicker } from '@/components/ui/daypicker'
+import { DatePicker } from '@/components/ui/datepicker'
 import Popover from '@/components/ui/popover'
 import { css } from '@styled-system/css'
 import { styled } from '@styled-system/jsx'
@@ -65,7 +65,7 @@ export default function Example() {
         </Button>
       </Popover.Trigger>
       <Popover.Content css={{ width: 'auto', padding: 0 }}>
-        <DayPicker mode="single" selected={date} onSelect={setDate} initialFocus />
+        <DatePicker mode="single" selected={date} onSelect={setDate} initialFocus />
       </Popover.Content>
     </Popover.Root>
   )

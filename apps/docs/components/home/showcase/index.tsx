@@ -9,7 +9,7 @@ import React, { useRef } from 'react'
 import { AccordionShowcase } from './accordion-showcase'
 import { BadgeSeparatorShowcase } from './badge-separator-showcase'
 import { DatePickerShowcase } from './date-picker-showcase'
-import { DayPickerShowcase } from './daypicker-showcase'
+import { InputDatePickerShowcase } from './input-date-picker-showcase'
 import { FormControlsShowcase } from './form-controls-showcase'
 import { FormShowcase } from './form-showcase'
 import { MenubarShowcase } from './menubar-showcase'
@@ -38,7 +38,7 @@ export const ComponentShowcase = () => {
         {/* Column 1 */}
         <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="0.8">
           <FormShowcase />
-          <DatePickerShowcase />
+          <InputDatePickerShowcase />
           <PopoverTooltipShowcase />
           <ProgressShowcase />
         </Flex>
@@ -53,7 +53,7 @@ export const ComponentShowcase = () => {
         <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="1.6">
           <MenubarShowcase />
           <FormControlsShowcase />
-          <DayPickerShowcase />
+          <DatePickerShowcase />
           <SliderTabsShowcase />
         </Flex>
       </div>
