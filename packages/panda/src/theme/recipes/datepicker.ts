@@ -1,8 +1,8 @@
 import { defineSlotRecipe } from '@pandacss/dev'
 
-export const daypicker = defineSlotRecipe({
-  className: 'daypicker',
-  description: 'Styles for the DayPicker component',
+export const datepicker = defineSlotRecipe({
+  className: 'datepicker',
+  description: 'Styles for the DatePicker component',
   slots: [
     'root',
     'months',
