@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { getComponentsList } from '../utils/get-components-list.js'
 
-export async function validateComponentName<T extends string>(componentName?: T): Promise<T> {
+export async function validateComponentName(componentName?: string): Promise<string | undefined> {
   if (componentName === '*') {
     return componentName
   }
@@ -10,13 +10,13 @@ export async function validateComponentName<T extends string>(componentName?: T)
 
   if (!componentName) {
     listComponents(componentNames)
-    return '' as T
+    return undefined
   }
 
   if (!componentNames.includes(componentName)) {
     console.log(chalk.red(`Component not found: ${componentName}\n\n`))
     listComponents(componentNames)
-    return '' as T
+    return undefined
   }
 
   return componentName

@@ -12,28 +12,32 @@ export default function propsCommand(program: Command) {
     .argument('[name]', 'Component name to inspect')
     .option('--json', 'Output as JSON')
     .action(async (componentName, options) => {
-      const validatedName = await validateComponentName(componentName)
+      try {
+        const validatedName = await validateComponentName(componentName)
 
-      if (!validatedName) {
-        console.log(chalk.gray('\nUsage: figma-cli props <name>'))
-        return
-      }
+        if (!validatedName) {
+          console.log(chalk.gray('\nUsage: figma-cli props <name>'))
+          return
+        }
 
-      const result = getComponentProps(validatedName.toLowerCase())
+        const result = getComponentProps(validatedName.toLowerCase())
 
-      if (!result) {
-        console.log(chalk.red(`Component not found: ${validatedName}`))
-        console.log(chalk.gray(`Run "figma-cli props" (no args) to see available components.`))
-        return
-      }
+        if (!result) {
+          console.log(chalk.red(`Component not found: ${validatedName}`))
+          console.log(chalk.gray(`Run "figma-cli props" (no args) to see available components.`))
+          return
+        }
 
-      if (options.json) {
-        console.log(JSON.stringify(result, null, 2))
-      } else {
-        console.log(chalk.yellowBright(`Props: ${result.name}`))
-        console.log(chalk.gray(`Type: ${result.isCompound ? 'compound' : 'simple'}`))
-        console.log(chalk.gray('—'))
-        printPrettyProps(result)
+        if (options.json) {
+          console.log(JSON.stringify(result, null, 2))
+        } else {
+          console.log(chalk.yellowBright(`Props: ${result.name}`))
+          console.log(chalk.gray(`Type: ${result.isCompound ? 'compound' : 'simple'}`))
+          console.log(chalk.gray('—'))
+          printPrettyProps(result)
+        }
+      } catch (error) {
+        console.error(chalk.red(error instanceof Error ? error.message : String(error)))
       }
     })
 }

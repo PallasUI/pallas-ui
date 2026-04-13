@@ -34,5 +34,11 @@ export async function getPandaCtx(componentName: string | '*') {
     minify: true,
   })
 
-  return await loadConfigAndCreateContext({ config })
+  try {
+    return await loadConfigAndCreateContext({ config })
+  } catch (error) {
+    throw new Error(
+      `Failed to create PandaCSS context for "${componentName}": ${error instanceof Error ? error.message : error}`,
+    )
+  }
 }

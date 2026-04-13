@@ -45,7 +45,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const configPath = resolve(__dirname, '../../figma-cli-config.json')
 
 export function getComponentProps(componentName: string): ComponentPropsResult | null {
-  const config: FigmaCliConfig = JSON.parse(readFileSync(configPath, 'utf-8'))
+  let config: FigmaCliConfig
+  try {
+    config = JSON.parse(readFileSync(configPath, 'utf-8'))
+  } catch {
+    throw new Error(`Config file not found at ${configPath}. Ensure figma-cli-config.json exists.`)
+  }
+
   const componentConfig = config.components[componentName]
   if (!componentConfig?.paths) return null
 
@@ -55,9 +61,14 @@ export function getComponentProps(componentName: string): ComponentPropsResult |
 
   const componentsTsConfigPath = resolve(configDir, '../../components/tsconfig.json')
 
-  const project = new Project({
-    tsConfigFilePath: componentsTsConfigPath,
-  })
+  let project: Project
+  try {
+    project = new Project({ tsConfigFilePath: componentsTsConfigPath })
+  } catch {
+    throw new Error(
+      `Failed to create TypeScript project. Ensure tsconfig exists at ${componentsTsConfigPath}.`,
+    )
+  }
 
   for (const path of absolutePaths) {
     if (!project.getSourceFile(path)) {

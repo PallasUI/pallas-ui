@@ -12,19 +12,23 @@ export default function recipeCommand(program: Command) {
       '[componentName]',
       'Name of the component to get the recipe for, or * to get recipes for all components',
     )
-    .action(async (componentName?: string | '*') => {
-      const validatedName = await validateComponentName(componentName)
+    .action(async (componentName?: string) => {
+      try {
+        const validatedName = await validateComponentName(componentName)
 
-      if (!validatedName) {
-        console.log(chalk.gray('\nUsage: figma-cli recipe <name>'))
-        return
+        if (!validatedName) {
+          console.log(chalk.gray('\nUsage: figma-cli recipe <name>'))
+          return
+        }
+
+        console.log(chalk.yellowBright('Pallas UI Component Recipe'))
+        console.log(chalk.gray('—'))
+
+        const recipe = await getRecipe(validatedName)
+
+        console.log(JSON.stringify(recipe, null, 2))
+      } catch (error) {
+        console.error(chalk.red(error instanceof Error ? error.message : String(error)))
       }
-
-      console.log(chalk.yellowBright('Pallas UI Component Recipe'))
-      console.log(chalk.gray('—'))
-
-      const recipe = await getRecipe(validatedName)
-
-      console.log(JSON.stringify(recipe, null, 2))
     })
 }

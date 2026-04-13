@@ -17,12 +17,18 @@ export function formatSemanticTokenToDisplay(token: SemanticTokenGroupDefinition
 
   if (hasDarkModeValues) {
     if (token.values.length > 0) {
-      const rows: string[][] = [['Token', 'Light value', 'Dark value', 'Css Variable']]
+      const rows: string[][] = [['Token', 'Description', 'Light value', 'Dark value', 'Css Variable']]
 
       for (const tokenValue of token.values) {
         const lightValue = tokenValue.values.find((v) => v.condition === 'base')?.value || ''
         const darkValue = tokenValue.values.find((v) => v.condition === 'dark')?.value || ''
-        rows.push([tokenValue.name, lightValue, darkValue, tokenValue.cssVar || ''])
+        rows.push([
+          tokenValue.name,
+          tokenValue.description || '',
+          lightValue,
+          darkValue,
+          tokenValue.cssVar || '',
+        ])
       }
 
       lines.push(markdownTable(rows))
@@ -30,11 +36,16 @@ export function formatSemanticTokenToDisplay(token: SemanticTokenGroupDefinition
     }
   } else {
     if (token.values.length > 0) {
-      const rows: string[][] = [['Token', 'Value', 'Css Variable']]
+      const rows: string[][] = [['Token', 'Description', 'Value', 'Css Variable']]
 
       for (const tokenValue of token.values) {
         if (tokenValue.values[0]?.value) {
-          rows.push([tokenValue.name, tokenValue.values[0].value, tokenValue.cssVar || ''])
+          rows.push([
+            tokenValue.name,
+            tokenValue.description || '',
+            tokenValue.values[0].value,
+            tokenValue.cssVar || '',
+          ])
         }
       }
 
@@ -53,10 +64,15 @@ export function formatTokenToDisplay(token: TokenGroupDefinition): string {
   lines.push(chalk.bold.cyan(`# ${title}`))
 
   if (token.values.length > 0) {
-    const rows: string[][] = [['Token name', 'Token value', 'Css Variable']]
+    const rows: string[][] = [['Token name', 'Description', 'Value', 'Css Variable']]
 
     for (const tokenValue of token.values) {
-      rows.push([tokenValue.name, tokenValue.value, tokenValue.cssVar])
+      rows.push([
+        tokenValue.name,
+        tokenValue.description || '',
+        tokenValue.value,
+        tokenValue.cssVar || '',
+      ])
     }
 
     lines.push(markdownTable(rows))
