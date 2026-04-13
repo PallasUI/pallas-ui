@@ -1,31 +1,42 @@
 import chalk from 'chalk'
 import type { Command } from 'commander'
 
-import semanticTokens from '../../styled-system/specs/semantic-tokens.json' with { type: 'json' }
-import tokens from '../../styled-system/specs/tokens.json' with { type: 'json' }
 import {
   formatSemanticTokenToDisplay,
   formatTokenToDisplay,
 } from '../utils/format-token-to-display.js'
+import { getPandaCtx } from '../utils/get-panda-ctx.js'
 
 export default function tokensCommand(program: Command) {
   program
     .command('tokens')
     .description('Get a list of available tokens')
     .option('-s, --semantic', 'Get semantic tokens')
-    .action((options) => {
+    .action(async (options) => {
       console.log(chalk.yellowBright(`Pallas UI${options.semantic ? ' Semantic ' : ' '}Tokens`))
       console.log(chalk.gray('—'))
 
+      const ctx = await getPandaCtx('*')
+      const specs = ctx.getSpec()
+
       if (options.semantic) {
-        for (const token of semanticTokens.data) {
-          console.log(formatSemanticTokenToDisplay(token))
+        const semanticTokens = specs.find((s) => s.type === 'semantic-tokens')
+
+        if (semanticTokens) {
+          for (const token of semanticTokens.data) {
+            console.log(formatSemanticTokenToDisplay(token))
+          }
         }
+
         return
       }
 
-      for (const token of tokens.data) {
-        console.log(formatTokenToDisplay(token))
+      const tokens = specs.find((s) => s.type === 'tokens')
+
+      if (tokens) {
+        for (const token of tokens.data) {
+          console.log(formatTokenToDisplay(token))
+        }
       }
     })
 }

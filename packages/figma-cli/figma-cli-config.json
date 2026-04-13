@@ -182,7 +182,7 @@
                 "../../components/src/ui/tooltip/tooltip.tsx"
             ]
         },
-        "treeview": {
+        "treeView": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/tree-view/index.tsx"

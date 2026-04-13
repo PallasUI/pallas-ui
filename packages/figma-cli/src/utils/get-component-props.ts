@@ -1,15 +1,16 @@
+import { readFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import {
+  type CallExpression,
+  type Node,
   Project,
+  type SourceFile,
   SyntaxKind,
   type Type,
-  type Node,
-  type SourceFile,
-  type VariableDeclaration,
-  type CallExpression,
   type TypeAliasDeclaration,
+  type VariableDeclaration,
 } from 'ts-morph'
-import { readFileSync } from 'node:fs'
-import { resolve, dirname } from 'node:path'
 
 export interface PropDetail {
   name: string
@@ -40,24 +41,19 @@ interface FigmaCliConfig {
 
 const SKIP_EXPORTS = new Set(['default'])
 
-export function getComponentProps(
-  componentName: string,
-  configPath: string,
-): ComponentPropsResult | null {
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const configPath = resolve(__dirname, '../../figma-cli-config.json')
+
+export function getComponentProps(componentName: string): ComponentPropsResult | null {
   const config: FigmaCliConfig = JSON.parse(readFileSync(configPath, 'utf-8'))
   const componentConfig = config.components[componentName]
   if (!componentConfig?.paths) return null
 
   const isCompound = componentConfig.isCompound ?? false
   const configDir = dirname(resolve(configPath))
-  const absolutePaths = componentConfig.paths.map((p: string) =>
-    resolve(configDir, p),
-  )
+  const absolutePaths = componentConfig.paths.map((p: string) => resolve(configDir, p))
 
-  const componentsTsConfigPath = resolve(
-    configDir,
-    '../../components/tsconfig.json',
-  )
+  const componentsTsConfigPath = resolve(configDir, '../../components/tsconfig.json')
 
   const project = new Project({
     tsConfigFilePath: componentsTsConfigPath,
@@ -123,8 +119,7 @@ function extractSimpleProps(
   project: Project,
   typeChecker: ReturnType<Project['getTypeChecker']>,
 ): ComponentPropsResult | null {
-  const capitalizedName =
-    componentName.charAt(0).toUpperCase() + componentName.slice(1)
+  const capitalizedName = componentName.charAt(0).toUpperCase() + componentName.slice(1)
   const propsTypeName = `${capitalizedName}Props`
 
   for (const filePath of filePaths) {
@@ -151,11 +146,7 @@ function extractSimpleProps(
 
         const varDecl = decl as VariableDeclaration
         const initializer = varDecl.getInitializer()
-        if (
-          !initializer ||
-          initializer.getKind() !== SyntaxKind.CallExpression
-        )
-          continue
+        if (!initializer || initializer.getKind() !== SyntaxKind.CallExpression) continue
 
         const callExpr = initializer as CallExpression
         const props = extractPropsFromCallExpr(callExpr, typeChecker)
@@ -173,13 +164,8 @@ function extractSimpleProps(
   return null
 }
 
-function findTypeAlias(
-  sourceFile: SourceFile,
-  name: string,
-): TypeAliasDeclaration | undefined {
-  const typeAliases = sourceFile.getDescendantsOfKind(
-    SyntaxKind.TypeAliasDeclaration,
-  )
+function findTypeAlias(sourceFile: SourceFile, name: string): TypeAliasDeclaration | undefined {
+  const typeAliases = sourceFile.getDescendantsOfKind(SyntaxKind.TypeAliasDeclaration)
   return typeAliases.find((ta) => ta.getName() === name)
 }
 
