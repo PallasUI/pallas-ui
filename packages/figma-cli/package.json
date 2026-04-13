@@ -27,7 +27,8 @@
     "@pallas-ui/panda-preset": "workspace:*",
     "chalk": "^5.6.2",
     "commander": "^14.0.3",
-    "markdown-table": "^3.0.4"
+    "markdown-table": "^3.0.4",
+    "ts-morph": "^27.0.2"
   },
   "devDependencies": {
     "@pallas-ui/typescript-config": "workspace:*",
@@ -44,19 +45,5 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist"
-  ],
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "clean": true,
-    "dts": true,
-    "sourcemap": true,
-    "format": [
-      "esm"
-    ],
-    "banner": {
-      "js": "#!/usr/bin/env node"
-    }
-  }
+  ]
 }

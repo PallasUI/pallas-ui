@@ -439,6 +439,9 @@ importers:
       markdown-table:
         specifier: ^3.0.4
         version: 3.0.4
+      ts-morph:
+        specifier: ^27.0.2
+        version: 27.0.2
     devDependencies:
       '@pallas-ui/typescript-config':
         specifier: workspace:*

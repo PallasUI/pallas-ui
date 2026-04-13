@@ -1,0 +1,197 @@
+{
+    "components": {
+        "accordion": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/accordion/index.tsx"
+            ]
+        },
+        "alert": {
+            "paths": [
+                "../../components/src/ui/alert/index.tsx"
+            ]
+        },
+        "badge": {
+            "paths": [
+                "../../components/src/ui/badge/index.tsx"
+            ]
+        },
+        "breadcrumb": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/breadcrumb/index.tsx"
+            ]
+        },
+        "button": {
+            "paths": [
+                "../../components/src/ui/button/button.tsx"
+            ]
+        },
+        "carousel": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/carousel/index.tsx"
+            ]
+        },
+        "checkbox": {
+            "paths": [
+                "../../components/src/ui/checkbox/index.tsx"
+            ]
+        },
+        "combobox": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/combobox/index.tsx"
+            ]
+        },
+        "command": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/command/index.tsx"
+            ]
+        },
+        "daypicker": {
+            "paths": [
+                "../../components/src/ui/daypicker/index.tsx"
+            ]
+        },
+        "drawer": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/drawer/index.tsx"
+            ]
+        },
+        "form": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/form/index.tsx"
+            ]
+        },
+        "input": {
+            "paths": [
+                "../../components/src/ui/input/index.tsx"
+            ]
+        },
+        "input-otp": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/input-otp/index.tsx"
+            ]
+        },
+        "menu-bar": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/menu-bar/menu-bar.tsx"
+            ]
+        },
+        "modal": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/modal/modal.tsx"
+            ]
+        },
+        "popover": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/popover/popover.tsx"
+            ]
+        },
+        "progress": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/progress/index.tsx"
+            ]
+        },
+        "radio-group": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/radio-group/index.tsx"
+            ]
+        },
+        "scroll-area": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/scroll-area/index.tsx"
+            ]
+        },
+        "segmented": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/segmented/root.tsx"
+            ]
+        },
+        "select": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/select/index.tsx"
+            ]
+        },
+        "separator": {
+            "paths": [
+                "../../components/src/ui/separator/index.tsx"
+            ]
+        },
+        "sheet": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/sheet/index.tsx"
+            ]
+        },
+        "sidebar": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/sidebar/index.tsx"
+            ]
+        },
+        "slider": {
+            "paths": [
+                "../../components/src/ui/slider/index.tsx"
+            ]
+        },
+        "steps": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/steps/index.tsx"
+            ]
+        },
+        "switch": {
+            "paths": [
+                "../../components/src/ui/switch/index.tsx"
+            ]
+        },
+        "tabs": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/tabs/index.tsx"
+            ]
+        },
+        "textarea": {
+            "paths": [
+                "../../components/src/ui/textarea/index.tsx"
+            ]
+        },
+        "toast": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/toast/index.tsx"
+            ]
+        },
+        "tooltip": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/tooltip/tooltip.tsx"
+            ]
+        },
+        "treeview": {
+            "isCompound": true,
+            "paths": [
+                "../../components/src/ui/tree-view/index.tsx"
+            ]
+        },
+        "typography": {
+            "paths": [
+                "../../components/src/ui/typography/index.tsx"
+            ]
+        }
+    }
+}
