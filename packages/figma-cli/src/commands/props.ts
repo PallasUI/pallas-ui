@@ -20,7 +20,7 @@ export default function propsCommand(program: Command) {
           return
         }
 
-        const result = getComponentProps(validatedName.toLowerCase())
+        const result = getComponentProps(validatedName)
 
         if (!result) {
           console.log(chalk.red(`Component not found: ${validatedName}`))

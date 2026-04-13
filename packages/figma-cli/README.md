@@ -54,9 +54,9 @@ figma-cli component <name>
 
 **Arguments:**
 
-| Argument  | Required | Description                                                            |
-| --------- | -------- | ---------------------------------------------------------------------- |
-| `<name>`  | Yes      | The component name (e.g. `button`, `accordion`). Must be a valid name. |
+| Argument | Required | Description                                                            |
+| -------- | -------- | ---------------------------------------------------------------------- |
+| `<name>` | Yes      | The component name (e.g. `button`, `accordion`). Must be a valid name. |
 
 **Output sections:**
 
@@ -84,8 +84,8 @@ figma-cli css <name>
 
 **Arguments:**
 
-| Argument | Required | Description                               |
-| -------- | -------- | ----------------------------------------- |
+| Argument | Required | Description                                   |
+| -------- | -------- | --------------------------------------------- |
 | `<name>` | Yes      | The component name or `*` for all components. |
 
 Using `*` generates CSS for all registered component recipes.
@@ -111,9 +111,9 @@ figma-cli recipe <name>
 
 **Arguments:**
 
-| Argument | Required | Description                                     |
-| -------- | -------- | ----------------------------------------------- |
-| `<name>` | Yes      | The component name or `*` for all recipes.      |
+| Argument | Required | Description                                |
+| -------- | -------- | ------------------------------------------ |
+| `<name>` | Yes      | The component name or `*` for all recipes. |
 
 Using `*` returns recipe configs for every registered component.
 
@@ -140,14 +140,14 @@ figma-cli props <name>
 
 **Arguments:**
 
-| Argument | Required | Description                                |
-| -------- | -------- | ------------------------------------------ |
-| `<name>` | Yes      | The component name to inspect.             |
+| Argument | Required | Description                    |
+| -------- | -------- | ------------------------------ |
+| `<name>` | Yes      | The component name to inspect. |
 
 **Options:**
 
-| Flag     | Description                         |
-| -------- | ----------------------------------- |
+| Flag     | Description                                        |
+| -------- | -------------------------------------------------- |
 | `--json` | Output props as JSON instead of a formatted table. |
 
 **Behavior by component type:**
@@ -167,8 +167,16 @@ figma-cli props <name>
     {
       "name": "Button",
       "props": [
-        { "name": "variant", "type": "\"solid\" | \"outline\" | \"ghost\"", "required": false },
-        { "name": "size", "type": "\"sm\" | \"md\" | \"lg\"", "required": false }
+        {
+          "name": "variant",
+          "type": "\"solid\" | \"outline\" | \"ghost\"",
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "\"sm\" | \"md\" | \"lg\"",
+          "required": false
+        }
       ]
     }
   ]
@@ -196,9 +204,9 @@ figma-cli tokens
 
 **Options:**
 
-| Flag                | Description                          |
-| ------------------- | ------------------------------------ |
-| `-s`, `--semantic`  | List semantic tokens instead of base tokens. |
+| Flag               | Description                                  |
+| ------------------ | -------------------------------------------- |
+| `-s`, `--semantic` | List semantic tokens instead of base tokens. |
 
 **Base tokens output:** A table of token name, value, and CSS variable for each token group (colors, spacing, sizing, typography, etc.).
 
@@ -221,50 +229,50 @@ All commands that accept a component name validate the name against the register
 
 The following 34 components are registered:
 
-| Component       | Type      |
-| --------------- | --------- |
-| accordion       | Compound  |
-| alert           | Simple    |
-| badge           | Simple    |
-| breadcrumb      | Compound  |
-| button          | Simple    |
-| carousel        | Compound  |
-| checkbox        | Simple    |
-| combobox        | Compound  |
-| command         | Compound  |
-| daypicker       | Simple    |
-| drawer          | Compound  |
-| form            | Compound  |
-| input           | Simple    |
-| input-otp       | Compound  |
-| menu-bar        | Compound  |
-| modal           | Compound  |
-| popover         | Compound  |
-| progress        | Compound  |
-| radio-group     | Compound  |
-| scroll-area     | Compound  |
-| segmented       | Compound  |
-| select          | Compound  |
-| separator       | Simple    |
-| sheet           | Compound  |
-| sidebar         | Compound  |
-| slider          | Simple    |
-| steps           | Compound  |
-| switch          | Simple    |
-| tabs            | Compound  |
-| textarea        | Simple    |
-| toast           | Compound  |
-| tooltip         | Compound  |
-| treeView        | Compound  |
-| typography      | Simple    |
+| Component   | Type     |
+| ----------- | -------- |
+| accordion   | Compound |
+| alert       | Simple   |
+| badge       | Simple   |
+| breadcrumb  | Compound |
+| button      | Simple   |
+| carousel    | Compound |
+| checkbox    | Simple   |
+| combobox    | Compound |
+| command     | Compound |
+| daypicker   | Simple   |
+| drawer      | Compound |
+| form        | Compound |
+| input       | Simple   |
+| input-otp   | Compound |
+| menu-bar    | Compound |
+| modal       | Compound |
+| popover     | Compound |
+| progress    | Compound |
+| radio-group | Compound |
+| scroll-area | Compound |
+| segmented   | Compound |
+| select      | Compound |
+| separator   | Simple   |
+| sheet       | Compound |
+| sidebar     | Compound |
+| slider      | Simple   |
+| steps       | Compound |
+| switch      | Simple   |
+| tabs        | Compound |
+| textarea    | Simple   |
+| toast       | Compound |
+| tooltip     | Compound |
+| treeView    | Compound |
+| typography  | Simple   |
 
 ## Tech Stack
 
-| Dependency        | Purpose                                           |
-| ----------------- | ------------------------------------------------- |
-| `commander`       | CLI framework for command registration and parsing |
-| `chalk`           | Terminal output coloring                           |
-| `markdown-table`  | Formatted table output                            |
-| `ts-morph`        | Static TypeScript analysis for prop extraction     |
-| `@pandacss/node`  | PandaCSS context API for recipe/CSS generation     |
-| `@pallas-ui/panda-preset` | Pallas UI's design tokens and recipes     |
+| Dependency                | Purpose                                            |
+| ------------------------- | -------------------------------------------------- |
+| `commander`               | CLI framework for command registration and parsing |
+| `chalk`                   | Terminal output coloring                           |
+| `markdown-table`          | Formatted table output                             |
+| `ts-morph`                | Static TypeScript analysis for prop extraction     |
+| `@pandacss/node`          | PandaCSS context API for recipe/CSS generation     |
+| `@pallas-ui/panda-preset` | Pallas UI's design tokens and recipes              |
