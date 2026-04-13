@@ -16,7 +16,6 @@
     "figma-cli": "./dist/index.js"
   },
   "scripts": {
-    "prepare": "panda codegen --silent && panda spec --silent",
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "biome lint ./src",

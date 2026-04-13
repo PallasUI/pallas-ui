@@ -72,13 +72,13 @@
                 "../../components/src/ui/input/index.tsx"
             ]
         },
-        "input-otp": {
+        "inputOTP": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/input-otp/index.tsx"
             ]
         },
-        "menu-bar": {
+        "menubar": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/menu-bar/menu-bar.tsx"
@@ -102,13 +102,13 @@
                 "../../components/src/ui/progress/index.tsx"
             ]
         },
-        "radio-group": {
+        "radioGroup": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/radio-group/index.tsx"
             ]
         },
-        "scroll-area": {
+        "scrollArea": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/scroll-area/index.tsx"
@@ -154,7 +154,7 @@
                 "../../components/src/ui/steps/index.tsx"
             ]
         },
-        "switch": {
+        "switchRecipe": {
             "paths": [
                 "../../components/src/ui/switch/index.tsx"
             ]
