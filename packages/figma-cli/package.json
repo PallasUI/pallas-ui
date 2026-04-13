@@ -20,7 +20,7 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "lint": "biome lint ./src",
-    "start": "tsx src/index.ts",
+    "cli": "tsx src/index.ts",
     "typecheck": "tsc"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 import { Command } from 'commander'
 import componentCommand from './commands/component.js'
 import cssCommand from './commands/css.js'
-import listCommand from './commands/list.js'
+import recipeCommand from './commands/recipe.js'
 import tokensCommand from './commands/tokens.js'
 
 const program = new Command()
@@ -11,10 +11,9 @@ program
   .description('CLI tool for retrieving Pallas UI component information')
   .version('0.1.0')
 
-listCommand(program)
 componentCommand(program)
 cssCommand(program)
 tokensCommand(program)
-
+recipeCommand(program)
 
 program.parse()
