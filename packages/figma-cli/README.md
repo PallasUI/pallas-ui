@@ -49,7 +49,7 @@ Example entry:
 Get detailed information about a single component. Outputs the recipe, generated CSS, and props in one combined view.
 
 ```bash
-figma-cli component <name>
+pnpm cli component <name>
 ```
 
 **Arguments:**
@@ -67,7 +67,7 @@ figma-cli component <name>
 **Example:**
 
 ```bash
-figma-cli component button
+pnpm cli component button
 ```
 
 When called without a name, lists all available components.
@@ -79,7 +79,7 @@ When called without a name, lists all available components.
 Generate the CSS for a component's recipe.
 
 ```bash
-figma-cli css <name>
+pnpm cli css <name>
 ```
 
 **Arguments:**
@@ -93,8 +93,8 @@ Using `*` generates CSS for all registered component recipes.
 **Example:**
 
 ```bash
-figma-cli css button
-figma-cli css "*"
+pnpm cli css button
+pnpm cli css "*"
 ```
 
 When called without a name, lists all available components.
@@ -106,7 +106,7 @@ When called without a name, lists all available components.
 Get the PandaCSS recipe configuration for a component as JSON.
 
 ```bash
-figma-cli recipe <name>
+pnpm cli recipe <name>
 ```
 
 **Arguments:**
@@ -122,8 +122,8 @@ Using `*` returns recipe configs for every registered component.
 **Example:**
 
 ```bash
-figma-cli recipe button
-figma-cli recipe "*"
+pnpm cli recipe button
+pnpm cli recipe "*"
 ```
 
 When called without a name, lists all available components.
@@ -135,7 +135,7 @@ When called without a name, lists all available components.
 Extract and display the TypeScript props interface for a component. Uses `ts-morph` to statically analyze the component source files.
 
 ```bash
-figma-cli props <name>
+pnpm cli props <name>
 ```
 
 **Arguments:**
@@ -186,8 +186,8 @@ figma-cli props <name>
 **Example:**
 
 ```bash
-figma-cli props button
-figma-cli props accordion --json
+pnpm cli props button
+pnpm cli props accordion --json
 ```
 
 When called without a name, lists all available components.
@@ -199,7 +199,7 @@ When called without a name, lists all available components.
 List the design tokens available in the Pallas UI design system.
 
 ```bash
-figma-cli tokens
+pnpm cli tokens
 ```
 
 **Options:**
@@ -215,8 +215,8 @@ figma-cli tokens
 **Example:**
 
 ```bash
-figma-cli tokens
-figma-cli tokens --semantic
+pnpm cli tokens
+pnpm cli tokens --semantic
 ```
 
 ---
