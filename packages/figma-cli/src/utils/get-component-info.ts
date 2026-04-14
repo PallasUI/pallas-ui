@@ -182,7 +182,9 @@ function isInheritedReactProp(prop: ReturnType<Type['getProperties']>[number]): 
   return false
 }
 
-function extractJsDocDescription(prop: ReturnType<Type['getProperties']>[number]): string | undefined {
+function extractJsDocDescription(
+  prop: ReturnType<Type['getProperties']>[number],
+): string | undefined {
   for (const decl of prop.getDeclarations()) {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const jsDocs = (decl as any).getJsDocs?.() ?? []
@@ -219,9 +221,6 @@ function extractPropsFromType(
 
     const override = propOverrides?.[name]
     const figmaRole = override?.figmaRole ?? inferFigmaRole(name, typeText, variantAxisNames)
-
-    // Skip props that are variant axes — they're shown in variantAxes, not in the props list
-    if (figmaRole === 'variant') continue
 
     const detail: PropDetail = { name, type: typeText, required }
     if (figmaRole) detail.figmaRole = figmaRole
@@ -273,7 +272,12 @@ function extractPropsFromCallExpr(
     const propsTypeNode = typeArgs[1]
     if (!propsTypeNode) return null
     const resolvedType = typeChecker.getTypeAtLocation(propsTypeNode)
-    const props = extractPropsFromType(resolvedType, propsTypeNode as Node, variantAxisNames, propOverrides)
+    const props = extractPropsFromType(
+      resolvedType,
+      propsTypeNode as Node,
+      variantAxisNames,
+      propOverrides,
+    )
     // Merge defaults
     return props.map((p) => ({
       ...p,
@@ -421,13 +425,13 @@ function buildFigmaProperties(
     .filter((p) => p.figmaRole === 'booleanProperty')
     .map((p) => p.name)
 
-  const textProperties = allProps
-    .filter((p) => p.figmaRole === 'textProperty')
-    .map((p) => p.name)
+  const textProperties = allProps.filter((p) => p.figmaRole === 'textProperty').map((p) => p.name)
 
-  const slots = figmaConfig?.slots ?? allProps
-    .filter((p) => p.figmaRole === 'slot')
-    .map((p) => ({ name: p.name, description: p.description ?? '' }))
+  const slots =
+    figmaConfig?.slots ??
+    allProps
+      .filter((p) => p.figmaRole === 'slot')
+      .map((p) => ({ name: p.name, description: p.description ?? '' }))
 
   return {
     variantAxes: variantAxisNames,

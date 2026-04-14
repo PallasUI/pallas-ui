@@ -55,21 +55,6 @@ export function printComponentInfo(result: ComponentInfoResult) {
   }
   console.log(chalk.gray('—'))
 
-  // Variant Axes
-  const axisNames = Object.keys(result.variantAxes)
-  if (axisNames.length > 0) {
-    console.log(chalk.cyan('\nVariant Axes'))
-    const axisRows = [
-      ['Axis', 'Values', 'Default'],
-      ...axisNames.map((axis) => {
-        const detail = result.variantAxes[axis]
-        if (!detail) return [axis, '', '']
-        return [axis, detail.values.join(' · '), detail.default ?? '—']
-      }),
-    ]
-    console.log(markdownTable(axisRows))
-  }
-
   // Props (simple component)
   if (result.props.length > 0) {
     console.log(chalk.cyan('\nProps'))
@@ -97,17 +82,6 @@ export function printComponentInfo(result: ComponentInfoResult) {
       }
     }
   }
-
-  // Figma Properties Summary
-  console.log(chalk.cyan('\nFigma Properties'))
-  const figRows = [
-    ['Type', 'Properties'],
-    ['Variant axes', result.figmaProperties.variantAxes.join(', ') || '—'],
-    ['Boolean properties', result.figmaProperties.booleanProperties.join(', ') || '—'],
-    ['Text properties', result.figmaProperties.textProperties.join(', ') || '—'],
-    ['Slots', result.figmaProperties.slots.map((s) => s.name).join(', ') || '—'],
-  ]
-  console.log(markdownTable(figRows))
 
   // Notes
   console.log(chalk.cyan('\nNotes'))
