@@ -2,13 +2,17 @@ import chalk from 'chalk'
 import type { Command } from 'commander'
 
 import { markdownTable } from 'markdown-table'
-import { type ComponentPropsResult, getComponentProps } from '../utils/get-component-props.js'
+import {
+  type ComponentInfoResult,
+  type PropDetail,
+  getComponentInfo,
+} from '../utils/get-component-info.js'
 import { validateComponentName } from '../validation/validate-component-name.js'
 
 export default function propsCommand(program: Command) {
   program
     .command('props')
-    .description('Get available props for components')
+    .description('Get component mapping information for Figma agents')
     .argument('[name]', 'Component name to inspect')
     .option('--json', 'Output as JSON')
     .action(async (componentName, options) => {
@@ -20,7 +24,7 @@ export default function propsCommand(program: Command) {
           return
         }
 
-        const result = getComponentProps(validatedName)
+        const result = await getComponentInfo(validatedName)
 
         if (!result) {
           console.log(chalk.red(`Component not found: ${validatedName}`))
@@ -31,10 +35,7 @@ export default function propsCommand(program: Command) {
         if (options.json) {
           console.log(JSON.stringify(result, null, 2))
         } else {
-          console.log(chalk.yellowBright(`Props: ${result.name}`))
-          console.log(chalk.gray(`Type: ${result.isCompound ? 'compound' : 'simple'}`))
-          console.log(chalk.gray('—'))
-          printPrettyProps(result)
+          printComponentInfo(result)
         }
       } catch (error) {
         console.error(chalk.red(error instanceof Error ? error.message : String(error)))
@@ -42,31 +43,96 @@ export default function propsCommand(program: Command) {
     })
 }
 
-export function printPrettyProps(result: ComponentPropsResult) {
-  for (const part of result.parts) {
-    if (result.isCompound) {
-      console.log(chalk.cyan(`\n${part.name}`))
-    }
+export function printComponentInfo(result: ComponentInfoResult) {
+  // Header
+  console.log(chalk.yellowBright(`Component: ${result.name}`))
+  console.log(chalk.gray(`Level: ${result.level}`))
+  if (result.purpose) {
+    console.log(chalk.gray(`Purpose: ${result.purpose}`))
+  }
+  if (result.builtFrom.length > 0) {
+    console.log(chalk.gray(`Built from: ${result.builtFrom.join(', ')}`))
+  }
+  console.log(chalk.gray('—'))
 
-    if (part.props.length === 0) {
-      console.log(chalk.gray('  No props found'))
-      continue
-    }
-
-    const rows = [
-      ['Prop', 'Type', 'Required'],
-      ...part.props.map((p) => [p.name, p.type, p.required ? 'yes' : 'no']),
+  // Variant Axes
+  const axisNames = Object.keys(result.variantAxes)
+  if (axisNames.length > 0) {
+    console.log(chalk.cyan('\nVariant Axes'))
+    const axisRows = [
+      ['Axis', 'Values', 'Default'],
+      ...axisNames.map((axis) => {
+        const detail = result.variantAxes[axis]
+        if (!detail) return [axis, '', '']
+        return [axis, detail.values.join(' · '), detail.default ?? '—']
+      }),
     ]
+    console.log(markdownTable(axisRows))
+  }
 
-    const table = markdownTable(rows)
-    // Indent table rows for compound components
-    const formatted = result.isCompound
-      ? table
+  // Props (simple component)
+  if (result.props.length > 0) {
+    console.log(chalk.cyan('\nProps'))
+    console.log(formatPropsTable(result.props))
+  }
+
+  // Sub-components (compound component)
+  if (result.subComponents.length > 0) {
+    console.log(chalk.cyan('\nSub-components'))
+    for (const sub of result.subComponents) {
+      console.log(`\n  ${chalk.bold(sub.name)}`)
+      console.log(chalk.gray(`  Role: ${sub.role}`))
+      if (sub.figmaNotes) {
+        console.log(chalk.gray(`  Note: ${sub.figmaNotes}`))
+      }
+      if (sub.props.length > 0) {
+        const table = formatPropsTable(sub.props)
+        const indented = table
           .split('\n')
           .map((line) => `  ${line}`)
           .join('\n')
-      : table
-
-    console.log(formatted)
+        console.log(indented)
+      } else {
+        console.log(chalk.gray('    (No component-specific props)'))
+      }
+    }
   }
+
+  // Figma Properties Summary
+  console.log(chalk.cyan('\nFigma Properties'))
+  const figRows = [
+    ['Type', 'Properties'],
+    ['Variant axes', result.figmaProperties.variantAxes.join(', ') || '—'],
+    ['Boolean properties', result.figmaProperties.booleanProperties.join(', ') || '—'],
+    ['Text properties', result.figmaProperties.textProperties.join(', ') || '—'],
+    ['Slots', result.figmaProperties.slots.map((s) => s.name).join(', ') || '—'],
+  ]
+  console.log(markdownTable(figRows))
+
+  // Notes
+  console.log(chalk.cyan('\nNotes'))
+  if (result.notes.length > 0) {
+    for (const note of result.notes) {
+      console.log(chalk.gray(`- ${note}`))
+    }
+  } else {
+    console.log(chalk.gray('(none)'))
+  }
+}
+
+function formatPropsTable(props: PropDetail[]): string {
+  if (props.length === 0) return ''
+
+  const rows = [
+    ['Prop', 'Type', 'Description', 'Required', 'Default', 'Figma role'],
+    ...props.map((p) => [
+      p.name,
+      p.type,
+      p.description ?? '—',
+      p.required ? 'yes' : 'no',
+      p.default ?? '—',
+      p.figmaRole ?? '—',
+    ]),
+  ]
+  return markdownTable(rows)
 }

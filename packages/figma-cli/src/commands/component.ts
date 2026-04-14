@@ -2,10 +2,10 @@ import chalk from 'chalk'
 import type { Command } from 'commander'
 
 import generateRecipeCss from '../utils/generate-recipe-css.js'
-import { getComponentProps } from '../utils/get-component-props.js'
+import { getComponentInfo } from '../utils/get-component-info.js'
 import { getRecipe } from '../utils/get-recipe.js'
 import { validateComponentName } from '../validation/validate-component-name.js'
-import { printPrettyProps } from './props.js'
+import { printComponentInfo } from './props.js'
 
 export default function componentCommand(program: Command) {
   program
@@ -34,7 +34,7 @@ export default function componentCommand(program: Command) {
 async function formatComponentDetails(name: string) {
   const rawRecipe = await getRecipe(name)
   const rawCss = await generateRecipeCss(name)
-  const props = getComponentProps(name)
+  const info = await getComponentInfo(name)
 
   if (rawRecipe) {
     console.log(chalk.cyan('\nRecipe'))
@@ -48,9 +48,9 @@ async function formatComponentDetails(name: string) {
     console.log(rawCss)
   }
 
-  if (props) {
-    console.log(chalk.cyan('\nProps'))
+  if (info) {
+    console.log(chalk.cyan('\nComponent Info'))
     console.log(chalk.gray('—'))
-    console.log(printPrettyProps(props))
+    printComponentInfo(info)
   }
 }

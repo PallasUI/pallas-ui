@@ -4,194 +4,933 @@
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/accordion/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Show and hide additional content in an expandable section",
+                "notes": [
+                    "The closed state should expose the header text.",
+                    "The opened state should expose the description/content region."
+                ],
+                "subComponentOverrides": {
+                    "ItemTrigger": {
+                        "figmaNotes": "Contains the header text and indicator"
+                    },
+                    "ItemContent": {
+                        "figmaNotes": "Expandable content region"
+                    }
+                },
+                "slots": [
+                    { "name": "itemContent", "description": "Expandable content region below the header" }
+                ]
+            }
         },
         "alert": {
             "paths": [
                 "../../components/src/ui/alert/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Display a contextual message banner with an optional icon, title, and description",
+                "propOverrides": {
+                    "variant": { "figmaRole": "variant" }
+                },
+                "slots": [
+                    { "name": "icon", "description": "Optional SVG icon positioned on the left; triggers padding adjustment" },
+                    { "name": "title", "description": "Alert heading text (AlertTitle)" },
+                    { "name": "description", "description": "Alert body text (AlertDescription)" }
+                ],
+                "notes": [
+                    "The root element has role='alert' baked in.",
+                    "Icon is not an explicit prop — it is inferred from any SVG child via CSS :has() selector."
+                ]
+            }
         },
         "badge": {
             "paths": [
                 "../../components/src/ui/badge/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Render a small inline label for tags, status indicators, or categorization"
+            }
         },
         "breadcrumb": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/breadcrumb/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Navigation trail showing the user's current location within a page hierarchy",
+                "subComponentOverrides": {
+                    "List": {
+                        "figmaNotes": "Ordered list of breadcrumb items"
+                    },
+                    "Item": {
+                        "figmaNotes": "Individual breadcrumb list item"
+                    },
+                    "Link": {
+                        "figmaNotes": "Clickable breadcrumb link; render inside Item"
+                    },
+                    "Separator": {
+                        "figmaNotes": "Visual divider between breadcrumb items"
+                    },
+                    "Ellipsis": {
+                        "figmaNotes": "Truncation indicator for long breadcrumb trails"
+                    }
+                },
+                "notes": [
+                    "Structure: Root > List > (Item > (Link | Ellipsis)) + Separator."
+                ]
+            }
         },
         "button": {
             "paths": [
                 "../../components/src/ui/button/button.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Trigger an action or event",
+                "propOverrides": {
+                    "isLoading": { "figmaRole": "booleanProperty" },
+                    "icon": { "figmaRole": "slot", "description": "Icon element displayed alongside button text" },
+                    "asChild": { "figmaRole": "booleanProperty" }
+                },
+                "slots": [
+                    { "name": "icon", "description": "Icon element displayed alongside button text" }
+                ]
+            }
         },
         "carousel": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/carousel/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Horizontal sliding content carousel with previous/next navigation and dot indicators",
+                "subComponentOverrides": {
+                    "List": {
+                        "figmaNotes": "Scrollable viewport containing carousel slides"
+                    },
+                    "Item": {
+                        "figmaNotes": "Individual slide; render inside List"
+                    },
+                    "Previous": {
+                        "figmaNotes": "Navigates to previous slide; styled as a text-variant Button"
+                    },
+                    "Next": {
+                        "figmaNotes": "Navigates to next slide; styled as a text-variant Button"
+                    },
+                    "Dots": {
+                        "figmaNotes": "Container for dot indicators"
+                    },
+                    "Dot": {
+                        "figmaNotes": "Single dot indicator representing one slide"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Carousel.Item slides placed inside List" }
+                ]
+            }
         },
         "checkbox": {
             "paths": [
                 "../../components/src/ui/checkbox/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Toggle control for binary or indeterminate selection",
+                "propOverrides": {
+                    "checked": { "figmaRole": "booleanProperty", "description": "Tri-state: true, false, or 'indeterminate'" },
+                    "disabled": { "figmaRole": "booleanProperty" }
+                },
+                "slots": [
+                    { "name": "indicator", "description": "The checkmark or minus icon inside the box" }
+                ],
+                "notes": [
+                    "When checked is 'indeterminate', a Minus icon renders instead of a Check icon."
+                ]
+            }
         },
         "combobox": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/combobox/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Searchable dropdown combining a popover trigger with a command-style filtered list",
+                "subComponentOverrides": {
+                    "Trigger": {
+                        "figmaNotes": "Button that opens the combobox popover; shows placeholder when no selection"
+                    },
+                    "Content": {
+                        "figmaNotes": "Popover content containing an embedded Command with search input and list"
+                    },
+                    "Item": {
+                        "figmaNotes": "Selectable option; supports 'selected' boolean"
+                    },
+                    "Input": {
+                        "figmaNotes": "Search input inside the dropdown"
+                    }
+                },
+                "slots": [
+                    { "name": "emptyState", "description": "Custom content shown when no results match" }
+                ],
+                "notes": [
+                    "Composes Popover + Command internally.",
+                    "Trigger uses Button with iconPosition='end' and a ChevronsUpDown icon by default."
+                ]
+            }
         },
         "command": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/command/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Keyboard-accessible command palette for searching and selecting from a list of actions",
+                "subComponentOverrides": {
+                    "Dialog": {
+                        "figmaNotes": "Modal variant wrapping Root in a Radix Dialog overlay"
+                    },
+                    "Input": {
+                        "figmaNotes": "Search input with a search icon prefix; auto-focuses when inside Dialog"
+                    },
+                    "List": {
+                        "figmaNotes": "Scrollable list of command items and groups"
+                    },
+                    "Empty": {
+                        "figmaNotes": "Shown when no items match the search query"
+                    },
+                    "Group": {
+                        "figmaNotes": "Named group of items with an optional heading"
+                    },
+                    "Item": {
+                        "figmaNotes": "Selectable command item; optionally shows an icon"
+                    }
+                },
+                "slots": [
+                    { "name": "icon", "description": "Icon element rendered before command item text" }
+                ],
+                "notes": [
+                    "Two modes: inline (Root) and modal (Dialog).",
+                    "Built on the cmdk library."
+                ]
+            }
         },
         "daypicker": {
             "paths": [
                 "../../components/src/ui/daypicker/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Calendar-based date selection component with styled navigation and day cells",
+                "subComponentOverrides": {
+                    "Root": {
+                        "figmaNotes": "Outer calendar container"
+                    },
+                    "MonthGrid": {
+                        "figmaNotes": "The grid of weeks and days"
+                    }
+                },
+                "slots": [
+                    { "name": "day", "description": "An individual day cell" },
+                    { "name": "selected", "description": "A selected day cell" },
+                    { "name": "today", "description": "Today's date cell (has primary border)" }
+                ],
+                "notes": [
+                    "Navigation buttons use the button recipe with variant: 'outlined', size: 'sm'.",
+                    "Most Figma usage will focus on root, month_grid, day, selected, and today slots."
+                ]
+            }
         },
         "drawer": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/drawer/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Slide-in panel overlay for displaying supplementary content from the edge of the screen",
+                "subComponentOverrides": {
+                    "Content": {
+                        "figmaNotes": "Drawer panel content; auto-renders Portal + Overlay"
+                    },
+                    "Header": {
+                        "figmaNotes": "Styled div for drawer header section"
+                    },
+                    "Body": {
+                        "figmaNotes": "Styled div for drawer body/main content"
+                    },
+                    "Footer": {
+                        "figmaNotes": "Styled div for drawer footer actions"
+                    },
+                    "Title": {
+                        "figmaNotes": "Accessible drawer title (text property)"
+                    },
+                    "Description": {
+                        "figmaNotes": "Accessible drawer description (text property)"
+                    }
+                },
+                "slots": [
+                    { "name": "body", "description": "Drawer main body content" }
+                ],
+                "notes": [
+                    "Content auto-includes Portal and Overlay; consumers do not need to render them."
+                ]
+            }
         },
         "form": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/form/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Form layout and validation wrapper integrating react-hook-form with styled field components",
+                "subComponentOverrides": {
+                    "Provider": {
+                        "figmaNotes": "Wraps react-hook-form state + styled form element"
+                    },
+                    "Label": {
+                        "figmaNotes": "Styled label for a form field"
+                    },
+                    "Description": {
+                        "figmaNotes": "Helper text below a form field"
+                    },
+                    "Message": {
+                        "figmaNotes": "Validation error message for a form field"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Form field elements" }
+                ]
+            }
         },
         "input": {
             "paths": [
                 "../../components/src/ui/input/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Composable input field system with variants for text, number, and date-picker modes",
+                "subComponentOverrides": {
+                    "Prefix": {
+                        "figmaNotes": "Left-side adornment area"
+                    },
+                    "Postfix": {
+                        "figmaNotes": "Right-side adornment area"
+                    },
+                    "Text": {
+                        "figmaNotes": "Standard text input with formatter, maxLength, and showCount"
+                    },
+                    "Number": {
+                        "figmaNotes": "Numeric input with increment/decrement spin controls"
+                    },
+                    "DayPicker": {
+                        "figmaNotes": "Date input that opens a DayPicker in a Popover"
+                    }
+                },
+                "propOverrides": {
+                    "showCount": { "figmaRole": "booleanProperty", "description": "Show character count when maxLength is set" },
+                    "controls": { "figmaRole": "booleanProperty", "description": "Show increment/decrement buttons for number input" }
+                },
+                "slots": [
+                    { "name": "prefix", "description": "Left-side adornment (icon, prefix text)" },
+                    { "name": "postfix", "description": "Right-side adornment (icon, suffix text)" }
+                ],
+                "notes": [
+                    "Uses React context to propagate size/radii/styling to sub-components.",
+                    "Status states (error/success/warning) are driven via data-status attribute."
+                ]
+            }
         },
         "inputOTP": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/input-otp/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "One-time password input split into individual character slots with optional separators",
+                "subComponentOverrides": {
+                    "Group": {
+                        "figmaNotes": "Container for a cluster of OTP slots"
+                    },
+                    "Slot": {
+                        "figmaNotes": "Individual single-character input box"
+                    },
+                    "Separator": {
+                        "figmaNotes": "Visual separator between slot groups (e.g. a dash)"
+                    }
+                },
+                "notes": [
+                    "Typical structure: Root > (Group > Slot*) + Separator + (Group > Slot*)."
+                ]
+            }
         },
         "menubar": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/menu-bar/menu-bar.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Horizontal menu bar containing nested dropdown menus with items, checkboxes, radio options, and submenus",
+                "subComponentOverrides": {
+                    "Trigger": {
+                        "figmaNotes": "Button that opens a dropdown menu"
+                    },
+                    "Content": {
+                        "figmaNotes": "Dropdown panel; auto-renders Portal + Arrow"
+                    },
+                    "Item": {
+                        "figmaNotes": "Standard menu item; supports insetLeft for alignment"
+                    },
+                    "CheckboxItem": {
+                        "figmaNotes": "Toggle-able menu item with a check indicator"
+                    },
+                    "RadioItem": {
+                        "figmaNotes": "Radio-selectable menu item with a circle indicator"
+                    },
+                    "SubTrigger": {
+                        "figmaNotes": "Opens a nested submenu; shows chevron icon"
+                    },
+                    "Label": {
+                        "figmaNotes": "Non-interactive label within a menu"
+                    },
+                    "Shortcut": {
+                        "figmaNotes": "Styled span for keyboard shortcut hints (text property)"
+                    },
+                    "Separator": {
+                        "figmaNotes": "Horizontal divider between menu sections"
+                    }
+                },
+                "propOverrides": {
+                    "insetLeft": { "figmaRole": "booleanProperty", "description": "Adds left padding for alignment with items that have icons" },
+                    "checked": { "figmaRole": "booleanProperty", "description": "Tri-state: true, false, or 'indeterminate'" }
+                },
+                "slots": [
+                    { "name": "children", "description": "Menu items, groups, labels, separators" }
+                ]
+            }
         },
         "modal": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/modal/modal.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Alert/confirmation dialog that blocks interaction with the rest of the page until dismissed",
+                "subComponentOverrides": {
+                    "Content": {
+                        "figmaNotes": "Modal panel; auto-renders Portal + Overlay"
+                    },
+                    "Header": {
+                        "figmaNotes": "Styled div for modal header"
+                    },
+                    "Footer": {
+                        "figmaNotes": "Styled div for modal footer actions"
+                    },
+                    "Title": {
+                        "figmaNotes": "Accessible modal title (text property)"
+                    },
+                    "Description": {
+                        "figmaNotes": "Accessible modal description (text property)"
+                    },
+                    "Action": {
+                        "figmaNotes": "Primary action button that closes the modal on click"
+                    },
+                    "Cancel": {
+                        "figmaNotes": "Cancel button styled as outlined variant; closes the modal"
+                    }
+                },
+                "slots": [
+                    { "name": "body", "description": "Modal body content between header and footer" }
+                ],
+                "notes": [
+                    "Content auto-renders Portal + Overlay.",
+                    "Cancel button is auto-styled with button variant: 'outlined'."
+                ]
+            }
         },
         "popover": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/popover/popover.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Floating panel anchored to a trigger element for displaying supplementary content",
+                "subComponentOverrides": {
+                    "Content": {
+                        "figmaNotes": "Floating panel; auto-renders Portal + Arrow with center alignment"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Popover body content" }
+                ],
+                "notes": [
+                    "Content defaults: align='center', sideOffset=4, auto-renders Portal and Arrow."
+                ]
+            }
         },
         "progress": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/progress/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Visual indicator showing completion progress as either a linear bar or circular arc",
+                "subComponentOverrides": {
+                    "Root": {
+                        "figmaNotes": "Progress bar controller; manages context for shape and dimensions"
+                    },
+                    "LineTrack": {
+                        "figmaNotes": "Background track for linear progress"
+                    },
+                    "LineFill": {
+                        "figmaNotes": "Filled portion for linear progress"
+                    },
+                    "CircleTrack": {
+                        "figmaNotes": "Background track for circular progress"
+                    },
+                    "CircleFill": {
+                        "figmaNotes": "Filled arc for circular progress"
+                    },
+                    "Label": {
+                        "figmaNotes": "Text label for the progress indicator"
+                    }
+                },
+                "notes": [
+                    "Two rendering modes: shape='line' (linear bar) and shape='circle' (circular arc).",
+                    "Built on react-aria ProgressBar, not Radix."
+                ]
+            }
         },
         "radioGroup": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/radio-group/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Single-selection control for choosing one option from a mutually exclusive set",
+                "subComponentOverrides": {
+                    "Item": {
+                        "figmaNotes": "Individual radio button; auto-renders an Indicator circle inside"
+                    }
+                },
+                "notes": [
+                    "Item auto-renders Indicator internally; children prop is discarded."
+                ]
+            }
         },
         "scrollArea": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/scroll-area/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Custom-styled scrollable container with themed scrollbars replacing native browser scrollbars",
+                "subComponentOverrides": {
+                    "Viewport": {
+                        "figmaNotes": "The scrollable viewport region"
+                    },
+                    "Scrollbar": {
+                        "figmaNotes": "Custom scrollbar track"
+                    },
+                    "Thumb": {
+                        "figmaNotes": "Draggable scrollbar thumb"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Scrollable content placed inside Viewport" }
+                ],
+                "notes": [
+                    "Typical structure: Root > Viewport + Scrollbar(> Thumb) + Corner."
+                ]
+            }
         },
         "segmented": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/segmented/root.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Toggle control for switching between mutually exclusive options displayed as a segmented button row",
+                "subComponentOverrides": {
+                    "Root": {
+                        "figmaNotes": "Segmented control container; wraps Tabs.Root + Tabs.List"
+                    },
+                    "Option": {
+                        "figmaNotes": "Individual selectable segment option"
+                    },
+                    "Text": {
+                        "figmaNotes": "Text label inside an option"
+                    }
+                },
+                "notes": [
+                    "Built on Radix Tabs. Each Option is a Tabs.Trigger under the hood."
+                ]
+            }
         },
         "select": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/select/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Dropdown selector for choosing a single value from a list of options",
+                "subComponentOverrides": {
+                    "Trigger": {
+                        "figmaNotes": "Button that opens the dropdown; auto-renders a chevron icon"
+                    },
+                    "Value": {
+                        "figmaNotes": "Displays the currently selected value"
+                    },
+                    "Content": {
+                        "figmaNotes": "Dropdown panel; auto-renders Portal + Viewport with popper positioning"
+                    },
+                    "Item": {
+                        "figmaNotes": "Selectable option; auto-renders a check indicator when selected"
+                    },
+                    "Label": {
+                        "figmaNotes": "Group heading label (text property)"
+                    },
+                    "Separator": {
+                        "figmaNotes": "Horizontal divider between groups"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Select items, groups, labels" }
+                ]
+            }
         },
         "separator": {
             "paths": [
                 "../../components/src/ui/separator/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Visual divider line between content sections, supporting horizontal or vertical orientation"
+            }
         },
         "sheet": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/sheet/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Draggable bottom/side panel for supplemental content, supporting nested sheets",
+                "subComponentOverrides": {
+                    "Content": {
+                        "figmaNotes": "Sheet panel content"
+                    },
+                    "Header": {
+                        "figmaNotes": "Styled div for sheet header section"
+                    },
+                    "Footer": {
+                        "figmaNotes": "Styled div for sheet footer section"
+                    },
+                    "Title": {
+                        "figmaNotes": "Accessible sheet title (text property)"
+                    },
+                    "Description": {
+                        "figmaNotes": "Accessible sheet description (text property)"
+                    },
+                    "Handle": {
+                        "figmaNotes": "Drag handle bar at the top of the sheet"
+                    }
+                },
+                "slots": [
+                    { "name": "body", "description": "Sheet main content between header and footer" }
+                ],
+                "notes": [
+                    "Built on the vaul library (not Radix Dialog directly).",
+                    "NestedRoot enables stacking sheets."
+                ]
+            }
         },
         "sidebar": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/sidebar/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Collapsible navigation sidebar with groups, menus, submenus, and collapsed-state tooltips",
+                "subComponentOverrides": {
+                    "Root": {
+                        "figmaNotes": "Main sidebar container; renders as a Drawer on mobile, otherwise as collapsible/fixed panel"
+                    },
+                    "Content": {
+                        "figmaNotes": "Main scrollable content area of the sidebar"
+                    },
+                    "Header": {
+                        "figmaNotes": "Sidebar header section"
+                    },
+                    "Footer": {
+                        "figmaNotes": "Sidebar footer section"
+                    },
+                    "Group": {
+                        "figmaNotes": "Logical section of the sidebar"
+                    },
+                    "GroupLabel": {
+                        "figmaNotes": "Heading label for a group (text property)"
+                    },
+                    "GroupAction": {
+                        "figmaNotes": "Action button for a group; styled as a Button"
+                    },
+                    "MenuButton": {
+                        "figmaNotes": "Clickable menu item button; supports tooltip when sidebar is collapsed"
+                    },
+                    "MenuAction": {
+                        "figmaNotes": "Secondary action on a menu item; styled as a Button"
+                    },
+                    "MenuBadge": {
+                        "figmaNotes": "Badge indicator on a menu item"
+                    },
+                    "MenuSubButton": {
+                        "figmaNotes": "Trigger for a nested submenu"
+                    },
+                    "Trigger": {
+                        "figmaNotes": "Toggle button for collapsing/expanding the sidebar; styled as a text Button"
+                    },
+                    "Rail": {
+                        "figmaNotes": "Thin icon rail visible when sidebar is collapsed to icon mode"
+                    }
+                },
+                "propOverrides": {
+                    "isActive": { "figmaRole": "booleanProperty", "description": "Whether the menu item is currently active" },
+                    "tooltip": { "figmaRole": "slot", "description": "Tooltip content shown when sidebar is collapsed" }
+                },
+                "slots": [
+                    { "name": "children", "description": "Sidebar content (Header, Groups, Menus, Footer)" },
+                    { "name": "tooltip", "description": "Tooltip content shown when sidebar is collapsed (on MenuButton)" }
+                ],
+                "notes": [
+                    "The most complex compound component. Provider must wrap everything.",
+                    "MenuButton conditionally wraps content in a Tooltip (only visible when collapsed and not mobile).",
+                    "Root dynamically switches: mobile renders Drawer; collapsible='none' renders non-collapsible."
+                ]
+            }
         },
         "slider": {
             "paths": [
                 "../../components/src/ui/slider/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Range input control for selecting a numeric value within a min/max range",
+                "propOverrides": {
+                    "disabled": { "figmaRole": "booleanProperty" }
+                },
+                "slots": [
+                    { "name": "track", "description": "The background rail" },
+                    { "name": "range", "description": "The filled portion of the track" },
+                    { "name": "thumb", "description": "The draggable handle(s)" }
+                ],
+                "notes": [
+                    "Supports multiple thumbs by passing an array to value/defaultValue.",
+                    "Thumb and track sizes are independent variant axes."
+                ]
+            }
         },
         "steps": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/steps/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Multi-step process indicator showing progress through a sequence of discrete steps",
+                "subComponentOverrides": {
+                    "List": {
+                        "figmaNotes": "Container for step items (horizontal or vertical layout)"
+                    },
+                    "Item": {
+                        "figmaNotes": "Individual step definition"
+                    },
+                    "Trigger": {
+                        "figmaNotes": "Clickable element to navigate to a step"
+                    },
+                    "Indicator": {
+                        "figmaNotes": "Visual step indicator (number, icon, or loading state)"
+                    },
+                    "Content": {
+                        "figmaNotes": "Content panel rendered when step is active"
+                    },
+                    "Separator": {
+                        "figmaNotes": "Visual connector between steps"
+                    }
+                },
+                "propOverrides": {
+                    "loading": { "figmaRole": "booleanProperty", "description": "Shows loading state on step indicator" },
+                    "disabled": { "figmaRole": "booleanProperty", "description": "Shows disabled state on step indicator" }
+                },
+                "slots": [
+                    { "name": "children", "description": "Steps.Item elements" }
+                ]
+            }
         },
         "switchRecipe": {
             "paths": [
                 "../../components/src/ui/switch/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Toggle switch for turning a single setting on or off",
+                "propOverrides": {
+                    "checked": { "figmaRole": "booleanProperty" },
+                    "disabled": { "figmaRole": "booleanProperty" },
+                    "defaultChecked": { "figmaRole": "booleanProperty" }
+                },
+                "slots": [
+                    { "name": "thumb", "description": "The circular handle that slides left/right" }
+                ]
+            }
         },
         "tabs": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/tabs/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Tabbed interface for organizing content into selectable panels",
+                "subComponentOverrides": {
+                    "TabList": {
+                        "figmaNotes": "Container for tab triggers"
+                    },
+                    "Trigger": {
+                        "figmaNotes": "Clickable tab button that activates a panel"
+                    },
+                    "Content": {
+                        "figmaNotes": "Panel content shown when its associated tab is active"
+                    }
+                },
+                "slots": [
+                    { "name": "tabList", "description": "Tab trigger buttons" },
+                    { "name": "content", "description": "Tab panel content area" }
+                ],
+                "notes": [
+                    "Each Trigger must have a value prop matching its corresponding Content's value."
+                ]
+            }
         },
         "textarea": {
             "paths": [
                 "../../components/src/ui/textarea/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Multi-line text input field with resize control and status styling variants",
+                "propOverrides": {
+                    "resize": { "figmaRole": "variant", "description": "Resize direction: none, vertical, horizontal, or both" },
+                    "disabled": { "figmaRole": "booleanProperty" }
+                },
+                "notes": [
+                    "Status states (error/success/warning) are driven via data-status attribute."
+                ]
+            }
         },
         "toast": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/toast/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Non-intrusive notification that appears temporarily to convey status or prompt action",
+                "subComponentOverrides": {
+                    "Viewport": {
+                        "figmaNotes": "Container where toasts are rendered; controls placement via variant prop"
+                    },
+                    "Root": {
+                        "figmaNotes": "Individual toast notification"
+                    },
+                    "Icon": {
+                        "figmaNotes": "Optional icon area for the toast"
+                    },
+                    "Title": {
+                        "figmaNotes": "Toast heading text (text property)"
+                    },
+                    "Description": {
+                        "figmaNotes": "Toast body text (text property)"
+                    },
+                    "Actions": {
+                        "figmaNotes": "Container for toast action buttons"
+                    },
+                    "Action": {
+                        "figmaNotes": "Button that performs an action and optionally closes the toast"
+                    },
+                    "Close": {
+                        "figmaNotes": "Button to dismiss the toast"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Toast body content (Icon, Title, Description, Actions)" }
+                ]
+            }
         },
         "tooltip": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/tooltip/tooltip.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Small informational popup that appears on hover or focus over a trigger element",
+                "subComponentOverrides": {
+                    "Content": {
+                        "figmaNotes": "Tooltip popup panel; auto-renders Portal + Arrow with center alignment"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Tooltip text or custom content" }
+                ],
+                "notes": [
+                    "Content defaults: align='center', sideOffset=4, auto-renders Portal and Arrow.",
+                    "Typically used with Provider > Root > Trigger + Content."
+                ]
+            }
         },
         "treeView": {
             "isCompound": true,
             "paths": [
                 "../../components/src/ui/tree-view/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Hierarchical tree structure for displaying nested data with expandable branches and selection",
+                "subComponentOverrides": {
+                    "Tree": {
+                        "figmaNotes": "Container for the tree nodes"
+                    },
+                    "Branch": {
+                        "figmaNotes": "Expandable parent node"
+                    },
+                    "BranchControl": {
+                        "figmaNotes": "Interactive area of a branch (clickable row)"
+                    },
+                    "BranchTrigger": {
+                        "figmaNotes": "Expand/collapse toggle for a branch"
+                    },
+                    "BranchText": {
+                        "figmaNotes": "Text label of a branch node (text property)"
+                    },
+                    "BranchContent": {
+                        "figmaNotes": "Container for child nodes within a branch"
+                    },
+                    "Item": {
+                        "figmaNotes": "Leaf node in the tree"
+                    },
+                    "ItemText": {
+                        "figmaNotes": "Text label of a leaf item (text property)"
+                    },
+                    "NodeCheckbox": {
+                        "figmaNotes": "Checkbox for multi-select on nodes"
+                    }
+                },
+                "slots": [
+                    { "name": "children", "description": "Branch and Item nodes" }
+                ],
+                "notes": [
+                    "Built on Ark UI TreeView.",
+                    "Very granular sub-component structure allowing full control over branch and leaf rendering."
+                ]
+            }
         },
         "typography": {
             "paths": [
                 "../../components/src/ui/typography/index.tsx"
-            ]
+            ],
+            "figma": {
+                "purpose": "Semantic heading (h1-h6) and paragraph text elements with responsive typography and color variants",
+                "notes": [
+                    "Barrel export of Heading and Paragraph components.",
+                    "Heading: renders dynamic h1-h6 tag based on level prop.",
+                    "Typography should be implemented as text styles using tokens, not as Figma components."
+                ]
+            }
         }
     }
 }
