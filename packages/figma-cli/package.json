@@ -1,6 +1,6 @@
 {
   "name": "@pallas-ui/figma-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI tool for retrieving Pallas UI component information",
   "keywords": [
     "Pallas UI",
