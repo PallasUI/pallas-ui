@@ -1,0 +1,48 @@
+{
+  "name": "@pallas-ui/figma-cli",
+  "version": "0.1.0",
+  "description": "CLI tool for retrieving Pallas UI component information",
+  "keywords": [
+    "Pallas UI",
+    "Figma",
+    "CLI"
+  ],
+  "homepage": "https://pallas-ui.com",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "figma-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "biome lint ./src",
+    "cli": "tsx src/index.ts",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@pallas-ui/panda-preset": "workspace:*",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "markdown-table": "^3.0.4",
+    "ts-morph": "^27.0.2"
+  },
+  "devDependencies": {
+    "@pallas-ui/typescript-config": "workspace:*",
+    "@pandacss/dev": "^1.9.1",
+    "@pandacss/node": "^1.9.1",
+    "@pandacss/types": "^1.9.1",
+    "@types/node": "^20",
+    "tsup": "8.3.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.0"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ]
+}

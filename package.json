@@ -13,7 +13,8 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "sync-components": "rsync -av --delete ./components/src/ui/ ./apps/docs/components/ui/ && node ./scripts/process-imports.js",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "cli": "pnpm --filter @pallas-ui/figma-cli cli"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
