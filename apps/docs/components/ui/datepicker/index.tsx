@@ -2,12 +2,12 @@
 
 import { css, cx } from '@styled-system/css'
 import { styled } from '@styled-system/jsx'
-import { button, daypicker, icon } from '@styled-system/recipes'
+import { button, datepicker, icon } from '@styled-system/recipes'
 import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react'
 import type * as React from 'react'
 import { DayPicker as DayPickerBase } from 'react-day-picker'
 
-type DayPickerBaseProps = React.ComponentProps<typeof DayPickerBase>
+type DatePickerBaseProps = React.ComponentProps<typeof DayPickerBase>
 
 interface ChevronProps {
   className?: string
@@ -16,13 +16,13 @@ interface ChevronProps {
   size?: number
 }
 
-function BaseDayPicker({
+function BaseDatePicker({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: DayPickerBaseProps) {
-  const { root, button_previous, button_next, day, ...rest } = daypicker()
+}: DatePickerBaseProps) {
+  const { root, button_previous, button_next, day, ...rest } = datepicker()
 
   const Chevron = ({ className, disabled, orientation = 'right', size = 24 }: ChevronProps) => {
     const iconMap = {
@@ -68,7 +68,7 @@ function BaseDayPicker({
     />
   )
 }
-BaseDayPicker.displayName = 'DayPicker'
+BaseDatePicker.displayName = 'DatePicker'
 
-export const DayPicker = styled(BaseDayPicker)
-export type DayPickerProps = React.ComponentProps<typeof DayPicker>
+export const DatePicker = styled(BaseDatePicker)
+export type DatePickerProps = React.ComponentProps<typeof DatePicker>

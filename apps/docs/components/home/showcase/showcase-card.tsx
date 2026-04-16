@@ -44,19 +44,19 @@ export const ShowcaseCard = ({
         className,
       )}
     >
-      <div
-        className={css({
-          px: 'layout.section.md',
-          pt: paddingTitle ? paddingTitle : 'layout.section.md',
-          borderBottom: '1px solid',
-          borderColor: 'border',
-          border: 'none',
-          spaceY: 'gap.component.sm',
-        })}
-      >
-        <Heading level={4}>{title}</Heading>
-        {description && <Paragraph size={'compact'}>{description}</Paragraph>}
-      </div>
+      {title && (
+        <div
+          className={css({
+            px: 'layout.section.md',
+            pt: paddingTitle ? paddingTitle : 'layout.section.md',
+            borderBottom: '{borders.default.sm}',
+            spaceY: 'gap.component.sm',
+          })}
+        >
+          <Heading level={4}>{title}</Heading>
+          {description && <Paragraph size={'compact'}>{description}</Paragraph>}
+        </div>
+      )}
       <div
         className={css({
           p: paddingBlock ? paddingBlock : 'layout.section.md',

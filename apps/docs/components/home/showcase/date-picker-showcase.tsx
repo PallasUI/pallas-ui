@@ -1,37 +1,41 @@
 'use client'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+
+import { DatePicker } from '@/components/ui/datepicker'
 import { css } from '@styled-system/css'
-import { HStack, VStack } from '@styled-system/jsx'
+import { Box } from '@styled-system/jsx'
+import { addDays } from 'date-fns'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
+
 export const DatePickerShowcase = () => {
+  const today = new Date()
+  const defaultSelected = {
+    from: today,
+    to: addDays(today, 5),
+  }
+
   return (
     <ShowcaseCard
       title="Date Selection"
       description="Select dates for your reservation or appointment"
-      //   colSpan={{ base: 1, md: 8 }} // This will make it span 4 columns on md screens
     >
-      <VStack gap="gap.component.md">
-        <div>
-          <Label>Pick a Date</Label>
-          <Input>
-            <Input.DayPicker id="date" placeholder="Choose a date" />
-          </Input>
-        </div>
-
-        <div>
-          <Label>Number of Guests</Label>
-          <Input>
-            <Input.Number placeholder="Input Number of Guests" min={1} max={10} />
-          </Input>
-        </div>
-
-        <HStack mt="2" justify="flex-end">
-          <Button variant="primary">Book Reservation</Button>
-        </HStack>
-      </VStack>
+      <Box>
+        <DatePicker
+          mode="range"
+          defaultMonth={today}
+          selected={defaultSelected}
+          numberOfMonths={1}
+          className={css({
+            mx: 'auto',
+            bg: 'white',
+            p: '2',
+            borderRadius: 'md',
+            border: '1px solid',
+            borderColor: 'border',
+            boxShadow: 'sm',
+          })}
+        />
+      </Box>
     </ShowcaseCard>
   )
 }

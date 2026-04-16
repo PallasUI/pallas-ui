@@ -5,7 +5,7 @@ import { format } from 'date-fns'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { Calendar } from 'lucide-react'
 import React from 'react'
-import { DayPicker } from '@/components/ui/daypicker'
+import { DatePicker } from '@/components/ui/datepicker'
 import Popover from '@/components/ui/popover'
 
 const InputContext = React.createContext<
@@ -238,7 +238,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
 )
 InputNumber.displayName = 'Input.Number'
 
-type InputDayPickerProps = Omit<
+type InputDatePickerProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'value' | 'onChange'
 > & {
@@ -248,7 +248,7 @@ type InputDayPickerProps = Omit<
   placeholder?: string
 }
 
-const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
+const InputDatePicker = React.forwardRef<HTMLInputElement, InputDatePickerProps>(
   (
     { className, value, onChange, format: formatStr = 'PP', placeholder = 'Pick a date', ...props },
     ref,
@@ -290,14 +290,14 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
           </div>
         </Popover.Trigger>
         <Popover.Content css={{ width: 'auto', padding: 0 }}>
-          <DayPicker mode="single" selected={selected} onSelect={handleSelect} />
+          <DatePicker mode="single" selected={selected} onSelect={handleSelect} />
         </Popover.Content>
       </Popover.Root>
     )
   },
 )
 
-InputDayPicker.displayName = 'Input.DayPicker'
+InputDatePicker.displayName = 'Input.DatePicker'
 
 // Update the Input export
 export const Input = Object.assign(InputRoot, {
@@ -305,5 +305,5 @@ export const Input = Object.assign(InputRoot, {
   Postfix: InputPostfix,
   Text: InputText,
   Number: InputNumber,
-  DayPicker: InputDayPicker,
+  DatePicker: InputDatePicker,
 })

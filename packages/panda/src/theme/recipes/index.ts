@@ -11,7 +11,7 @@ import { carousel } from './carousel'
 import { checkbox } from './checkbox'
 import { combobox } from './combobox'
 import { command } from './command'
-import { daypicker } from './daypicker'
+import { datepicker } from './datepicker'
 import { dialog } from './dialog'
 import { drawer } from './drawer'
 import { form } from './form'
@@ -69,7 +69,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   command,
   combobox,
   drawer,
-  daypicker,
+  datepicker,
   input,
   inputOTP,
   modal,

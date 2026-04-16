@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { DayPicker } from '@/components/ui/daypicker'
+import { DatePicker } from '@/components/ui/datepicker'
 import Popover from '@/components/ui/popover'
 import Select from '@/components/ui/select'
 import { css } from '@styled-system/css'
@@ -61,7 +61,7 @@ export default function Example() {
           </Select.Content>
         </Select.Root>
         <Box>
-          <DayPicker mode="single" selected={date} onSelect={setDate} />
+          <DatePicker mode="single" selected={date} onSelect={setDate} />
         </Box>
       </Popover.Content>
     </Popover.Root>
